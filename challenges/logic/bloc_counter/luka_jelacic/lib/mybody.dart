@@ -10,7 +10,40 @@ class MyBody extends StatelessWidget {
     return BlocBuilder<CounterBloc, CounterState>(
       builder: (context, state) {
         if (state is LoadingState) {
-          return LoadingAnimation();
+          //return LoadingAnimation();
+          return Container(
+              child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  child: FloatingActionButton(
+                    onPressed: () => context
+                        .read<CounterBloc>()
+                        .add(IncrementCounterEvent(counter: state.counter)),
+                    child: Icon(Icons.add),
+                  ),
+                ),
+                CircleAvatar(
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.red,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: FloatingActionButton(
+                    onPressed: () => context
+                        .read<CounterBloc>()
+                        .add(DecrementCounterEvent(counter: state.counter)),
+                    child: Icon(Icons.remove),
+                  ),
+                )
+              ],
+            ),
+          ));
         } else {
           return Container(
               child: Center(
