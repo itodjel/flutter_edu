@@ -16,7 +16,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   Stream<CounterState> increment(IncrementCounterEvent event) async* {
     yield LoadingState();
     await Future.delayed(Duration(seconds: 1));
-    yield CounterPressState(counter: event.counter += 1);
+    yield CounterPressState(counter: event.counter += 2);
   }
 
   Stream<CounterState> decrement(DecrementCounterEvent event) async* {
