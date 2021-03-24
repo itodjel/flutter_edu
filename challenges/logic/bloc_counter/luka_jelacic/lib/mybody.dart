@@ -10,7 +10,6 @@ class MyBody extends StatelessWidget {
     return BlocBuilder<CounterBloc, CounterState>(
       builder: (context, state) {
         if (state is LoadingState) {
-          //return LoadingAnimation();
           return Container(
               child: Center(
             child: Column(
@@ -19,9 +18,11 @@ class MyBody extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: FloatingActionButton(
-                    onPressed: () => context
+                    onPressed: null
+                    /*() {} => context
                         .read<CounterBloc>()
-                        .add(IncrementCounterEvent(counter: state.counter)),
+                        .add(IncrementCounterEvent(counter: state.counter)),*/
+                    ,
                     child: Icon(Icons.add),
                   ),
                 ),
@@ -35,9 +36,11 @@ class MyBody extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(top: 10),
                   child: FloatingActionButton(
-                    onPressed: () => context
+                    onPressed: null
+                    /*() {} => context
                         .read<CounterBloc>()
-                        .add(DecrementCounterEvent(counter: state.counter)),
+                        .add(DecrementCounterEvent(counter: state.counter)),*/
+                    ,
                     child: Icon(Icons.remove),
                   ),
                 )
