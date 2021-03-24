@@ -7,3 +7,10 @@
 	- cijenu izdvojiti u poseban widget
 	- sliku ucitati iz asset-a
 5. Pritiskom na back vratiti se na prethodnu stranicu
+
+Napomena:
+
+Kao dodatak na ovaj izazov napraviti:
+
+- Loading na slici prilikom izmjene količine(kilogrami sa gornjeg dijela screena)
+- Prikaz druge slike torte u zavisnosti koji button je odabran(kilogrami sa gornjeg dijela screena)
