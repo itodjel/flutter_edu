@@ -1,0 +1,17 @@
+Implementirati ToDo aplikaciju sa slike:
+- Omogućiti unos texta u polje u donjem dijelu ekrana
+- Klikom na dugme + dodati novu stavku u listu(samo ukoliko ima neki text u inputu)
+- Klikom na dugme x (ovdje se moze ubaciti ikonica Icons.delete) obrisati zapis iz liste
+- U gornjem dijelu ekrana prikazati broj preostalih taskova
+
+Napomene:
+- Obavezno koristiti Bloc za state management
+- Prilikom svakog uspješnog dodavanja nove stavke u listu korisnika obavijestiti porukom o uspješnosti, ovu poruku prikazati u SnackBaru ili Toast message
+- Prilikom brisanja stavke također prikazati poruku o uspješnosti
+- Onemogućiti dodavanje stavke sa istim sadržajem/textom(obavijestiti korisnika porukom "Stavke već postoji")
+- Kao model jedne stavke liste poželjno je koristiti custom klasu npr. TodoItem { isCompleted, text }
+
+Poželjne funkcionalnosti
+- Broj preostalih taskova u vrhu ekrana pokušati optimizirati u smislu smanjenja broje rebuildanja(osvježiti widget/dio widgeta samo ukoliko se radi o uspješnom dodavanju/brisanju)
+- Omogućiti spremanje podataka u storage uređaja te pri svakom novom paljenju aplikacije učitati spremljene podatke u listu
+
