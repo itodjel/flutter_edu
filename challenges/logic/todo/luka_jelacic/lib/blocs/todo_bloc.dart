@@ -12,6 +12,8 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   Stream<TodoState> mapEventToState(TodoEvent event) async* {
     if (event is AddNewTodoEvent) {
       yield* addNewTodo(event);
+    } else if (event is DeleteItemEvent) {
+      yield* deleteItem(event);
     }
   }
 
@@ -19,10 +21,22 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     var uuid = Uuid();
     String id = uuid.v1();
     TodoItem todo = TodoItem(id, event.text, false);
+    for (var i = 0; i < state.todos.length; i++) {
+      if (state.todos[i].text == todo.text) {
+        yield state.copyWith(
+            todoStatus: TodoStateStatus.DuplicateItemState, todos: state.todos);
+        return;
+      }
+    }
     state.todos.add(todo);
     yield state.copyWith(
         todoStatus: TodoStateStatus.NewItemState, todos: state.todos);
-    // yield TodoState(
-    //     todoStatus: TodoStateStatus.NewItemState, todos: state.todos);
+  }
+
+  Stream<TodoState> deleteItem(DeleteItemEvent event) async* {
+    var item = state.todos.where((x) => x.id == event.id).single;
+    state.todos.remove(item);
+    yield state.copyWith(
+        todoStatus: TodoStateStatus.DeleteItemState, todos: state.todos);
   }
 }
