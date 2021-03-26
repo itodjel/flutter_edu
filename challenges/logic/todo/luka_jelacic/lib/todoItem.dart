@@ -1,6 +1,6 @@
 class TodoItem {
-  int id;
+  String id;
   String text;
   bool isCompleted;
-  TodoItem(this.text, this.isCompleted);
+  TodoItem(this.id, this.text, this.isCompleted);
 }
