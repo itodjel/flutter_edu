@@ -70,60 +70,7 @@ class _MyBodyState extends State<MyBody> {
                     );
                   },
                 ),
-              )
-              //     child: ListView(
-              //   children: [
-              //     Container(
-              //       margin: EdgeInsets.all(10),
-              //       child: ListTile(
-              //         tileColor: Color.fromRGBO(32, 32, 32, 1),
-              //         title: Text(
-              //           "Gospodar prstenova",
-              //           style: TextStyle(color: Colors.white),
-              //         ),
-              //         subtitle: Text("Druzina prstena",
-              //             style: TextStyle(color: Colors.white)),
-              //         trailing: Icon(
-              //           Icons.delete,
-              //           color: Colors.white,
-              //         ),
-              //       ),
-              //     ),
-              //     Container(
-              //       margin: EdgeInsets.all(10),
-              //       child: ListTile(
-              //         tileColor: Color.fromRGBO(32, 32, 32, 1),
-              //         title: Text(
-              //           "Gospodar prstenova",
-              //           style: TextStyle(color: Colors.white),
-              //         ),
-              //         subtitle: Text("Dvije kule",
-              //             style: TextStyle(color: Colors.white)),
-              //         trailing: Icon(
-              //           Icons.delete,
-              //           color: Colors.white,
-              //         ),
-              //       ),
-              //     ),
-              //     Container(
-              //       margin: EdgeInsets.all(10),
-              //       child: ListTile(
-              //         tileColor: Color.fromRGBO(32, 32, 32, 1),
-              //         title: Text(
-              //           "Gospodar prstenova",
-              //           style: TextStyle(color: Colors.white),
-              //         ),
-              //         subtitle: Text("Povratak kralja",
-              //             style: TextStyle(color: Colors.white)),
-              //         trailing: Icon(
-              //           Icons.delete,
-              //           color: Colors.white,
-              //         ),
-              //       ),
-              //     )
-              //   ],
-              // )),
-              ,
+              ),
               Row(
                 children: [
                   Expanded(
