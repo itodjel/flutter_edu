@@ -1,11 +1,13 @@
-abstract class CounterState {
-  int counter;
-  CounterState({this.counter = 0});
-}
+enum CounterStateStatus { Loading, Loaded, SuccessfullyUpdated }
 
-class CounterPressState extends CounterState {
-  int counter;
-  CounterPressState({this.counter = 0});
-}
+class CounterState {
+  CounterStateStatus stateStatus;
 
-class LoadingState extends CounterState {}
+  int counter;
+  CounterState({this.counter = 0, this.stateStatus});
+  CounterState copyWith({CounterStateStatus stateStatus, int counter}) =>
+      CounterState(
+        stateStatus: stateStatus ?? this.stateStatus,
+        counter: counter ?? this.counter,
+      );
+}

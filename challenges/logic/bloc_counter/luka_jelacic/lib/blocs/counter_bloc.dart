@@ -3,7 +3,8 @@ import 'package:luka_jelacic/blocs/counter_event.dart';
 import 'package:luka_jelacic/blocs/counter_state.dart';
 
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
-  CounterBloc() : super(CounterPressState(counter: 0));
+  CounterBloc()
+      : super(CounterState(stateStatus: CounterStateStatus.Loaded, counter: 0));
   @override
   Stream<CounterState> mapEventToState(CounterEvent event) async* {
     if (event is IncrementCounterEvent) {
@@ -14,14 +15,18 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   }
 
   Stream<CounterState> increment(IncrementCounterEvent event) async* {
-    yield LoadingState();
+    yield state.copyWith(stateStatus: CounterStateStatus.Loading);
     await Future.delayed(Duration(seconds: 3));
-    yield CounterPressState(counter: event.counter += 2);
+    yield state.copyWith(stateStatus: CounterStateStatus.SuccessfullyUpdated);
+    yield state.copyWith(
+        stateStatus: CounterStateStatus.Loaded, counter: state.counter += 1);
   }
 
   Stream<CounterState> decrement(DecrementCounterEvent event) async* {
-    yield LoadingState();
+    yield state.copyWith(stateStatus: CounterStateStatus.Loading);
     await Future.delayed(Duration(seconds: 3));
-    yield CounterPressState(counter: event.counter -= 1);
+    yield state.copyWith(stateStatus: CounterStateStatus.SuccessfullyUpdated);
+    yield state.copyWith(
+        stateStatus: CounterStateStatus.Loaded, counter: state.counter -= 1);
   }
 }
