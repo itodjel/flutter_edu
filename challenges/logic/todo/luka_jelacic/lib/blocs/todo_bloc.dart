@@ -18,16 +18,22 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   }
 
   Stream<TodoState> addNewTodo(AddNewTodoEvent event) async* {
-    var uuid = Uuid();
-    String id = uuid.v1();
-    TodoItem todo = TodoItem(id, event.text, false);
+    if (event.text.isEmpty) {
+      yield state.copyWith(
+          todoStatus: TodoStateStatus.EmptyItemState, todos: state.todos);
+      return;
+    }
     for (var i = 0; i < state.todos.length; i++) {
-      if (state.todos[i].text == todo.text) {
+      if (state.todos[i].text == event.text) {
         yield state.copyWith(
             todoStatus: TodoStateStatus.DuplicateItemState, todos: state.todos);
         return;
       }
     }
+    var uuid = Uuid();
+    String id = uuid.v1();
+    TodoItem todo = TodoItem(id, event.text, false);
+
     state.todos.add(todo);
     yield state.copyWith(
         todoStatus: TodoStateStatus.NewItemState, todos: state.todos);

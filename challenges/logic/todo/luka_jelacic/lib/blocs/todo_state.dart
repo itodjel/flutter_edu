@@ -4,7 +4,8 @@ enum TodoStateStatus {
   InitialState,
   NewItemState,
   DeleteItemState,
-  DuplicateItemState
+  DuplicateItemState,
+  EmptyItemState
 }
 
 class TodoState {

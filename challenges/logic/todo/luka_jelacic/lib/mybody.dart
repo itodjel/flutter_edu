@@ -34,6 +34,17 @@ class _MyBodyState extends State<MyBody> {
             content: Text('Vec postoji.'),
           ));
         }
+        if (state.todoStatus == TodoStateStatus.EmptyItemState) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text('Morate unijeti tekst.')));
+        }
+      },
+      buildWhen: (previous, current) {
+        if (current.todoStatus == TodoStateStatus.NewItemState ||
+            current.todoStatus == TodoStateStatus.DeleteItemState) {
+          return true;
+        }
+        return false;
       },
       builder: (context, state) {
         return Container(
