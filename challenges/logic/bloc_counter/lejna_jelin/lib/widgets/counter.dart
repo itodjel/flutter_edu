@@ -3,14 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Counter extends StatefulWidget {
-  Counter({Key key}) : super(key: key);
-
-  @override
-  _CounterState createState() => _CounterState();
-}
-
-class _CounterState extends State<Counter> {
+class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
