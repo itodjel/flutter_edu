@@ -1,5 +1,5 @@
 //Application
-export 'business_logic/all.dart';
+export 'blocs/all.dart';
 export 'common/all.dart';
 export 'config/all.dart';
 export 'domain/all.dart';
