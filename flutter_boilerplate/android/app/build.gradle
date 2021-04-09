@@ -25,16 +25,54 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
+
+    signingConfigs {
+       release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storePassword keystoreProperties['storePassword']
+       }
+    }
+
+    flavorDimensions "flavor-type"
+    productFlavors {
+        production {
+            dimension "flavor-type"
+            applicationId "com.ito.flutter_boilerplate"
+            resValue "string", "app_name", "FB"
+        }
+        staging {
+            dimension "flavor-type"
+            applicationId "com.ito.flutter_boilerplateStaging"
+            resValue "string", "app_name", "FB Staging"
+        }
+        development {
+            dimension "flavor-type"
+            applicationId "com.ito.flutter_boilerplateDevelopment"
+            resValue "string", "app_name", "FB Development"
+        }
+    }
+
     compileSdkVersion 30
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_boilerplate"
+        applicationId "com.ito.flutter_boilerplate"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
@@ -43,8 +81,17 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
+            crunchPngs false
+            shrinkResources false
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
             signingConfig signingConfigs.debug
         }
     }
