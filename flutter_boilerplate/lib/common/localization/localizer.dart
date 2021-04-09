@@ -10,13 +10,13 @@ class Localizer {
       code: 'en',
       name: 'English',
       translations: translation_en,
-      iconPath: AppAssets.flag_uk,
+      iconPath: AppAssets.flag_uk_png,
     ),
     LanguageModel(
       code: 'bs',
       name: 'Bosanski',
       translations: translation_bs,
-      iconPath: AppAssets.flag_ba,
+      iconPath: AppAssets.flag_ba_png,
     ),
   ];
 
