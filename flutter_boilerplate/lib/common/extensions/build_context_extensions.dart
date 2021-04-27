@@ -19,8 +19,8 @@ extension BuildContextExtensions on BuildContext {
   double get screenWidth => mediaQuery.size.width;
   double get screenHeight => mediaQuery.size.height;
 
-  AppSettings get appSettings => RepositoryProvider.of<AppSettings>(this);
   ServiceProvider get serviceProvider => RepositoryProvider.of<ServiceProvider>(this);
+  AppSettings get appSettings => serviceProvider.appSettings;
   T validator<T>() => RepositoryProvider.of<T>(this);
 
   void unfocus() => FocusScope.of(this).unfocus();

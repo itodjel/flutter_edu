@@ -13,18 +13,14 @@ Future main() async {
 
   Intl.defaultLocale = Localizer.defaultLanguage.locale.languageCode;
 
-  runZoned(
-    () {
-      runApp(
-        RepositoryProvider<ServiceProvider>(
-          create: (context) => serviceProvider,
-          child: ContextServiceProviderGeneral(
-            child: ContextServiceProviderBlocs(
-              child: Application(),
-            ),
-          ),
+  runZoned(() {
+    runApp(
+      RepositoryProvider<ServiceProvider>(
+        create: (context) => serviceProvider,
+        child: ContextServiceProviderBlocs(
+          child: Application(),
         ),
-      );
-    },
-  );
+      ),
+    );
+  });
 }

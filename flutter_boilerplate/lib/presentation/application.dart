@@ -1,6 +1,19 @@
 import 'package:flutter_boilerplate/all.dart';
 
-class Application extends StatelessWidget {
+class Application extends StatefulWidget {
+  @override
+  _ApplicationState createState() => _ApplicationState();
+}
+
+class _ApplicationState extends State<Application> {
+  @override
+  void initState() {
+    super.initState();
+    if (context.appSettings.onlyAllowOrientationPortrait) {
+      setOrientationPortrait();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

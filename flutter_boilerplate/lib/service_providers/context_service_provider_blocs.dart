@@ -7,6 +7,8 @@ class ContextServiceProviderBlocs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Remove this line once there is atleast one item in the MultiBlocProvider
+    return child;
     return MultiBlocProvider(
       providers: [
         //Register blocs services here so they will be available through context
