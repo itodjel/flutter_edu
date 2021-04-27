@@ -7,11 +7,34 @@ class ContextServiceProviderBlocs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Remove this line once there is atleast one item in the MultiBlocProvider
-    return child;
     return MultiBlocProvider(
       providers: [
-        //Register blocs services here so they will be available through context
+        BlocProvider<AppBloc>(
+          create: (BuildContext context) => AppBloc(
+            appSettings: context.serviceProvider.appSettings,
+            localizationBloc: context.localizationBloc,
+            themeBloc: context.themeBloc,
+          ),
+        ),
+        BlocProvider<ErrorHandlerBloc>(
+          create: (BuildContext context) => ErrorHandlerBloc(
+            restApiClient: context.serviceProvider.restApiClient,
+          ),
+        ),
+        BlocProvider<LocalizationBloc>(
+          create: (BuildContext context) => LocalizationBloc(
+            restApiClient: context.serviceProvider.restApiClient,
+            storageRepository: context.serviceProvider.storageRepository,
+          ),
+        ),
+        BlocProvider<NavigationBloc>(
+          create: (BuildContext context) => NavigationBloc(),
+        ),
+        BlocProvider<ThemeBloc>(
+          create: (BuildContext context) => ThemeBloc(
+            storageRepository: context.serviceProvider.storageRepository,
+          ),
+        ),
       ],
       child: child,
     );
