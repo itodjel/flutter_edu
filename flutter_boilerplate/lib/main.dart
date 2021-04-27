@@ -1,4 +1,5 @@
 import 'package:flutter_boilerplate/all.dart';
+import 'package:intl/intl.dart';
 
 late EnvironmentType ENVIRONMENT;
 
@@ -8,24 +9,22 @@ Future main() async {
   final serviceProvider = ServiceProvider();
   await serviceProvider.init();
 
-  // setSystemUIOverlayStyle();
+  setSystemUIOverlayStyle();
 
-  // Intl.defaultLocale = Localizer.defaultLanguage.locale.languageCode;
+  Intl.defaultLocale = Localizer.defaultLanguage.locale.languageCode;
 
-  // await _configureFirebase();
-
-  // runZoned(
-  //   () {
-  //     runApp(
-  //       RepositoryProvider<ServiceProvider>(
-  //         create: (context) => serviceProvider,
-  //         child: GeneralContextServiceProvider(
-  //           child: BlocContextServiceProvider(
-  //             child: Application(),
-  //           ),
-  //         ),
-  //       ),
-  //     );
-  //   },
-  // );
+  runZoned(
+    () {
+      runApp(
+        RepositoryProvider<ServiceProvider>(
+          create: (context) => serviceProvider,
+          child: ContextServiceProviderGeneral(
+            child: ContextServiceProviderBlocs(
+              child: Application(),
+            ),
+          ),
+        ),
+      );
+    },
+  );
 }

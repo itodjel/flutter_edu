@@ -54,12 +54,6 @@ class ServiceProvider {
     //...
   }
 
-  Future _initForDemo() async {
-    await _initForDevelopment();
-    //Here you would re-register some of the services if there is a specific implementation that differs from development
-    //...
-  }
-
   Future _initForTest() async {
     //Here you would register MockRepositories
     //...
