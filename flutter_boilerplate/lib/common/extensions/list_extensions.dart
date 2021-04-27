@@ -1,5 +1,5 @@
 extension ListExtensions<T> on List<T> {
-  void addIf(bool condition, T element, [Function(T) callbackIfTrue]) {
+  void addIf(bool condition, T element, [Function(T)? callbackIfTrue]) {
     if (condition) {
       add(element);
       if (callbackIfTrue != null) {
@@ -8,8 +8,8 @@ extension ListExtensions<T> on List<T> {
     }
   }
 
-  int toggle(T element, [bool test(T element)]) {
-    final alreadyAdded = test != null ? this.firstOrDefault(test) != null : this?.contains(element) ?? false;
+  int toggle(T element, [bool test(T element)?]) {
+    final alreadyAdded = test != null ? this.firstOrDefault(test) != null : this.contains(element);
 
     if (alreadyAdded) {
       test != null ? this.removeWhere(test) : this.remove(element);
@@ -30,7 +30,7 @@ extension IterableExtensions<T> on Iterable<T> {
 
   int count() => isNullOrEmpty() ? 0 : length;
 
-  T firstOrDefault([bool test(T element)]) => test != null ? this?.firstWhere(test, orElse: () => null) : this?.firstWhere((T element) => true, orElse: () => null);
+  T firstOrDefault([bool test(T element)?]) => test != null ? this.firstWhere(test) : this.firstWhere((T element) => true);
 
   Iterable<T> mapIndexed<T>(T Function(int index, dynamic item) f) sync* {
     var index = 0;

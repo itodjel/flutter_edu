@@ -16,6 +16,7 @@ dependencies:
   flutter_bloc: ^7.0.0
   rest_api_client: ^1.0.5
   storage_repository: ^1.0.3
+  permission_handler: ^7.0.0
 
 dev_dependencies:
   pedantic:

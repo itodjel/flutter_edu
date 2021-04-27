@@ -1,4 +1,5 @@
 import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/common/localization/localizer.dart';
 import 'package:intl/intl.dart';
 
 extension DateTimeExtensions on DateTime {

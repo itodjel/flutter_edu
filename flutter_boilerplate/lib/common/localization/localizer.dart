@@ -15,7 +15,8 @@ class Localizer {
     LanguageModel(
       code: 'bs',
       name: 'Bosanski',
-      translations: translation_bs,
+      //This would be translation_bs, but for the purposes of this project it is hardcoded as translation_en
+      translations: translation_en,
       iconPath: AppAssets.flag_ba_png,
     ),
   ];

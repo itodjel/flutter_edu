@@ -1,6 +1,6 @@
-import 'package:tfm/all.dart';
+import 'package:flutter_boilerplate/all.dart';
 
-TimeOfDay parseTimeOfDay(String value) => value != null ? TimeOfDay(hour: int.parse(value.split(':')[0]), minute: int.parse(value.split(':')[1])) : null;
+TimeOfDay? parseTimeOfDay(String? value) => value != null ? TimeOfDay(hour: int.parse(value.split(':')[0]), minute: int.parse(value.split(':')[1])) : null;
 
 extension TimeOfDayExtension on TimeOfDay {
   bool isBetween(TimeOfDay left, TimeOfDay right) {
@@ -24,5 +24,5 @@ extension TimeOfDayExtension on TimeOfDay {
     );
   }
 
-  String toFormattedString() => this == null ? '' : '${this.hour < 10 ? 0 : ''}${this.hour}:${this.minute < 10 ? 0 : ''}${this.minute}';
+  String toFormattedString() => '${this.hour < 10 ? 0 : ''}${this.hour}:${this.minute < 10 ? 0 : ''}${this.minute}';
 }

@@ -6,13 +6,11 @@ class EmailPropertyValidator extends PropertyValidator<String?> {
 
   EmailPropertyValidator({
     required this.localizer,
-  })   : _required = false,
-        assert(localizer != null);
+  }) : _required = false;
 
   EmailPropertyValidator.required({
     required this.localizer,
-  })   : _required = true,
-        assert(localizer != null);
+  }) : _required = true;
 
   @override
   String? validate(String? text) {
@@ -21,12 +19,11 @@ class EmailPropertyValidator extends PropertyValidator<String?> {
     }
 
     if (text == null) {
-      return 'localizer.translation.fieldIsRequired';
+      return localizer.translations.fieldIsRequired;
     }
 
-    if (true) {
-      // if (!text.isEmail) {
-      return 'localizer.translation.emailIsNotValid';
+    if (!text.isEmail) {
+      return localizer.translations.emailIsNotValid;
     }
 
     return null;

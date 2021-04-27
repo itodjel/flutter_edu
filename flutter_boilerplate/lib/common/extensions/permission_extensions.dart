@@ -1,4 +1,5 @@
-import 'package:tfm/all.dart';
+import 'package:flutter_boilerplate/all.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 extension PermissionExtension on Permission {
   Future<bool> check() async {

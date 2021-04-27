@@ -6,26 +6,24 @@ class PositiveNumberPropertyValidator extends PropertyValidator<num> {
 
   PositiveNumberPropertyValidator({
     required this.localizer,
-  })   : _required = false,
-        assert(localizer != null);
+  }) : _required = false;
 
   PositiveNumberPropertyValidator.required({
     required this.localizer,
-  })   : _required = true,
-        assert(localizer != null);
+  }) : _required = true;
 
   @override
-  String? validate(num value) {
+  String? validate(num? value) {
     if (!_required && value == null) {
       return null;
     }
 
     if (_required && value == null) {
-      return 'localizer.translations.fieldIsRequired';
+      return localizer.translations.fieldIsRequired;
     }
 
-    if (value < 0) {
-      return 'localizer.translations.valueMustBeAPositiveNumber';
+    if (value != null && value < 0) {
+      return localizer.translations.valueMustBeAPositiveNumber;
     }
 
     return null;
