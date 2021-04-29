@@ -1,0 +1,6 @@
+Zadatak:
+Implementirati brojač koristeći bloc, na sljedeći način:
+- na tap + button-a, counter treba da se poveća za 2
+- na tap - button-a, counter treba da se smanji za 1
+- na tap bilo kojeg buttona, potrebno je disable-ati button-e i prikazati loader preko counter-a. Loading treba da traje tri sekunde. (hint: ovo je moguće implementirati ako postoji loading state)
+- aplikacija može sadržavati samo jedan screen, na kojem će u koloni biti + button, counter i - button
