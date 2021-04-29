@@ -16,16 +16,30 @@ class _ApplicationState extends State<Application> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'flutter_boilerplate',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('flutter_boilerplate'),
-        ),
-      ),
+    return BlocBuilder<LocalizationBloc, LocalizationState>(
+      builder: (BuildContext context, LocalizationState localizationState) {
+        return BlocBuilder<ThemeBloc, ThemeState>(
+          builder: (BuildContext context, ThemeState themeState) {
+            return MaterialApp(
+              onGenerateTitle: (context) => context.localizer.translations.applicationName,
+              navigatorKey: globalNavigatorKey,
+              themeMode: themeState.themeMode,
+              theme: AppTheme.light.theme,
+              darkTheme: AppTheme.dark.theme,
+              locale: localizationState.locale,
+              debugShowCheckedModeBanner: false,
+              localeResolutionCallback: Localizer.getSupportedLocale,
+              localizationsDelegates: [
+                Localizer.delegate,
+                Localizer.fallbackCupertinoLocalisationsDelegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+              ],
+              home: NavigationWrapper(),
+            );
+          },
+        );
+      },
     );
   }
 }

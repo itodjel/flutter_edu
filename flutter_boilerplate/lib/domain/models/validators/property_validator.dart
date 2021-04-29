@@ -1,3 +1,3 @@
 abstract class PropertyValidator<T> {
-  String? validate(T property) => null;
+  String? validate(T value) => null;
 }

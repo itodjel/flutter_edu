@@ -2,7 +2,7 @@ import 'package:flutter_boilerplate/all.dart';
 
 class EmailPropertyValidator extends PropertyValidator<String?> {
   final Localizer localizer;
-  bool _required;
+  final bool _required;
 
   EmailPropertyValidator({
     required this.localizer,
@@ -13,16 +13,16 @@ class EmailPropertyValidator extends PropertyValidator<String?> {
   }) : _required = true;
 
   @override
-  String? validate(String? text) {
-    if (!_required && text == null) {
+  String? validate(String? value) {
+    if (!_required && value == null) {
       return null;
     }
 
-    if (text == null) {
+    if (value == null) {
       return localizer.translations.fieldIsRequired;
     }
 
-    if (!text.isEmail) {
+    if (!value.isEmail) {
       return localizer.translations.emailIsNotValid;
     }
 

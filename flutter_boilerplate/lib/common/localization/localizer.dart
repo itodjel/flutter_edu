@@ -1,5 +1,11 @@
 import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+
+import 'models/language_model.dart';
+import 'models/translation_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/all.dart';
 
@@ -41,8 +47,13 @@ class Localizer {
   }
 
   static const _Delegate delegate = _Delegate();
+  static const _FallbackCupertinoLocalisationsDelegate fallbackCupertinoLocalisationsDelegate = _FallbackCupertinoLocalisationsDelegate();
 
-  static Locale getSupportedLocale(Locale deviceLocale, Iterable<Locale> supportedLocales) {
+  static Locale? getSupportedLocale(Locale? deviceLocale, Iterable<Locale> supportedLocales) {
+    if (deviceLocale == null) {
+      return defaultLanguage.locale;
+    }
+
     final deviceLocaleSupported = supportedLocales.any((Locale locale) => deviceLocale.languageCode == locale.languageCode);
 
     return deviceLocaleSupported ? deviceLocale : defaultLanguage.locale;
@@ -64,4 +75,17 @@ class _Delegate extends LocalizationsDelegate<Localizer> {
 
   @override
   bool shouldReload(_Delegate old) => false;
+}
+
+class _FallbackCupertinoLocalisationsDelegate extends LocalizationsDelegate<CupertinoLocalizations> {
+  const _FallbackCupertinoLocalisationsDelegate();
+
+  @override
+  bool isSupported(Locale locale) => true;
+
+  @override
+  Future<CupertinoLocalizations> load(Locale locale) => DefaultCupertinoLocalizations.load(locale);
+
+  @override
+  bool shouldReload(_FallbackCupertinoLocalisationsDelegate old) => false;
 }

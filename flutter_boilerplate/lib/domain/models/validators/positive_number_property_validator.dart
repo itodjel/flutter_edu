@@ -2,7 +2,7 @@ import 'package:flutter_boilerplate/all.dart';
 
 class PositiveNumberPropertyValidator extends PropertyValidator<num> {
   final Localizer localizer;
-  bool _required;
+  final bool _required;
 
   PositiveNumberPropertyValidator({
     required this.localizer,

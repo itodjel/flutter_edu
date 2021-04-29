@@ -1,7 +1,7 @@
 import '../models/translation_model.dart';
 
 const TranslationModel translation_en = TranslationModel(
-  applicationName: 'Flutter boilderplate',
+  applicationName: 'Flutter boilerplate',
   emailIsNotValid: 'Email is not valid',
   valueMustBeAPositiveNumber: 'Value must be a positive number',
   fieldIsRequired: 'Field is required',

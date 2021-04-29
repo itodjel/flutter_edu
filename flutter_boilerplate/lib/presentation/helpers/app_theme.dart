@@ -3,40 +3,10 @@ import 'package:flutter/material.dart';
 class AppThemeData {
   final ThemeData theme;
   final Color snackBarColor;
-  final Gradient iconGradient;
-  final Color socialIconColor;
-  final Color warningColor;
-  final Color accentTextColor;
-  final Color successColor;
-  final Color secondaryColor;
-  final Color dangerColor;
-  final Color black5;
-  final Color black4;
-  final Color black3;
-  final Color black2;
-  final Color black1;
-  final Color breakColor;
-  final Color breakColorLight;
-  final Color breakColorAccent;
 
   const AppThemeData({
     required this.theme,
     required this.snackBarColor,
-    required this.iconGradient,
-    required this.socialIconColor,
-    required this.warningColor,
-    required this.accentTextColor,
-    required this.successColor,
-    required this.secondaryColor,
-    required this.dangerColor,
-    required this.black5,
-    required this.black4,
-    required this.black3,
-    required this.black2,
-    required this.black1,
-    required this.breakColor,
-    required this.breakColorLight,
-    required this.breakColorAccent,
   });
 }
 
@@ -46,8 +16,7 @@ class _InheritedAppTheme extends InheritedWidget {
   const _InheritedAppTheme({
     required Widget child,
     required this.appThemeData,
-  })   : assert(appThemeData != null),
-        super(child: child);
+  }) : super(child: child);
 
   @override
   bool updateShouldNotify(_InheritedAppTheme old) => appThemeData != old.appThemeData;
@@ -55,223 +24,495 @@ class _InheritedAppTheme extends InheritedWidget {
 
 class AppTheme extends StatelessWidget {
   static AppThemeData get light {
-    final successColor = Color(0xFF1FC867);
-    final secondaryColor = Color(0xFF2A8D54);
-    final dangerColor = Color(0xFFFF0000);
-    final black5 = Color(0xFFEEEEEE);
-    final black4 = Color(0xFFC7C7C7);
-    final black3 = Color(0xFF949494);
-    final black2 = Color(0xFF626262);
-    final black1 = Color(0xFF000000);
-    final breakColor = Color(0xFFED9821);
-    final breakColorLight = breakColor.withOpacity(0.4);
-    final breakColorAccent = Color(0xFFEFBE02);
-    final primaryColor = Color(0xFFDD4814);
-
-    final textFieldBorderColor = Color(0xFF949494);
-    final textFieldHintColor = Color(0xFF949494);
-    final accentTextColor = Color(0xFF2873AB);
-
     return AppThemeData(
       snackBarColor: Color(0xFF323232),
-      socialIconColor: accentTextColor,
-      warningColor: Colors.orange,
-      accentTextColor: accentTextColor,
-      successColor: successColor,
-      secondaryColor: secondaryColor,
-      dangerColor: dangerColor,
-      black5: black5,
-      black4: black4,
-      black3: black3,
-      black2: black2,
-      black1: black1,
-      breakColor: breakColor,
-      breakColorLight: breakColorLight,
-      breakColorAccent: breakColorAccent,
-      iconGradient: RadialGradient(
-        colors: [
-          const Color(0xFF1988B5),
-          const Color(0xFF4A4494),
-        ],
-      ),
       theme: ThemeData(
-        primaryColor: primaryColor,
-        accentColor: Color(0xFF464996),
-        fontFamily: 'Muli',
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: Colors.white,
-          selectedItemColor: primaryColor,
-          unselectedItemColor: Color(0xFF919899),
-          selectedIconTheme: IconThemeData(size: 20),
-          unselectedIconTheme: IconThemeData(size: 20),
-          selectedLabelStyle: TextStyle(fontSize: 12),
-          unselectedLabelStyle: TextStyle(fontSize: 12, color: Color(0xFF919899)),
-          showUnselectedLabels: true,
-        ),
+        primarySwatch: Colors.orange,
         brightness: Brightness.light,
-        errorColor: const Color(0xFFF44336),
-        cursorColor: primaryColor,
-        textSelectionHandleColor: primaryColor,
-        indicatorColor: const Color(0xFFF05063),
-        scaffoldBackgroundColor: Colors.white,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        primaryIconTheme: IconThemeData(color: Colors.white),
-        primarySwatch: MaterialColor(
-          0xFFFFFFFF,
-          const <int, Color>{
-            50: Color(0xFFFFFFFF),
-            100: Color(0xFFFFFFFF),
-            200: Color(0xFFFFFFFF),
-            300: Color(0xFFFFFFFF),
-            400: Color(0xFFFFFFFF),
-            500: Color(0xFFFFFFFF),
-            600: Color(0xFFFFFFFF),
-            700: Color(0xFFFFFFFF),
-            800: Color(0xFFFFFFFF),
-            900: Color(0xFFFFFFFF),
-          },
+        primaryColor: Color(0xffff9800),
+        primaryColorBrightness: Brightness.light,
+        primaryColorLight: Color(0xffffe0b2),
+        primaryColorDark: Color(0xfff57c00),
+        accentColor: Color(0xffff9800),
+        accentColorBrightness: Brightness.light,
+        canvasColor: Color(0xfffafafa),
+        scaffoldBackgroundColor: Color(0xfffafafa),
+        bottomAppBarColor: Color(0xffffffff),
+        cardColor: Color(0xffffffff),
+        dividerColor: Color(0x1f000000),
+        highlightColor: Color(0x66bcbcbc),
+        splashColor: Color(0x66c8c8c8),
+        selectedRowColor: Color(0xfff5f5f5),
+        unselectedWidgetColor: Color(0x8a000000),
+        disabledColor: Color(0x61000000),
+        buttonColor: Color(0xffe0e0e0),
+        toggleableActiveColor: Color(0xfffb8c00),
+        secondaryHeaderColor: Color(0xfffff3e0),
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: Color(0xffffcc80),
+          cursorColor: Color(0xff4285f4),
+          selectionHandleColor: Color(0xffffb74d),
         ),
-        appBarTheme: AppBarTheme(
-          color: primaryColor,
-          centerTitle: true,
-          iconTheme: IconThemeData(
-            color: Colors.white,
-          ),
-          actionsIconTheme: IconThemeData(
-            color: Colors.white,
-          ),
-          textTheme: TextTheme(
-            headline1: TextStyle(color: Colors.white),
-            headline2: TextStyle(color: Colors.white),
-            headline3: TextStyle(color: Colors.white),
-            headline4: TextStyle(color: Colors.white),
-            headline5: TextStyle(color: Colors.white),
-            headline6: TextStyle(color: Colors.white, fontSize: 18),
-            subtitle1: TextStyle(color: Colors.white),
-            subtitle2: TextStyle(color: Colors.white),
-            bodyText1: TextStyle(color: Colors.white),
-            bodyText2: TextStyle(color: Colors.white),
-            caption: TextStyle(color: Colors.white),
-            button: TextStyle(color: Colors.white),
-            overline: TextStyle(color: Colors.white),
-          ),
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(7),
-          ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
-          fillColor: const Color(0xFFeeeeee),
-          filled: true,
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: textFieldBorderColor,
+        backgroundColor: Color(0xffffcc80),
+        dialogBackgroundColor: Color(0xffffffff),
+        indicatorColor: Color(0xffff9800),
+        hintColor: Color(0x8a000000),
+        errorColor: Color(0xffd32f2f),
+        buttonTheme: ButtonThemeData(
+          textTheme: ButtonTextTheme.normal,
+          minWidth: 88,
+          height: 36,
+          padding: EdgeInsets.only(top: 0, bottom: 0, left: 16, right: 16),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Color(0xff000000),
+              width: 0,
+              style: BorderStyle.none,
             ),
-            borderRadius: BorderRadius.circular(7),
+            borderRadius: BorderRadius.all(Radius.circular(2.0)),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: textFieldBorderColor,
-            ),
-            borderRadius: BorderRadius.circular(7),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: textFieldBorderColor,
-            ),
-            borderRadius: BorderRadius.circular(7),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.red,
-            ),
-            borderRadius: BorderRadius.circular(7),
-          ),
-          hintStyle: TextStyle(
-            fontSize: 14.0,
-            color: textFieldHintColor,
-          ),
-          labelStyle: const TextStyle(
-            fontSize: 14.0,
-            fontWeight: FontWeight.w500,
-            color: Colors.black26,
-          ),
-          errorStyle: const TextStyle(
-            fontSize: 12.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
+          alignedDropdown: false,
+          buttonColor: Color(0xffe0e0e0),
+          disabledColor: Color(0x61000000),
+          highlightColor: Color(0x29000000),
+          splashColor: Color(0x1f000000),
+          focusColor: Color(0x1f000000),
+          hoverColor: Color(0x0a000000),
+          colorScheme: ColorScheme(
+            primary: Color(0xffff9800),
+            primaryVariant: Color(0xfff57c00),
+            secondary: Color(0xffff9800),
+            secondaryVariant: Color(0xfff57c00),
+            surface: Color(0xffffffff),
+            background: Color(0xffffcc80),
+            error: Color(0xffd32f2f),
+            onPrimary: Color(0xff000000),
+            onSecondary: Color(0xff000000),
+            onSurface: Color(0xff000000),
+            onBackground: Color(0xff000000),
+            onError: Color(0xffffffff),
+            brightness: Brightness.light,
           ),
         ),
         textTheme: TextTheme(
-          headline1: TextStyle(),
-          headline2: TextStyle(),
-          headline3: TextStyle(),
-          headline4: TextStyle(),
-          headline5: TextStyle(),
-          headline6: TextStyle(),
-          subtitle1: TextStyle(),
-          subtitle2: TextStyle(),
-          bodyText1: TextStyle(),
-          bodyText2: TextStyle(),
-          caption: TextStyle(),
-          button: TextStyle(),
-          overline: TextStyle(),
+          display4: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          display3: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          display2: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          display1: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          headline: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          title: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          subhead: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          body2: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          body1: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          caption: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          button: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          subtitle: TextStyle(
+            color: Color(0xff000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          overline: TextStyle(
+            color: Color(0xff000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
         ),
-        // primarySwatch:
-        primaryColorBrightness: Brightness.light,
-        primaryColorLight: Colors.white,
-        primaryColorDark: Color(0xFFeeeeee),
-        // primaryColorLight:,
-        // primaryColorLight:
-        // accentColorBrightness:
-        // canvasColor:
-        // cardColor:
-        // dividerColor:
-        // focusColor:
-        // hoverColor:
-        // highlightColor:
-        // splashColor:
-        // splashFactory:
-        // selectedRowColor:
-        // unselectedWidgetColor:
-        // disabledColor:
-        // buttonColor:
-        // buttonTheme:
-        // toggleButtonsTheme:
-        // secondaryHeaderColor:
-        // textSelectionColor:
-        // textSelectionHandleColor:
-        // backgroundColor:
-        // dialogBackgroundColor:
-        // hintColor:
-        // toggleableActiveColor:
-        // primaryTextTheme:
-        // accentTextTheme:
-        // iconTheme:
-        // accentIconTheme:
-        // sliderTheme:
-        // tabBarTheme:
-        // tooltipTheme:
-        // cardTheme:
-        // chipTheme:
-        // platform:
-        // materialTapTargetSize:
-        // applyElevationOverlayColor:
-        // pageTransitionsTheme:
-        // bottomAppBarTheme:
-        // colorScheme:
-        // dialogTheme:
-        // floatingActionButtonTheme:
-        // navigationRailTheme:
-        // typography:
-        // cupertinoOverrideTheme:
-        // snackBarTheme:
-        // bottomSheetTheme:
-        // popupMenuTheme:
-        // bannerTheme:
-        // dividerTheme:
-        // buttonBarTheme:
+        primaryTextTheme: TextTheme(
+          display4: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          display3: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          display2: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          display1: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          headline: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          title: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          subhead: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          body2: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          body1: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          caption: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          button: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          subtitle: TextStyle(
+            color: Color(0xff000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          overline: TextStyle(
+            color: Color(0xff000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+        ),
+        accentTextTheme: TextTheme(
+          display4: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          display3: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          display2: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          display1: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          headline: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          title: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          subhead: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          body2: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          body1: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          caption: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          button: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          subtitle: TextStyle(
+            color: Color(0xff000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          overline: TextStyle(
+            color: Color(0xff000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          helperStyle: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          hintStyle: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          errorStyle: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          errorMaxLines: null,
+          hasFloatingPlaceholder: true,
+          isDense: false,
+          contentPadding: EdgeInsets.only(top: 12, bottom: 12, left: 0, right: 0),
+          isCollapsed: false,
+          prefixStyle: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          suffixStyle: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          counterStyle: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          filled: false,
+          fillColor: Color(0x00000000),
+          errorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xff000000),
+              width: 1,
+              style: BorderStyle.solid,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xff000000),
+              width: 1,
+              style: BorderStyle.solid,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          ),
+          focusedErrorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xff000000),
+              width: 1,
+              style: BorderStyle.solid,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          ),
+          disabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xff000000),
+              width: 1,
+              style: BorderStyle.solid,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xff000000),
+              width: 1,
+              style: BorderStyle.solid,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          ),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xff000000),
+              width: 1,
+              style: BorderStyle.solid,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          ),
+        ),
+        iconTheme: IconThemeData(
+          color: Color(0xdd000000),
+          opacity: 1,
+          size: 24,
+        ),
+        primaryIconTheme: IconThemeData(
+          color: Color(0xff000000),
+          opacity: 1,
+          size: 24,
+        ),
+        accentIconTheme: IconThemeData(
+          color: Color(0xff000000),
+          opacity: 1,
+          size: 24,
+        ),
+        sliderTheme: SliderThemeData(
+          activeTrackColor: null,
+          inactiveTrackColor: null,
+          disabledActiveTrackColor: null,
+          disabledInactiveTrackColor: null,
+          activeTickMarkColor: null,
+          inactiveTickMarkColor: null,
+          disabledActiveTickMarkColor: null,
+          disabledInactiveTickMarkColor: null,
+          thumbColor: null,
+          disabledThumbColor: null,
+          thumbShape: null,
+          overlayColor: null,
+          valueIndicatorColor: null,
+          valueIndicatorShape: null,
+          showValueIndicator: null,
+          valueIndicatorTextStyle: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+        ),
+        tabBarTheme: TabBarTheme(
+          indicatorSize: TabBarIndicatorSize.tab,
+          labelColor: Color(0xdd000000),
+          unselectedLabelColor: Color(0xb2000000),
+        ),
+        chipTheme: ChipThemeData(
+          backgroundColor: Color(0x1f000000),
+          brightness: Brightness.light,
+          deleteIconColor: Color(0xde000000),
+          disabledColor: Color(0x0c000000),
+          labelPadding: EdgeInsets.only(top: 0, bottom: 0, left: 8, right: 8),
+          labelStyle: TextStyle(
+            color: Color(0xde000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          padding: EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 4),
+          secondaryLabelStyle: TextStyle(
+            color: Color(0x3d000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+          ),
+          secondarySelectedColor: Color(0x3dff9800),
+          selectedColor: Color(0x3d000000),
+          shape: StadiumBorder(
+              side: BorderSide(
+            color: Color(0xff000000),
+            width: 0,
+            style: BorderStyle.none,
+          )),
+        ),
+        dialogTheme: DialogTheme(
+            shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: Color(0xff000000),
+            width: 0,
+            style: BorderStyle.none,
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(0.0)),
+        )),
       ),
     );
   }

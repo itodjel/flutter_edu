@@ -17,3 +17,4 @@ export 'package:flutter/material.dart';
 //Packages
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:storage_repository/storage_repository.dart';
+export 'package:flutter_localizations/flutter_localizations.dart';
