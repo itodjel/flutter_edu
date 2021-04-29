@@ -21,7 +21,7 @@ class _ApplicationState extends State<Application> {
         return BlocBuilder<ThemeBloc, ThemeState>(
           builder: (BuildContext context, ThemeState themeState) {
             return MaterialApp(
-              onGenerateTitle: (context) => context.localizer.translations.applicationName,
+              onGenerateTitle: (context) => context.translations.applicationName,
               navigatorKey: globalNavigatorKey,
               themeMode: themeState.themeMode,
               theme: AppTheme.light.theme,
