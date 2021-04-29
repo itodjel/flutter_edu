@@ -1,0 +1,69 @@
+name: flutter_boilerplate
+description: Flutter boilerplate project for a quick start
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.1 <3.0.0"
+  flutter: ">=2.0.2"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+  provider: ^5.0.0
+  flutter_bloc: ^7.0.0
+  rest_api_client: ^1.0.5
+  storage_repository: ^1.0.3
+  permission_handler: ^7.0.0
+
+dev_dependencies:
+  pedantic:
+  flutter_flavorizr: ^1.0.11
+  flutter_test:
+    sdk: flutter
+
+flavorizr:
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+    ios:
+  instructions:
+    - android:androidManifest
+    - flutter:flavors
+    - ios:xcconfig
+    - ios:buildTargets
+    - ios:schema
+    - ios:plist
+    - ios:dummyAssets
+    - ios:launchScreen
+  flavors:
+    production:
+      app:
+        name: "FB"
+      android:
+        applicationId: "com.ito.flutter_boilerplate"
+      ios:
+        bundleId: "com.ito.flutter_boilerplate"
+
+    staging:
+      app:
+        name: "FB Staging"
+      android:
+        applicationId: "com.ito.flutter_boilerplateStaging"
+      ios:
+        bundleId: "com.ito.flutter_boilerplateStaging"
+
+    development:
+      app:
+        name: "FB Development"
+      android:
+        applicationId: "com.ito.flutter_boilerplateDevelopment"
+      ios:
+        bundleId: "com.ito.flutter_boilerplateDevelopment"
+
+
+flutter:
+  uses-material-design: true
