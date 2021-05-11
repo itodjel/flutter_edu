@@ -47,17 +47,17 @@ android {
         production {
             dimension "flavor-type"
             applicationId "com.ito.flutter_boilerplate"
-            resValue "string", "app_name", "FB"
+            resValue "string", "app_name", "Flutter Boilerplate"
         }
         staging {
             dimension "flavor-type"
             applicationId "com.ito.flutter_boilerplateStaging"
-            resValue "string", "app_name", "FB Staging"
+            resValue "string", "app_name", "Flutter Boilerplate Staging"
         }
         development {
             dimension "flavor-type"
             applicationId "com.ito.flutter_boilerplateDevelopment"
-            resValue "string", "app_name", "FB Development"
+            resValue "string", "app_name", "Flutter Boilerplate Development"
         }
     }
 

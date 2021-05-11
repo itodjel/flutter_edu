@@ -10,11 +10,11 @@ class F {
   static String get title {
     switch (appFlavor) {
       case Flavor.PRODUCTION:
-        return 'FB';
+        return 'Flutter Boilerplate';
       case Flavor.STAGING:
-        return 'FB Staging';
+        return 'Flutter Boilerplate Staging';
       case Flavor.DEVELOPMENT:
-        return 'FB Development';
+        return 'Flutter Boilerplate Development';
       default:
         return 'title';
     }

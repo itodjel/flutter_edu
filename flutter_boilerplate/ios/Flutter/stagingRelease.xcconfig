@@ -3,4 +3,4 @@
 FLUTTER_TARGET=lib/main-staging.dart
 
 ASSET_PREFIX=staging
-BUNDLE_NAME=FB Staging
+BUNDLE_NAME=Flutter Boilerplate Staging

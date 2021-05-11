@@ -3,4 +3,4 @@
 FLUTTER_TARGET=lib/main-development.dart
 
 ASSET_PREFIX=development
-BUNDLE_NAME=FB Development
+BUNDLE_NAME=Flutter Boilerplate Development

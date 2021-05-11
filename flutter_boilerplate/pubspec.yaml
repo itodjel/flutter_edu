@@ -22,7 +22,7 @@ dependencies:
 
 dev_dependencies:
   pedantic:
-  flutter_flavorizr: ^1.0.11
+  flutter_flavorizr: ^2.0.0
   flutter_test:
     sdk: flutter
 
@@ -43,7 +43,7 @@ flavorizr:
   flavors:
     production:
       app:
-        name: "FB"
+        name: "Flutter Boilerplate"
       android:
         applicationId: "com.ito.flutter_boilerplate"
       ios:
@@ -51,7 +51,7 @@ flavorizr:
 
     staging:
       app:
-        name: "FB Staging"
+        name: "Flutter Boilerplate Staging"
       android:
         applicationId: "com.ito.flutter_boilerplateStaging"
       ios:
@@ -59,7 +59,7 @@ flavorizr:
 
     development:
       app:
-        name: "FB Development"
+        name: "Flutter Boilerplate Development"
       android:
         applicationId: "com.ito.flutter_boilerplateDevelopment"
       ios:
