@@ -60,7 +60,7 @@ class ServiceProvider {
   }
 
   ServiceProvider() {
-    switch (ENVIRONMENT) {
+    switch (environment) {
       case EnvironmentType.development:
         appSettings = DevelopmentAppSettings();
         break;
@@ -77,7 +77,7 @@ class ServiceProvider {
   }
 
   Future init() async {
-    switch (ENVIRONMENT) {
+    switch (environment) {
       case EnvironmentType.development:
         await _initForDevelopment();
         break;

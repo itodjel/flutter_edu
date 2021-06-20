@@ -17,11 +17,11 @@ class _ApplicationState extends State<Application> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalizationBloc, LocalizationState>(
-      builder: (BuildContext context, LocalizationState localizationState) {
+      builder: (context, localizationState) {
         return BlocBuilder<ThemeBloc, ThemeState>(
-          builder: (BuildContext context, ThemeState themeState) {
+          builder: (context, themeState) {
             return NotificationListener<OverscrollIndicatorNotification>(
-              onNotification: (OverscrollIndicatorNotification overscroll) {
+              onNotification: (overscroll) {
                 overscroll.disallowGlow();
                 return true;
               },
@@ -34,7 +34,7 @@ class _ApplicationState extends State<Application> {
                 locale: localizationState.locale,
                 debugShowCheckedModeBanner: false,
                 localeResolutionCallback: Localizer.getSupportedLocale,
-                localizationsDelegates: [
+                localizationsDelegates: const [
                   Localizer.delegate,
                   Localizer.fallbackCupertinoLocalisationsDelegate,
                   GlobalWidgetsLocalizations.delegate,

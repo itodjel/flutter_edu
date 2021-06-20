@@ -3,13 +3,13 @@ import 'package:permission_handler/permission_handler.dart';
 
 extension PermissionExtension on Permission {
   Future<bool> check() async {
-    if (await this.isGranted) {
+    if (await isGranted) {
       return true;
     }
-    if (await this.isRestricted || await this.isDenied) {
-      return (await this.request()).isGranted;
+    if (await isRestricted || await isDenied) {
+      return (await request()).isGranted;
     }
-    if (await this.isPermanentlyDenied) {
+    if (await isPermanentlyDenied) {
       showRequestRationale(this);
     }
 

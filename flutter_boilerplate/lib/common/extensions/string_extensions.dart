@@ -1,11 +1,7 @@
 extension StringExtensions on String {
   bool get hasValue => !(isEmpty || trim().isEmpty);
-  String cut(maxLength) => maxLength == null
-      ? this
-      : length < maxLength
-          ? this
-          : '${substring(0, maxLength)}...';
-  String initials({String delimiter = ' '}) => hasValue ? this.split(delimiter).map<String>((x) => x.length > 0 ? x[0] : '').join() : '';
+  String cut(int maxLength) => length < maxLength ? this : '${substring(0, maxLength)}...';
+  String initials({String delimiter = ' '}) => hasValue ? split(delimiter).map<String>((x) => x.isNotEmpty ? x[0] : '').join() : '';
   bool get isEmail => RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(this);
   bool get hasUppercase => contains(RegExp(r'[A-Z]'));
   bool get hasDigits => contains(RegExp(r'[0-9]'));

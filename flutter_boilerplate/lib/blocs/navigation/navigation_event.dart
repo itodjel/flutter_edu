@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 abstract class NavigationEvent {}
 
 class ChangePageNavigationEvent extends NavigationEvent {
@@ -7,5 +5,5 @@ class ChangePageNavigationEvent extends NavigationEvent {
 
   ChangePageNavigationEvent({
     required this.index,
-  }) : assert(index != null);
+  });
 }

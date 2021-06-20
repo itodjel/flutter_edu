@@ -4,19 +4,19 @@ TimeOfDay? parseTimeOfDay(String? value) => value != null ? TimeOfDay(hour: int.
 
 extension TimeOfDayExtension on TimeOfDay {
   bool isBetween(TimeOfDay left, TimeOfDay right) {
-    return ((left.hour < hour || (left.hour == hour && left.minute <= minute)) && (right.hour > hour || (right.hour == hour && right.minute >= minute)));
+    return (left.hour < hour || (left.hour == hour && left.minute <= minute)) && (right.hour > hour || (right.hour == hour && right.minute >= minute));
   }
 
   bool isAfter(TimeOfDay right) {
-    return (right.hour < hour || (right.hour == hour && right.minute < minute));
+    return right.hour < hour || (right.hour == hour && right.minute < minute);
   }
 
-  double toDouble() => this.hour + this.minute / 60.0;
+  double toDouble() => hour + minute / 60.0;
 
-  double toDoubleMinutes() => this.hour * 60.0 + this.minute;
+  double toDoubleMinutes() => hour * 60.0 + minute;
 
   TimeOfDay difference(TimeOfDay right) {
-    final differenceInMinutes = (this.toDoubleMinutes() - right.toDoubleMinutes()).abs();
+    final differenceInMinutes = (toDoubleMinutes() - right.toDoubleMinutes()).abs();
 
     return TimeOfDay(
       hour: (differenceInMinutes / 60.0).floor(),
@@ -24,5 +24,5 @@ extension TimeOfDayExtension on TimeOfDay {
     );
   }
 
-  String toFormattedString() => '${this.hour < 10 ? 0 : ''}${this.hour}:${this.minute < 10 ? 0 : ''}${this.minute}';
+  String toFormattedString() => '${hour < 10 ? 0 : ''}$hour:${minute < 10 ? 0 : ''}$minute';
 }

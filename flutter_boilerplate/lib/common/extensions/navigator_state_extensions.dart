@@ -7,7 +7,7 @@ extension NavigatorStateExtensions on NavigatorState {
     }
   }
 
-  void pushPage(Widget page) => this.push(MaterialPageRoute(builder: (_) => page));
+  void pushPage(Widget page) => push(MaterialPageRoute(builder: (_) => page));
 
   void popUntilEnd() {
     while (canPop()) {

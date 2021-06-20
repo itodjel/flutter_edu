@@ -15,10 +15,10 @@ dependencies:
   intl: ^0.17.0
   provider: ^5.0.0
   flutter_bloc: ^7.0.0
-  rest_api_client: ^1.0.5
-  storage_repository: ^1.0.3
-  permission_handler: ^7.0.0
   fluttertoast: ^8.0.6
+  rest_api_client: ^1.0.5
+  permission_handler: ^7.0.0
+  storage_repository: ^1.0.3
 
 dev_dependencies:
   pedantic:

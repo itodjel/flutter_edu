@@ -15,15 +15,15 @@ class Localizer {
     LanguageModel(
       code: 'en',
       name: 'English',
-      translations: translation_en,
-      iconPath: AppAssets.flag_uk_png,
+      translations: translationEnglish,
+      iconPath: AppAssets.flagUkPng,
     ),
     LanguageModel(
       code: 'bs',
       name: 'Bosanski',
       //This would be translation_bs, but for the purposes of this project it is hardcoded as translation_en
-      translations: translation_en,
-      iconPath: AppAssets.flag_ba_png,
+      translations: translationEnglish,
+      iconPath: AppAssets.flagBaPng,
     ),
   ];
 
@@ -36,7 +36,7 @@ class Localizer {
 
   void changeLanguage(Locale newLocale) {
     currentLanguage = supportedLanguages.firstWhere(
-      (LanguageModel language) => language.locale.languageCode == newLocale.languageCode,
+      (language) => language.locale.languageCode == newLocale.languageCode,
       orElse: () => defaultLanguage,
     );
     translations = currentLanguage.translations;
@@ -54,7 +54,7 @@ class Localizer {
       return defaultLanguage.locale;
     }
 
-    final deviceLocaleSupported = supportedLocales.any((Locale locale) => deviceLocale.languageCode == locale.languageCode);
+    final deviceLocaleSupported = supportedLocales.any((locale) => deviceLocale.languageCode == locale.languageCode);
 
     return deviceLocaleSupported ? deviceLocale : defaultLanguage.locale;
   }
@@ -65,7 +65,7 @@ class _Delegate extends LocalizationsDelegate<Localizer> {
 
   @override
   bool isSupported(Locale locale) {
-    return Localizer.supportedLanguages.map((LanguageModel language) => language.locale.languageCode).contains(locale.languageCode);
+    return Localizer.supportedLanguages.map((language) => language.locale.languageCode).contains(locale.languageCode);
   }
 
   @override

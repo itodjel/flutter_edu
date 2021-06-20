@@ -22,7 +22,7 @@ void showRequestRationale(Permission permission) {
 
               return context.translations.applicationNeedsPermissionToPerformRequestedOperation;
             }()),
-            Spacing.v_m(),
+            const Spacing.v_m(),
             Text(context.translations.allowThisPermissionInYourAppSettings),
           ],
         ),

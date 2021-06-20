@@ -3,7 +3,7 @@ import 'package:flutter_boilerplate/main.dart' as app;
 import 'package:flutter_boilerplate/flavors.dart';
 
 Future main() async {
-  F.appFlavor = Flavor.DEVELOPMENT;
-  ENVIRONMENT = EnvironmentType.development;
+  F.appFlavor = Flavor.development;
+  environment = EnvironmentType.development;
   await app.main();
 }

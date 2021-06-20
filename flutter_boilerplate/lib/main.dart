@@ -1,7 +1,7 @@
 import 'package:flutter_boilerplate/all.dart';
 import 'package:intl/intl.dart';
 
-late EnvironmentType ENVIRONMENT;
+late EnvironmentType environment;
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();

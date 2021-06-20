@@ -11,17 +11,17 @@ class NavigationWrapper extends StatelessWidget {
               case 0:
                 return Scaffold(
                   appBar: AppBar(title: Text(context.translations.applicationName)),
-                  body: Center(child: Text('First page')),
+                  body: const Center(child: Text('First page')),
                 );
               case 1:
                 return Scaffold(
                   appBar: AppBar(title: Text(context.translations.applicationName)),
-                  body: Center(child: Text('Second page')),
+                  body: const Center(child: Text('Second page')),
                 );
               case 2:
                 return Scaffold(
                   appBar: AppBar(title: Text(context.translations.applicationName)),
-                  body: Center(child: Text('Third page')),
+                  body: const Center(child: Text('Third page')),
                 );
             }
           }(),
@@ -37,7 +37,7 @@ class NavigationWrapper extends StatelessWidget {
         context.read<NavigationBloc>().add(ChangePageNavigationEvent(index: index));
       },
       currentIndex: currentIndex,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           label: 'First',
           icon: Icon(Icons.home),

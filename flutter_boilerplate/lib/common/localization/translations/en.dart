@@ -1,6 +1,6 @@
 import '../models/translation_model.dart';
 
-const TranslationModel translation_en = TranslationModel(
+const TranslationModel translationEnglish = TranslationModel(
   applicationName: 'Flutter boilerplate',
   networkErrorException: 'There was a network error, please try again later',
   serverErrorException: 'There was a server error, please try again later',

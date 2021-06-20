@@ -25,40 +25,40 @@ class _InheritedAppTheme extends InheritedWidget {
 class AppTheme extends StatelessWidget {
   static AppThemeData get light {
     return AppThemeData(
-      snackBarColor: Color(0xFF323232),
+      snackBarColor: const Color(0xFF323232),
       theme: ThemeData(
         primarySwatch: Colors.orange,
         brightness: Brightness.light,
-        primaryColor: Color(0xffff9800),
+        primaryColor: const Color(0xffff9800),
         primaryColorBrightness: Brightness.light,
-        primaryColorLight: Color(0xffffe0b2),
-        primaryColorDark: Color(0xfff57c00),
-        accentColor: Color(0xffff9800),
+        primaryColorLight: const Color(0xffffe0b2),
+        primaryColorDark: const Color(0xfff57c00),
+        accentColor: const Color(0xffff9800),
         accentColorBrightness: Brightness.light,
-        canvasColor: Color(0xfffafafa),
-        scaffoldBackgroundColor: Color(0xfffafafa),
-        bottomAppBarColor: Color(0xffffffff),
-        cardColor: Color(0xffffffff),
-        dividerColor: Color(0x1f000000),
-        highlightColor: Color(0x66bcbcbc),
-        splashColor: Color(0x66c8c8c8),
-        selectedRowColor: Color(0xfff5f5f5),
-        unselectedWidgetColor: Color(0x8a000000),
-        disabledColor: Color(0x61000000),
-        buttonColor: Color(0xffe0e0e0),
-        toggleableActiveColor: Color(0xfffb8c00),
-        secondaryHeaderColor: Color(0xfffff3e0),
-        textSelectionTheme: TextSelectionThemeData(
+        canvasColor: const Color(0xfffafafa),
+        scaffoldBackgroundColor: const Color(0xfffafafa),
+        bottomAppBarColor: const Color(0xffffffff),
+        cardColor: const Color(0xffffffff),
+        dividerColor: const Color(0x1f000000),
+        highlightColor: const Color(0x66bcbcbc),
+        splashColor: const Color(0x66c8c8c8),
+        selectedRowColor: const Color(0xfff5f5f5),
+        unselectedWidgetColor: const Color(0x8a000000),
+        disabledColor: const Color(0x61000000),
+        buttonColor: const Color(0xffe0e0e0),
+        toggleableActiveColor: const Color(0xfffb8c00),
+        secondaryHeaderColor: const Color(0xfffff3e0),
+        textSelectionTheme: const TextSelectionThemeData(
           selectionColor: Color(0xffffcc80),
           cursorColor: Color(0xff4285f4),
           selectionHandleColor: Color(0xffffb74d),
         ),
-        backgroundColor: Color(0xffffcc80),
-        dialogBackgroundColor: Color(0xffffffff),
-        indicatorColor: Color(0xffff9800),
-        hintColor: Color(0x8a000000),
-        errorColor: Color(0xffd32f2f),
-        buttonTheme: ButtonThemeData(
+        backgroundColor: const Color(0xffffcc80),
+        dialogBackgroundColor: const Color(0xffffffff),
+        indicatorColor: const Color(0xffff9800),
+        hintColor: const Color(0x8a000000),
+        errorColor: const Color(0xffd32f2f),
+        buttonTheme: const ButtonThemeData(
           textTheme: ButtonTextTheme.normal,
           minWidth: 88,
           height: 36,
@@ -94,7 +94,7 @@ class AppTheme extends StatelessWidget {
             brightness: Brightness.light,
           ),
         ),
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           display4: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
@@ -174,7 +174,7 @@ class AppTheme extends StatelessWidget {
             fontStyle: FontStyle.normal,
           ),
         ),
-        primaryTextTheme: TextTheme(
+        primaryTextTheme: const TextTheme(
           display4: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
@@ -254,7 +254,7 @@ class AppTheme extends StatelessWidget {
             fontStyle: FontStyle.normal,
           ),
         ),
-        accentTextTheme: TextTheme(
+        accentTextTheme: const TextTheme(
           display4: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
@@ -334,7 +334,7 @@ class AppTheme extends StatelessWidget {
             fontStyle: FontStyle.normal,
           ),
         ),
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           labelStyle: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
@@ -433,22 +433,22 @@ class AppTheme extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(4.0)),
           ),
         ),
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Color(0xdd000000),
           opacity: 1,
           size: 24,
         ),
-        primaryIconTheme: IconThemeData(
+        primaryIconTheme: const IconThemeData(
           color: Color(0xff000000),
           opacity: 1,
           size: 24,
         ),
-        accentIconTheme: IconThemeData(
+        accentIconTheme: const IconThemeData(
           color: Color(0xff000000),
           opacity: 1,
           size: 24,
         ),
-        sliderTheme: SliderThemeData(
+        sliderTheme: const SliderThemeData(
           activeTrackColor: null,
           inactiveTrackColor: null,
           disabledActiveTrackColor: null,
@@ -471,12 +471,12 @@ class AppTheme extends StatelessWidget {
             fontStyle: FontStyle.normal,
           ),
         ),
-        tabBarTheme: TabBarTheme(
+        tabBarTheme: const TabBarTheme(
           indicatorSize: TabBarIndicatorSize.tab,
           labelColor: Color(0xdd000000),
           unselectedLabelColor: Color(0xb2000000),
         ),
-        chipTheme: ChipThemeData(
+        chipTheme: const ChipThemeData(
           backgroundColor: Color(0x1f000000),
           brightness: Brightness.light,
           deleteIconColor: Color(0xde000000),
@@ -504,7 +504,7 @@ class AppTheme extends StatelessWidget {
             style: BorderStyle.none,
           )),
         ),
-        dialogTheme: DialogTheme(
+        dialogTheme: const DialogTheme(
             shape: RoundedRectangleBorder(
           side: BorderSide(
             color: Color(0xff000000),
@@ -526,9 +526,9 @@ class AppTheme extends StatelessWidget {
   final AppThemeData appTheme;
 
   const AppTheme({
-    this.child,
     required this.builder,
     required this.appTheme,
+    this.child,
   });
 
   @override

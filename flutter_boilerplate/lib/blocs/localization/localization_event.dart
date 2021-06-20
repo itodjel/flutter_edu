@@ -1,7 +1,5 @@
 import 'dart:ui';
 
-import 'package:meta/meta.dart';
-
 abstract class LocalizationEvent {}
 
 class LocalizationLoadEvent extends LocalizationEvent {}
@@ -11,5 +9,5 @@ class LocalizationChangeEvent extends LocalizationEvent {
 
   LocalizationChangeEvent({
     required this.locale,
-  }) : assert(locale != null);
+  });
 }

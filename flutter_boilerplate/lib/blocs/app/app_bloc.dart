@@ -9,10 +9,14 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     required this.appSettings,
   }) : super(initialState()) {
     themeBloc.stream.listen((state) {
-      if (state.status == ThemeStateStatus.loaded) add(AppCompleteStepEvent());
+      if (state.status == ThemeStateStatus.loaded) {
+        add(AppCompleteStepEvent());
+      }
     });
     localizationBloc.stream.listen((state) {
-      if (state.status == LocalizationStateStatus.loaded) add(AppCompleteStepEvent());
+      if (state.status == LocalizationStateStatus.loaded) {
+        add(AppCompleteStepEvent());
+      }
     });
   }
 
