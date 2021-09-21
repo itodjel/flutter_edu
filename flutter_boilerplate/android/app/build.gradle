@@ -22,6 +22,7 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
@@ -43,21 +44,32 @@ android {
     }
 
     flavorDimensions "flavor-type"
+    
     productFlavors {
         production {
             dimension "flavor-type"
             applicationId "com.ito.flutter_boilerplate"
-            resValue "string", "app_name", "Flutter Boilerplate"
+            resValue "string", "app_name", "FlutterBoilerplate"
+            copy {
+                from 'src/production/'
+                include '*.json'
+                into '.'
+            }
         }
         staging {
             dimension "flavor-type"
             applicationId "com.ito.flutter_boilerplateStaging"
-            resValue "string", "app_name", "Flutter Boilerplate Staging"
+            resValue "string", "app_name", "FlutterBoilerplate Staging"
+        }
+        evaluation {
+            dimension "flavor-type"
+            applicationId "com.ito.flutter_boilerplateEvaluation"
+            resValue "string", "app_name", "FlutterBoilerplate Evaluation"
         }
         development {
             dimension "flavor-type"
             applicationId "com.ito.flutter_boilerplateDevelopment"
-            resValue "string", "app_name", "Flutter Boilerplate Development"
+            resValue "string", "app_name", "FlutterBoilerplate Development"
         }
     }
 
@@ -89,6 +101,8 @@ android {
             shrinkResources false
             minifyEnabled false
             signingConfig signingConfigs.release
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro' 
         }
         debug {
             debuggable true
@@ -103,4 +117,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.3'
 }
