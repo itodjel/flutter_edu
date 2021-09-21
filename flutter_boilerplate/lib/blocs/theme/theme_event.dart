@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class ThemeEvent {}
 
-class ThemeLoadEvent extends ThemeEvent {}
+class ThemeInitEvent extends ThemeEvent {}
 
 class ThemeChangeEvent extends ThemeEvent {
   final ThemeMode themeMode;

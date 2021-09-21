@@ -1,4 +1,5 @@
 import 'package:rest_api_client/rest_api_client.dart';
+import 'package:tailgreeter/_all.dart';
 
 enum ErrorHandlerStateStatus {
   clean,
@@ -7,7 +8,7 @@ enum ErrorHandlerStateStatus {
 
 class ErrorHandlerState {
   ErrorHandlerStateStatus status;
-  RestApiClientException? exception;
+  BaseException? exception;
 
   ErrorHandlerState({
     required this.status,
@@ -16,10 +17,10 @@ class ErrorHandlerState {
 
   ErrorHandlerState copyWith({
     ErrorHandlerStateStatus? status,
-    RestApiClientException? exception,
+    Optional<BaseException?>? exception,
   }) =>
       ErrorHandlerState(
         status: status ?? this.status,
-        exception: exception ?? this.exception,
+        exception: exception != null ? exception.value : this.exception,
       );
 }

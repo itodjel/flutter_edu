@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/_all.dart';
+import 'package:tailgreeter/_all.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   final IStorageRepository storageRepository;
@@ -14,20 +14,21 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
 
   @override
   Stream<ThemeState> mapEventToState(ThemeEvent event) async* {
-    if (event is ThemeLoadEvent) {
-      yield* _load();
+    if (event is ThemeInitEvent) {
+      yield* _init();
     } else if (event is ThemeChangeEvent) {
       yield* _change(event);
     }
   }
 
-  Stream<ThemeState> _load() async* {
+  Stream<ThemeState> _init() async* {
     final themeModeIndex = await storageRepository.get<int>(AppKeys.themeMode);
 
-    yield ThemeState(
-      status: ThemeStateStatus.initialized,
-      themeMode: themeModeIndex == null ? ThemeMode.light : ThemeMode.values[themeModeIndex],
-    );
+    if (themeModeIndex == null) {
+      yield ThemeState(status: ThemeStateStatus.initialized, themeMode: ThemeMode.light);
+    } else {
+      yield ThemeState(status: ThemeStateStatus.initialized, themeMode: ThemeMode.values[themeModeIndex]);
+    }
   }
 
   Stream<ThemeState> _change(ThemeChangeEvent event) async* {

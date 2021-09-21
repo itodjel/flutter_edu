@@ -1,9 +1,11 @@
 abstract class NavigationEvent {}
 
-class ChangePageNavigationEvent extends NavigationEvent {
+class NavigationChangeIndexEvent extends NavigationEvent {
   final int index;
+  final int subIndex;
 
-  ChangePageNavigationEvent({
-    required this.index,
+  NavigationChangeIndexEvent({
+    this.index = 0,
+    this.subIndex = 0,
   });
 }

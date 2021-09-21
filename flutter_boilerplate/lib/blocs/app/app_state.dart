@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/_all.dart';
+import 'package:tailgreeter/_all.dart';
 
 enum AppStateStatus {
   loading,
@@ -7,8 +7,12 @@ enum AppStateStatus {
 }
 
 enum AppRequirement {
+  auth,
   theme,
+  // location,
   localization,
+  // connectivity,
+  configuration,
 }
 
 class AppState {
