@@ -6,7 +6,7 @@ class LocationModel {
   final double? latitude;
   final double? longitude;
 
-  LocationModel({
+  const LocationModel({
     this.latitude,
     this.longitude,
   });

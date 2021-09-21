@@ -80,8 +80,8 @@ class LocationRepository implements ILocationRepository {
     try {
       final location = await getCurrentLocation();
 
-      if (location != null) {
-        return getPlaceDetails(latitude: location.latitude, longitude: location.longitude);
+      if (location != null && location.longitude != null && location.longitude != null) {
+        return getPlaceDetails(latitude: location.latitude!, longitude: location.longitude!);
       }
     } catch (e) {
       print(e);
