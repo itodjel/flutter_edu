@@ -1,10 +1,9 @@
 import 'package:catcher/catcher.dart';
 import 'package:intl/intl.dart';
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 import 'package:rest_api_client/rest_api_client.dart';
 import 'package:storage_repository/storage_repository.dart';
-import 'package:tailgreeter/common/error_handling/extended_slack_handler.dart';
-import 'package:tailgreeter/domain/repositories/categories_repository.dart';
+import 'package:flutter_boilerplate/common/error_handling/extended_slack_handler.dart';
 
 class DevelopmentServiceProvider extends ServiceProvider {
   @override
