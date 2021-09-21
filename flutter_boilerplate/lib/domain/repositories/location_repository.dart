@@ -3,11 +3,11 @@ import 'package:location/location.dart';
 import 'package:flutter_boilerplate/_all.dart';
 
 abstract class ILocationRepository {
-  late StreamController<LocationLocalModel> locationStream;
+  late StreamController<LocationModel> locationStream;
 
   Future<bool> isLocationAllowed();
   Future<bool> requestPermission();
-  Future<LocationLocalModel?> getCurrentLocation();
+  Future<LocationModel?> getCurrentLocation();
   Future<AddressModel?> getCurrentAddress();
   Future<AddressModel?> getAddress({required double latitude, required double longitude});
   Future init();
@@ -17,7 +17,7 @@ class LocationRepository implements ILocationRepository {
   late Location _location;
 
   @override
-  late StreamController<LocationLocalModel> locationStream = StreamController<LocationLocalModel>.broadcast();
+  late StreamController<LocationModel> locationStream = StreamController<LocationModel>.broadcast();
 
   final AppSettings appSettings;
 
@@ -41,11 +41,11 @@ class LocationRepository implements ILocationRepository {
     return permissionStatus == PermissionStatus.granted || permissionStatus == PermissionStatus.grantedLimited;
   }
 
-  Future<LocationLocalModel?> currentLocation() async {
+  Future<LocationModel?> currentLocation() async {
     final locationData = await _location.getLocation();
 
     if (locationData.latitude != null && locationData.longitude != null) {
-      return LocationLocalModel(
+      return LocationModel(
         latitude: locationData.latitude!,
         longitude: locationData.longitude!,
       );
@@ -93,11 +93,11 @@ class LocationRepository implements ILocationRepository {
   }
 
   @override
-  Future<LocationLocalModel?> getCurrentLocation() async {
+  Future<LocationModel?> getCurrentLocation() async {
     final locationData = await _location.getLocation();
 
     if (locationData.latitude != null && locationData.longitude != null) {
-      return LocationLocalModel(
+      return LocationModel(
         latitude: locationData.latitude!,
         longitude: locationData.longitude!,
       );
@@ -125,7 +125,7 @@ class LocationRepository implements ILocationRepository {
       final locationData = await _location.getLocation();
 
       if (locationData.latitude != null && locationData.longitude != null) {
-        locationStream.add(LocationLocalModel(
+        locationStream.add(LocationModel(
           latitude: locationData.latitude!,
           longitude: locationData.longitude!,
         ));

@@ -10,14 +10,14 @@ class DevelopmentServiceProvider extends ServiceProvider {
   Future<void> initAppSettings() async => appSettings = developmentAppSettings;
 }
 
-class StagingServiceProvider extends ServiceProvider {
-  @override
-  Future<void> initAppSettings() async => appSettings = stagingAppSettings;
-}
-
 class EvaluationServiceProvider extends ServiceProvider {
   @override
   Future<void> initAppSettings() async => appSettings = evaluationAppSettings;
+}
+
+class StagingServiceProvider extends ServiceProvider {
+  @override
+  Future<void> initAppSettings() async => appSettings = stagingAppSettings;
 }
 
 class ProductionServiceProvider extends ServiceProvider {
@@ -32,19 +32,6 @@ abstract class ServiceProvider {
   late IStorageRepository storageRepository;
   late IStorageRepository cacheStorageRepository;
   late IStorageRepository secureStorageRepository;
-  late IAccountRepository accountRepository;
-  late IAuthenticationRepository authenticationRepository;
-  // late IChatRepository chatRepository;
-  late IEventsRepository eventsRepository;
-  late IGalleryRepository galleryRepository;
-  late ILocationRepository locationRepository;
-  late IPermissionsRepository permissionsRepository;
-  late IHostRepository hostRepository;
-  late IOrdersRepository ordersRepository;
-  late IShoppingCartRepository shoppingCartRepository;
-  late ITicketsRepository ticketsRepository;
-  late ICategoriesRepository categoriesRepository;
-  late IDonationsRepository donationsRepository;
   //Add new repositories and services here
   //...
 
@@ -53,8 +40,6 @@ abstract class ServiceProvider {
     await initStorage();
     await initRestApiClient();
     await initRespositories();
-    //TODO: Uncomment once the chat feature needs to be implemented
-    //await initChat();
     await initExceptionHandling();
     await initDateTimeDefaults();
   }
@@ -91,27 +76,10 @@ abstract class ServiceProvider {
     restApiClient.options.contentType = Headers.jsonContentType;
   }
 
-  Future<void> initChat() async {
-    // await chatRepository.init();
-  }
-
   Future<void> initRespositories() async {
     //Those without dependencies(restApiClient dependency excluded)
-    eventsRepository = EventsRepository(restApiClient: restApiClient, storageRepository: cacheStorageRepository);
-    galleryRepository = GalleryRepository();
-    permissionsRepository = PermissionsRepository();
-    ordersRepository = OrdersRepository(restApiClient: restApiClient);
-    shoppingCartRepository = ShoppingCartRepository(restApiClient: restApiClient, storageRepository: cacheStorageRepository);
-    ticketsRepository = TicketsRepository(restApiClient: restApiClient);
-    categoriesRepository = CategoriesRepository(restApiClient: restApiClient, storageRepository: cacheStorageRepository);
-    locationRepository = LocationRepository(appSettings: appSettings);
 
     //Those with dependencies
-    authenticationRepository = AuthenticationRepository(restApiClient: restApiClient, storageRepository: secureStorageRepository);
-    // chatRepository = ChatRepository(appSettings: appSettings, storageRepository: secureStorageRepository);
-    accountRepository = AccountRepository(restApiClient: restApiClient, storageRepository: secureStorageRepository, locationRepository: locationRepository);
-    hostRepository = HostRepository(restApiClient: restApiClient);
-    donationsRepository = DonationsRepository(restApiClient: restApiClient);
   }
 
   Future<void> initExceptionHandling() async {
@@ -158,11 +126,11 @@ Future<ServiceProvider> resolveServiceProviderFromEnvironment() async {
     case EnvironmentType.development:
       serviceProvider = DevelopmentServiceProvider();
       break;
-    case EnvironmentType.staging:
-      serviceProvider = StagingServiceProvider();
-      break;
     case EnvironmentType.evaluation:
       serviceProvider = EvaluationServiceProvider();
+      break;
+    case EnvironmentType.staging:
+      serviceProvider = StagingServiceProvider();
       break;
     case EnvironmentType.production:
       serviceProvider = ProductionServiceProvider();

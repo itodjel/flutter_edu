@@ -1,3 +1,4 @@
+import 'package:catcher/catcher.dart';
 import 'package:flutter_boilerplate/_all.dart';
 
 late EnvironmentType environment;
