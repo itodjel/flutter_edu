@@ -10,28 +10,24 @@ enum LocationStateStatus {
 
 class LocationState {
   LocationStateStatus status;
-  AddressModel? address;
-  double? latitude;
-  double? longitude;
+  LocationModel? location;
+  PlaceDetailsModel? placeDetails;
   bool get isAllowed => [LocationStateStatus.newLocation, LocationStateStatus.newAccurateLocation].contains(status);
 
   LocationState({
     required this.status,
-    this.address,
-    this.latitude,
-    this.longitude,
+    this.location,
+    this.placeDetails,
   });
 
   LocationState copyWith({
     LocationStateStatus? status,
-    AddressModel? address,
-    double? latitude,
-    double? longitude,
+    Optional<LocationModel>? location,
+    Optional<PlaceDetailsModel>? placeDetails,
   }) =>
       LocationState(
         status: status ?? this.status,
-        address: address ?? this.address,
-        latitude: latitude ?? this.latitude,
-        longitude: longitude ?? this.longitude,
+        location: location == null ? this.location : location.value,
+        placeDetails: placeDetails == null ? this.placeDetails : placeDetails.value,
       );
 }

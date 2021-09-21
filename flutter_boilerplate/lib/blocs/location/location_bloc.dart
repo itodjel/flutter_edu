@@ -12,7 +12,6 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
         ) {
     _locationBlocSubscription = locationRepository.locationStream.stream.listen((location) {
       add(LocationUpdateEvent(location: location));
-      // _locationBlocSubscription.cancel();
     });
   }
 
@@ -47,13 +46,14 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   Stream<LocationState> _init() async* {
     if (await checkLocationPermission()) {
       await locationRepository.init();
+
       final currentLocation = await locationRepository.getCurrentLocation();
-      final currentAddress = await locationRepository.getCurrentAddress();
+      final currentPlaceDetails = await locationRepository.getCurrentPlaceDetails();
+
       yield state.copyWith(
         status: LocationStateStatus.newAccurateLocation,
-        address: currentAddress,
-        latitude: currentLocation?.latitude,
-        longitude: currentLocation?.longitude,
+        location: Optional(currentLocation),
+        placeDetails: Optional(currentPlaceDetails),
       );
     }
   }
@@ -82,30 +82,33 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   Stream<LocationState> _selectCurrentLocation() async* {
     await locationRepository.init();
     final currentLocation = await locationRepository.getCurrentLocation();
-    final currentAddress = await locationRepository.getCurrentAddress();
+    final currentPlaceDetails = await locationRepository.getCurrentPlaceDetails();
 
     yield state.copyWith(
       status: LocationStateStatus.newAccurateLocation,
-      address: currentAddress,
-      latitude: currentLocation?.latitude,
-      longitude: currentLocation?.longitude,
+      location: Optional(currentLocation),
+      placeDetails: Optional(currentPlaceDetails),
     );
   }
 
   Stream<LocationState> _update(LocationUpdateEvent event) async* {
-    final currentAddress = await locationRepository.getAddress(latitude: event.location.latitude, longitude: event.location.longitude);
+    PlaceDetailsModel? currentPlaceDetails;
+
+    if (event.location.latitude != null && event.location.longitude != null) {
+      currentPlaceDetails = await locationRepository.getPlaceDetails(latitude: event.location.latitude, longitude: event.location.longitude);
+    }
 
     yield state.copyWith(
       status: LocationStateStatus.newAccurateLocation,
-      address: currentAddress,
-      latitude: event.location.latitude,
-      longitude: event.location.longitude,
+      location: Optional(event.location),
+      placeDetails: Optional(currentPlaceDetails),
     );
   }
 
   @override
   Future<void> close() {
     _locationBlocSubscription.cancel();
+
     return super.close();
   }
 }
