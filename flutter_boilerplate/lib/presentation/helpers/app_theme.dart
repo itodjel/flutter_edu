@@ -33,8 +33,8 @@ class AppTheme extends StatelessWidget {
         primaryColorBrightness: Brightness.light,
         primaryColorLight: const Color(0xffffe0b2),
         primaryColorDark: const Color(0xfff57c00),
-        accentColor: const Color(0xffff9800),
-        accentColorBrightness: Brightness.light,
+        //accentColor: const Color(0xffff9800),
+        //accentColorBrightness: Brightness.light,
         canvasColor: const Color(0xfffafafa),
         scaffoldBackgroundColor: const Color(0xfffafafa),
         bottomAppBarColor: const Color(0xffffffff),
@@ -45,7 +45,7 @@ class AppTheme extends StatelessWidget {
         selectedRowColor: const Color(0xfff5f5f5),
         unselectedWidgetColor: const Color(0x8a000000),
         disabledColor: const Color(0x61000000),
-        buttonColor: const Color(0xffe0e0e0),
+        // buttonColor: const Color(0xffe0e0e0),
         toggleableActiveColor: const Color(0xfffb8c00),
         secondaryHeaderColor: const Color(0xfffff3e0),
         textSelectionTheme: const TextSelectionThemeData(
@@ -95,55 +95,55 @@ class AppTheme extends StatelessWidget {
           ),
         ),
         textTheme: const TextTheme(
-          display4: TextStyle(
+          headline1: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          display3: TextStyle(
+          headline2: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          display2: TextStyle(
+          headline3: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          display1: TextStyle(
+          headline4: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          headline: TextStyle(
+          headline5: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          title: TextStyle(
+          headline6: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          subhead: TextStyle(
+          subtitle1: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          body2: TextStyle(
+          bodyText1: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          body1: TextStyle(
+          bodyText2: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
@@ -161,7 +161,7 @@ class AppTheme extends StatelessWidget {
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          subtitle: TextStyle(
+          subtitle2: TextStyle(
             color: Color(0xff000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
@@ -175,55 +175,55 @@ class AppTheme extends StatelessWidget {
           ),
         ),
         primaryTextTheme: const TextTheme(
-          display4: TextStyle(
+          headline1: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          display3: TextStyle(
+          headline2: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          display2: TextStyle(
+          headline3: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          display1: TextStyle(
+          headline4: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          headline: TextStyle(
+          headline5: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          title: TextStyle(
+          headline6: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          subhead: TextStyle(
+          subtitle1: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          body2: TextStyle(
+          bodyText1: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          body1: TextStyle(
+          bodyText2: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
@@ -241,7 +241,7 @@ class AppTheme extends StatelessWidget {
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
           ),
-          subtitle: TextStyle(
+          subtitle2: TextStyle(
             color: Color(0xff000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
@@ -254,86 +254,86 @@ class AppTheme extends StatelessWidget {
             fontStyle: FontStyle.normal,
           ),
         ),
-        accentTextTheme: const TextTheme(
-          display4: TextStyle(
-            color: Color(0x8a000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          display3: TextStyle(
-            color: Color(0x8a000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          display2: TextStyle(
-            color: Color(0x8a000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          display1: TextStyle(
-            color: Color(0x8a000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          headline: TextStyle(
-            color: Color(0xdd000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          title: TextStyle(
-            color: Color(0xdd000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          subhead: TextStyle(
-            color: Color(0xdd000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          body2: TextStyle(
-            color: Color(0xdd000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          body1: TextStyle(
-            color: Color(0xdd000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          caption: TextStyle(
-            color: Color(0x8a000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          button: TextStyle(
-            color: Color(0xdd000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          subtitle: TextStyle(
-            color: Color(0xff000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-          overline: TextStyle(
-            color: Color(0xff000000),
-            fontSize: null,
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.normal,
-          ),
-        ),
+        // accentTextTheme: const TextTheme(
+        //   headline1: TextStyle(
+        //     color: Color(0x8a000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   headline2: TextStyle(
+        //     color: Color(0x8a000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   headline3: TextStyle(
+        //     color: Color(0x8a000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   headline4: TextStyle(
+        //     color: Color(0x8a000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   headline5: TextStyle(
+        //     color: Color(0xdd000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   headline6: TextStyle(
+        //     color: Color(0xdd000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   subtitle1: TextStyle(
+        //     color: Color(0xdd000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   bodyText1: TextStyle(
+        //     color: Color(0xdd000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   bodyText2: TextStyle(
+        //     color: Color(0xdd000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   caption: TextStyle(
+        //     color: Color(0x8a000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   button: TextStyle(
+        //     color: Color(0xdd000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   subtitle2: TextStyle(
+        //     color: Color(0xff000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        //   overline: TextStyle(
+        //     color: Color(0xff000000),
+        //     fontSize: null,
+        //     fontWeight: FontWeight.w400,
+        //     fontStyle: FontStyle.normal,
+        //   ),
+        // ),
         inputDecorationTheme: const InputDecorationTheme(
           labelStyle: TextStyle(
             color: Color(0xdd000000),
@@ -360,7 +360,7 @@ class AppTheme extends StatelessWidget {
             fontStyle: FontStyle.normal,
           ),
           errorMaxLines: null,
-          hasFloatingPlaceholder: true,
+          floatingLabelBehavior: FloatingLabelBehavior.auto,
           isDense: false,
           contentPadding: EdgeInsets.only(top: 12, bottom: 12, left: 0, right: 0),
           isCollapsed: false,
@@ -443,11 +443,11 @@ class AppTheme extends StatelessWidget {
           opacity: 1,
           size: 24,
         ),
-        accentIconTheme: const IconThemeData(
-          color: Color(0xff000000),
-          opacity: 1,
-          size: 24,
-        ),
+        // accentIconTheme: const IconThemeData(
+        //   color: Color(0xff000000),
+        //   opacity: 1,
+        //   size: 24,
+        // ),
         sliderTheme: const SliderThemeData(
           activeTrackColor: null,
           inactiveTrackColor: null,
