@@ -175,7 +175,7 @@ class TranslationModel {
   final String termsAndServices;
   final String skipOnboarding;
   final String displayName;
-  final String tailgreeter;
+  final String flutter_boilerplate;
   final String location;
   final String thisWeekend;
   final String eventsImHosting;
@@ -512,7 +512,7 @@ class TranslationModel {
     required this.termsAndServices,
     required this.skipOnboarding,
     required this.displayName,
-    required this.tailgreeter,
+    required this.flutter_boilerplate,
     required this.location,
     required this.thisWeekend,
     required this.eventsImHosting,

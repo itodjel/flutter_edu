@@ -1,5 +1,5 @@
 import 'package:photo_manager/photo_manager.dart';
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 abstract class IGalleryRepository {
   Future<List<GalleryItem>?> get(GallerySearchModel searchModel);

@@ -1,4 +1,4 @@
-import 'package:tailgreeter/blocs/connectivity/connectivity_state.dart';
+import 'package:flutter_boilerplate/blocs/connectivity/connectivity_state.dart';
 
 abstract class ConnectivityEvent {}
 

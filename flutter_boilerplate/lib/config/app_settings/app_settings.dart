@@ -44,7 +44,7 @@ class AppSettings {
     this.donationUrl = '',
     this.exceptionReportingSettings = const ExceptionReportingSettings(
       slackWebHookUrl: 'https://hooks.slack.com/services/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',
-      slackChannel: '#exception_reporting_tailgreeter',
+      slackChannel: '#exception_reporting_flutter_boilerplate',
       enableDeviceParameters: true,
       enableApplicationParameters: true,
       enableCustomParameters: true,

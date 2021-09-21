@@ -1,26 +1,26 @@
 import 'package:flutter_boilerplate/_all.dart';
-import 'package:intl/intl.dart';
 
 late EnvironmentType environment;
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final serviceProvider = ServiceProvider();
-  await serviceProvider.init();
+  final serviceProvider = await resolveServiceProviderFromEnvironment();
 
-  setSystemUIOverlayStyle();
+  final rootWidget = RepositoryProvider<ServiceProvider>(
+    create: (context) => serviceProvider,
+    child: ContextServiceProviderBlocs(
+      child: Application(),
+    ),
+  );
 
-  Intl.defaultLocale = Localizer.defaultLanguage.locale.languageCode;
-
-  runZoned(() {
-    runApp(
-      RepositoryProvider<ServiceProvider>(
-        create: (context) => serviceProvider,
-        child: ContextServiceProviderBlocs(
-          child: Application(),
-        ),
-      ),
+  if (serviceProvider.appSettings.usingExceptionReporting) {
+    Catcher(
+      debugConfig: serviceProvider.catcherOptions,
+      releaseConfig: serviceProvider.catcherOptions,
+      rootWidget: rootWidget,
     );
-  });
+  } else {
+    runZoned(() => runApp(rootWidget));
+  }
 }

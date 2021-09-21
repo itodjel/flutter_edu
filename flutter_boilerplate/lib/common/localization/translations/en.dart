@@ -217,7 +217,7 @@ What a fantastic Question. Gold star for you!
   termsAndServices: 'Terms and services',
   skipOnboarding: 'Skip onboarding',
   displayName: 'Display name',
-  tailgreeter: 'Tailgreeter',
+  flutter_boilerplate: 'Tailgreeter',
   location: 'Location',
   thisWeekend: 'Upcoming tailgates',
   eventsImHosting: "Tailgates I'm hosting",
@@ -359,7 +359,7 @@ is used, with whom it may be shared, and your privacy choices
  ''',
   introduction: '1. Introduction',
   privacyPolicyWhoWeAre: '''
-This privacy policy covers the Company.  We respect your privacy and are committed to protecting it through our compliance with this privacy policy. This policy describes the types of information we may collect from you or that you may provide when you visit our web application available at www.tailgreeter.com (the “Website“) or any mobile application owned by the Company and used by you in connection with services and products provided by the Company, if any (collectively, the “App”), and our practices for collecting, using, maintaining, protecting, and disclosing that information. The services provided by the Company (but not by third parties) through the Website or App are referred to as the “Services” and any person who uses the Services is referred to as a “User”.
+This privacy policy covers the Company.  We respect your privacy and are committed to protecting it through our compliance with this privacy policy. This policy describes the types of information we may collect from you or that you may provide when you visit our web application available at www.flutter_boilerplate.com (the “Website“) or any mobile application owned by the Company and used by you in connection with services and products provided by the Company, if any (collectively, the “App”), and our practices for collecting, using, maintaining, protecting, and disclosing that information. The services provided by the Company (but not by third parties) through the Website or App are referred to as the “Services” and any person who uses the Services is referred to as a “User”.
   ''',
   policyAppliesToInformationWeCollect: 'This policy applies to information we collect:',
   privacyPolicyInformations: '''

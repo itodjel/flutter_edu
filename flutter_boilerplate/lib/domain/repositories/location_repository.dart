@@ -1,6 +1,6 @@
 import 'package:google_maps_webservice/places.dart' as google_maps_webservice;
 import 'package:location/location.dart';
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 abstract class ILocationRepository {
   late StreamController<LocationLocalModel> locationStream;

@@ -1,22 +1,25 @@
 enum Flavor {
   production,
   staging,
+  evaluation,
   development,
 }
 
 class F {
-  static late Flavor appFlavor;
+  static Flavor appFlavor = Flavor.production;
 
   static String get title {
     switch (appFlavor) {
       case Flavor.production:
-        return 'Flutter Boilerplate';
+        return 'Tailgreeter';
       case Flavor.staging:
-        return 'Flutter Boilerplate Staging';
+        return 'Tailgreeter Staging';
+      case Flavor.evaluation:
+        return 'Tailgreeter Evaluation';
       case Flavor.development:
-        return 'Flutter Boilerplate Development';
+        return 'Tailgreeter Development';
       default:
-        return 'title';
+        return '';
     }
   }
 }

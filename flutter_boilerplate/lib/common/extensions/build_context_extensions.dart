@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/_all.dart';
-import 'package:tailgreeter/common/localization/localizer.dart';
+import 'package:flutter_boilerplate/common/localization/localizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 extension BuildContextExtensions on BuildContext {
