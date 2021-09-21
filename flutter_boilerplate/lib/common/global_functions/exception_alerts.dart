@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 import 'package:rest_api_client/rest_api_client.dart';
 
 void showExceptionMessage(BuildContext context, RestApiClientException exception) {

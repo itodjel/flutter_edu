@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   final IStorageRepository storageRepository;
@@ -8,7 +8,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   }) : super(initialState());
 
   static ThemeState initialState() => ThemeState(
-        status: ThemeStateStatus.loading,
+        status: ThemeStateStatus.initializing,
         themeMode: ThemeMode.light,
       );
 
@@ -24,16 +24,15 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   Stream<ThemeState> _load() async* {
     final themeModeIndex = await storageRepository.get<int>(AppKeys.themeMode);
 
-    if (themeModeIndex == null) {
-      yield ThemeState(status: ThemeStateStatus.loaded, themeMode: ThemeMode.light);
-    } else {
-      yield ThemeState(status: ThemeStateStatus.loaded, themeMode: ThemeMode.values[themeModeIndex]);
-    }
+    yield ThemeState(
+      status: ThemeStateStatus.initialized,
+      themeMode: themeModeIndex == null ? ThemeMode.light : ThemeMode.values[themeModeIndex],
+    );
   }
 
   Stream<ThemeState> _change(ThemeChangeEvent event) async* {
     await storageRepository.set(AppKeys.themeMode, event.themeMode.index);
 
-    yield ThemeState(status: ThemeStateStatus.loaded, themeMode: event.themeMode);
+    yield ThemeState(status: ThemeStateStatus.initialized, themeMode: event.themeMode);
   }
 }

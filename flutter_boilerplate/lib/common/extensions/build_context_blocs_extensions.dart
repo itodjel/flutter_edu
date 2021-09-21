@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 extension BuildContextBlocsExtensions on BuildContext {
   ErrorHandlerBloc get errorHandlerBloc => read<ErrorHandlerBloc>();

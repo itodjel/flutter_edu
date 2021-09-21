@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 extension NavigatorStateExtensions on NavigatorState {
   void popTimes([int number = 1]) {

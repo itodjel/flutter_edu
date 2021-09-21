@@ -1,8 +1,8 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 enum ThemeStateStatus {
-  loading,
-  loaded,
+  initializing,
+  initialized,
 }
 
 class ThemeState {

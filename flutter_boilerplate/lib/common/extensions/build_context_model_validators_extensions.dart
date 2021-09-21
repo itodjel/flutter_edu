@@ -1,3 +1,3 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 extension BuildContextModelValidatorsExtensions on BuildContext {}

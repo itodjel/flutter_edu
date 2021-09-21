@@ -1,7 +1,9 @@
-abstract class AppEvent {
-  const AppEvent();
+import 'package:flutter_boilerplate/_all.dart';
+
+abstract class AppEvent {}
+
+class AppCompleteStepEvent extends AppEvent {
+  final AppRequirement requirement;
+
+  AppCompleteStepEvent({required this.requirement});
 }
-
-class AppCompleteStepEvent extends AppEvent {}
-
-class AppSetupEvent extends AppEvent {}

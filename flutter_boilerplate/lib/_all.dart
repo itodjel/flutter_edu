@@ -1,9 +1,9 @@
 //Application
-export 'blocs/all.dart';
-export 'common/all.dart';
-export 'config/all.dart';
+export 'blocs/_all.dart';
+export 'common/_all.dart';
+export 'config/_all.dart';
 export 'constants/all.dart';
-export 'domain/all.dart';
+export 'domain/_all.dart';
 export 'presentation/all.dart';
 export 'service_providers/all.dart';
 export 'main.dart';

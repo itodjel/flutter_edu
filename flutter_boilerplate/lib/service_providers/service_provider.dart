@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 import 'package:rest_api_client/rest_api_client.dart';
 import 'package:storage_repository/storage_repository.dart';
 
@@ -42,20 +42,19 @@ class ServiceProvider {
     //...
   }
 
-  Future _initForProduction() async {
-    await _initForDevelopment();
-    //Here you would re-register some of the services if there is a specific implementation that differs from development
+  Future _initForEvaluation() async {
+    //Here you would register MockRepositories
     //...
   }
-
   Future _initForStaging() async {
     await _initForDevelopment();
     //Here you would re-register some of the services if there is a specific implementation that differs from development
     //...
   }
 
-  Future _initForTest() async {
-    //Here you would register MockRepositories
+  Future _initForProduction() async {
+    await _initForDevelopment();
+    //Here you would re-register some of the services if there is a specific implementation that differs from development
     //...
   }
 
@@ -64,14 +63,14 @@ class ServiceProvider {
       case EnvironmentType.development:
         appSettings = DevelopmentAppSettings();
         break;
-      case EnvironmentType.production:
-        appSettings = ProductionAppSettings();
+      case EnvironmentType.evaluation:
+        appSettings = TestAppSettings();
         break;
       case EnvironmentType.staging:
         appSettings = StagingAppSettings();
         break;
-      case EnvironmentType.test:
-        appSettings = TestAppSettings();
+      case EnvironmentType.production:
+        appSettings = ProductionAppSettings();
         break;
     }
   }
@@ -81,14 +80,14 @@ class ServiceProvider {
       case EnvironmentType.development:
         await _initForDevelopment();
         break;
-      case EnvironmentType.production:
-        await _initForProduction();
+      case EnvironmentType.evaluation:
+        await _initForEvaluation();
         break;
       case EnvironmentType.staging:
         await _initForStaging();
         break;
-      case EnvironmentType.test:
-        await _initForTest();
+      case EnvironmentType.production:
+        await _initForProduction();
         break;
     }
   }

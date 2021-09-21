@@ -1,56 +1,67 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'dart:developer';
+
+import 'package:flutter_boilerplate/_all.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   final AppSettings appSettings;
+  late StreamSubscription _themeBlocSubscription;
+  late StreamSubscription _localizationBlocSubscription;
 
   AppBloc({
+    required this.appSettings,
     required ThemeBloc themeBloc,
     required LocalizationBloc localizationBloc,
-    required this.appSettings,
   }) : super(initialState()) {
-    themeBloc.stream.listen((state) {
-      if (state.status == ThemeStateStatus.loaded) {
-        add(AppCompleteStepEvent());
+    _themeBlocSubscription = themeBloc.stream.listen((themeState) {
+      if (themeState.status == ThemeStateStatus.initialized) {
+        add(AppCompleteStepEvent(requirement: AppRequirement.theme));
+        _themeBlocSubscription.cancel();
       }
     });
-    localizationBloc.stream.listen((state) {
-      if (state.status == LocalizationStateStatus.loaded) {
-        add(AppCompleteStepEvent());
+
+    _localizationBlocSubscription = localizationBloc.stream.listen((localizationState) {
+      if (localizationState.status == LocalizationStateStatus.initialized) {
+        add(AppCompleteStepEvent(requirement: AppRequirement.localization));
+        _localizationBlocSubscription.cancel();
       }
     });
-  }
-
-  static AppState initialState() => AppState(
-        status: AppStateStatus.loading,
-        completedSteps: 0,
-        //totalSteps is equal to number of distributed application actions that need to be
-        //performed for the app to be fully operational, currently in the constructor can
-        //be found 2 of these actions
-        totalSteps: 2,
-      );
-
-  @override
-  Stream<AppState> mapEventToState(AppEvent event) async* {
-    if (event is AppSetupEvent) {
-      yield* _setup();
-    } else if (event is AppCompleteStepEvent) {
-      yield* _completeStep();
+    if (environment.isDevelopment) {
+      _initializationStart = DateTime.now();
     }
   }
 
-  Stream<AppState> _setup() async* {
-    yield state.copyWith(status: AppStateStatus.loading);
-    //Currently there are no explicit actions in the _setup method
-    //but it can be extended for maybe loading configuration of latest api version
+  static AppState initialState() => AppState(status: AppStateStatus.loading, requirements: []);
+
+  @override
+  Stream<AppState> mapEventToState(AppEvent event) async* {
+    if (event is AppCompleteStepEvent) {
+      yield* _completeStep(event);
+    }
   }
 
-  Stream<AppState> _completeStep() async* {
-    final completedSteps = state.completedSteps + 1;
+  Stream<AppState> _completeStep(AppCompleteStepEvent event) async* {
+    final alreadyInitialized = state.requirements.contains(event.requirement);
 
-    yield state.copyWith(
-      status: completedSteps >= state.totalSteps ? AppStateStatus.loaded : AppStateStatus.loading,
-      completedSteps: completedSteps,
-      totalSteps: state.totalSteps,
-    );
+    if (!alreadyInitialized) {
+      if (environment.isDevelopment) {
+        log(_formatInitializedMessage(event.requirement.toString()));
+      }
+      state.requirements.add(event.requirement);
+
+      final finished = state.completedSteps >= state.totalSteps;
+
+      if (!finished) {
+        await Future.delayed(const Duration(milliseconds: 100));
+        yield state.copyWith(status: AppStateStatus.loading);
+      } else {
+        yield state.copyWith(status: AppStateStatus.loading);
+        await Future.delayed(const Duration(milliseconds: 100));
+        yield state.copyWith(status: AppStateStatus.loaded);
+      }
+    }
   }
+
+  late DateTime _initializationStart;
+  String get _checkpoint => '{${DateTime.now().difference(_initializationStart).inMilliseconds} miliseconds}';
+  String _formatInitializedMessage(String text) => '::: ${'$_checkpoint initialized $text'.padRight(85).padLeft(110)} :::';
 }

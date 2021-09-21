@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 import 'package:flutter_boilerplate/common/localization/localizer.dart';
 
 extension BuildContextExtensions on BuildContext {

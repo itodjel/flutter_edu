@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 enum AppStateStatus {
   loading,
@@ -6,26 +6,30 @@ enum AppStateStatus {
   requiresUpdate,
 }
 
+enum AppRequirement {
+  theme,
+  localization,
+}
+
 class AppState {
   AppStateStatus status;
-  int completedSteps;
-  int totalSteps;
-  double get completedPercentage => (completedSteps / totalSteps.valueForDividend) * 100;
+  List<AppRequirement> requirements;
+  int get completedSteps => requirements.length;
+  int get totalSteps => AppRequirement.values.length;
+  double get quotient => completedSteps / totalSteps.valueForDividend;
+  double get completedPercentage => quotient * 100;
 
   AppState({
     required this.status,
-    required this.completedSteps,
-    required this.totalSteps,
+    required this.requirements,
   });
 
   AppState copyWith({
     AppStateStatus? status,
-    int? completedSteps,
-    int? totalSteps,
+    List<AppRequirement>? requirements,
   }) =>
       AppState(
         status: status ?? this.status,
-        completedSteps: completedSteps ?? this.completedSteps,
-        totalSteps: totalSteps ?? this.totalSteps,
+        requirements: requirements ?? this.requirements,
       );
 }

@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 import 'package:flutter_boilerplate/main.dart' as app;
 import 'package:flutter_boilerplate/flavors.dart';
 

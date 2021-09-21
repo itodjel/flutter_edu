@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 final globalNavigatorKey = GlobalKey<NavigatorState>();
