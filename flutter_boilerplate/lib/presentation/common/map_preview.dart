@@ -42,8 +42,8 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
       return LatLng(widget.initialLatitude!, widget.initialLongitude!);
     }
 
-    if (context.locationBloc.state.latitude != null && context.locationBloc.state.longitude != null) {
-      return LatLng(context.locationBloc.state.latitude!, context.locationBloc.state.longitude!);
+    if (context.locationBloc.state.location?.latitude != null && context.locationBloc.state.location?.longitude != null) {
+      return LatLng(context.locationBloc.state.location!.latitude!, context.locationBloc.state.location!.longitude!);
     }
 
     return LatLng(context.appSettings.defaultLocation.latitude!, context.appSettings.defaultLocation.longitude!);
@@ -105,6 +105,7 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
               ),
               onMapCreated: _onMapCreated,
               markers: _getMarkers(widget.coordinates),
+              //TODO: Uncomment if you want that the map is scrollable even when in a ListView
               //gestureRecognizers: {Factory<EagerGestureRecognizer>(() => EagerGestureRecognizer())},
             ),
             () {
@@ -174,29 +175,6 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
                     ),
                   ),
                 );
-                // return Positioned(
-                //   bottom: 48,
-                //   left: 100,
-                //   right: 100,
-                //   child: PhysicalModel(
-                //     elevation: 1,
-                //     color: Colors.white,
-                //     child: Splashable(
-                //       onTap: () => context.pop(),
-                //       child: const Padding(
-                //         padding: EdgeInsets.all(6.5),
-                //         child: Button(
-                //           text: 'Apply location',
-                //           color: Colors.white,
-                //           textColor: Colors.black,
-                //           shrinkWrap: false,
-                //           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                //           rounded: true,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // );
               }
 
               if (widget.showCloseIcon) {
@@ -269,24 +247,4 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
 
     return marker;
   }
-//   void _showMapItemPreviewBottomSheet() {
-//     showModalBottomSheet(
-//       context: context,
-//       shape: RoundedRectangleBorder(
-//         borderRadius: BorderRadius.circular(10.0),
-//       ),
-//       builder: (context) {
-//         return Container(
-//           color: context.theme.scaffoldBackgroundColor,
-//           child: Wrap(
-//             children: [
-//               Row(children: const [
-//                 Text('Item preview'),
-//               ]),
-//             ],
-//           ),
-//         );
-//       },
-//     );
-//   }
 }

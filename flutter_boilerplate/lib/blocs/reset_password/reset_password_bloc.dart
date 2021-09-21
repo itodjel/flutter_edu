@@ -1,12 +1,7 @@
 import 'package:flutter_boilerplate/_all.dart';
-import 'package:tailgreeter/blocs/_all.dart';
 
 class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
-  final IAccountRepository accountRepository;
-
-  ResetPasswordBloc({
-    required this.accountRepository,
-  }) : super(initialState());
+  ResetPasswordBloc() : super(initialState());
 
   static ResetPasswordState initialState() => ResetPasswordState(
         status: ResetPasswordStateStatus.initial,
@@ -44,9 +39,10 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
   Stream<ResetPasswordState> _submitEmail() async* {
     yield state.copyWith(status: ResetPasswordStateStatus.emailSubmitting);
 
-    final result = await accountRepository.resetPassword(state.model.email.value);
+    //TODO: Submit to your API
+    final success = true; //await accountRepository.resetPassword(state.model.email.value);
 
-    if (result) {
+    if (success) {
       yield state.copyWith(status: ResetPasswordStateStatus.emailSubmittingSuccess);
     } else {
       yield state.copyWith(status: ResetPasswordStateStatus.emailSubmittingError);
@@ -56,9 +52,10 @@ class ResetPasswordBloc extends Bloc<ResetPasswordEvent, ResetPasswordState> {
   Stream<ResetPasswordState> _submit() async* {
     yield state.copyWith(status: ResetPasswordStateStatus.submitting);
 
-    final result = await accountRepository.resetPasswordConfirm(state.model.email.value, state.model.newPassword.value, state.model.code.value);
+    //TODO: Submit to your API
+    final success = true; //await accountRepository.resetPasswordConfirm(state.model.email.value, state.model.newPassword.value, state.model.code.value);
 
-    if (result) {
+    if (success) {
       yield state.copyWith(status: ResetPasswordStateStatus.submittingSuccess);
       yield initialState();
     } else {

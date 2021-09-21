@@ -1,20 +1,11 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  final IAccountRepository accountRepository;
-  final IAuthenticationRepository authenticationRepository;
-
-  RegisterBloc({
-    required this.accountRepository,
-    required this.authenticationRepository,
-  }) : super(initialState());
+  RegisterBloc() : super(initialState());
 
   static RegisterState initialState() => RegisterState(
         status: RegisterStateStatus.initial,
-        model: RegisterModel(
-          acceptTermsAndServices: false,
-          address: AddressModel(),
-        ),
+        model: RegisterModel(),
         submittedOnce: false,
       );
 
@@ -46,10 +37,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   Stream<RegisterState> _submit() async* {
     yield state.copyWith(status: RegisterStateStatus.submitting);
 
-    final success = await accountRepository.register(state.model);
+    //TODO: Submit model to you API to register the user
+    final success = true; //await accountRepository.register(state.model);
 
     if (success) {
-      await authenticationRepository.login(LoginModel(userNameOrEmail: state.model.email, password: state.model.password));
+      //TODO: Maybe login automatically if no email confirmation is required
+      //await authenticationRepository.login(LoginModel(userNameOrEmail: state.model.email, password: state.model.password));
+
       yield state.copyWith(status: RegisterStateStatus.submittingSuccess);
       yield initialState();
     } else {

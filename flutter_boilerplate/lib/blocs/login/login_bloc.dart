@@ -1,15 +1,11 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final IAuthenticationRepository authenticationRepository;
-
-  LoginBloc({
-    required this.authenticationRepository,
-  }) : super(initialState());
+  LoginBloc() : super(initialState());
 
   static LoginState initialState() => LoginState(
         status: LoginStateStatus.initial,
-        model: LoginModel(guest: false),
+        model: LoginModel(),
         submittedOnce: false,
       );
 
@@ -42,7 +38,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     yield state.copyWith(status: LoginStateStatus.submitting);
     await Future.delayed(const Duration(seconds: 5));
 
-    final success = await authenticationRepository.login(state.model);
+    //TODO: Ping your API via repository to authenticate the user
+    final success = true; //await authenticationRepository.login(state.model);
 
     if (success) {
       yield state.copyWith(status: LoginStateStatus.submittingSuccess);

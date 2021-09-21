@@ -95,7 +95,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     PlaceDetailsModel? currentPlaceDetails;
 
     if (event.location.latitude != null && event.location.longitude != null) {
-      currentPlaceDetails = await locationRepository.getPlaceDetails(latitude: event.location.latitude, longitude: event.location.longitude);
+      currentPlaceDetails = await locationRepository.getPlaceDetails(latitude: event.location.latitude!, longitude: event.location.longitude!);
     }
 
     yield state.copyWith(

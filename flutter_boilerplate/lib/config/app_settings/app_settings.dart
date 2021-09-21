@@ -13,6 +13,7 @@ class AppSettings {
   final bool onlyAllowOrientationPortrait;
   final bool skipIntro;
   final bool skipAllowLocation;
+  final bool skipLogin;
   final String googlePlacesApiKey;
   final LocationModel defaultLocation;
   final bool usingExceptionReporting;
@@ -31,6 +32,7 @@ class AppSettings {
     this.onlyAllowOrientationPortrait = true,
     this.skipIntro = false,
     this.skipAllowLocation = false,
+    this.skipLogin = false,
     this.googlePlacesApiKey = 'AIzaSyAMSFjylO88m5bscGREvRjutJUUL8UkKYM',
     this.defaultLocation = const LocationModel(latitude: 37.2755783, longitude: -104.6571311),
     this.usingExceptionReporting = false,

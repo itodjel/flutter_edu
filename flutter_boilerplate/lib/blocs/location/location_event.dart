@@ -11,7 +11,7 @@ class LocationSelectCurrentLocationEvent extends LocationEvent {}
 class LocationResetEvent extends LocationEvent {}
 
 class LocationUpdateEvent extends LocationEvent {
-  final LocationLocalModel location;
+  final LocationModel location;
 
   LocationUpdateEvent({required this.location});
 }
