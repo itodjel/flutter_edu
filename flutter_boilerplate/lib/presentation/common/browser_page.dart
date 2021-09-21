@@ -24,8 +24,6 @@ class BrowserPage extends StatefulWidget {
 }
 
 class _BrowserPageState extends State<BrowserPage> {
-  late WebViewController _controller;
-
   @override
   void dispose() {
     if (widget.dispose != null) {
@@ -55,11 +53,6 @@ class _BrowserPageState extends State<BrowserPage> {
         body: WebView(
           initialUrl: widget.url,
           javascriptMode: JavascriptMode.unrestricted,
-          onWebViewCreated: (controller) {
-            setState(() {
-              _controller = controller;
-            });
-          },
         ),
       ),
     );

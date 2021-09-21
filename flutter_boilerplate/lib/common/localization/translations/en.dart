@@ -217,7 +217,6 @@ What a fantastic Question. Gold star for you!
   termsAndServices: 'Terms and services',
   skipOnboarding: 'Skip onboarding',
   displayName: 'Display name',
-  flutter_boilerplate: 'Tailgreeter',
   location: 'Location',
   thisWeekend: 'Upcoming tailgates',
   eventsImHosting: "Tailgates I'm hosting",
