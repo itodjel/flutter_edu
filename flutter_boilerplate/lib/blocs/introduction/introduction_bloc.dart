@@ -1,4 +1,4 @@
-import '../../_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 class IntroductionBloc extends Bloc<IntroductionEvent, IntroductionState> {
   final IStorageRepository storageRepository;

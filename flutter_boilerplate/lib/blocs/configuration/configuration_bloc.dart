@@ -1,22 +1,20 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class ConfigurationBloc extends Bloc<ConfigurationEvent, ConfigurationState> {
-  final IAccountRepository accountRepository;
-  late StreamSubscription _locationBlocSubscription;
   late StreamSubscription _authBlocSubscription;
+  late StreamSubscription _locationBlocSubscription;
 
   ConfigurationBloc({
     required AuthBloc authBloc,
     required LocationBloc locationBloc,
-    required this.accountRepository,
   }) : super(_initialState()) {
-    _locationBlocSubscription = locationBloc.stream.listen((locationState) {
-      add(ConfigurationInitEvent());
-    });
     _authBlocSubscription = authBloc.stream.listen((authState) {
       if (authState.status == AuthStateStatus.authenticated || authState.status == AuthStateStatus.unAuthenticated) {
         add(ConfigurationInitEvent());
       }
+    });
+    _locationBlocSubscription = locationBloc.stream.listen((locationState) {
+      add(ConfigurationInitEvent());
     });
   }
 
@@ -35,7 +33,8 @@ class ConfigurationBloc extends Bloc<ConfigurationEvent, ConfigurationState> {
   Stream<ConfigurationState> _init() async* {
     yield state.copyWith(status: ConfigurationStateStatus.initializing);
 
-    final configuration = await accountRepository.getConfiguration();
+    //TODO: Load real configuration for local storage or from API
+    final configuration = Configuration(); //await accountRepository.getConfiguration();
 
     yield state.copyWith(status: ConfigurationStateStatus.initialized, configuration: configuration);
   }
@@ -44,6 +43,7 @@ class ConfigurationBloc extends Bloc<ConfigurationEvent, ConfigurationState> {
   Future<void> close() {
     _locationBlocSubscription.cancel();
     _authBlocSubscription.cancel();
+
     return super.close();
   }
 }

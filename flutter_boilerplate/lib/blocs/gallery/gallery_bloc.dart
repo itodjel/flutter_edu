@@ -1,15 +1,11 @@
+import 'package:flutter_boilerplate/_all.dart';
 import 'package:permission_handler/permission_handler.dart';
-
-import '../../_all.dart';
-import '../_all.dart';
 
 class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
   final IGalleryRepository galleryRepository;
-  final IPermissionsRepository permissionsRepository;
 
   GalleryBloc({
     required this.galleryRepository,
-    required this.permissionsRepository,
   }) : super(initialState());
 
   static GalleryState initialState() => GalleryState(

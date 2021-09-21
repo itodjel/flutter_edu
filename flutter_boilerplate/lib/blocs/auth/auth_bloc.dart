@@ -3,20 +3,14 @@ import 'package:flutter_boilerplate/_all.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IRestApiClient restApiClient;
-  final IAuthenticationRepository authenticationRepository;
-  final IAccountRepository accountRepository;
   late StreamSubscription _restApiClientSubscription;
   late StreamSubscription _loginBlocSubscription;
   late StreamSubscription _registerBlocSubscription;
-  late StreamSubscription _accountUpdateBlocSubscription;
 
   AuthBloc({
     required this.restApiClient,
-    required this.authenticationRepository,
-    required this.accountRepository,
     required LoginBloc loginBloc,
     required RegisterBloc registerBloc,
-    required AccountUpdateBloc accountUpdateBloc,
   }) : super(AuthState(
           status: AuthStateStatus.checkingAuthentication,
         )) {
@@ -35,11 +29,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         add(AuthCheckAuthenticationEvent());
       }
     });
-    _accountUpdateBlocSubscription = accountUpdateBloc.stream.listen((accountUpdateState) {
-      if (accountUpdateState.status == AccountUpdateStateStatus.submittingSuccess || accountUpdateState.status == AccountUpdateStateStatus.addingAffiliateCodeSuccess) {
-        add(AuthCheckAuthenticationEvent());
-      }
-    });
   }
 
   @override
@@ -52,29 +41,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Stream<AuthState> _checkAuthentication() async* {
-    try {
-      yield state.copyWith(status: AuthStateStatus.checkingAuthentication);
+    yield state.copyWith(status: AuthStateStatus.checkingAuthentication);
 
-      final isAuthenticated = await authenticationRepository.isAuthenticated();
+    //TODO: Change this to use real API
+    final isAuthenticated = true; //await authenticationRepository.isAuthenticated();
 
-      yield state.copyWith(status: AuthStateStatus.checkedAuthentication);
+    yield state.copyWith(status: AuthStateStatus.checkedAuthentication);
 
-      if (isAuthenticated) {
-        //To update local account data
-        await accountRepository.get();
-        yield state.copyWith(status: AuthStateStatus.authenticated);
-      } else {
-        yield state.copyWith(status: AuthStateStatus.unAuthenticated);
-
-        final isAuthenticatedAsGuest = await authenticationRepository.isAuthenticatedAsGuest();
-
-        if (!isAuthenticatedAsGuest) {
-          await authenticationRepository.silentBackgroundGuestLogin();
-        }
-
-        yield state.copyWith(status: AuthStateStatus.authenticatedAsGuest);
-      }
-    } catch (e) {
+    if (isAuthenticated) {
+      yield state.copyWith(status: AuthStateStatus.authenticated);
+    } else {
       yield state.copyWith(status: AuthStateStatus.unAuthenticated);
     }
   }
@@ -82,7 +58,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Stream<AuthState> _signOut() async* {
     yield state.copyWith(status: AuthStateStatus.unAuthenticated);
 
-    final success = await authenticationRepository.signOut();
+    //TODO: Sign the use our for real
+    final success = true; //await authenticationRepository.signOut();
 
     if (success) {
       yield* _checkAuthentication();
@@ -94,7 +71,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _restApiClientSubscription.cancel();
     _loginBlocSubscription.cancel();
     _registerBlocSubscription.cancel();
-    _accountUpdateBlocSubscription.cancel();
+
     return super.close();
   }
 }
