@@ -1,5 +1,5 @@
 import 'package:permission_handler/permission_handler.dart';
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
   final ILocationRepository locationRepository;

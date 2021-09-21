@@ -1,5 +1,4 @@
-import 'dart:ui';
-import 'translation_model.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 class LanguageModel {
   final String name;

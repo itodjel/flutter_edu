@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 import 'package:rest_api_client/rest_api_client.dart';
 
 class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {

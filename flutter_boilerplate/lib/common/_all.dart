@@ -1,3 +1,3 @@
-export 'extensions/all.dart';
-export 'global_functions/all.dart';
-export 'localization/all.dart';
+export 'extensions/_all.dart';
+export 'global/_all.dart';
+export 'localization/_all.dart';

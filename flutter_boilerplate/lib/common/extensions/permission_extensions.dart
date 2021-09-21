@@ -10,7 +10,7 @@ extension PermissionExtension on Permission {
       return (await request()).isGranted;
     }
     if (await isPermanentlyDenied) {
-      showRequestRationale(this);
+      return await showRequestRationale(this);
     }
 
     return false;

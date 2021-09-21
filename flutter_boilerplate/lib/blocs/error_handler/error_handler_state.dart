@@ -1,5 +1,5 @@
 import 'package:rest_api_client/rest_api_client.dart';
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 enum ErrorHandlerStateStatus {
   clean,

@@ -1,6 +1,6 @@
-import 'package:flutter_boilerplate/_all.dart';
+import 'package:tailgreeter/_all.dart';
 
-class EmailPropertyValidator extends PropertyValidator<String?> {
+class EmailPropertyValidator extends PropertyValidator<String> {
   final Localizer localizer;
   final bool _required;
 
@@ -14,11 +14,11 @@ class EmailPropertyValidator extends PropertyValidator<String?> {
 
   @override
   String? validate(String? value) {
-    if (!_required && value == null) {
+    if (!_required && !value.hasValue) {
       return null;
     }
 
-    if (value == null) {
+    if (!value.hasValue) {
       return localizer.translations.fieldIsRequired;
     }
 

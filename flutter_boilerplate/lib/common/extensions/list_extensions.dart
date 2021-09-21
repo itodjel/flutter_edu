@@ -1,3 +1,9 @@
+extension ListNullableExtensions<T> on List<T>? {
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
+  bool get isNotNullOrEmpty => !isNullOrEmpty;
+  int count() => this == null ? 0 : this!.length;
+}
+
 extension ListExtensions<T> on List<T> {
   void addIf(bool condition, T element, [Function(T)? callbackIfTrue]) {
     if (condition) {
@@ -19,18 +25,49 @@ extension ListExtensions<T> on List<T> {
 
     return alreadyAdded ? -1 : 1;
   }
+
+  T? firstOrDefault([bool Function(T element)? test]) {
+    if (test != null) {
+      try {
+        return firstWhere(test);
+      } catch (e) {
+        return null;
+      }
+    } else {
+      try {
+        return firstWhere((T element) => true);
+      } catch (e) {
+        return null;
+      }
+    }
+  }
+
+  Iterable<U> mapIndexed<U>(U Function(int index, dynamic item) f) sync* {
+    var index = 0;
+
+    for (final item in this) {
+      yield f(index, item);
+      index++;
+    }
+  }
 }
 
 extension IterableExtensions<T> on Iterable<T> {
-  bool hasItems() => count() > 0;
-
-  bool isNullOrEmpty() => isEmpty;
-
-  bool isNotNullOrEmpty() => !isNullOrEmpty();
-
-  int count() => isNullOrEmpty() ? 0 : length;
-
-  T firstOrDefault([bool Function(T element)? test]) => test != null ? firstWhere(test) : firstWhere((element) => true);
+  T? firstOrDefault([bool Function(T element)? test]) {
+    if (test != null) {
+      try {
+        return firstWhere(test);
+      } catch (e) {
+        return null;
+      }
+    } else {
+      try {
+        return firstWhere((T element) => true);
+      } catch (e) {
+        return null;
+      }
+    }
+  }
 
   Iterable<U> mapIndexed<U>(U Function(int index, dynamic item) f) sync* {
     var index = 0;

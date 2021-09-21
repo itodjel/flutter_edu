@@ -1,4 +1,4 @@
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
   NavigationBloc() : super(NavigationState(index: 0));

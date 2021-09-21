@@ -1,5 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
   final AppSettings appSettings;

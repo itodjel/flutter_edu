@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   final AppSettings appSettings;

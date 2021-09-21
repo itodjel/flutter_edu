@@ -1,4 +1,4 @@
-import 'package:tailgreeter/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 class ConfigurationBloc extends Bloc<ConfigurationEvent, ConfigurationState> {
   final IAccountRepository accountRepository;
