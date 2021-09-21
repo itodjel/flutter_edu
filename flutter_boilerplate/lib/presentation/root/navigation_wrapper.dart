@@ -1,6 +1,18 @@
 import 'package:flutter_boilerplate/_all.dart';
 
-class NavigationWrapper extends StatelessWidget {
+class NavigationWrapper extends StatefulWidget {
+  @override
+  State<NavigationWrapper> createState() => _NavigationWrapperState();
+}
+
+class _NavigationWrapperState extends State<NavigationWrapper> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.locationBloc.add(LocationCheckEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NavigationBloc, NavigationState>(
@@ -33,9 +45,7 @@ class NavigationWrapper extends StatelessWidget {
 
   Widget _buildBottomNavigationBar(BuildContext context, int currentIndex) {
     return BottomNavigationBar(
-      onTap: (index) {
-        context.read<NavigationBloc>().add(ChangePageNavigationEvent(index: index));
-      },
+      onTap: (index) => context.read<NavigationBloc>().add(NavigationChangeIndexEvent(index: index)),
       currentIndex: currentIndex,
       items: const [
         BottomNavigationBarItem(

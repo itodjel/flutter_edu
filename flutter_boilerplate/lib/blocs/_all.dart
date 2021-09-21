@@ -1,4 +1,5 @@
 export 'app/_all.dart';
+export 'auth/_all.dart';
 export 'configuration/_all.dart';
 export 'connectivity/_all.dart';
 export 'error_handler/_all.dart';
@@ -9,3 +10,4 @@ export 'location/_all.dart';
 export 'navigation/_all.dart';
 export 'quantity/_all.dart';
 export 'theme/_all.dart';
+export 'reset_password/_all.dart';
