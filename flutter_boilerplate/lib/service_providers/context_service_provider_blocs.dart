@@ -37,9 +37,15 @@ class ContextServiceProviderBlocs extends StatelessWidget {
             locationRepository: context.serviceProvider.locationRepository,
           ),
         ),
+        BlocProvider<LoginBloc>(
+          create: (BuildContext context) => LoginBloc(),
+        ),
         BlocProvider<NavigationBloc>(
           lazy: false,
           create: (BuildContext context) => NavigationBloc(),
+        ),
+        BlocProvider<RegisterBloc>(
+          create: (BuildContext context) => RegisterBloc(),
         ),
         BlocProvider<ThemeBloc>(
           lazy: false,
@@ -57,6 +63,9 @@ class ContextServiceProviderBlocs extends StatelessWidget {
           create: (BuildContext context) => GalleryBloc(
             galleryRepository: context.serviceProvider.galleryRepository,
           ),
+        ),
+        BlocProvider<ResetPasswordBloc>(
+          create: (BuildContext context) => ResetPasswordBloc(),
         ),
         // *
         // * With dependencies
