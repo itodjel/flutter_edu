@@ -1,12 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 class AppThemeData {
   final ThemeData theme;
   final Color snackBarColor;
+  final Color neutral1;
+  final Color neutral2;
+  final Color neutral3;
+  final Color neutral4;
+  final Color neutral5;
+  final Color grey1;
+  final Color grey2;
+  final Color grey3;
+  final EdgeInsetsGeometry pageContentPadding;
+  final Color success;
+  final Color danger;
+  final Color warning;
+  final Color borderColor;
 
   const AppThemeData({
     required this.theme,
     required this.snackBarColor,
+    required this.neutral1,
+    required this.neutral2,
+    required this.neutral3,
+    required this.neutral4,
+    required this.neutral5,
+    required this.grey1,
+    required this.grey2,
+    required this.grey3,
+    required this.pageContentPadding,
+    required this.success,
+    required this.danger,
+    required this.warning,
+    required this.borderColor,
   });
 }
 
@@ -26,17 +53,101 @@ class AppTheme extends StatelessWidget {
   static AppThemeData get light {
     return AppThemeData(
       snackBarColor: const Color(0xFF323232),
+      neutral1: const Color(0x33000000),
+      neutral2: const Color(0x66000000),
+      neutral3: const Color(0x99000000),
+      neutral4: const Color(0xBB000000),
+      neutral5: const Color(0xFF000000),
+      grey1: const Color(0xFFEEEEEE),
+      grey2: const Color(0xFFCCCCCC),
+      grey3: const Color(0xFFA6A6A6),
+      pageContentPadding: const EdgeInsets.symmetric(horizontal: 20),
+      success: const Color(0xFF00ae40),
+      danger: Colors.red,
+      warning: Colors.orange,
+      borderColor: const Color(0xFFCCCCCC),
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: const MaterialColor(
+          0xFFFFFFFF,
+          {
+            50: Color(0xFFFFFFFF),
+            100: Color(0xFFFFFFFF),
+            200: Color(0xFFFFFFFF),
+            300: Color(0xFFFFFFFF),
+            400: Color(0xFFFFFFFF),
+            500: Color(0xFFFFFFFF),
+            600: Color(0xFFFFFFFF),
+            700: Color(0xFFFFFFFF),
+            800: Color(0xFFFFFFFF),
+            900: Color(0xFFFFFFFF),
+          },
+        ),
         brightness: Brightness.light,
-        primaryColor: const Color(0xffff9800),
+        primaryColor: const Color(0xFFE90C00),
         primaryColorBrightness: Brightness.light,
-        primaryColorLight: const Color(0xffffe0b2),
-        primaryColorDark: const Color(0xfff57c00),
-        //accentColor: const Color(0xffff9800),
-        //accentColorBrightness: Brightness.light,
+        primaryColorLight: Colors.white,
+        primaryColorDark: Colors.white,
+        accentColor: const Color(0xFF0b569c),
+        accentColorBrightness: Brightness.light,
         canvasColor: const Color(0xfffafafa),
-        scaffoldBackgroundColor: const Color(0xfffafafa),
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Color(0xFF1D1D1D)),
+          actionsIconTheme: IconThemeData(color: Color(0xFF1D1D1D), size: 16),
+          elevation: 0,
+          textTheme: TextTheme(
+            headline1: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            headline2: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            headline3: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            headline4: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            headline5: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            headline6: TextStyle(color: Color(0xFFE01A1A), fontFamily: AppFonts.mavenProRegular, fontWeight: FontWeight.w600),
+            subtitle1: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            subtitle2: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            bodyText1: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            bodyText2: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            caption: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            button: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+            overline: TextStyle(
+              color: Colors.black87,
+              fontFamily: AppFonts.mavenProRegular,
+            ),
+          ),
+        ),
         bottomAppBarColor: const Color(0xffffffff),
         cardColor: const Color(0xffffffff),
         dividerColor: const Color(0x1f000000),
@@ -45,7 +156,7 @@ class AppTheme extends StatelessWidget {
         selectedRowColor: const Color(0xfff5f5f5),
         unselectedWidgetColor: const Color(0x8a000000),
         disabledColor: const Color(0x61000000),
-        // buttonColor: const Color(0xffe0e0e0),
+        buttonColor: const Color(0xffe0e0e0),
         toggleableActiveColor: const Color(0xfffb8c00),
         secondaryHeaderColor: const Color(0xfffff3e0),
         textSelectionTheme: const TextSelectionThemeData(
@@ -58,6 +169,25 @@ class AppTheme extends StatelessWidget {
         indicatorColor: const Color(0xffff9800),
         hintColor: const Color(0x8a000000),
         errorColor: const Color(0xffd32f2f),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white,
+          showUnselectedLabels: true,
+          selectedItemColor: Color(0xFFe01a1a),
+          selectedIconTheme: IconThemeData(size: 22, color: Color(0xFFe01a1a)),
+          selectedLabelStyle: TextStyle(
+            fontSize: 10,
+            color: Color(0xFFe01a1a),
+            fontFamily: AppFonts.mavenProMedium,
+          ),
+          unselectedItemColor: Colors.black38,
+          unselectedIconTheme: IconThemeData(size: 22, color: Color(0xFFCCCCCC)),
+          unselectedLabelStyle: TextStyle(
+            fontSize: 10,
+            color: Colors.black38,
+            fontFamily: AppFonts.mavenProMedium,
+          ),
+        ),
         buttonTheme: const ButtonThemeData(
           textTheme: ButtonTextTheme.normal,
           minWidth: 88,
@@ -94,84 +224,108 @@ class AppTheme extends StatelessWidget {
             brightness: Brightness.light,
           ),
         ),
+        radioTheme: RadioThemeData(
+          fillColor: MaterialStateProperty.all(const Color(0xFFe01a1a)),
+        ),
+        checkboxTheme: CheckboxThemeData(
+          checkColor: MaterialStateProperty.all(Colors.white),
+          fillColor: MaterialStateProperty.all(const Color(0xFFe01a1a)),
+          side: const BorderSide(color: Color(0x33000000), width: 2),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+          ),
+        ),
         textTheme: const TextTheme(
           headline1: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline2: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline3: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline4: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline5: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline6: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           subtitle1: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           bodyText1: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           bodyText2: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           caption: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           button: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           subtitle2: TextStyle(
             color: Color(0xff000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           overline: TextStyle(
             color: Color(0xff000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
         ),
         primaryTextTheme: const TextTheme(
@@ -180,187 +334,216 @@ class AppTheme extends StatelessWidget {
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline2: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline3: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline4: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline5: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           headline6: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           subtitle1: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           bodyText1: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           bodyText2: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           caption: TextStyle(
             color: Color(0x8a000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           button: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           subtitle2: TextStyle(
             color: Color(0xff000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           overline: TextStyle(
             color: Color(0xff000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
         ),
-        // accentTextTheme: const TextTheme(
-        //   headline1: TextStyle(
-        //     color: Color(0x8a000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   headline2: TextStyle(
-        //     color: Color(0x8a000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   headline3: TextStyle(
-        //     color: Color(0x8a000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   headline4: TextStyle(
-        //     color: Color(0x8a000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   headline5: TextStyle(
-        //     color: Color(0xdd000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   headline6: TextStyle(
-        //     color: Color(0xdd000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   subtitle1: TextStyle(
-        //     color: Color(0xdd000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   bodyText1: TextStyle(
-        //     color: Color(0xdd000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   bodyText2: TextStyle(
-        //     color: Color(0xdd000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   caption: TextStyle(
-        //     color: Color(0x8a000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   button: TextStyle(
-        //     color: Color(0xdd000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   subtitle2: TextStyle(
-        //     color: Color(0xff000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        //   overline: TextStyle(
-        //     color: Color(0xff000000),
-        //     fontSize: null,
-        //     fontWeight: FontWeight.w400,
-        //     fontStyle: FontStyle.normal,
-        //   ),
-        // ),
+        accentTextTheme: const TextTheme(
+          headline1: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          headline2: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          headline3: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          headline4: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          headline5: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          headline6: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          subtitle1: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          bodyText1: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          bodyText2: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          caption: TextStyle(
+            color: Color(0x8a000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          button: TextStyle(
+            color: Color(0xdd000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          subtitle2: TextStyle(
+            color: Color(0xff000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+          overline: TextStyle(
+            color: Color(0xff000000),
+            fontSize: null,
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
+          ),
+        ),
         inputDecorationTheme: const InputDecorationTheme(
           labelStyle: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           helperStyle: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           hintStyle: TextStyle(
-            color: Color(0xdd000000),
+            color: Color(0xFFCCCCCC),
             fontSize: null,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w600,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           errorStyle: TextStyle(
-            color: Color(0xdd000000),
+            color: Colors.red,
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           errorMaxLines: null,
-          floatingLabelBehavior: FloatingLabelBehavior.auto,
           isDense: false,
           contentPadding: EdgeInsets.only(top: 12, bottom: 12, left: 0, right: 0),
           isCollapsed: false,
@@ -369,24 +552,28 @@ class AppTheme extends StatelessWidget {
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           suffixStyle: TextStyle(
-            color: Color(0xdd000000),
+            color: Color(0xFFCCCCCC),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           counterStyle: TextStyle(
             color: Color(0xdd000000),
             fontSize: null,
             fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
+            fontFamily: AppFonts.mavenProRegular,
           ),
           filled: false,
           fillColor: Color(0x00000000),
+          floatingLabelBehavior: FloatingLabelBehavior.auto,
           errorBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xff000000),
+              color: Colors.red,
               width: 1,
               style: BorderStyle.solid,
             ),
@@ -418,7 +605,7 @@ class AppTheme extends StatelessWidget {
           ),
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xff000000),
+              color: Color(0xFFCCCCCC),
               width: 1,
               style: BorderStyle.solid,
             ),
@@ -426,7 +613,7 @@ class AppTheme extends StatelessWidget {
           ),
           border: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: Color(0xff000000),
+              color: Color(0xFFCCCCCC),
               width: 1,
               style: BorderStyle.solid,
             ),
@@ -443,11 +630,11 @@ class AppTheme extends StatelessWidget {
           opacity: 1,
           size: 24,
         ),
-        // accentIconTheme: const IconThemeData(
-        //   color: Color(0xff000000),
-        //   opacity: 1,
-        //   size: 24,
-        // ),
+        accentIconTheme: const IconThemeData(
+          color: Color(0xff000000),
+          opacity: 1,
+          size: 24,
+        ),
         sliderTheme: const SliderThemeData(
           activeTrackColor: null,
           inactiveTrackColor: null,
@@ -522,20 +709,20 @@ class AppTheme extends StatelessWidget {
   }
 
   final Widget? child;
-  final WidgetBuilder builder;
+  final WidgetBuilder? builder;
   final AppThemeData appTheme;
 
   const AppTheme({
-    required this.builder,
-    required this.appTheme,
     this.child,
-  });
+    this.builder,
+    required this.appTheme,
+  }) : assert(child != null || builder != null);
 
   @override
   Widget build(BuildContext context) {
     return _InheritedAppTheme(
       appThemeData: appTheme,
-      child: child ?? builder(context),
+      child: child ?? builder!(context),
     );
   }
 

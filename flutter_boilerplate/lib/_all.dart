@@ -27,5 +27,6 @@ export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:fluttertoast/fluttertoast.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:storage_repository/storage_repository.dart';
+export 'package:google_maps_flutter/google_maps_flutter.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
