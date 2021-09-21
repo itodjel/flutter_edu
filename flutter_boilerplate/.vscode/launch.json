@@ -5,7 +5,7 @@
             "name": "Development",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main-development.dart",
+            "program": "lib/main_development.dart",
             "args": [
                 "--flavor",
                 "development"
@@ -15,17 +15,27 @@
             "name": "Staging",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main-staging.dart",
+            "program": "lib/main_staging.dart",
             "args": [
                 "--flavor",
                 "staging"
             ]
         },
         {
+            "name": "Evaluation",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_evaluation.dart",
+            "args": [
+                "--flavor",
+                "evaluation"
+            ]
+        },
+        {
             "name": "Production",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main-production.dart",
+            "program": "lib/main_production.dart",
             "args": [
                 "--flavor",
                 "production"
