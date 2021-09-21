@@ -8,8 +8,8 @@ abstract class ILocationRepository {
   Future<bool> isLocationAllowed();
   Future<bool> requestPermission();
   Future<LocationModel?> getCurrentLocation();
-  Future<AddressModel?> getCurrentAddress();
-  Future<AddressModel?> getAddress({required double latitude, required double longitude});
+  Future<PlaceDetailsModel?> getPlaceDetails({required double latitude, required double longitude});
+  Future<PlaceDetailsModel?> getCurrentPlaceDetails();
   Future init();
 }
 
@@ -55,7 +55,7 @@ class LocationRepository implements ILocationRepository {
   }
 
   @override
-  Future<AddressModel?> getAddress({required double latitude, required double longitude}) async {
+  Future<PlaceDetailsModel?> getPlaceDetails({required double latitude, required double longitude}) async {
     try {
       final googleMapsPlaces = google_maps_webservice.GoogleMapsPlaces(apiKey: appSettings.googlePlacesApiKey);
       final response = await googleMapsPlaces.searchNearbyWithRadius(google_maps_webservice.Location(lat: latitude, lng: longitude), 500);
@@ -63,14 +63,12 @@ class LocationRepository implements ILocationRepository {
       final placeSearchResult = response.results.firstOrDefault();
 
       if (placeSearchResult == null) {
-        return AddressModel(geoLat: latitude, geoLong: longitude);
+        return PlaceDetailsModel(latitude: latitude, longitude: longitude);
       }
 
       final detail = await googleMapsPlaces.getDetailsByPlaceId(placeSearchResult.placeId);
 
-      final address = AddressModel.fromGooglePlacesSuggestPlaceModel(GooglePlacesSuggestPlaceModel.fromPlaceDetails(detail.result));
-
-      return address;
+      return PlaceDetailsModel.fromPlaceDetails(detail.result);
     } catch (e) {
       print(e);
       return null;
@@ -78,12 +76,12 @@ class LocationRepository implements ILocationRepository {
   }
 
   @override
-  Future<AddressModel?> getCurrentAddress() async {
+  Future<PlaceDetailsModel?> getCurrentPlaceDetails() async {
     try {
       final location = await getCurrentLocation();
 
       if (location != null) {
-        return getAddress(latitude: location.latitude, longitude: location.longitude);
+        return getPlaceDetails(latitude: location.latitude, longitude: location.longitude);
       }
     } catch (e) {
       print(e);

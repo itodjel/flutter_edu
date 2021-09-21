@@ -3,21 +3,21 @@ import 'dart:convert';
 import 'package:flutter_boilerplate/_all.dart';
 
 class LocationModel {
-  final double latitude;
-  final double longitude;
+  final double? latitude;
+  final double? longitude;
 
   LocationModel({
-    required this.latitude,
-    required this.longitude,
+    this.latitude,
+    this.longitude,
   });
 
   LocationModel copyWith({
-    double? latitude,
-    double? longitude,
+    Optional<double>? latitude,
+    Optional<double>? longitude,
   }) {
     return LocationModel(
-      latitude: latitude ?? this.latitude,
-      longitude: longitude ?? this.longitude,
+      latitude: latitude == null ? this.latitude : latitude.value,
+      longitude: longitude == null ? this.longitude : longitude.value,
     );
   }
 
