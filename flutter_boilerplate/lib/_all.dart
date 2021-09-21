@@ -4,7 +4,7 @@ export 'common/_all.dart';
 export 'config/_all.dart';
 export 'constants/all.dart';
 export 'domain/_all.dart';
-export 'presentation/all.dart';
+export 'presentation/_all.dart';
 export 'service_providers/all.dart';
 export 'main.dart';
 
