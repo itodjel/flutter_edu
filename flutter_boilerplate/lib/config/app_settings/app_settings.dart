@@ -20,8 +20,8 @@ class AppSettings {
   final ExceptionReportingSettings exceptionReportingSettings;
 
   const AppSettings({
-    this.name = 'Tailgreeter',
-    this.description = 'Tailgreeter project',
+    this.name = 'Flutter Boilerplate',
+    this.description = 'Flutter Boilerplate project',
     this.version = '1.0',
     this.versionDisplay = '1.0.0',
     this.baseApiUrl = '',
@@ -33,11 +33,11 @@ class AppSettings {
     this.skipIntro = false,
     this.skipAllowLocation = false,
     this.skipLogin = false,
-    this.googlePlacesApiKey = 'AIzaSyBfiuTR4KKWV4SEHdWWFiepQSj4y1_OHfg',
+    this.googlePlacesApiKey = '<YOUR_GOOGLE_PLACES_API_KEY_HERE>',
     this.defaultLocation = const LocationModel(latitude: 37.2755783, longitude: -104.6571311),
     this.usingExceptionReporting = false,
     this.exceptionReportingSettings = const ExceptionReportingSettings(
-      slackWebHookUrl: 'https://hooks.slack.com/services/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',
+      slackWebHookUrl: 'https://hooks.slack.com/services/<YOUR_TOKEN_HERE>',
       slackChannel: '#exception_reporting_flutter_boilerplate',
       enableDeviceParameters: true,
       enableApplicationParameters: true,
