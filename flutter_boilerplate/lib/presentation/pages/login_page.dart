@@ -190,7 +190,7 @@ class _ForgotPasswordWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.navigator.pushNamed(ResetPassword.route),
+      onTap: () => context.navigator.pushNamed(ResetPasswordPage.route),
       child: Text(
         '${context.translations.forgotPassword}?',
         style: TextStyle(

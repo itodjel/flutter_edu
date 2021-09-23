@@ -12,7 +12,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required LoginBloc loginBloc,
     required RegisterBloc registerBloc,
   }) : super(AuthState(
-          status: AuthStateStatus.checkingAuthentication,
+          status: AuthStateStatus.unAuthenticated,
         )) {
     _restApiClientSubscription = restApiClient.exceptions.stream.listen((exception) {
       if (exception is UnauthorizedException) {
@@ -44,7 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield state.copyWith(status: AuthStateStatus.checkingAuthentication);
 
     //TODO: Change this to use real API
-    final isAuthenticated = true; //await authenticationRepository.isAuthenticated();
+    final isAuthenticated = false; //await authenticationRepository.isAuthenticated();
 
     yield state.copyWith(status: AuthStateStatus.checkedAuthentication);
 
