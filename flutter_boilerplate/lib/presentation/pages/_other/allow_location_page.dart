@@ -1,6 +1,8 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class AllowLocationPage extends StatelessWidget {
+  static const route = '/AllowLocationPage';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +46,7 @@ class AllowLocationPage extends StatelessWidget {
                         text: context.localizer.translations.allowWhileUsingTheApp,
                         onTap: () {
                           context.read<LocationBloc>().add(LocationInitEvent());
-                          context.pop(true);
+                          context.navigator.pop(true);
                         },
                       ),
                       const Spacing.verticalL(1),
@@ -53,7 +55,7 @@ class AllowLocationPage extends StatelessWidget {
                         textColor: context.theme.primaryColor,
                         text: context.localizer.translations.maybeLater,
                         borderColor: context.theme.primaryColor,
-                        onTap: () => context.pop(false),
+                        onTap: () => context.navigator.pop(false),
                       ),
                       //Spacing.verticalL(),
                     ],

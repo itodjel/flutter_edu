@@ -8,7 +8,7 @@ Future<bool> showRequestRationale(Permission permission) async {
   final context = globalNavigatorKey.currentState?.context;
   if (context != null) {
     if (permission.value == Permission.location.value) {
-      return await context.pushPage(AllowLocationPage());
+      return await context.navigator.pushNamed(AllowLocationPage.route) as bool;
     } else {
       return await showDefaultRequestRationale(permission);
     }
@@ -42,7 +42,7 @@ Future<bool> showDefaultRequestRationale(Permission permission) async {
           ),
           actions: [
             TextButton(
-              onPressed: () => context.pop(false),
+              onPressed: () => context.navigator.pop(false),
               child: Text(
                 context.translations.cancel.toUpperCase(),
                 style: theme.textTheme.button?.copyWith(color: Colors.green),
@@ -51,7 +51,7 @@ Future<bool> showDefaultRequestRationale(Permission permission) async {
             TextButton(
               onPressed: () {
                 openAppSettings();
-                context.pop(true);
+                context.navigator.pop(true);
               },
               child: Text(
                 context.translations.ok,

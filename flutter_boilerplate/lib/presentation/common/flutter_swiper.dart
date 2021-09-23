@@ -108,7 +108,7 @@ class _FlutterSwiperState extends State<FlutterSwiper> {
                 top: 0,
                 right: 0,
                 child: Button(
-                  onTap: () => context.pop(),
+                  onTap: () => context.navigator.pop(),
                   margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                   child: Icon(AppIcons.close, color: context.appTheme.neutral3),
                 ),

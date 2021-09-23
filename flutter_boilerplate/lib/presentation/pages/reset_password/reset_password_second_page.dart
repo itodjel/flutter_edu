@@ -1,6 +1,8 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class ResetPasswordSecondPage extends StatefulWidget {
+  static const route = '/ResetPasswordSecondPage';
+
   @override
   _ResetPasswordSecondPageState createState() => _ResetPasswordSecondPageState();
 }
@@ -12,22 +14,6 @@ class _ResetPasswordSecondPageState extends State<ResetPasswordSecondPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        actions: [
-          IconButton(
-            onPressed: () => context.popTimes(2),
-            icon: Container(
-              padding: const EdgeInsets.all(3),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Colors.grey,
-              ),
-              child: const Icon(
-                Icons.close,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
       ),
       body: BlocConsumer<ResetPasswordBloc, ResetPasswordState>(
         listener: (context, resetPasswordState) {
@@ -36,7 +22,7 @@ class _ResetPasswordSecondPageState extends State<ResetPasswordSecondPage> {
           }
           if (resetPasswordState.status == ResetPasswordStateStatus.submittingSuccess) {
             showInfoMessage(context.localizer.translations.profileUpdatedSuccessfully);
-            context.popTimes(2);
+            context.navigator.resetAndPushNamed(LoginPage.route);
           } else if (resetPasswordState.status == ResetPasswordStateStatus.validating) {
             if ((formKey.currentState?.validate() ?? false) && context.resetPasswordModelValidator.validate(resetPasswordState.model)) {
               context.read<ResetPasswordBloc>().add(ResetPasswordSubmitEvent());
@@ -292,7 +278,7 @@ class _CancelButton extends StatelessWidget {
       textColor: context.theme.primaryColor,
       text: context.localizer.translations.cancel,
       borderColor: context.theme.primaryColor,
-      onTap: () => context.pop(),
+      onTap: () => context.navigator.pop(),
     );
   }
 }

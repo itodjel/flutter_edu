@@ -1,7 +1,7 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class LoginPage extends StatefulWidget {
-  static const route = 'LoginPage';
+  static const route = '/LoginPage';
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
         actions: [
           IconButton(
             onPressed: () {
-              context.pop();
+              context.navigator.pop();
             },
             icon: Container(
               padding: const EdgeInsets.all(3),
@@ -190,7 +190,7 @@ class _ForgotPasswordWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.pushPage(ResetPassword()),
+      onTap: () => context.navigator.pushNamed(ResetPassword.route),
       child: Text(
         '${context.translations.forgotPassword}?',
         style: TextStyle(
@@ -245,10 +245,12 @@ class _CreateAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: InkWell(
-        onTap: () => context.pushPage(
-          RegisterPage(
+        onTap: () => context.navigator.pushNamed(
+          RegisterPage.route,
+          arguments: RegisterPageModel(
             onSuccess: () {
-              context.popTimes(2);
+              context.navigator.resetAndPushNamed(LoginPage.route);
+
               showInfoDialog(message: context.translations.successfullyCreatedAnAccount);
             },
           ),

@@ -1,9 +1,12 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class RegisterPage extends StatefulWidget {
-  final void Function()? onSuccess;
+  static const route = '/RegisterPage';
 
-  RegisterPage({this.onSuccess});
+  final RegisterPageModel? model;
+
+  RegisterPage({this.model});
+
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -27,7 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
         actions: [
           IconButton(
             onPressed: () {
-              context.pop();
+              context.navigator.pop();
             },
             icon: Container(
               padding: const EdgeInsets.all(3),
@@ -46,8 +49,8 @@ class _RegisterPageState extends State<RegisterPage> {
             formKey.currentState?.validate();
           }
           if (registerState.status == RegisterStateStatus.submittingSuccess) {
-            if (widget.onSuccess != null) {
-              widget.onSuccess!();
+            if (widget.model?.onSuccess != null) {
+              widget.model!.onSuccess!();
             }
           } else if (registerState.status == RegisterStateStatus.validating) {
             if ((formKey.currentState?.validate() ?? false) && context.registerModelValidator.validate(registerState.model)) {
@@ -328,7 +331,7 @@ class _LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: InkWell(
-        onTap: () => context.pop(),
+        onTap: () => context.navigator.pop(),
         child: Text(
           context.localizer.translations.logIn,
           style: TextStyle(

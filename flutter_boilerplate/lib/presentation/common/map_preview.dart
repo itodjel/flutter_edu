@@ -1,32 +1,13 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class MapPreview extends StatefulWidget {
-  final double? initialLatitude;
-  final double? initialLongitude;
-  final bool showFullScreenIcon;
-  final void Function()? onTapFullScreen;
-  final bool showCloseIcon;
-  final void Function()? onTapClose;
-  final bool zoomControlsEnabled;
-  final void Function(LatLng location)? onTap;
-  final bool showApplyButton;
-  final List<LatLng>? coordinates;
-  final bool useInitialCameraPosition;
+  static const route = '/MapPreview';
+
+  final MapPreviewModel model;
 
   MapPreview({
-    Key? key,
-    this.initialLatitude,
-    this.initialLongitude,
-    this.showFullScreenIcon = true,
-    this.onTapFullScreen,
-    this.showCloseIcon = false,
-    this.onTapClose,
-    this.zoomControlsEnabled = true,
-    this.onTap,
-    this.showApplyButton = false,
-    this.coordinates,
-    this.useInitialCameraPosition = false,
-  }) : super(key: key);
+    required this.model,
+  }) : super(key: model.key);
 
   @override
   _MapPreviewState createState() => _MapPreviewState();
@@ -38,8 +19,8 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
   final Completer<GoogleMapController> _controllerCompleter = Completer();
 
   LatLng get initialCameraPosition {
-    if (widget.initialLatitude != null && widget.initialLongitude != null) {
-      return LatLng(widget.initialLatitude!, widget.initialLongitude!);
+    if (widget.model.initialLatitude != null && widget.model.initialLongitude != null) {
+      return LatLng(widget.model.initialLatitude!, widget.model.initialLongitude!);
     }
 
     if (context.locationBloc.state.location?.latitude != null && context.locationBloc.state.location?.longitude != null) {
@@ -92,24 +73,24 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
         child: Stack(
           children: [
             GoogleMap(
-              key: widget.key,
-              onTap: widget.onTap,
+              key: widget.model.key,
+              onTap: widget.model.onTap,
               compassEnabled: false,
               mapToolbarEnabled: false,
               myLocationEnabled: false,
-              zoomControlsEnabled: widget.zoomControlsEnabled,
+              zoomControlsEnabled: widget.model.zoomControlsEnabled,
               mapType: MapType.normal,
               initialCameraPosition: CameraPosition(
                 target: initialCameraPosition,
                 zoom: 6.0,
               ),
               onMapCreated: _onMapCreated,
-              markers: _getMarkers(widget.coordinates),
+              markers: _getMarkers(widget.model.coordinates),
               //TODO: Uncomment if you want that the map is scrollable even when in a ListView
               //gestureRecognizers: {Factory<EagerGestureRecognizer>(() => EagerGestureRecognizer())},
             ),
             () {
-              if (widget.showFullScreenIcon) {
+              if (widget.model.showFullScreenIcon) {
                 return Positioned(
                   top: 0,
                   right: 0,
@@ -119,17 +100,15 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
                       elevation: 1,
                       color: Colors.white,
                       child: Splashable(
-                        onTap: widget.onTapFullScreen ??
+                        onTap: widget.model.onTapFullScreen ??
                             () {
-                              context.pushPage(MapPreview(
-                                initialLatitude: widget.initialLatitude,
-                                initialLongitude: widget.initialLongitude,
-                                showFullScreenIcon: false,
-                                showCloseIcon: true,
-                                onTapClose: widget.onTapClose,
-                                onTap: widget.onTap,
-                                zoomControlsEnabled: widget.zoomControlsEnabled,
-                              ));
+                              context.navigator.pushNamed(
+                                MapPreview.route,
+                                arguments: widget.model.copyWith(
+                                  showFullScreenIcon: false,
+                                  showCloseIcon: true,
+                                ),
+                              );
                             },
                         child: const Padding(
                           padding: EdgeInsets.all(6.5),
@@ -140,7 +119,7 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
                   ),
                 );
               }
-              if (widget.showApplyButton) {
+              if (widget.model.showApplyButton) {
                 return Positioned(
                   bottom: 30,
                   child: Container(
@@ -152,7 +131,7 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
                         Padding(
                           padding: const EdgeInsets.only(right: 30),
                           child: Button(
-                            onTap: () => context.pop(),
+                            onTap: () => context.navigator.pop(),
                             rounded: true,
                             color: Colors.white,
                             child: Row(
@@ -177,7 +156,7 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
                 );
               }
 
-              if (widget.showCloseIcon) {
+              if (widget.model.showCloseIcon) {
                 return Positioned(
                   top: 0,
                   right: 0,
@@ -187,7 +166,7 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
                       elevation: 1,
                       color: Colors.white,
                       child: Splashable(
-                        onTap: widget.onTapClose ?? () => context.pop(),
+                        onTap: widget.model.onTapClose ?? () => context.navigator.pop(),
                         child: const Padding(
                           padding: EdgeInsets.all(6.5),
                           child: Icon(Icons.close),
@@ -216,7 +195,7 @@ class _MapPreviewState extends State<MapPreview> with WidgetsBindingObserver {
 
   Set<Marker> _getMarkers(List<LatLng>? coordinates) {
     final markers = <Marker>{};
-    if (widget.useInitialCameraPosition) {
+    if (widget.model.useInitialCameraPosition) {
       markers.add(
         _getMarker(
           initialCameraPosition.latitude,

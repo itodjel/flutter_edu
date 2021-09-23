@@ -57,7 +57,7 @@ class InfoDialog extends StatelessWidget {
                     if (onClose != null) {
                       onClose!();
                     }
-                    context.pop();
+                    context.navigator.pop();
                   },
                   color: const Color(0xFF1D1D1D),
                   child: Text(buttonText ?? 'Ok'.toUpperCase(), style: const TextStyle(color: Colors.white, fontFamily: AppFonts.mavenProRegular)),

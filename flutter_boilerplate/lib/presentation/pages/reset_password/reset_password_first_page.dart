@@ -1,11 +1,13 @@
 import 'package:flutter_boilerplate/_all.dart';
 
-class ResetPassword extends StatefulWidget {
+class ResetPasswordPage extends StatefulWidget {
+  static const route = '/ResetPasswordPage';
+
   @override
-  _ResetPasswordState createState() => _ResetPasswordState();
+  _ResetPasswordPageState createState() => _ResetPasswordPageState();
 }
 
-class _ResetPasswordState extends State<ResetPassword> {
+class _ResetPasswordPageState extends State<ResetPasswordPage> {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         toolbarHeight: 50,
         actions: [
           IconButton(
-            onPressed: () => context.pop(),
+            onPressed: () => context.navigator.pop(),
             icon: Container(
               padding: const EdgeInsets.all(3),
               decoration: BoxDecoration(
@@ -33,7 +35,7 @@ class _ResetPasswordState extends State<ResetPassword> {
       body: BlocConsumer<ResetPasswordBloc, ResetPasswordState>(
         listener: (context, resetPasswordState) {
           if (resetPasswordState.status == ResetPasswordStateStatus.emailSubmittingSuccess) {
-            context.pushPage(ResetPasswordSecondPage());
+            context.navigator.pushNamed(ResetPasswordSecondPage.route);
           } else if (resetPasswordState.status == ResetPasswordStateStatus.validatingEmail) {
             if (formKey.currentState?.validate() ?? false) {
               context.read<ResetPasswordBloc>().add(ResetPasswordSubmitEmailEvent());
@@ -159,7 +161,7 @@ class _CancelButton extends StatelessWidget {
       textColor: context.theme.primaryColor,
       text: context.localizer.translations.cancel,
       borderColor: context.theme.primaryColor,
-      onTap: () => context.pop(),
+      onTap: () => context.navigator.pop(),
     );
   }
 }

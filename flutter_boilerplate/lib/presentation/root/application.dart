@@ -87,6 +87,7 @@ class _ApplicationState extends State<Application> {
                     child: ApplicationNavigationWrapper(),
                   ),
                   onGenerateRoute: _onGenerateRoute,
+                  initialRoute: ApplicationNavigationWrapper.route,
                 ),
               ),
             );
@@ -98,10 +99,22 @@ class _ApplicationState extends State<Application> {
 
   PageRoute _onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case ApplicationNavigationWrapper.route:
+        return MaterialPageRoute(builder: (_) => ApplicationNavigationWrapper());
+      case MapPreview.route:
+        return MaterialPageRoute(builder: (_) => MapPreview(model: settings.arguments as MapPreviewModel));
       case LoginPage.route:
         return MaterialPageRoute(builder: (_) => LoginPage());
+      case RegisterPage.route:
+        return MaterialPageRoute(builder: (_) => RegisterPage(model: settings.arguments as RegisterPageModel));
+      case AllowLocationPage.route:
+        return MaterialPageRoute(builder: (_) => AllowLocationPage());
+      case ResetPasswordPage.route:
+        return MaterialPageRoute(builder: (_) => ResetPasswordPage());
+      case ResetPasswordSecondPage.route:
+        return MaterialPageRoute(builder: (_) => ResetPasswordSecondPage());
     }
 
-    return MaterialPageRoute(builder: (_) => const ErrorPage());
+    return MaterialPageRoute(builder: (_) => ApplicationNavigationWrapper());
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class ApplicationNavigationWrapper extends StatefulWidget {
+  static const route = '/';
+
   @override
   _ApplicationNavigationWrapperState createState() => _ApplicationNavigationWrapperState();
 }
@@ -43,15 +45,15 @@ class _ApplicationNavigationWrapperState extends State<ApplicationNavigationWrap
     final authState = context.authBloc.state;
     final introductionState = context.introductionBloc.state;
 
-    context.pushLoginPage();
     if (authState.status == AuthStateStatus.unAuthenticated && introductionState.status == IntroductionStateStatus.loaded && introductionState.isIntroSeen && !context.appSettings.skipLogin) {
-      context.pushLoginPage();
+      context.navigator.pushNamed(LoginPage.route);
     }
   }
 
   void _maybeShowAllowLocationPage() {
-    //TODO: Uncomment this line of code if there is a requirement for the app to access users location, for now it is not a requirement
+    //TODO: Uncomment these lines of code if there is a requirement for the app to access users location, for now it is not a requirement
     // final locationState = context.locationBloc.state;
+
     // if (locationState.status == LocationStateStatus.notAllowed) {
     //   context.pushPage(AllowLocationPage());
     // }

@@ -14,29 +14,6 @@ extension BuildContextExtensions on BuildContext {
   ScaffoldState get scaffold => Scaffold.of(this);
 
   NavigatorState get navigator => Navigator.of(this);
-  void popTimes([int number = 1]) => navigator.popTimes(number);
-  void pop<T>([T? result]) => navigator.pop();
-  void popUntilLast<T>([T? result]) {
-    while (navigator.canPop()) {
-      navigator.pop();
-    }
-  }
-
-  Future popUntilLastAndPushPage(Widget page) {
-    popUntilLast();
-    return pushPage(page);
-  }
-
-  void popUntilEnd<T>([T? result]) => navigator.popUntilEnd();
-  Future pushPage(Widget page) {
-    unfocus();
-
-    if (appSettings.providesOfflineMode) {
-      return navigator.push(MaterialPageRoute(builder: (_) => page));
-    } else {
-      return navigator.push(MaterialPageRoute(builder: (_) => OnlyNetworkPageWrapper(page: page)));
-    }
-  }
 
   MediaQueryData get mediaQuery => MediaQuery.of(this);
   double get screenWidth => mediaQuery.size.width;
