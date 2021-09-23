@@ -5,6 +5,7 @@ export 'dismiss_focus_overlay.dart';
 export 'dot.dart';
 export 'line.dart';
 export 'error_container.dart';
+export 'error_page.dart';
 export 'expandable.dart';
 export 'flutter_swiper.dart';
 export 'google_places_suggest_text_field.dart';

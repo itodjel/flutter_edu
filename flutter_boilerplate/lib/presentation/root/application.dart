@@ -86,6 +86,7 @@ class _ApplicationState extends State<Application> {
                     },
                     child: ApplicationNavigationWrapper(),
                   ),
+                  onGenerateRoute: _onGenerateRoute,
                 ),
               ),
             );
@@ -93,5 +94,14 @@ class _ApplicationState extends State<Application> {
         );
       },
     );
+  }
+
+  PageRoute _onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case LoginPage.route:
+        return MaterialPageRoute(builder: (_) => LoginPage());
+    }
+
+    return MaterialPageRoute(builder: (_) => const ErrorPage());
   }
 }

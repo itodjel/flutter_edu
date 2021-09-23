@@ -17,12 +17,12 @@ class TranslationModel {
   final String aMessageFromOurCEOAndFounder;
   final String aboutUsMessageFromCEO;
   final String theScenario;
-  final String whatCanTailgreeterDoForHosts;
+  final String whatCanFlutterBoilerplateDoForHosts;
   final String technology;
   final String aboutUsTechnology;
   final String collaboration;
   final String aboutUsCollaboration;
-  final String whatCanTailgreeterDoForGuests;
+  final String whatCanFlutterBoilerplateDoForGuests;
   final String easyAccess;
   final String aboutUsEasyAccess;
   final String tools;
@@ -40,11 +40,11 @@ class TranslationModel {
   final String whatIsTheMinimumNumberOfGuestsAnswer;
   final String howLongDoesItTakeToGetPaid;
   final String howLongDoesItTakeToGetPaidAnswer;
-  final String canIHaveGuestsOtheThanTailgreeterGuests;
-  final String canIHaveGuestsOtheThanTailgreeterGuestsAnswer;
+  final String canIHaveGuestsOtheThanFlutterBoilerplateGuests;
+  final String canIHaveGuestsOtheThanFlutterBoilerplateGuestsAnswer;
   final String guestQuestions;
-  final String howDoesTailgreeterWork;
-  final String howDoesTailgreeterWorkAnswer;
+  final String howDoesFlutterBoilerplateWork;
+  final String howDoesFlutterBoilerplateWorkAnswer;
   final String howWillIFindMyHostOnGameday;
   final String howWillIFindMyHostOnGamedayAnswer;
   final String whatIsCancelationPolicy;
@@ -64,7 +64,7 @@ class TranslationModel {
   final String active;
   final String used;
   final String welcome;
-  final String registerToTailgreeter;
+  final String registerToFlutterBoilerplate;
   final String weUseStripeToSecurelyHandleYourPayments;
   final String setUpStripeAccount;
   final String youWillNeedToSetUpYourStripeAccountSoYouCanReceiveAndHandlePayments;
@@ -78,7 +78,7 @@ class TranslationModel {
   final String everyTicketHasItsUniqueQRCode;
   final String name;
   final String events;
-  final String logInToTailgreeter;
+  final String logInToFlutterBoilerplate;
   final String successfullyCreatedAnAccount;
   final String filterByLocation;
   final String viewEvents;
@@ -145,7 +145,7 @@ class TranslationModel {
   final String home;
   final String hide;
   final String show;
-  final String newToTailgreeter;
+  final String newToFlutterBoilerplate;
   final String createAccount;
   final String messages;
   final String myEvents;
@@ -354,12 +354,12 @@ class TranslationModel {
     required this.aMessageFromOurCEOAndFounder,
     required this.aboutUsMessageFromCEO,
     required this.theScenario,
-    required this.whatCanTailgreeterDoForHosts,
+    required this.whatCanFlutterBoilerplateDoForHosts,
     required this.technology,
     required this.aboutUsTechnology,
     required this.collaboration,
     required this.aboutUsCollaboration,
-    required this.whatCanTailgreeterDoForGuests,
+    required this.whatCanFlutterBoilerplateDoForGuests,
     required this.easyAccess,
     required this.aboutUsEasyAccess,
     required this.tools,
@@ -377,11 +377,11 @@ class TranslationModel {
     required this.whatIsTheMinimumNumberOfGuestsAnswer,
     required this.howLongDoesItTakeToGetPaid,
     required this.howLongDoesItTakeToGetPaidAnswer,
-    required this.canIHaveGuestsOtheThanTailgreeterGuests,
-    required this.canIHaveGuestsOtheThanTailgreeterGuestsAnswer,
+    required this.canIHaveGuestsOtheThanFlutterBoilerplateGuests,
+    required this.canIHaveGuestsOtheThanFlutterBoilerplateGuestsAnswer,
     required this.guestQuestions,
-    required this.howDoesTailgreeterWork,
-    required this.howDoesTailgreeterWorkAnswer,
+    required this.howDoesFlutterBoilerplateWork,
+    required this.howDoesFlutterBoilerplateWorkAnswer,
     required this.howWillIFindMyHostOnGameday,
     required this.howWillIFindMyHostOnGamedayAnswer,
     required this.whatIsCancelationPolicy,
@@ -400,7 +400,7 @@ class TranslationModel {
     required this.active,
     required this.used,
     required this.welcome,
-    required this.registerToTailgreeter,
+    required this.registerToFlutterBoilerplate,
     required this.weUseStripeToSecurelyHandleYourPayments,
     required this.setUpStripeAccount,
     required this.youWillNeedToSetUpYourStripeAccountSoYouCanReceiveAndHandlePayments,
@@ -414,7 +414,7 @@ class TranslationModel {
     required this.everyTicketHasItsUniqueQRCode,
     required this.name,
     required this.events,
-    required this.logInToTailgreeter,
+    required this.logInToFlutterBoilerplate,
     required this.successfullyCreatedAnAccount,
     required this.filterByLocation,
     required this.viewEvents,
@@ -481,7 +481,7 @@ class TranslationModel {
     required this.home,
     required this.hide,
     required this.show,
-    required this.newToTailgreeter,
+    required this.newToFlutterBoilerplate,
     required this.createAccount,
     required this.messages,
     required this.myEvents,

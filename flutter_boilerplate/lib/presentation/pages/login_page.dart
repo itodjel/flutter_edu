@@ -1,6 +1,8 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class LoginPage extends StatefulWidget {
+  static const route = 'LoginPage';
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -69,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                         Spacing.verticalL(),
                         _LoginButton(),
                         Spacing.verticalL(2),
-                        _NewToTailgreeterWidget(),
+                        _NewToFlutterBoilerplateWidget(),
                         Spacing.verticalM(),
                         _CreateAccountWidget(),
                         Spacing.verticalM(),
@@ -109,7 +111,7 @@ class _LoginText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      context.translations.logInToTailgreeter,
+      context.translations.logInToFlutterBoilerplate,
       style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
     );
   }
@@ -220,14 +222,14 @@ class _LoginButton extends StatelessWidget {
   }
 }
 
-class _NewToTailgreeterWidget extends StatelessWidget {
-  const _NewToTailgreeterWidget({Key? key}) : super(key: key);
+class _NewToFlutterBoilerplateWidget extends StatelessWidget {
+  const _NewToFlutterBoilerplateWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        '${context.translations.newToTailgreeter}?',
+        '${context.translations.newToFlutterBoilerplate}?',
         style: const TextStyle(
           fontSize: 14,
         ),

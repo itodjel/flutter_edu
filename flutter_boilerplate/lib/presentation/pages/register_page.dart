@@ -134,7 +134,7 @@ class _RegisterText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      context.translations.registerToTailgreeter,
+      context.translations.registerToFlutterBoilerplate,
       style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
     );
   }

@@ -71,7 +71,7 @@ flavorizr:
   flavors:
     production:
       app:
-        name: "Tailgreeter"
+        name: "FlutterBoilerplate"
       android:
         applicationId: "com.ito.flutter_boilerplate"
       ios:
@@ -79,7 +79,7 @@ flavorizr:
 
     staging:
       app:
-        name: "Tailgreeter Staging"
+        name: "FlutterBoilerplate Staging"
       android:
         applicationId: "com.ito.flutter_boilerplateStaging"
       ios:
@@ -87,7 +87,7 @@ flavorizr:
 
     evaluation:
       app:
-        name: "Tailgreeter Evaluation"
+        name: "FlutterBoilerplate Evaluation"
       android:
         applicationId: "com.ito.flutter_boilerplateEvaluation"
       ios:
@@ -95,7 +95,7 @@ flavorizr:
 
     development:
       app:
-        name: "Tailgreeter Development"
+        name: "FlutterBoilerplate Development"
       android:
         applicationId: "com.ito.flutter_boilerplateDevelopment"
       ios:

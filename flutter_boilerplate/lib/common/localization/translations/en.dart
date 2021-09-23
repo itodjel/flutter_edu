@@ -1,7 +1,7 @@
 import '../models/translation_model.dart';
 
 const TranslationModel translationEnglish = TranslationModel(
-  applicationName: 'Tailgreeter',
+  applicationName: 'FlutterBoilerplate',
   eventDateTime: 'Event date time',
   nameAsc: 'Name asc',
   nameDesc: 'Name desc',
@@ -15,17 +15,17 @@ const TranslationModel translationEnglish = TranslationModel(
   amenities: 'Amenities',
   description: 'Description',
   aboutUs: 'About us',
-  aboutUsScenario: '''The idea of Tailgreeter was born after brothers, co-founders, and fans of the tailgate experience, Nick and Mirko, stumbled on the problem of how hard tailgating could be while trying to plan a road trip to Alabama (Roll Tide).
+  aboutUsScenario: '''The idea of FlutterBoilerplate was born after brothers, co-founders, and fans of the tailgate experience, Nick and Mirko, stumbled on the problem of how hard tailgating could be while trying to plan a road trip to Alabama (Roll Tide).
 
-The idea was simple: create a marketplace that would give fans access to great tailgates everywhere they go! Instead of having to tailgate on their own, fans could join together with a group of people who were already out there. Everyone would get to join in on all of the fun without any of the hassles. From the foo dand drink recipes to the games and traditions, the tailgating experience would guarantee to make memories that lasted a lifetime. Tailgreeter was founded to tell these stories of fascinating communities of tailgaters so that more people could experience the best way to spend a day.
+The idea was simple: create a marketplace that would give fans access to great tailgates everywhere they go! Instead of having to tailgate on their own, fans could join together with a group of people who were already out there. Everyone would get to join in on all of the fun without any of the hassles. From the foo dand drink recipes to the games and traditions, the tailgating experience would guarantee to make memories that lasted a lifetime. FlutterBoilerplate was founded to tell these stories of fascinating communities of tailgaters so that more people could experience the best way to spend a day.
 
 In the parking lot, everyone is welcome. Fans show up in droves to support and take pride in competing for the title of Most Passionate. The pregame festivities set the stage for the day and have earned their place as a necessary piece of a complete gameday experience. The tailgate itself is a way for fans to express their love and passion for a team and city, and has become representative of everything that makes this world great. The camaraderie and community in the parking lots allow everyone to be themselves no matter where they’re from or what they’re passionate about. When it comes down to it, there’s no denying the allure of the gameday experience, and tailgating is the glue that holds it all together.
 
-Tailgreeter also gives the community access to a suite of features that makes hosting easier, including the ability to charge ahead of time, organize accurate guest lists, send out mobile notifications, check guests in when they get there, and more! Tailgreeter can also help add visibility to a tailgate, introduce sponsorship opportunities, and is always looking for ways to support the charities and fundraising efforts of every host. Tailgating together can help make the world a better place one parking lot at a time. Tailgreeter invites you to join what one wise man from Texas described as “the last great American neighborhood.”''',
+FlutterBoilerplate also gives the community access to a suite of features that makes hosting easier, including the ability to charge ahead of time, organize accurate guest lists, send out mobile notifications, check guests in when they get there, and more! FlutterBoilerplate can also help add visibility to a tailgate, introduce sponsorship opportunities, and is always looking for ways to support the charities and fundraising efforts of every host. Tailgating together can help make the world a better place one parking lot at a time. FlutterBoilerplate invites you to join what one wise man from Texas described as “the last great American neighborhood.”''',
   aMessageFromOurCEOAndFounder: 'A message from our CEO and Founder',
   aboutUsMessageFromCEO: '''I’ve been a fan of live events and tailgating for as long as I can remember! Once you’re out in the parking lot, everything going on in the rest of the world seems to disappear. For a few hours, the only thing that matters is the people around you. I loved that feeling, and quickly realized I wasn’t the only one. The problem was how difficult it was to replicate that feeling if I was going to a different stadium. So, to solve that problem, I teamed up with my brother and started reaching out to other tailgate hosts around the country. Every person we talked to had a fascinating story about their tailgates, including starting incredible and unique traditions, and building these amazing communities filled with the most welcoming people we had ever come across.
 
-The goals of Tailgreeter very quickly became obvious:
+The goals of FlutterBoilerplate very quickly became obvious:
 
 
 • Tell the stories of these amazing tailgate hosts to anyone willing to listen
@@ -36,12 +36,12 @@ The goals of Tailgreeter very quickly became obvious:
 
 We have the knowledge and the know—how of the business and tech side of the company, and our hosts have the knowledge and know-how to make tailgating easy so that everyone can experience the best way to spend a day. We look forward to building these relationships and show how important the tailgate is to a complete gameday experience. This past year has shown me that there is no better time than now to get out and enjoy spending time with friends and family, meet new and interesting people, experience incredible local traditions all over the country, and of course, eat, drink, and be merry! Thank you for giving us a chance to be a part of your story.''',
   theScenario: 'The scenario',
-  whatCanTailgreeterDoForHosts: 'What can Tailgreeter do for hosts?',
+  whatCanFlutterBoilerplateDoForHosts: 'What can FlutterBoilerplate do for hosts?',
   technology: 'Technology',
   aboutUsTechnology: 'Easy to use website dashboard, mobile app, QR code ticketing, guest management tools and location services.',
   collaboration: 'Collaboration',
   aboutUsCollaboration: 'Sponsorship opportunities, support for local charities and brand partnerships',
-  whatCanTailgreeterDoForGuests: 'What can Tailgreeter do for guests?',
+  whatCanFlutterBoilerplateDoForGuests: 'What can FlutterBoilerplate do for guests?',
   easyAccess: 'Easy access',
   aboutUsEasyAccess: 'No set-up or clean up, show up whenever you want, leave whenever you want, and travel without the hassle of bringing equipment.',
   tools: 'Tools',
@@ -65,11 +65,11 @@ We have the knowledge and the know—how of the business and tech side of the co
   whatIsTheMinimumNumberOfGuestsAnswer: 'You can have as many or as few guests as you want to, however, our experience has always been the more the merrier.',
   howLongDoesItTakeToGetPaid: 'How long does it take to get paid?',
   howLongDoesItTakeToGetPaidAnswer: 'Stripe is our payment provider. We chose to partner with them because they are the best in the business at providing online payments in a secure and efficient manner. After you have accepted a guest, their payment will be transferred to your stripe account. In order to get a payment to your bank account, Stripe says that it is from 7 to 10 days.',
-  canIHaveGuestsOtheThanTailgreeterGuests: 'Can I have guests other than Tailgreeter guests at a tailgate?',
-  canIHaveGuestsOtheThanTailgreeterGuestsAnswer: 'Do we look like your momma? It’s your tailgate, invite whomever you’d like to.',
+  canIHaveGuestsOtheThanFlutterBoilerplateGuests: 'Can I have guests other than FlutterBoilerplate guests at a tailgate?',
+  canIHaveGuestsOtheThanFlutterBoilerplateGuestsAnswer: 'Do we look like your momma? It’s your tailgate, invite whomever you’d like to.',
   guestQuestions: 'Guest questions',
-  howDoesTailgreeterWork: 'How does Tailgreeter work?',
-  howDoesTailgreeterWorkAnswer: '''
+  howDoesFlutterBoilerplateWork: 'How does FlutterBoilerplate work?',
+  howDoesFlutterBoilerplateWorkAnswer: '''
 What a fantastic Question. Gold star for you!
 
 1.   Search to find a tailgate either by event name or location.
@@ -106,7 +106,7 @@ What a fantastic Question. Gold star for you!
   active: 'Active',
   used: 'Used',
   welcome: 'Welcome',
-  registerToTailgreeter: 'Register to Tailgreeter',
+  registerToFlutterBoilerplate: 'Register to FlutterBoilerplate',
   weUseStripeToSecurelyHandleYourPayments: 'We use STRIPE to securely handle your payments',
   setUpStripeAccount: 'Set up your Stripe Account',
   youWillNeedToSetUpYourStripeAccountSoYouCanReceiveAndHandlePayments: 'You will need to set up your Stripe account, so you can receive and handle payments.',
@@ -120,7 +120,7 @@ What a fantastic Question. Gold star for you!
   everyTicketHasItsUniqueQRCode: 'Every ticket has its unique QR code.',
   name: 'Name',
   events: 'Tailgates',
-  logInToTailgreeter: 'Log in to Tailgreeter',
+  logInToFlutterBoilerplate: 'Log in to FlutterBoilerplate',
   successfullyCreatedAnAccount: 'Successfully created an account',
   filterByLocation: 'Filter by location',
   viewEvents: 'View tailgates',
@@ -170,7 +170,7 @@ What a fantastic Question. Gold star for you!
   pleaseFillInAllRequiredFields: 'Please fill in all required fields',
   allowWhileUsingTheApp: 'Allow while using the app',
   maybeLater: 'Maybe later',
-  allowLocationDescription: 'Tailgreeter needs your location to successfully suggest nearby places of interest.',
+  allowLocationDescription: 'FlutterBoilerplate needs your location to successfully suggest nearby places of interest.',
   networkErrorException: 'There was a network error, please try again later',
   serverErrorException: 'There was a server error, please try again later',
   validationError: 'There was a validation error, please fix and try again',
@@ -187,7 +187,7 @@ What a fantastic Question. Gold star for you!
   home: 'Home',
   hide: 'Hide',
   show: 'Show',
-  newToTailgreeter: 'New to Tailgreeter',
+  newToFlutterBoilerplate: 'New to FlutterBoilerplate',
   createAccount: 'Create Account',
   messages: 'Messages',
   myEvents: 'My tailgates',
@@ -198,9 +198,9 @@ What a fantastic Question. Gold star for you!
   joinTheParty: 'Join the party',
   findATailgate: 'Find a Tailgate',
   hostATailgate: 'Host a Tailgate',
-  onBoardingFirstPageText: 'Use advanced filtering to find the party best suited to your mood. Tailgreeter will take care of where, when and how, so you can just party in peace!',
+  onBoardingFirstPageText: 'Use advanced filtering to find the party best suited to your mood. FlutterBoilerplate will take care of where, when and how, so you can just party in peace!',
   onBoardingSecondPageText: 'Search by tailgate or location, pick your ideal experience, then just show up and enjoy!\n',
-  onBoardingThirdPageText: 'Do you host a tailgate in your city?\nHave people join your tailgate by listing on Tailgreeter.\n',
+  onBoardingThirdPageText: 'Do you host a tailgate in your city?\nHave people join your tailgate by listing on FlutterBoilerplate.\n',
   later: 'Later',
   allow: 'Allow',
   email: 'Email',
@@ -351,7 +351,7 @@ What a fantastic Question. Gold star for you!
   privacyPolicy: 'Privacy policy',
   privacyPolicyLastUpdated: '''PRIVACY POLICY LAST UPDATED: JULY 14, 2021
 
-This Privacy Policy explains the information that Tailgreeter LLC, 
+This Privacy Policy explains the information that FlutterBoilerplate LLC, 
 a Delaware limited liability company (“Company,” “Us,” “We” or “Our”), 
 collects when you use its products and services, how that information
 is used, with whom it may be shared, and your privacy choices
@@ -380,8 +380,8 @@ When you view or stream content such as live or recorded visual or audio content
   referralCode: 'Referral code',
   referralCodeText: 'Please enter a referral code below, if you have one.',
   covidQuestion: 'Are there specific COVID-19 restrictions or rules that must be followed?',
-  covidAnswer: 'Tailgreeter encourages all participants to follow the guidelines set by the CDC and government authorities. This includes wearing masks where social distancing is difficult, and enhanced cleaning practices for safe tailgating.',
-  disclaimerText: 'Tailgreeter is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the NFL, NHL, MLB, the NCAA or any university, or any of their subsidiaries or affiliates.',
+  covidAnswer: 'FlutterBoilerplate encourages all participants to follow the guidelines set by the CDC and government authorities. This includes wearing masks where social distancing is difficult, and enhanced cleaning practices for safe tailgating.',
+  disclaimerText: 'FlutterBoilerplate is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the NFL, NHL, MLB, the NCAA or any university, or any of their subsidiaries or affiliates.',
   termsAndConditions: 'Terms and conditions',
   showAll: 'Show all',
   compareList: 'Compare list',

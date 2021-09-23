@@ -11,13 +11,13 @@ class F {
   static String get title {
     switch (appFlavor) {
       case Flavor.production:
-        return 'Tailgreeter';
+        return 'FlutterBoilerplate';
       case Flavor.staging:
-        return 'Tailgreeter Staging';
+        return 'FlutterBoilerplate Staging';
       case Flavor.evaluation:
-        return 'Tailgreeter Evaluation';
+        return 'FlutterBoilerplate Evaluation';
       case Flavor.development:
-        return 'Tailgreeter Development';
+        return 'FlutterBoilerplate Development';
       default:
         return '';
     }

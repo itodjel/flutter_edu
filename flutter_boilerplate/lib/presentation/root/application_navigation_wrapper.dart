@@ -43,8 +43,9 @@ class _ApplicationNavigationWrapperState extends State<ApplicationNavigationWrap
     final authState = context.authBloc.state;
     final introductionState = context.introductionBloc.state;
 
+    context.pushLoginPage();
     if (authState.status == AuthStateStatus.unAuthenticated && introductionState.status == IntroductionStateStatus.loaded && introductionState.isIntroSeen && !context.appSettings.skipLogin) {
-      context.pushPage(LoginPage());
+      context.pushLoginPage();
     }
   }
 
