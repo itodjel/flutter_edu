@@ -1,7 +1,38 @@
 ### Localization (Multiple languages)
 Localization in multilingual mobile application is implemented in this module by implementing main Localizer inherited widget to enable accessing translation using specific key for a specific culture or language.
-Localization is implemented from four parts:
+##### Localization is implemented from four parts:
 - Translation model - a class that enforces translation for a specific language to provide translations for every key/property contained in the TranslationModel class
 - Language model - data structure that holds the referent data for every language that we provide the translation in out app 
 - Specific language translation - instance of TranslationModel class for a specific language with all of the translations passed thrugh the constructor
 - Localizer - inherited widget wrapper class that serves as the middle component between UI and specific translation, it holds the current translation and allows us to access specific translation via context.localizer.someKeyThatHoldsTheTranslation
+
+##### Configuration
+#
+```
+... 
+MaterialApp(
+    //This value is currently used from LocalizationBloc, 
+    //but this value of the selected language can come from storage, widget's state or anywhere else
+    locale: localizationState.locale,
+    localeResolutionCallback: Localizer.getSupportedLocale,
+    localizationsDelegates: const [
+        Localizer.delegate,
+        Localizer.fallbackCupertinoLocalisationsDelegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+    ],
+...
+```
+
+##### Usage (In your widgets)
+#
+```
+// Gets the translation for password for current culture
+Localizer.of(context).translations.password
+
+// The same thing, only simplified by using extension methods
+context.localizer.translations.password
+
+// Even more simplefied
+context.translations.password 
+```

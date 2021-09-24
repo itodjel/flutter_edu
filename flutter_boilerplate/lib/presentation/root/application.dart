@@ -31,6 +31,8 @@ class _ApplicationState extends State<Application> {
               },
               child: DismissFocusOverlay(
                 child: MaterialApp(
+                  //This value is currently used from LocalizationBloc,
+                  //but you choose how you store this current value of the selected language
                   locale: localizationState.locale,
                   localeResolutionCallback: Localizer.getSupportedLocale,
                   localizationsDelegates: const [

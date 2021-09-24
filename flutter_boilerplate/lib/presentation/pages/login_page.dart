@@ -155,7 +155,9 @@ class __PasswordWidgetState extends State<_PasswordWidget> {
           onChanged: (text) => context.loginBloc.add(LoginUpdateEvent(model: loginState.model.copyWith(password: Optional(text)))),
           obscureText: obscureText,
           decoration: InputDecoration(
-            hintText: context.translations.password,
+            hintText: Localizer.of(context).translations.password,
+            //hintText: context.localizer.translations.password,
+            //hintText: context.translations.password,
             suffixIcon: InkWell(
               onTap: () => setState(() => obscureText = !obscureText),
               child: Padding(
