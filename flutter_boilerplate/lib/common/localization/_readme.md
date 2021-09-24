@@ -36,3 +36,16 @@ context.localizer.translations.password
 // Even more simplefied
 context.translations.password 
 ```
+
+## Changing current language
+The current language is stored in a storage repository and the logic of changing the current language is implemented in [LocalizationBloc](https://github.com/itodjel/flutter_edu/blob/master/flutter_boilerplate/lib/blocs/localization/localization_bloc.dart).
+While the application starts the first event is dispatched ([LocalizationInitEvent](https://github.com/itodjel/flutter_edu/blob/master/flutter_boilerplate/lib/blocs/localization/localization_event.dart)) to initialize the last used language in the application so the user would have the experience of seamles continuing using the app. This fetches the last stored locale from the storage repository and yields the initial state with the new language selected.
+
+Usually in the settings part of the app there is an option to select/change the language. This is usually a dropdown of all listed supported languages from our application. By selecting one option a new event is dispatched ([LocalizationChangeEvent](https://github.com/itodjel/flutter_edu/blob/master/flutter_boilerplate/lib/blocs/localization/localization_event.dart)) and the [LocalizationBloc](https://github.com/itodjel/flutter_edu/blob/master/flutter_boilerplate/lib/blocs/localization/localization_bloc.dart) handles the logic of changing the current language, stores the locale and yields the new state.
+
+Changing the language looks something like this:
+```
+onSelected: (LanguageModel selectedLanguageModel) {
+    context.read<LocalizationBloc>().add(LocalizationChangeEvent(locale: selected.locale));
+},
+```
