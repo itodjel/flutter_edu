@@ -4,11 +4,11 @@
 #
 ### Features:  
 - [Localization (multiple languages)](https://github.com/itodjel/flutter_edu/blob/master/flutter_boilerplate/lib/common/localization)
-- [Exception handling](HERE_GOES_THE_URL)
-- [REST API communication](HERE_GOES_THE_URL)
-- [User authentication and authorization with jwt and refresh token](HERE_GOES_THE_URL)
-- [Evironment specific configuration using flavors and schemes](HERE_GOES_THE_URL)
-- [Dependency injection using provider](HERE_GOES_THE_URL)
-- [Form validators](HERE_GOES_THE_URL)
-- [Repository pattern](HERE_GOES_THE_URL)
+- Exception handling
+- REST API communication
+- User authentication and authorization with jwt and refresh token
+- Evironment specific configuration using flavors and schemes
+- Dependency injection using provider
+- Form validators
+- Repository pattern
 
