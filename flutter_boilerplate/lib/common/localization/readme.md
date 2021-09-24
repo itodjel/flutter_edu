@@ -1,4 +1,4 @@
-# Localization (Multiple languages)
+# Localization (multiple languages)
 Localization in multilingual mobile application is implemented in this module by implementing main Localizer inherited widget to enable accessing translation using specific key for a specific culture or language.
 ## Localization is implemented from four parts:
 - Translation model - a class that enforces translation for a specific language to provide translations for every key/property contained in the TranslationModel class
