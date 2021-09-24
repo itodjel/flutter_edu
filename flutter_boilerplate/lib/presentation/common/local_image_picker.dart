@@ -90,14 +90,14 @@ class LocalImagePicker extends StatelessWidget {
                     onTap: () {
                       context.navigator.pop(LocalImagePickerType.camera);
                     },
-                    title: Text(localizer.translations.cancel),
+                    title: Text(localizer.translations.camera),
                     trailing: const Icon(AppIcons.camera),
                   ),
                   ListTile(
                     onTap: () {
                       context.navigator.pop(LocalImagePickerType.gallery);
                     },
-                    title: Text(localizer.translations.editProfile),
+                    title: Text(localizer.translations.gallery),
                     trailing: const Icon(AppIcons.imageGallery),
                   ),
                 ],
