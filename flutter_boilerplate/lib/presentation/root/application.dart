@@ -31,13 +31,7 @@ class _ApplicationState extends State<Application> {
               },
               child: DismissFocusOverlay(
                 child: MaterialApp(
-                  onGenerateTitle: (context) => context.translations.applicationName,
-                  navigatorKey: globalNavigatorKey,
-                  themeMode: themeState.themeMode,
-                  theme: AppTheme.light.theme,
-                  darkTheme: AppTheme.dark.theme,
                   locale: localizationState.locale,
-                  debugShowCheckedModeBanner: false,
                   localeResolutionCallback: Localizer.getSupportedLocale,
                   localizationsDelegates: const [
                     Localizer.delegate,
@@ -45,6 +39,12 @@ class _ApplicationState extends State<Application> {
                     GlobalWidgetsLocalizations.delegate,
                     GlobalMaterialLocalizations.delegate,
                   ],
+                  onGenerateTitle: (context) => context.translations.applicationName,
+                  navigatorKey: globalNavigatorKey,
+                  themeMode: themeState.themeMode,
+                  theme: AppTheme.light.theme,
+                  darkTheme: AppTheme.dark.theme,
+                  debugShowCheckedModeBanner: false,
                   builder: (context, child) {
                     context.localizer.changeLanguage(localizationState.locale);
 
