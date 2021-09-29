@@ -32,7 +32,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   Stream<SignInState> _submit() async* {
     if (modelValidator.validate(state.model)) {
       yield state.copyWith(status: SignInStateStatus.submitting);
-      await Future.delayed(const Duration(seconds: 5));
+
+      await Future.delayed(const Duration(seconds: 3));
 
       final success = await authenticationRepository.signIn(state.model);
 
