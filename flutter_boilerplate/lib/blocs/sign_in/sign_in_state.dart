@@ -11,23 +11,26 @@ enum SignInStateStatus {
 class SignInState {
   SignInStateStatus status;
   SignInModel model;
+  SignInModelValidator modelValidator;
   bool submittedOnce;
-  bool get showValidationErrors => status == SignInStateStatus.validating || submittedOnce;
 
   SignInState({
     required this.status,
     required this.model,
+    required this.modelValidator,
     this.submittedOnce = false,
   });
 
   SignInState copyWith({
     SignInStateStatus? status,
     SignInModel? model,
+    SignInModelValidator? modelValidator,
     bool? submittedOnce,
   }) =>
       SignInState(
         status: status ?? this.status,
         model: model ?? this.model,
+        modelValidator: modelValidator ?? this.modelValidator,
         submittedOnce: submittedOnce ?? this.submittedOnce,
       );
 }

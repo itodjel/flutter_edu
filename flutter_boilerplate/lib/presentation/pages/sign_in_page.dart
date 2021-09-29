@@ -39,6 +39,9 @@ class _SignInPageState extends State<SignInPage> {
             if (signInState.submittedOnce) {
               formKey.currentState?.validate();
             }
+            if (signInState.status == SignInStateStatus.validating) {
+              showInfoMessage('Please fill in all required fields before submitting');
+            }
           },
           child: ListView(
             children: [
@@ -61,8 +64,6 @@ class _SignInPageState extends State<SignInPage> {
                       children: const [
                         _WelcomeText(),
                         Spacing.verticalL(),
-                        _SignInText(),
-                        Spacing.verticalL(2),
                         _EmailWidget(),
                         Spacing.verticalL(),
                         _PasswordWidget(),
@@ -105,32 +106,29 @@ class _WelcomeText extends StatelessWidget {
   }
 }
 
-class _SignInText extends StatelessWidget {
-  const _SignInText({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      context.translations.logInToFlutterBoilerplate,
-      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-    );
-  }
-}
-
 class _EmailWidget extends StatelessWidget {
   const _EmailWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInBloc, SignInState>(
-      builder: (context, signInState) {
-        return TextFormField(
-          initialValue: signInState.model.userNameOrEmail,
-          validator: (text) => context.signInModelValidator.userNameOrEmail(signInState.model.copyWith(userNameOrEmail: Optional(text))),
-          onChanged: (text) => context.signInBloc.add(SignInUpdateEvent(model: signInState.model.copyWith(userNameOrEmail: Optional(text)))),
-          decoration: InputDecoration(hintText: context.translations.email),
-        );
-      },
+    return Column(
+      children: [
+        Text(
+          context.translations.logInToFlutterBoilerplate,
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        ),
+        const Spacing.verticalL(2),
+        BlocBuilder<SignInBloc, SignInState>(
+          builder: (context, signInState) {
+            return TextFormField(
+              initialValue: signInState.model.userNameOrEmail,
+              validator: (text) => signInState.modelValidator.userNameOrEmail(signInState.model.copyWith(userNameOrEmail: Optional(text))),
+              onChanged: (text) => context.signInBloc.add(SignInUpdateEvent(model: signInState.model.copyWith(userNameOrEmail: Optional(text)))),
+              decoration: InputDecoration(hintText: context.translations.email),
+            );
+          },
+        ),
+      ],
     );
   }
 }
@@ -151,7 +149,7 @@ class __PasswordWidgetState extends State<_PasswordWidget> {
       builder: (context, signInState) {
         return TextFormField(
           initialValue: signInState.model.password,
-          validator: (text) => context.signInModelValidator.password(signInState.model.copyWith(password: Optional(text))),
+          validator: (text) => signInState.modelValidator.password(signInState.model.copyWith(password: Optional(text))),
           onChanged: (text) => context.signInBloc.add(SignInUpdateEvent(model: signInState.model.copyWith(password: Optional(text)))),
           obscureText: obscureText,
           decoration: InputDecoration(
@@ -217,7 +215,7 @@ class _SignInButton extends StatelessWidget {
           textColor: Colors.white,
           text: context.translations.signIn,
           isLoading: signInState.status == SignInStateStatus.submitting,
-          onTap: () => context.signInBloc.add(SignInValidateEvent()),
+          onTap: () => context.signInBloc.add(SignInSubmitEvent()),
         );
       },
     );

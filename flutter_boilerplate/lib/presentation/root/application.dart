@@ -20,82 +20,95 @@ class _ApplicationState extends State<Application> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LocalizationBloc, LocalizationState>(
-      builder: (BuildContext context, LocalizationState localizationState) {
-        return BlocBuilder<ThemeBloc, ThemeState>(
-          builder: (BuildContext context, ThemeState themeState) {
-            return NotificationListener<OverscrollIndicatorNotification>(
-              onNotification: (OverscrollIndicatorNotification overscroll) {
-                overscroll.disallowGlow();
-                return true;
-              },
-              child: DismissFocusOverlay(
-                child: MaterialApp(
-                  //This value is currently used from LocalizationBloc,
-                  //but you choose how you store this current value of the selected language
-                  locale: localizationState.locale,
-                  localeResolutionCallback: Localizer.getSupportedLocale,
-                  localizationsDelegates: const [
-                    Localizer.delegate,
-                    Localizer.fallbackCupertinoLocalisationsDelegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                  ],
-                  onGenerateTitle: (context) => context.translations.applicationName,
-                  navigatorKey: globalNavigatorKey,
-                  themeMode: themeState.themeMode,
-                  theme: AppTheme.light.theme,
-                  darkTheme: AppTheme.dark.theme,
-                  debugShowCheckedModeBanner: false,
-                  builder: (context, child) {
-                    context.localizer.changeLanguage(localizationState.locale);
-
-                    return AppTheme(
-                      appTheme: context.theme.brightness == Brightness.light ? AppTheme.light : AppTheme.dark,
-                      child: RefreshConfiguration(
-                        headerBuilder: () => ClassicHeader(
-                          refreshingIcon: const Loader.sm(),
-                          completeText: context.localizer.translations.successfullyRefreshed,
-                          refreshingText: context.localizer.translations.refreshing,
-                          releaseText: context.localizer.translations.releaseToRefresh,
-                          idleText: context.localizer.translations.pullDownToRefresh,
-                        ),
-                        footerBuilder: () => ClassicFooter(
-                          loadingIcon: const Loader.sm(),
-                          canLoadingText: context.localizer.translations.releaseToLoadMore,
-                          loadingText: context.localizer.translations.loading,
-                          idleText: context.localizer.translations.pullToLoadMore,
-                          idleIcon: Container(),
-                          noMoreIcon: NoContent(),
-                        ),
-                        headerTriggerDistance: 80.0,
-                        springDescription: const SpringDescription(stiffness: 170, damping: 16, mass: 1.9),
-                        maxOverScrollExtent: 100,
-                        maxUnderScrollExtent: 0,
-                        enableScrollWhenRefreshCompleted: true,
-                        enableLoadingWhenFailed: true,
-                        hideFooterWhenNotFull: false,
-                        enableBallisticLoad: true,
-                        child: ContextServiceProviderModelValidator(child: child),
-                      ),
-                    );
+    return BlocProvider<LocalizationBloc>(
+      create: (context) => LocalizationBloc(
+        restApiClient: context.serviceProvider.restApiClient,
+        storageRepository: context.serviceProvider.storageRepository,
+      ),
+      child: BlocBuilder<LocalizationBloc, LocalizationState>(
+        builder: (BuildContext context, LocalizationState localizationState) {
+          return BlocProvider<ThemeBloc>(
+            create: (context) => ThemeBloc(
+              storageRepository: context.serviceProvider.storageRepository,
+            ),
+            child: BlocBuilder<ThemeBloc, ThemeState>(
+              builder: (BuildContext context, ThemeState themeState) {
+                return NotificationListener<OverscrollIndicatorNotification>(
+                  onNotification: (OverscrollIndicatorNotification overscroll) {
+                    overscroll.disallowGlow();
+                    return true;
                   },
-                  home: BlocListener<ErrorHandlerBloc, ErrorHandlerState>(
-                    listener: (context, errorHandlerState) {
-                      if (errorHandlerState.status == ErrorHandlerStateStatus.dirty && errorHandlerState.exception != null && !errorHandlerState.exception!.silent) {
-                        showExceptionMessage(context, errorHandlerState.exception!);
-                      }
-                    },
-                    child: ApplicationNavigationWrapper(),
+                  child: DismissFocusOverlay(
+                    child: MaterialApp(
+                      //This value is currently used from LocalizationBloc,
+                      //but you choose how you store this current value of the selected language
+                      locale: localizationState.locale,
+                      localeResolutionCallback: Localizer.getSupportedLocale,
+                      localizationsDelegates: const [
+                        Localizer.delegate,
+                        Localizer.fallbackCupertinoLocalisationsDelegate,
+                        GlobalWidgetsLocalizations.delegate,
+                        GlobalMaterialLocalizations.delegate,
+                      ],
+                      onGenerateTitle: (context) => context.translations.applicationName,
+                      navigatorKey: globalNavigatorKey,
+                      themeMode: themeState.themeMode,
+                      theme: AppTheme.light.theme,
+                      darkTheme: AppTheme.dark.theme,
+                      debugShowCheckedModeBanner: false,
+                      builder: (context, child) {
+                        context.localizer.changeLanguage(localizationState.locale);
+
+                        return AppTheme(
+                          appTheme: context.theme.brightness == Brightness.light ? AppTheme.light : AppTheme.dark,
+                          child: RefreshConfiguration(
+                            headerBuilder: () => ClassicHeader(
+                              refreshingIcon: const Loader.sm(),
+                              completeText: context.localizer.translations.successfullyRefreshed,
+                              refreshingText: context.localizer.translations.refreshing,
+                              releaseText: context.localizer.translations.releaseToRefresh,
+                              idleText: context.localizer.translations.pullDownToRefresh,
+                            ),
+                            footerBuilder: () => ClassicFooter(
+                              loadingIcon: const Loader.sm(),
+                              canLoadingText: context.localizer.translations.releaseToLoadMore,
+                              loadingText: context.localizer.translations.loading,
+                              idleText: context.localizer.translations.pullToLoadMore,
+                              idleIcon: Container(),
+                              noMoreIcon: NoContent(),
+                            ),
+                            headerTriggerDistance: 80.0,
+                            springDescription: const SpringDescription(stiffness: 170, damping: 16, mass: 1.9),
+                            maxOverScrollExtent: 100,
+                            maxUnderScrollExtent: 0,
+                            enableScrollWhenRefreshCompleted: true,
+                            enableLoadingWhenFailed: true,
+                            hideFooterWhenNotFull: false,
+                            enableBallisticLoad: true,
+                            child: ContextServiceProviderModelValidator(
+                              child: ContextServiceProviderBlocs(child: child!),
+                            ),
+                          ),
+                        );
+                      },
+                      home: BlocListener<ErrorHandlerBloc, ErrorHandlerState>(
+                        listener: (context, errorHandlerState) {
+                          if (errorHandlerState.status == ErrorHandlerStateStatus.dirty && errorHandlerState.exception != null && !errorHandlerState.exception!.silent) {
+                            showExceptionMessage(context, errorHandlerState.exception!);
+                          }
+                        },
+                        child: ApplicationNavigationWrapper(),
+                      ),
+                      onGenerateRoute: _onGenerateRoute,
+                      initialRoute: ApplicationNavigationWrapper.route,
+                    ),
                   ),
-                  onGenerateRoute: _onGenerateRoute,
-                  initialRoute: ApplicationNavigationWrapper.route,
-                ),
-              ),
-            );
-          },
-        );
-      },
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 

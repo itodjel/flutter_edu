@@ -15,10 +15,10 @@ class _ApplicationNavigationWrapperState extends State<ApplicationNavigationWrap
         return Stack(
           children: [
             BlocConsumer<AuthBloc, AuthState>(
-              listener: (context, authState) => _maybeShowSignInPage(),
+              listener: (context, authState) => _maybeShowSignInPage(context),
               builder: (context, authState) {
                 return BlocConsumer<IntroductionBloc, IntroductionState>(
-                  listener: (context, introductionState) => _maybeShowSignInPage(),
+                  listener: (context, introductionState) => _maybeShowSignInPage(context),
                   builder: (context, introductionState) {
                     if (!introductionState.isIntroSeen && !context.appSettings.skipIntro) {
                       return IntroductionPage();
@@ -41,7 +41,7 @@ class _ApplicationNavigationWrapperState extends State<ApplicationNavigationWrap
     );
   }
 
-  void _maybeShowSignInPage() {
+  void _maybeShowSignInPage(BuildContext context) {
     final authState = context.authBloc.state;
     final introductionState = context.introductionBloc.state;
 

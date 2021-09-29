@@ -14,6 +14,15 @@ class ContextServiceProviderModelValidator extends StatelessWidget {
         Provider<PositiveNumberPropertyValidator>(
           create: (_) => PositiveNumberPropertyValidator(localizer: context.localizer),
         ),
+        Provider<RegisterModelValidator>(
+          create: (_) => RegisterModelValidator(localizer: context.localizer),
+        ),
+        Provider<ResetPasswordModelValidator>(
+          create: (_) => ResetPasswordModelValidator(localizer: context.localizer),
+        ),
+        Provider<SignInModelValidator>(
+          create: (_) => SignInModelValidator(localizer: context.localizer),
+        ),
       ],
       child: child,
     );

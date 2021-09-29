@@ -34,6 +34,7 @@ abstract class ServiceProvider {
   late IStorageRepository secureStorageRepository;
   late IGalleryRepository galleryRepository;
   late ILocationRepository locationRepository;
+  late IAuthenticationRepository authenticationRepository;
   //Add new repositories and services here
   //...
 
@@ -79,11 +80,9 @@ abstract class ServiceProvider {
   }
 
   Future<void> initRespositories() async {
-    //Those without dependencies(restApiClient dependency excluded)
     galleryRepository = GalleryRepository();
     locationRepository = LocationRepository(appSettings: appSettings);
-
-    //Those with dependencies
+    authenticationRepository = AuthenticationRepository(restApiClient: restApiClient, storageRepository: secureStorageRepository);
   }
 
   Future<void> initExceptionHandling() async {

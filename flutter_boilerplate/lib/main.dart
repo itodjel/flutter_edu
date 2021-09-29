@@ -10,9 +10,7 @@ Future main() async {
 
   final rootWidget = RepositoryProvider<ServiceProvider>(
     create: (context) => serviceProvider,
-    child: ContextServiceProviderBlocs(
-      child: Application(),
-    ),
+    child: Application(),
   );
 
   if (serviceProvider.appSettings.usingExceptionReporting) {

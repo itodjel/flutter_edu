@@ -1,51 +1,49 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-  SignInBloc() : super(initialState());
+  final SignInModelValidator modelValidator;
+  final IAuthenticationRepository authenticationRepository;
 
-  static SignInState initialState() => SignInState(
+  SignInBloc({
+    required this.modelValidator,
+    required this.authenticationRepository,
+  }) : super(initialState(modelValidator));
+
+  static SignInState initialState(SignInModelValidator modelValidator) => SignInState(
         status: SignInStateStatus.initial,
         model: SignInModel(),
+        modelValidator: modelValidator,
         submittedOnce: false,
       );
 
   @override
   Stream<SignInState> mapEventToState(SignInEvent event) async* {
-    if (event is SignInInitEvent) {
-      yield* _init();
-    } else if (event is SignInUpdateEvent) {
+    if (event is SignInUpdateEvent) {
       yield* _update(event);
-    } else if (event is SignInValidateEvent) {
-      yield* _validate();
     } else if (event is SignInSubmitEvent) {
       yield* _submit();
     }
-  }
-
-  Stream<SignInState> _init() async* {
-    yield initialState();
   }
 
   Stream<SignInState> _update(SignInUpdateEvent event) async* {
     yield state.copyWith(status: SignInStateStatus.initial, model: event.model);
   }
 
-  Stream<SignInState> _validate() async* {
-    yield state.copyWith(status: SignInStateStatus.validating, submittedOnce: true);
-  }
-
   Stream<SignInState> _submit() async* {
-    yield state.copyWith(status: SignInStateStatus.submitting);
-    await Future.delayed(const Duration(seconds: 5));
+    if (modelValidator.validate(state.model)) {
+      yield state.copyWith(status: SignInStateStatus.submitting);
+      await Future.delayed(const Duration(seconds: 5));
 
-    //TODO: Ping your API via repository to authenticate the user
-    final success = true; //await authenticationRepository.signIn(state.model);
+      final success = await authenticationRepository.signIn(state.model);
 
-    if (success) {
-      yield state.copyWith(status: SignInStateStatus.submittingSuccess);
-      yield initialState();
+      if (success) {
+        yield state.copyWith(status: SignInStateStatus.submittingSuccess);
+        yield initialState(modelValidator);
+      } else {
+        yield state.copyWith(status: SignInStateStatus.submittingError);
+      }
     } else {
-      yield state.copyWith(status: SignInStateStatus.submittingError);
+      yield state.copyWith(status: SignInStateStatus.validating, submittedOnce: true);
     }
   }
 }
