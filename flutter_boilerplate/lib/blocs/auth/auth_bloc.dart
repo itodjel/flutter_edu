@@ -3,12 +3,14 @@ import 'package:flutter_boilerplate/_all.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IRestApiClient restApiClient;
+  final IAuthenticationRepository authenticationRepository;
   late StreamSubscription _restApiClientSubscription;
   late StreamSubscription _signInBlocSubscription;
   late StreamSubscription _registerBlocSubscription;
 
   AuthBloc({
     required this.restApiClient,
+    required this.authenticationRepository,
     required SignInBloc signInBloc,
     required RegisterBloc registerBloc,
   }) : super(AuthState(
@@ -44,7 +46,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield state.copyWith(status: AuthStateStatus.checkingAuthentication);
 
     //TODO: Change this to use real API
-    final isAuthenticated = false; //await authenticationRepository.isAuthenticated();
+    final isAuthenticated = await authenticationRepository.isAuthenticated();
 
     yield state.copyWith(status: AuthStateStatus.checkedAuthentication);
 

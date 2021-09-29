@@ -77,6 +77,7 @@ class ContextServiceProviderBlocs extends StatelessWidget {
           lazy: false,
           create: (BuildContext context) => AuthBloc(
             restApiClient: context.serviceProvider.restApiClient,
+            authenticationRepository: context.serviceProvider.authenticationRepository,
             signInBloc: context.signInBloc,
             registerBloc: context.registerBloc,
           )..add(AuthCheckAuthenticationEvent()),
