@@ -22,7 +22,7 @@ class _ResetPasswordSecondPageState extends State<ResetPasswordSecondPage> {
           }
           if (resetPasswordState.status == ResetPasswordStateStatus.submittingSuccess) {
             showInfoMessage(context.localizer.translations.profileUpdatedSuccessfully);
-            context.navigator.resetAndPushNamed(LoginPage.route);
+            context.navigator.resetAndPushNamed(SignInPage.route);
           } else if (resetPasswordState.status == ResetPasswordStateStatus.validating) {
             if ((formKey.currentState?.validate() ?? false) && context.resetPasswordModelValidator.validate(resetPasswordState.model)) {
               context.read<ResetPasswordBloc>().add(ResetPasswordSubmitEvent());

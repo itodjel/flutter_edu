@@ -37,8 +37,8 @@ class ContextServiceProviderBlocs extends StatelessWidget {
             locationRepository: context.serviceProvider.locationRepository,
           ),
         ),
-        BlocProvider<LoginBloc>(
-          create: (BuildContext context) => LoginBloc(),
+        BlocProvider<SignInBloc>(
+          create: (BuildContext context) => SignInBloc(),
         ),
         BlocProvider<NavigationBloc>(
           lazy: false,
@@ -74,7 +74,7 @@ class ContextServiceProviderBlocs extends StatelessWidget {
           lazy: false,
           create: (BuildContext context) => AuthBloc(
             restApiClient: context.serviceProvider.restApiClient,
-            loginBloc: context.loginBloc,
+            signInBloc: context.signInBloc,
             registerBloc: context.registerBloc,
           )..add(AuthCheckAuthenticationEvent()),
         ),

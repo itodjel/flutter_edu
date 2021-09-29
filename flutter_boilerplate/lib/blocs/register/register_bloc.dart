@@ -41,8 +41,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     final success = true; //await accountRepository.register(state.model);
 
     if (success) {
-      //TODO: Maybe login automatically if no email confirmation is required
-      //await authenticationRepository.login(LoginModel(userNameOrEmail: state.model.email, password: state.model.password));
+      //TODO: Maybe signIn automatically if no email confirmation is required
+      //await authenticationRepository.signIn(SignInModel(userNameOrEmail: state.model.email, password: state.model.password));
 
       yield state.copyWith(status: RegisterStateStatus.submittingSuccess);
       yield initialState();

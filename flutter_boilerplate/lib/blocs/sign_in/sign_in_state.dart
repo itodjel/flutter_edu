@@ -1,6 +1,6 @@
 import 'package:flutter_boilerplate/_all.dart';
 
-enum LoginStateStatus {
+enum SignInStateStatus {
   initial,
   validating,
   submitting,
@@ -8,24 +8,24 @@ enum LoginStateStatus {
   submittingError,
 }
 
-class LoginState {
-  LoginStateStatus status;
-  LoginModel model;
+class SignInState {
+  SignInStateStatus status;
+  SignInModel model;
   bool submittedOnce;
-  bool get showValidationErrors => status == LoginStateStatus.validating || submittedOnce;
+  bool get showValidationErrors => status == SignInStateStatus.validating || submittedOnce;
 
-  LoginState({
+  SignInState({
     required this.status,
     required this.model,
     this.submittedOnce = false,
   });
 
-  LoginState copyWith({
-    LoginStateStatus? status,
-    LoginModel? model,
+  SignInState copyWith({
+    SignInStateStatus? status,
+    SignInModel? model,
     bool? submittedOnce,
   }) =>
-      LoginState(
+      SignInState(
         status: status ?? this.status,
         model: model ?? this.model,
         submittedOnce: submittedOnce ?? this.submittedOnce,

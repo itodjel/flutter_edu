@@ -8,7 +8,7 @@ const TranslationModel translationEnglish = TranslationModel(
   registerToFlutterBoilerplate: 'Register to FlutterBoilerplate',
   logInToFlutterBoilerplate: 'Log in to FlutterBoilerplate',
   successfullyCreatedAnAccount: 'Successfully created an account',
-  login: 'Login',
+  signIn: 'SignIn',
   successfullyRefreshed: 'Successfully refreshed',
   refreshing: 'Refreshing',
   releaseToRefresh: 'Release to refresh',

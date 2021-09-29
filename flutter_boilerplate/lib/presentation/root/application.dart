@@ -105,8 +105,8 @@ class _ApplicationState extends State<Application> {
         return MaterialPageRoute(builder: (_) => ApplicationNavigationWrapper());
       case MapPreview.route:
         return MaterialPageRoute(builder: (_) => MapPreview(model: settings.arguments as MapPreviewModel));
-      case LoginPage.route:
-        return MaterialPageRoute(builder: (_) => LoginPage());
+      case SignInPage.route:
+        return MaterialPageRoute(builder: (_) => SignInPage());
       case RegisterPage.route:
         return MaterialPageRoute(builder: (_) => RegisterPage(model: settings.arguments as RegisterPageModel));
       case AllowLocationPage.route:

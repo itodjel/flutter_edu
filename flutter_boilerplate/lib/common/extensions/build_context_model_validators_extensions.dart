@@ -1,7 +1,7 @@
 import 'package:flutter_boilerplate/_all.dart';
 
 extension BuildContextModelValidatorsExtensions on BuildContext {
-  LoginModelValidator get loginModelValidator => read<LoginModelValidator>();
+  SignInModelValidator get signInModelValidator => read<SignInModelValidator>();
   RegisterModelValidator get registerModelValidator => read<RegisterModelValidator>();
   ResetPasswordModelValidator get resetPasswordModelValidator => read<ResetPasswordModelValidator>();
 }

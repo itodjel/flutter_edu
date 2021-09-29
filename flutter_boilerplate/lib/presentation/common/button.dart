@@ -55,7 +55,7 @@ class _ButtonState extends State<Button> {
       (widget.primary
           ? context.theme.primaryColor
           : widget.accent
-              ? context.theme.accentColor
+              ? context.theme.colorScheme.secondary
               : widget.transparent
                   ? Colors.transparent
                   : null);

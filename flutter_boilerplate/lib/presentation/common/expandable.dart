@@ -39,7 +39,7 @@ class Expandable extends StatelessWidget {
           headerAlignment: ExpandablePanelHeaderAlignment.center,
           iconPlacement: iconPlacement == ExpandableIconPlacement.right ? ExpandablePanelIconPlacement.right : ExpandablePanelIconPlacement.left,
           tapBodyToCollapse: true,
-          iconColor: iconColor ?? _theme.accentColor,
+          iconColor: iconColor ?? _theme.colorScheme.secondary,
           iconPadding: EdgeInsets.zero,
         ),
         header: Container(

@@ -15,10 +15,10 @@ class _ApplicationNavigationWrapperState extends State<ApplicationNavigationWrap
         return Stack(
           children: [
             BlocConsumer<AuthBloc, AuthState>(
-              listener: (context, authState) => _maybeShowLoginPage(),
+              listener: (context, authState) => _maybeShowSignInPage(),
               builder: (context, authState) {
                 return BlocConsumer<IntroductionBloc, IntroductionState>(
-                  listener: (context, introductionState) => _maybeShowLoginPage(),
+                  listener: (context, introductionState) => _maybeShowSignInPage(),
                   builder: (context, introductionState) {
                     if (!introductionState.isIntroSeen && !context.appSettings.skipIntro) {
                       return IntroductionPage();
@@ -41,12 +41,12 @@ class _ApplicationNavigationWrapperState extends State<ApplicationNavigationWrap
     );
   }
 
-  void _maybeShowLoginPage() {
+  void _maybeShowSignInPage() {
     final authState = context.authBloc.state;
     final introductionState = context.introductionBloc.state;
 
-    if (authState.status == AuthStateStatus.unAuthenticated && introductionState.status == IntroductionStateStatus.loaded && introductionState.isIntroSeen && !context.appSettings.skipLogin) {
-      context.navigator.pushNamed(LoginPage.route);
+    if (authState.status == AuthStateStatus.unAuthenticated && introductionState.status == IntroductionStateStatus.loaded && introductionState.isIntroSeen && !context.appSettings.skipSignIn) {
+      context.navigator.pushNamed(SignInPage.route);
     }
   }
 

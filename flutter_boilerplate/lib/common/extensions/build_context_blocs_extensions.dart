@@ -10,7 +10,7 @@ extension BuildContextBlocsExtensions on BuildContext {
   IntroductionBloc get introductionBloc => read<IntroductionBloc>();
   LocalizationBloc get localizationBloc => read<LocalizationBloc>();
   LocationBloc get locationBloc => read<LocationBloc>();
-  LoginBloc get loginBloc => read<LoginBloc>();
+  SignInBloc get signInBloc => read<SignInBloc>();
   NavigationBloc get navigationBloc => read<NavigationBloc>();
   QuantityBloc get quantityBloc => read<QuantityBloc>();
   RegisterBloc get registerBloc => read<RegisterBloc>();

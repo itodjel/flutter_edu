@@ -99,7 +99,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         Spacing.verticalL(2),
                         _AlreadyHaveAnAccountWidget(),
                         Spacing.verticalM(),
-                        _LoginButton(),
+                        _SignInButton(),
                         Spacing.verticalM(),
                       ],
                     ),
@@ -324,8 +324,8 @@ class _AlreadyHaveAnAccountWidget extends StatelessWidget {
   }
 }
 
-class _LoginButton extends StatelessWidget {
-  const _LoginButton({Key? key}) : super(key: key);
+class _SignInButton extends StatelessWidget {
+  const _SignInButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,13 +1,13 @@
 import 'package:flutter_boilerplate/_all.dart';
 
-class LoginPage extends StatefulWidget {
-  static const route = '/LoginPage';
+class SignInPage extends StatefulWidget {
+  static const route = '/SignInPage';
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignInPageState createState() => _SignInPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignInPageState extends State<SignInPage> {
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -34,9 +34,9 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: Padding(
         padding: context.appTheme.pageContentPadding,
-        child: BlocListener<LoginBloc, LoginState>(
-          listener: (context, loginState) {
-            if (loginState.submittedOnce) {
+        child: BlocListener<SignInBloc, SignInState>(
+          listener: (context, signInState) {
+            if (signInState.submittedOnce) {
               formKey.currentState?.validate();
             }
           },
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                       children: const [
                         _WelcomeText(),
                         Spacing.verticalL(),
-                        _LoginText(),
+                        _SignInText(),
                         Spacing.verticalL(2),
                         _EmailWidget(),
                         Spacing.verticalL(),
@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                         Spacing.verticalL(2),
                         _ForgotPasswordWidget(),
                         Spacing.verticalL(),
-                        _LoginButton(),
+                        _SignInButton(),
                         Spacing.verticalL(2),
                         _NewToFlutterBoilerplateWidget(),
                         Spacing.verticalM(),
@@ -105,8 +105,8 @@ class _WelcomeText extends StatelessWidget {
   }
 }
 
-class _LoginText extends StatelessWidget {
-  const _LoginText({Key? key}) : super(key: key);
+class _SignInText extends StatelessWidget {
+  const _SignInText({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -122,12 +122,12 @@ class _EmailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
-      builder: (context, loginState) {
+    return BlocBuilder<SignInBloc, SignInState>(
+      builder: (context, signInState) {
         return TextFormField(
-          initialValue: loginState.model.userNameOrEmail,
-          validator: (text) => context.loginModelValidator.userNameOrEmail(loginState.model.copyWith(userNameOrEmail: Optional(text))),
-          onChanged: (text) => context.loginBloc.add(LoginUpdateEvent(model: loginState.model.copyWith(userNameOrEmail: Optional(text)))),
+          initialValue: signInState.model.userNameOrEmail,
+          validator: (text) => context.signInModelValidator.userNameOrEmail(signInState.model.copyWith(userNameOrEmail: Optional(text))),
+          onChanged: (text) => context.signInBloc.add(SignInUpdateEvent(model: signInState.model.copyWith(userNameOrEmail: Optional(text)))),
           decoration: InputDecoration(hintText: context.translations.email),
         );
       },
@@ -147,12 +147,12 @@ class __PasswordWidgetState extends State<_PasswordWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
-      builder: (context, loginState) {
+    return BlocBuilder<SignInBloc, SignInState>(
+      builder: (context, signInState) {
         return TextFormField(
-          initialValue: loginState.model.password,
-          validator: (text) => context.loginModelValidator.password(loginState.model.copyWith(password: Optional(text))),
-          onChanged: (text) => context.loginBloc.add(LoginUpdateEvent(model: loginState.model.copyWith(password: Optional(text)))),
+          initialValue: signInState.model.password,
+          validator: (text) => context.signInModelValidator.password(signInState.model.copyWith(password: Optional(text))),
+          onChanged: (text) => context.signInBloc.add(SignInUpdateEvent(model: signInState.model.copyWith(password: Optional(text)))),
           obscureText: obscureText,
           decoration: InputDecoration(
             hintText: Localizer.of(context).translations.password,
@@ -205,19 +205,19 @@ class _ForgotPasswordWidget extends StatelessWidget {
   }
 }
 
-class _LoginButton extends StatelessWidget {
-  const _LoginButton({Key? key}) : super(key: key);
+class _SignInButton extends StatelessWidget {
+  const _SignInButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
-      builder: (context, loginState) {
+    return BlocBuilder<SignInBloc, SignInState>(
+      builder: (context, signInState) {
         return Button(
           color: context.theme.primaryColor,
           textColor: Colors.white,
-          text: context.translations.login,
-          isLoading: loginState.status == LoginStateStatus.submitting,
-          onTap: () => context.loginBloc.add(LoginValidateEvent()),
+          text: context.translations.signIn,
+          isLoading: signInState.status == SignInStateStatus.submitting,
+          onTap: () => context.signInBloc.add(SignInValidateEvent()),
         );
       },
     );
@@ -251,7 +251,7 @@ class _CreateAccountWidget extends StatelessWidget {
           RegisterPage.route,
           arguments: RegisterPageModel(
             onSuccess: () {
-              context.navigator.resetAndPushNamed(LoginPage.route);
+              context.navigator.resetAndPushNamed(SignInPage.route);
 
               showInfoDialog(message: context.translations.successfullyCreatedAnAccount);
             },

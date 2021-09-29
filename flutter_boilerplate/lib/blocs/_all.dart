@@ -7,7 +7,7 @@ export 'gallery/_all.dart';
 export 'introduction/_all.dart';
 export 'localization/_all.dart';
 export 'location/_all.dart';
-export 'login/_all.dart';
+export 'sign_in/_all.dart';
 export 'navigation/_all.dart';
 export 'quantity/_all.dart';
 export 'theme/_all.dart';

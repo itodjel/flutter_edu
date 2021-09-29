@@ -6,7 +6,7 @@ class TranslationModel {
   final String registerToFlutterBoilerplate;
   final String logInToFlutterBoilerplate;
   final String successfullyCreatedAnAccount;
-  final String login;
+  final String signIn;
   final String successfullyRefreshed;
   final String refreshing;
   final String releaseToRefresh;
@@ -72,7 +72,7 @@ class TranslationModel {
     required this.registerToFlutterBoilerplate,
     required this.logInToFlutterBoilerplate,
     required this.successfullyCreatedAnAccount,
-    required this.login,
+    required this.signIn,
     required this.successfullyRefreshed,
     required this.refreshing,
     required this.releaseToRefresh,

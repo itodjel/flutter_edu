@@ -1,19 +1,19 @@
 import 'package:flutter_boilerplate/_all.dart';
 
-class LoginModel {
+class SignInModel {
   String? userNameOrEmail;
   String? password;
 
-  LoginModel({
+  SignInModel({
     this.userNameOrEmail,
     this.password,
   });
 
-  LoginModel copyWith({
+  SignInModel copyWith({
     Optional<String?>? userNameOrEmail,
     Optional<String?>? password,
   }) {
-    return LoginModel(
+    return SignInModel(
       userNameOrEmail: userNameOrEmail != null ? userNameOrEmail.value : this.userNameOrEmail,
       password: password != null ? password.value : this.password,
     );

@@ -4,12 +4,12 @@ import 'package:flutter_boilerplate/_all.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IRestApiClient restApiClient;
   late StreamSubscription _restApiClientSubscription;
-  late StreamSubscription _loginBlocSubscription;
+  late StreamSubscription _signInBlocSubscription;
   late StreamSubscription _registerBlocSubscription;
 
   AuthBloc({
     required this.restApiClient,
-    required LoginBloc loginBloc,
+    required SignInBloc signInBloc,
     required RegisterBloc registerBloc,
   }) : super(AuthState(
           status: AuthStateStatus.unAuthenticated,
@@ -19,8 +19,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         add(AuthSignOutEvent());
       }
     });
-    _loginBlocSubscription = loginBloc.stream.listen((loginState) {
-      if (loginState.status == LoginStateStatus.submittingSuccess) {
+    _signInBlocSubscription = signInBloc.stream.listen((signInState) {
+      if (signInState.status == SignInStateStatus.submittingSuccess) {
         add(AuthCheckAuthenticationEvent());
       }
     });
@@ -69,7 +69,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   @override
   Future<void> close() {
     _restApiClientSubscription.cancel();
-    _loginBlocSubscription.cancel();
+    _signInBlocSubscription.cancel();
     _registerBlocSubscription.cancel();
 
     return super.close();
