@@ -122,7 +122,7 @@ class _EmailWidget extends StatelessWidget {
           builder: (context, signInState) {
             return TextFormField(
               initialValue: signInState.model.userNameOrEmail,
-              validator: (text) => signInState.modelValidator.userNameOrEmail(signInState.model.copyWith(userNameOrEmail: Optional(text))),
+              validator: (text) => context.signInModelValidator.userNameOrEmail(signInState.model.copyWith(userNameOrEmail: Optional(text))),
               onChanged: (text) => context.signInBloc.add(SignInUpdateEvent(model: signInState.model.copyWith(userNameOrEmail: Optional(text)))),
               decoration: InputDecoration(hintText: context.translations.email),
             );
@@ -149,7 +149,7 @@ class __PasswordWidgetState extends State<_PasswordWidget> {
       builder: (context, signInState) {
         return TextFormField(
           initialValue: signInState.model.password,
-          validator: (text) => signInState.modelValidator.password(signInState.model.copyWith(password: Optional(text))),
+          validator: (text) => context.signInModelValidator.password(signInState.model.copyWith(password: Optional(text))),
           onChanged: (text) => context.signInBloc.add(SignInUpdateEvent(model: signInState.model.copyWith(password: Optional(text)))),
           obscureText: obscureText,
           decoration: InputDecoration(

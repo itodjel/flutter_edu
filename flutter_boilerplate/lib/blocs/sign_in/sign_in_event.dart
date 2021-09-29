@@ -9,3 +9,5 @@ class SignInUpdateEvent extends SignInEvent {
 }
 
 class SignInSubmitEvent extends SignInEvent {}
+
+class SignInValidateEvent extends SignInEvent {}

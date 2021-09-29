@@ -39,7 +39,6 @@ class ContextServiceProviderBlocs extends StatelessWidget {
         ),
         BlocProvider<SignInBloc>(
           create: (BuildContext context) => SignInBloc(
-            modelValidator: context.signInModelValidator,
             authenticationRepository: context.serviceProvider.authenticationRepository,
           ),
         ),
