@@ -5,4 +5,10 @@ extension NavigatorStateExtensions on NavigatorState {
     popUntil((route) => route.settings.name == ApplicationNavigationWrapper.route);
     return pushNamed(SignInPage.route);
   }
+
+  void popTimes([int number = 1]) {
+    for (var i = 0; i < number; i++) {
+      pop();
+    }
+  }
 }

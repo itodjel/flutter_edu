@@ -63,6 +63,12 @@ class TranslationModel {
   final String code;
   final String didntReceiveCode;
   final String resendCode;
+  final String openGallery;
+  final String takeAPhoto;
+  final String about;
+  final String clear;
+  final String select;
+  final String noContent;
 
   const TranslationModel({
     required this.applicationName,
@@ -129,5 +135,11 @@ class TranslationModel {
     required this.code,
     required this.didntReceiveCode,
     required this.resendCode,
+    required this.openGallery,
+    required this.takeAPhoto,
+    required this.about,
+    required this.clear,
+    required this.select,
+    required this.noContent,
   });
 }

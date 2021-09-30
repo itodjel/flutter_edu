@@ -47,7 +47,9 @@ class ContextServiceProviderBlocs extends StatelessWidget {
           create: (BuildContext context) => NavigationBloc(),
         ),
         BlocProvider<RegisterBloc>(
-          create: (BuildContext context) => RegisterBloc(),
+          create: (BuildContext context) => RegisterBloc(
+            accountRepository: context.serviceProvider.accountRepository,
+          ),
         ),
         BlocProvider<ThemeBloc>(
           lazy: false,
