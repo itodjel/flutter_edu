@@ -2,8 +2,6 @@ import 'package:flutter_boilerplate/_all.dart';
 
 abstract class RegisterEvent {}
 
-class RegisterInitEvent extends RegisterEvent {}
-
 class RegisterUpdateEvent extends RegisterEvent {
   final RegisterModel model;
 

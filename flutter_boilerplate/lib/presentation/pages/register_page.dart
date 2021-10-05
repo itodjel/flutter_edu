@@ -1,4 +1,5 @@
 import 'package:flutter_boilerplate/_all.dart';
+import 'package:flutter_boilerplate/presentation/pages/_all.dart';
 
 class RegisterPage extends StatefulWidget {
   static const route = '/RegisterPage';
@@ -17,7 +18,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void initState() {
-    context.registerBloc.add(RegisterInitEvent());
     super.initState();
   }
 
@@ -85,6 +85,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         Spacing.verticalL(),
                         _RegisterText(),
                         Spacing.verticalL(2),
+                        _ProfilePhotoWidget(),
+                        Spacing.verticalL(),
                         _EmailWidget(),
                         Spacing.verticalL(),
                         _FirstNameWidget(),
@@ -139,6 +141,105 @@ class _RegisterText extends StatelessWidget {
     return Text(
       context.translations.registerToFlutterBoilerplate,
       style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class _ProfilePhotoWidget extends StatelessWidget {
+  const _ProfilePhotoWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<RegisterBloc, RegisterState>(
+      builder: (context, registerState) {
+        return Container(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 5,
+                    color: context.appTheme.grey1,
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Center(
+                  child: InkWell(
+                    onTap: () => showModalBottomSheet(
+                      context: context,
+                      builder: (context) => Column(
+                        children: [
+                          Expanded(
+                            child: Gallery(
+                              allowMultiple: false,
+                              onSelect: (BuildContext context) {
+                                context.registerBloc.add(RegisterUpdateEvent(model: registerState.model.copyWith(logo: Optional(context.read<GalleryBloc>().state.selectedItems.firstOrDefault()?.file))));
+                                context.navigator.popTimes(2);
+                              },
+                            ),
+                          ),
+                          GalleryControls(
+                            onSelect: (BuildContext context) {
+                              context.registerBloc.add(RegisterUpdateEvent(model: registerState.model.copyWith(logo: Optional(context.read<GalleryBloc>().state.selectedItems.firstOrDefault()?.file))));
+                              context.navigator.pop();
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    child: () {
+                      if (registerState.model.logo != null) {
+                        return Container(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(fit: BoxFit.cover, image: FileImage(registerState.model.logo!)),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                        );
+                      }
+                      if (registerState.model.logoUrl != null) {
+                        return Container(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: CachedNetworkImage(
+                              imageUrl: registerState.model.logoUrl!.toNetworkImageUrl(),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      }
+
+                      return Text(
+                        'Add photo',
+                        //context.localizer.translations.addPhoto,
+                        style: TextStyle(
+                          color: context.appTheme.grey2,
+                        ),
+                      );
+                    }(),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                'Yea',
+                //context.localizer.translations.forBestResultsUseThisRatio,
+                style: TextStyle(
+                  height: 1.5,
+                  fontSize: 8,
+                  color: context.appTheme.grey2,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

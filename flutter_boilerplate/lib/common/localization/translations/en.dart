@@ -65,4 +65,10 @@ const TranslationModel translationEnglish = TranslationModel(
   code: 'Code',
   didntReceiveCode: 'Didn\'t receive code?',
   resendCode: 'Resend Code',
+  openGallery: 'Open gallery',
+  takeAPhoto: 'Take a photo',
+  about: 'About',
+  clear: 'Clear',
+  select: 'Select',
+  noContent: 'No content',
 );

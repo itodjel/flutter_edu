@@ -29,6 +29,7 @@ abstract class ServiceProvider {
   late AppSettings appSettings;
   late CatcherOptions catcherOptions;
   late IRestApiClient restApiClient;
+  late IAccountRepository accountRepository;
   late IStorageRepository storageRepository;
   late IStorageRepository cacheStorageRepository;
   late IStorageRepository secureStorageRepository;
@@ -80,6 +81,7 @@ abstract class ServiceProvider {
   }
 
   Future<void> initRespositories() async {
+    accountRepository = AccountRepository(restApiClient: restApiClient);
     galleryRepository = GalleryRepository();
     locationRepository = LocationRepository(appSettings: appSettings);
     authenticationRepository = AuthenticationRepository(restApiClient: restApiClient, storageRepository: secureStorageRepository);

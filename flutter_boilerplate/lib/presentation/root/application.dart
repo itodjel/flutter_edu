@@ -1,5 +1,6 @@
 import 'package:flutter/physics.dart';
 import 'package:flutter_boilerplate/_all.dart';
+import 'package:flutter_boilerplate/presentation/navigation_models/album_item_model.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'application_navigation_wrapper.dart';
 
@@ -128,6 +129,12 @@ class _ApplicationState extends State<Application> {
         return MaterialPageRoute(builder: (_) => ResetPasswordPage());
       case ResetPasswordSecondPage.route:
         return MaterialPageRoute(builder: (_) => ResetPasswordSecondPage());
+      case AlbumItemsPage.route:
+        return MaterialPageRoute(builder: (_) => AlbumItemsPage(model: settings.arguments as AlbumItemModel));
+      case GalleryItemWidget.route:
+        return MaterialPageRoute(builder: (_) => GalleryItemWidget(galleryItem: settings.arguments as GalleryItem));
+      case GalleryPage.route:
+        return MaterialPageRoute(builder: (_) => GalleryPage(onSelect: settings.arguments as Function));
     }
 
     return MaterialPageRoute(builder: (_) => ApplicationNavigationWrapper());
