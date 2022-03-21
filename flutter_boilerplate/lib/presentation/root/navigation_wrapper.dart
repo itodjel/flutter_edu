@@ -16,10 +16,10 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NavigationBloc, NavigationState>(
-      builder: (context, state) {
+      builder: (context, navigationState) {
         return Scaffold(
           body: () {
-            switch (state.index) {
+            switch (navigationState.index) {
               case 0:
                 return Scaffold(
                   appBar: AppBar(title: Text(context.translations.applicationName)),
@@ -37,7 +37,7 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
                 );
             }
           }(),
-          bottomNavigationBar: _buildBottomNavigationBar(context, state.index),
+          bottomNavigationBar: _buildBottomNavigationBar(context, navigationState.index),
         );
       },
     );

@@ -2,8 +2,8 @@ import 'package:rest_api_client/rest_api_client.dart';
 
 abstract class ErrorHandlerEvent {}
 
-class AddNewExceptionErrorHandlerEvent extends ErrorHandlerEvent {
+class ErrorHandlerAddNewExceptionEvent extends ErrorHandlerEvent {
   final BaseException exception;
 
-  AddNewExceptionErrorHandlerEvent({required this.exception});
+  ErrorHandlerAddNewExceptionEvent({required this.exception});
 }

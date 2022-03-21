@@ -1,4 +1,5 @@
 import 'package:flutter_boilerplate/_all.dart';
+import 'package:fluttertoast/fluttertoast.dart' as flutter_toast;
 import 'package:rest_api_client/rest_api_client.dart';
 
 void showExceptionMessage(BuildContext context, BaseException exception) {
@@ -30,12 +31,12 @@ void showExceptionMessage(BuildContext context, BaseException exception) {
 }
 
 void _showErrorMessageToast(String message) {
-  Fluttertoast.cancel();
+  flutter_toast.Fluttertoast.cancel();
 
-  Fluttertoast.showToast(
+  flutter_toast.Fluttertoast.showToast(
     msg: message,
-    toastLength: Toast.LENGTH_LONG,
-    gravity: ToastGravity.TOP,
+    toastLength: flutter_toast.Toast.LENGTH_LONG,
+    gravity: flutter_toast.ToastGravity.TOP,
     timeInSecForIosWeb: 4,
     backgroundColor: const Color(0xFF323232),
     textColor: Colors.white,

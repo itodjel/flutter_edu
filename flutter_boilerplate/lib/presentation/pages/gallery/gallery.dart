@@ -96,7 +96,6 @@ class _TakeAPhotoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizer = context.localizer;
     final mediaQuery = context.mediaQuery;
     final photoSize = mediaQuery.size.width / 4;
 
@@ -133,7 +132,7 @@ class _TakeAPhotoWidget extends StatelessWidget {
               ),
               const Spacing.horizontalXS(2),
               Text(
-                localizer.translations.takeAPhoto.toUpperCase(),
+                context.translations.takeAPhoto.toUpperCase(),
                 style: const TextStyle(color: Colors.black, fontSize: 10),
                 textAlign: TextAlign.center,
               ),
@@ -154,7 +153,6 @@ class _OpenGalleryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizer = context.localizer;
     final mediaQuery = context.mediaQuery;
     final photoSize = mediaQuery.size.width / 4;
 
@@ -181,7 +179,7 @@ class _OpenGalleryWidget extends StatelessWidget {
               const Icon(Icons.image, color: Colors.red, size: 26),
               const Spacing.horizontalXS(2),
               Text(
-                localizer.translations.openGallery.toUpperCase(),
+                context.translations.openGallery.toUpperCase(),
                 style: const TextStyle(color: Colors.black, fontSize: 10),
                 textAlign: TextAlign.center,
               ),

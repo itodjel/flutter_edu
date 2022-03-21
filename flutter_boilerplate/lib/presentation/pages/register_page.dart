@@ -1,5 +1,4 @@
 import 'package:flutter_boilerplate/_all.dart';
-import 'package:flutter_boilerplate/presentation/pages/_all.dart';
 
 class RegisterPage extends StatefulWidget {
   static const route = '/RegisterPage';
@@ -56,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
             if ((formKey.currentState?.validate() ?? false) && context.registerModelValidator.validate(registerState.model)) {
               context.registerBloc.add(RegisterSubmitEvent());
             } else {
-              showInfoMessage(context.localizer.translations.pleaseFillInAllRequiredFields);
+              context.toast.validation(message: context.translations.pleaseFillInAllRequiredFields);
             }
           }
         },
@@ -217,7 +216,7 @@ class _ProfilePhotoWidget extends StatelessWidget {
 
                       return Text(
                         'Add photo',
-                        //context.localizer.translations.addPhoto,
+                        //context.translations.addPhoto,
                         style: TextStyle(
                           color: context.appTheme.grey2,
                         ),
@@ -229,7 +228,7 @@ class _ProfilePhotoWidget extends StatelessWidget {
               const SizedBox(width: 10),
               Text(
                 'Yea',
-                //context.localizer.translations.forBestResultsUseThisRatio,
+                //context.translations.forBestResultsUseThisRatio,
                 style: TextStyle(
                   height: 1.5,
                   fontSize: 8,
@@ -255,7 +254,7 @@ class _EmailWidget extends StatelessWidget {
           initialValue: registerState.model.email,
           validator: (text) => context.registerModelValidator.email(registerState.model.copyWith(email: Optional(text))),
           onChanged: (text) => context.registerBloc.add(RegisterUpdateEvent(model: registerState.model.copyWith(email: Optional(text)))),
-          decoration: InputDecoration(hintText: context.localizer.translations.email),
+          decoration: InputDecoration(hintText: context.translations.email),
         );
       },
     );
@@ -273,7 +272,7 @@ class _FirstNameWidget extends StatelessWidget {
           initialValue: registerState.model.firstName,
           validator: (text) => context.registerModelValidator.firstName(registerState.model.copyWith(firstName: Optional(text))),
           onChanged: (text) => context.registerBloc.add(RegisterUpdateEvent(model: registerState.model.copyWith(firstName: Optional(text)))),
-          decoration: InputDecoration(hintText: context.localizer.translations.firstName),
+          decoration: InputDecoration(hintText: context.translations.firstName),
         );
       },
     );
@@ -291,7 +290,7 @@ class _LastNameWidget extends StatelessWidget {
           initialValue: registerState.model.lastName,
           validator: (text) => context.registerModelValidator.lastName(registerState.model.copyWith(lastName: Optional(text))),
           onChanged: (text) => context.registerBloc.add(RegisterUpdateEvent(model: registerState.model.copyWith(lastName: Optional(text)))),
-          decoration: InputDecoration(hintText: context.localizer.translations.lastName),
+          decoration: InputDecoration(hintText: context.translations.lastName),
         );
       },
     );
@@ -318,7 +317,7 @@ class __PasswordWidgetState extends State<_PasswordWidget> {
           onChanged: (text) => context.registerBloc.add(RegisterUpdateEvent(model: registerState.model.copyWith(password: Optional(text)))),
           obscureText: !passwordVisible,
           decoration: InputDecoration(
-              hintText: context.localizer.translations.password,
+              hintText: context.translations.password,
               suffixIcon: InkWell(
                 onTap: () {
                   setState(() {
@@ -329,11 +328,11 @@ class __PasswordWidgetState extends State<_PasswordWidget> {
                   padding: const EdgeInsets.all(15),
                   child: passwordVisible
                       ? Text(
-                          context.localizer.translations.hide.toUpperCase(),
+                          context.translations.hide.toUpperCase(),
                           style: TextStyle(fontSize: 10, color: context.appTheme.neutral1),
                         )
                       : Text(
-                          context.localizer.translations.show.toUpperCase(),
+                          context.translations.show.toUpperCase(),
                           style: TextStyle(fontSize: 10, color: context.appTheme.neutral3),
                         ),
                 ),
@@ -364,7 +363,7 @@ class __PasswordConfirmationWidgetState extends State<_PasswordConfirmationWidge
           onChanged: (text) => context.registerBloc.add(RegisterUpdateEvent(model: registerState.model.copyWith(passwordConfirmation: Optional(text)))),
           obscureText: !passwordConfirmationVisible,
           decoration: InputDecoration(
-              hintText: context.localizer.translations.retypePassword,
+              hintText: context.translations.retypePassword,
               suffixIcon: InkWell(
                 onTap: () {
                   setState(() {
@@ -375,11 +374,11 @@ class __PasswordConfirmationWidgetState extends State<_PasswordConfirmationWidge
                   padding: const EdgeInsets.all(15),
                   child: passwordConfirmationVisible
                       ? Text(
-                          context.localizer.translations.hide.toUpperCase(),
+                          context.translations.hide.toUpperCase(),
                           style: TextStyle(fontSize: 10, color: context.appTheme.neutral1),
                         )
                       : Text(
-                          context.localizer.translations.show.toUpperCase(),
+                          context.translations.show.toUpperCase(),
                           style: TextStyle(fontSize: 10, color: context.appTheme.neutral3),
                         ),
                 ),
@@ -416,7 +415,7 @@ class _AlreadyHaveAnAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        context.localizer.translations.alreadyHaveAnAccount,
+        context.translations.alreadyHaveAnAccount,
         style: const TextStyle(
           fontSize: 14,
         ),
@@ -434,7 +433,7 @@ class _SignInButton extends StatelessWidget {
       child: InkWell(
         onTap: () => context.navigator.pop(),
         child: Text(
-          context.localizer.translations.logIn,
+          context.translations.logIn,
           style: TextStyle(
             color: context.theme.primaryColor,
             fontSize: 14,

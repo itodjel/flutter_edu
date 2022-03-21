@@ -1,11 +1,9 @@
-import 'package:flutter_boilerplate/blocs/connectivity/connectivity_state.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 abstract class ConnectivityEvent {}
 
-class ConnectivityInitEvent extends ConnectivityEvent {}
-
 class ConnectivityUpdateStatusEvent extends ConnectivityEvent {
-  final ConnectivityStateStatus status;
+  final ConnectivityResult status;
 
   ConnectivityUpdateStatusEvent({required this.status});
 }

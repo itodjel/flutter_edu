@@ -1,4 +1,4 @@
-import 'package:flutter_boilerplate/blocs/app/_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 abstract class AppEvent {}
 

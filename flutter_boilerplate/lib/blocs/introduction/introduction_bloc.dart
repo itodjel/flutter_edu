@@ -5,7 +5,11 @@ class IntroductionBloc extends Bloc<IntroductionEvent, IntroductionState> {
 
   IntroductionBloc({
     required this.storageRepository,
-  }) : super(initialState());
+  }) : super(initialState()) {
+    on<IntroductionChangeIndexEvent>(_changeIndex);
+    on<IntroductionSetIntroSeenEvent>(_setIntroSeen);
+    on<IntroductionInitEvent>(_init);
+  }
 
   static IntroductionState initialState() => IntroductionState(
         status: IntroductionStateStatus.loading,
@@ -13,36 +17,25 @@ class IntroductionBloc extends Bloc<IntroductionEvent, IntroductionState> {
         isIntroSeen: true,
       );
 
-  @override
-  Stream<IntroductionState> mapEventToState(IntroductionEvent event) async* {
-    if (event is IntroductionChangeIndexEvent) {
-      yield* _changeIndex(event);
-    } else if (event is IntroductionSetIntroSeenEvent) {
-      yield* _setIntro();
-    } else if (event is IntroductionInitEvent) {
-      yield* _init();
-    }
-  }
-
-  Stream<IntroductionState> _init() async* {
+  Future<void> _init(IntroductionInitEvent event, Emitter<IntroductionState> emit) async {
     final isIntroSeen = await storageRepository.get<bool>(AppKeys.isIntroSeen);
 
-    yield state.copyWith(
+    emit(state.copyWith(
       status: IntroductionStateStatus.loaded,
       isIntroSeen: isIntroSeen.value,
-    );
+    ));
   }
 
-  Stream<IntroductionState> _changeIndex(IntroductionChangeIndexEvent event) async* {
-    yield state.copyWith(index: event.index);
+  Future<void> _changeIndex(IntroductionChangeIndexEvent event, Emitter<IntroductionState> emit) async {
+    emit(state.copyWith(index: event.index));
   }
 
-  Stream<IntroductionState> _setIntro() async* {
+  Future<void> _setIntroSeen(IntroductionSetIntroSeenEvent event, Emitter<IntroductionState> emit) async {
     await storageRepository.set(AppKeys.isIntroSeen, true);
 
-    yield state.copyWith(
+    emit(state.copyWith(
       status: IntroductionStateStatus.loaded,
       isIntroSeen: true,
-    );
+    ));
   }
 }

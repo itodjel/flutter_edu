@@ -80,7 +80,7 @@ class LocalImagePicker extends StatelessWidget {
     return (await showDialog<LocalImagePickerType>(
           context: context,
           builder: (BuildContext context) {
-            final localizer = context.localizer;
+            final translations = context.translations;
 
             return AlertDialog(
               content: Column(
@@ -90,14 +90,14 @@ class LocalImagePicker extends StatelessWidget {
                     onTap: () {
                       context.navigator.pop(LocalImagePickerType.camera);
                     },
-                    title: Text(localizer.translations.camera),
+                    title: Text(translations.camera),
                     trailing: const Icon(AppIcons.camera),
                   ),
                   ListTile(
                     onTap: () {
                       context.navigator.pop(LocalImagePickerType.gallery);
                     },
-                    title: Text(localizer.translations.gallery),
+                    title: Text(translations.gallery),
                     trailing: const Icon(AppIcons.imageGallery),
                   ),
                 ],

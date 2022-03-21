@@ -1,10 +1,4 @@
-import 'dart:ui';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-import 'models/language_model.dart';
-import 'models/translation_model.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/_all.dart';
 
 class Localizer {

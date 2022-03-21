@@ -2,7 +2,6 @@ import 'package:flutter/physics.dart';
 import 'package:flutter_boilerplate/_all.dart';
 import 'package:flutter_boilerplate/presentation/navigation_models/album_item_model.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'application_navigation_wrapper.dart';
 
 class Application extends StatefulWidget {
   @override
@@ -22,21 +21,23 @@ class _ApplicationState extends State<Application> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LocalizationBloc>(
+      lazy: false,
       create: (context) => LocalizationBloc(
         restApiClient: context.serviceProvider.restApiClient,
         storageRepository: context.serviceProvider.storageRepository,
       ),
       child: BlocBuilder<LocalizationBloc, LocalizationState>(
-        builder: (BuildContext context, LocalizationState localizationState) {
+        buildWhen: (previousState, currentState) => previousState != currentState,
+        builder: (context, localizationState) {
           return BlocProvider<ThemeBloc>(
             create: (context) => ThemeBloc(
               storageRepository: context.serviceProvider.storageRepository,
             ),
             child: BlocBuilder<ThemeBloc, ThemeState>(
-              builder: (BuildContext context, ThemeState themeState) {
+              builder: (context, themeState) {
                 return NotificationListener<OverscrollIndicatorNotification>(
                   onNotification: (OverscrollIndicatorNotification overscroll) {
-                    overscroll.disallowGlow();
+                    overscroll.disallowIndicator();
                     return true;
                   },
                   child: DismissFocusOverlay(
@@ -65,16 +66,16 @@ class _ApplicationState extends State<Application> {
                           child: RefreshConfiguration(
                             headerBuilder: () => ClassicHeader(
                               refreshingIcon: const Loader.sm(),
-                              completeText: context.localizer.translations.successfullyRefreshed,
-                              refreshingText: context.localizer.translations.refreshing,
-                              releaseText: context.localizer.translations.releaseToRefresh,
-                              idleText: context.localizer.translations.pullDownToRefresh,
+                              completeText: context.translations.successfullyRefreshed,
+                              refreshingText: context.translations.refreshing,
+                              releaseText: context.translations.releaseToRefresh,
+                              idleText: context.translations.pullDownToRefresh,
                             ),
                             footerBuilder: () => ClassicFooter(
                               loadingIcon: const Loader.sm(),
-                              canLoadingText: context.localizer.translations.releaseToLoadMore,
-                              loadingText: context.localizer.translations.loading,
-                              idleText: context.localizer.translations.pullToLoadMore,
+                              canLoadingText: context.translations.releaseToLoadMore,
+                              loadingText: context.translations.loading,
+                              idleText: context.translations.pullToLoadMore,
                               idleIcon: Container(),
                               noMoreIcon: NoContent(),
                             ),

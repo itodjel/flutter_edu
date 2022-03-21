@@ -7,54 +7,56 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
 
   LocationBloc({
     required this.locationRepository,
-  }) : super(
-          LocationState(status: LocationStateStatus.checking),
-        ) {
+  }) : super(initialState()) {
+    on<LocationInitEvent>(_init);
+    on<LocationCheckEvent>(_check);
+    on<LocationSelectCurrentLocationEvent>(_selectCurrentLocation);
+    on<LocationResetEvent>(_reset);
+    on<LocationUpdateEvent>(_update);
+
     _locationBlocSubscription = locationRepository.locationStream.stream.listen((location) {
       add(LocationUpdateEvent(location: location));
     });
   }
 
-  @override
-  Stream<LocationState> mapEventToState(LocationEvent event) async* {
-    if (event is LocationCheckEvent) {
-      yield* _checkLocation();
-    } else if (event is LocationInitEvent) {
-      yield* _init();
-    } else if (event is LocationSelectCurrentLocationEvent) {
-      yield* _selectCurrentLocation();
-    } else if (event is LocationResetEvent) {
-      yield* _reset();
-    } else if (event is LocationUpdateEvent) {
-      yield* _update(event);
-    }
-  }
+  static LocationState initialState() => LocationState(status: LocationStateStatus.checking);
 
-  Stream<LocationState> _checkLocation() async* {
-    yield state.copyWith(status: LocationStateStatus.checking);
+  Future<void> _check(LocationCheckEvent event, Emitter<LocationState> emit) async {
+    emit(state.copyWith(status: LocationStateStatus.checking));
 
     if (await locationRepository.isLocationAllowed()) {
       print(':::LOCATION ALLOWED:::');
-      yield* _init();
+      if (await checkLocationPermission()) {
+        await locationRepository.init();
+
+        final currentLocation = await locationRepository.getCurrentLocation();
+        final currentPlaceDetails = await locationRepository.getCurrentPlaceDetails();
+
+        emit(state.copyWith(
+          status: LocationStateStatus.newAccurateLocation,
+          location: Optional(currentLocation),
+          placeDetails: Optional(currentPlaceDetails),
+        ));
+      }
     } else {
       print(':::LOCATION NOT ALLOWED:::');
-      yield state.copyWith(status: LocationStateStatus.notAllowed);
-      yield state.copyWith(status: LocationStateStatus.notAllowedExplicitly);
+      emit(state.copyWith(status: LocationStateStatus.notAllowed));
+      emit(state.copyWith(status: LocationStateStatus.notAllowedExplicitly));
     }
   }
 
-  Stream<LocationState> _init() async* {
+  Future<void> _init(LocationInitEvent event, Emitter<LocationState> emit) async {
     if (await checkLocationPermission()) {
       await locationRepository.init();
 
       final currentLocation = await locationRepository.getCurrentLocation();
       final currentPlaceDetails = await locationRepository.getCurrentPlaceDetails();
 
-      yield state.copyWith(
+      emit(state.copyWith(
         status: LocationStateStatus.newAccurateLocation,
         location: Optional(currentLocation),
         placeDetails: Optional(currentPlaceDetails),
-      );
+      ));
     }
   }
 
@@ -75,34 +77,34 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     return false;
   }
 
-  Stream<LocationState> _reset() async* {
-    yield LocationState(status: LocationStateStatus.newLocation);
+  Future<void> _reset(LocationResetEvent event, Emitter<LocationState> emit) async {
+    emit(LocationState(status: LocationStateStatus.newLocation));
   }
 
-  Stream<LocationState> _selectCurrentLocation() async* {
+  Future<void> _selectCurrentLocation(LocationSelectCurrentLocationEvent event, Emitter<LocationState> emit) async {
     await locationRepository.init();
     final currentLocation = await locationRepository.getCurrentLocation();
     final currentPlaceDetails = await locationRepository.getCurrentPlaceDetails();
 
-    yield state.copyWith(
+    emit(state.copyWith(
       status: LocationStateStatus.newAccurateLocation,
       location: Optional(currentLocation),
       placeDetails: Optional(currentPlaceDetails),
-    );
+    ));
   }
 
-  Stream<LocationState> _update(LocationUpdateEvent event) async* {
+  Future<void> _update(LocationUpdateEvent event, Emitter<LocationState> emit) async {
     PlaceDetailsModel? currentPlaceDetails;
 
     if (event.location.latitude != null && event.location.longitude != null) {
       currentPlaceDetails = await locationRepository.getPlaceDetails(latitude: event.location.latitude!, longitude: event.location.longitude!);
     }
 
-    yield state.copyWith(
+    emit(state.copyWith(
       status: LocationStateStatus.newAccurateLocation,
       location: Optional(event.location),
       placeDetails: Optional(currentPlaceDetails),
-    );
+    ));
   }
 
   @override

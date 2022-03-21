@@ -26,7 +26,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
       validator: widget.validator,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
-        hintText: widget.hintText ?? context.localizer.translations.password,
+        hintText: widget.hintText ?? context.translations.password,
         suffixIcon: IconButton(
           icon: Icon(
             Icons.remove_red_eye,

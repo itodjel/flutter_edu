@@ -1,8 +1,6 @@
 import 'package:photo_manager/photo_manager.dart';
 import 'package:flutter_boilerplate/_all.dart';
 
-import 'gallery_item.dart';
-
 class Album {
   String? id;
   String? name;

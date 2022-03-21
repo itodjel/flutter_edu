@@ -1,4 +1,3 @@
-import 'package:catcher/handlers/slack_handler.dart';
 import 'package:catcher/model/platform_type.dart';
 import 'package:catcher/utils/catcher_utils.dart';
 import 'package:rest_api_client/rest_api_client.dart';

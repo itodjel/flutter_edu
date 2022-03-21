@@ -1,9 +1,6 @@
-import 'package:catcher/catcher.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_boilerplate/_all.dart';
 import 'package:rest_api_client/rest_api_client.dart';
-import 'package:storage_repository/storage_repository.dart';
-import 'package:flutter_boilerplate/common/error_handling/extended_slack_handler.dart';
 
 class DevelopmentServiceProvider extends ServiceProvider {
   @override
@@ -29,6 +26,7 @@ abstract class ServiceProvider {
   late AppSettings appSettings;
   late CatcherOptions catcherOptions;
   late IRestApiClient restApiClient;
+  late IToast toast;
   late IAccountRepository accountRepository;
   late IStorageRepository storageRepository;
   late IStorageRepository cacheStorageRepository;
@@ -36,6 +34,7 @@ abstract class ServiceProvider {
   late IGalleryRepository galleryRepository;
   late ILocationRepository locationRepository;
   late IAuthenticationRepository authenticationRepository;
+  late IDebouncer debouncer;
   //Add new repositories and services here
   //...
 
@@ -46,6 +45,7 @@ abstract class ServiceProvider {
     await initRespositories();
     await initExceptionHandling();
     await initDateTimeDefaults();
+    await initCommonServices();
   }
 
   Future<void> initAppSettings();
@@ -68,12 +68,14 @@ abstract class ServiceProvider {
     restApiClient = RestApiClient(
       restApiClientOptions: RestApiClientOptions(
         baseUrl: appSettings.baseApiUrl,
-        logNetworkTraffic: appSettings.logNetworkTraffic,
         keepRetryingOnNetworkError: appSettings.keepRetryingOnNetworkError,
         refreshTokenEndpoint: '/auth/token-refresh',
         refreshTokenParameterName: 'token',
         resolveJwt: (response) => response.data['result']['accessToken']['token'],
         resolveRefreshToken: (response) => response.data['result']['refreshToken']['token'],
+      ),
+      loggingOptions: LoggingOptions(
+        logNetworkTraffic: appSettings.logNetworkTraffic,
       ),
     );
     await restApiClient.init();
@@ -121,6 +123,11 @@ abstract class ServiceProvider {
 
   Future<void> initDateTimeDefaults() async {
     Intl.defaultLocale = Localizer.defaultLanguage.locale.languageCode;
+  }
+
+  Future<void> initCommonServices() async {
+    debouncer = Debouncer();
+    toast = Toast();
   }
 }
 

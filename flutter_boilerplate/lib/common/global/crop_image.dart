@@ -5,7 +5,7 @@ import 'package:flutter_boilerplate/_all.dart';
 
 Future<File?> cropImage({required BuildContext context, required String path}) async {
   try {
-    return await ImageCropper.cropImage(
+    return await ImageCropper().cropImage(
       sourcePath: path,
       aspectRatioPresets: [
         CropAspectRatioPreset.square,

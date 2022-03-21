@@ -2,7 +2,8 @@ import 'package:flutter_boilerplate/_all.dart';
 
 extension BuildContextBlocsExtensions on BuildContext {
   AppBloc get appBloc => read<AppBloc>();
-  AuthBloc get authBloc => read<AuthBloc>();
+  AuthenticationBloc get authenticationBloc => read<AuthenticationBloc>();
+  AuthorizationBloc get authorizationBloc => read<AuthorizationBloc>();
   ConfigurationBloc get configurationBloc => read<ConfigurationBloc>();
   ConnectivityBloc get connectivityBloc => read<ConnectivityBloc>();
   ErrorHandlerBloc get errorHandlerBloc => read<ErrorHandlerBloc>();

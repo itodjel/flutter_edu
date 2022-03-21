@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_boilerplate/_all.dart';
 
 class LocationModel {

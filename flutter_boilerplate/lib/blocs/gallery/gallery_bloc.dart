@@ -6,7 +6,16 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
 
   GalleryBloc({
     required this.galleryRepository,
-  }) : super(initialState());
+  }) : super(initialState()) {
+    on<GalleryInitEvent>(_init);
+    on<GalleryLoadEvent>(_load);
+    on<GalleryLoadMoreEvent>(_loadMore);
+    on<GalleryRefreshEvent>(_refresh);
+    on<GalleryLoadAlbumsEvent>(_loadAlbums);
+    on<GalleryAddItemEvent>(_addItem);
+    on<GalleryToggleItemEvent>(_toggleItem);
+    on<GalleryResetEvent>(_reset);
+  }
 
   static GalleryState initialState() => GalleryState(
         allowMultiple: true,
@@ -18,29 +27,8 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
         ),
       );
 
-  @override
-  Stream<GalleryState> mapEventToState(GalleryEvent event) async* {
-    if (event is GalleryLoadAlbumsEvent) {
-      yield* _loadAlbums();
-    } else if (event is GalleryLoadEvent) {
-      yield* _load(event);
-    } else if (event is GalleryRefreshEvent) {
-      yield* _refresh();
-    } else if (event is GalleryLoadMoreEvent) {
-      yield* _loadMore();
-    } else if (event is GalleryAddItemEvent) {
-      yield* _addItem(event);
-    } else if (event is GalleryToggleItemEvent) {
-      yield* _toggleItem(event);
-    } else if (event is GalleryResetEvent) {
-      yield* _reset();
-    } else if (event is GalleryInitEvent) {
-      yield* _init();
-    }
-  }
-
-  Stream<GalleryState> _init() async* {
-    yield state.copyWith(
+  Future<void> _init(GalleryInitEvent event, Emitter<GalleryState> emit) async {
+    emit(state.copyWith(
       status: GalleryStateStatus.loaded,
       items: [],
       albums: [],
@@ -48,47 +36,59 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
         galleryAssetType: GalleryAssetType.image,
       ),
       allowMultiple: false,
-    );
+    ));
   }
 
-  Stream<GalleryState> _loadAlbums() async* {
+  Future<void> _loadAlbums(GalleryLoadAlbumsEvent event, Emitter<GalleryState> emit) async {
     if (await Permission.storage.check()) {
-      yield state.copyWith(status: GalleryStateStatus.loadingAlbums);
+      emit(state.copyWith(status: GalleryStateStatus.loadingAlbums));
 
       final albums = await galleryRepository.getAlbums();
 
-      yield state.copyWith(status: GalleryStateStatus.loaded, albums: albums);
+      emit(state.copyWith(status: GalleryStateStatus.loaded, albums: albums));
     }
   }
 
-  Stream<GalleryState> _load(GalleryLoadEvent event) async* {
+  Future<void> _load(GalleryLoadEvent event, Emitter<GalleryState> emit) async {
     if (await Permission.storage.check()) {
       final searchModel = event.searchModel ?? state.searchModel;
 
-      yield state.copyWith(
+      emit(state.copyWith(
         status: GalleryStateStatus.loading,
         searchModel: searchModel,
         allowMultiple: event.allowMultiple,
-      );
+      ));
 
-      yield* _refresh();
+      // yield* _refresh();
+      searchModel.reset();
+
+      final items = await galleryRepository.get(searchModel);
+
+      emit(state.copyWith(
+        status: GalleryStateStatus.refreshed,
+        items: items,
+        searchModel: searchModel,
+      ));
+    } else {
+      emit(state.copyWith(status: GalleryStateStatus.permissionDenied));
     }
   }
 
-  Stream<GalleryState> _refresh() async* {
+  Future<void> _refresh(GalleryRefreshEvent event, Emitter<GalleryState> emit) async {
     final searchModel = state.searchModel;
     searchModel.reset();
 
     final items = await galleryRepository.get(searchModel);
 
-    yield state.copyWith(
+    emit(state.copyWith(
       status: GalleryStateStatus.refreshed,
       items: items,
       searchModel: searchModel,
-    );
+    ));
   }
 
-  Stream<GalleryState> _loadMore() async* {
+  Future<void> _loadMore(GalleryLoadMoreEvent event, Emitter<GalleryState> emit) async {
+    emit(state.copyWith(status: GalleryStateStatus.loadingImages));
     final searchModel = state.searchModel;
 
     searchModel.increment();
@@ -99,13 +99,13 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
       final all = List<GalleryItem>.from(state.items);
       all.addAll(items!);
 
-      yield state.copyWith(status: GalleryStateStatus.loadedMore, items: all, searchModel: searchModel);
+      emit(state.copyWith(status: GalleryStateStatus.loadedMore, items: all, searchModel: searchModel));
     } else {
-      yield state.copyWith(status: GalleryStateStatus.loaded);
+      emit(state.copyWith(status: GalleryStateStatus.loaded));
     }
   }
 
-  Stream<GalleryState> _addItem(GalleryAddItemEvent event) async* {
+  Future<void> _addItem(GalleryAddItemEvent event, Emitter<GalleryState> emit) async {
     if (!state.allowMultiple) {
       for (final x in state.items) {
         x.isSelected = false;
@@ -113,10 +113,10 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
     }
 
     state.items.insert(0, event.galleryItem);
-    yield state.copyWith();
+    emit(state.copyWith());
   }
 
-  Stream<GalleryState> _toggleItem(GalleryToggleItemEvent event) async* {
+  Future<void> _toggleItem(GalleryToggleItemEvent event, Emitter<GalleryState> emit) async {
     if (!state.allowMultiple) {
       for (final x in state.items) {
         x.isSelected = false;
@@ -127,11 +127,20 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
     if (item != null) {
       item.isSelected = !(item.isSelected ?? false);
 
-      yield state.copyWith();
+      emit(state.copyWith());
     }
   }
 
-  Stream<GalleryState> _reset() async* {
-    yield* _refresh();
+  Future<void> _reset(GalleryResetEvent event, Emitter<GalleryState> emit) async {
+    final searchModel = state.searchModel;
+    searchModel.reset();
+
+    final items = await galleryRepository.get(searchModel);
+
+    emit(state.copyWith(
+      status: GalleryStateStatus.refreshed,
+      items: items,
+      searchModel: searchModel,
+    ));
   }
 }

@@ -1,9 +1,8 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/_all.dart';
-import 'package:flutter_boilerplate/common/localization/localizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 extension BuildContextExtensions on BuildContext {
+  IToast get toast => serviceProvider.toast;
   Localizer get localizer => Localizer.of(this);
   TranslationModel get translations => localizer.translations;
   Configuration get configuration => configurationBloc.state.configuration;

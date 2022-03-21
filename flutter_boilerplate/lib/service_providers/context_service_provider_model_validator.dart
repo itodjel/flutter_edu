@@ -1,5 +1,4 @@
 import 'package:flutter_boilerplate/_all.dart';
-import 'package:provider/provider.dart';
 
 class ContextServiceProviderModelValidator extends StatelessWidget {
   final Widget? child;

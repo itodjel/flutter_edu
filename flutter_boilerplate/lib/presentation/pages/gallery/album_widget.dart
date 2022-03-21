@@ -142,7 +142,7 @@ class _AlbumItemsPageState extends State<AlbumItemsPage> {
                     if (galleryState.items.isEmpty) {
                       return Container(
                         child: Center(
-                          child: Text(context.localizer.translations.noContent),
+                          child: Text(context.translations.noContent),
                         ),
                       );
                     }

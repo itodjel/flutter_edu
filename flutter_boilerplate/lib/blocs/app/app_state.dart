@@ -7,7 +7,8 @@ enum AppStateStatus {
 }
 
 enum AppRequirement {
-  auth,
+  authentication,
+  authorization,
   theme,
   // location,
   localization,
