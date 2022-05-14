@@ -6,7 +6,7 @@ class ResetPasswordInitEvent extends ResetPasswordEvent {}
 
 class ResetPasswordValidateEvent extends ResetPasswordEvent {}
 
-class ResetPasswordEmailValidateEvent extends ResetPasswordEvent {}
+class ResetPasswordValidateEmailEvent extends ResetPasswordEvent {}
 
 class ResetPasswordUpdateEvent extends ResetPasswordEvent {
   final ResetPasswordModel model;

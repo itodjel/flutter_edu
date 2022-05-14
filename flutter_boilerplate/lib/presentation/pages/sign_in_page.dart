@@ -40,7 +40,7 @@ class _SignInPageState extends State<SignInPage> {
               formKey.currentState?.validate();
             }
             if (signInState.status == SignInStateStatus.validating) {
-              showInfoMessage('Please fill in all required fields before submitting');
+              context.toast.validation(message: context.translations.pleaseFillInAllRequiredFields);
             }
           },
           child: ListView(
@@ -153,23 +153,21 @@ class __PasswordWidgetState extends State<_PasswordWidget> {
           onChanged: (text) => context.signInBloc.add(SignInUpdateEvent(model: signInState.model.copyWith(password: Optional(text)))),
           obscureText: obscureText,
           decoration: InputDecoration(
-            hintText: Localizer.of(context).translations.password,
-            //hintText: context.localizer.translations.password,
-            //hintText: context.translations.password,
+            hintText: context.translations.password,
             suffixIcon: InkWell(
               onTap: () => setState(() => obscureText = !obscureText),
               child: Padding(
                 padding: const EdgeInsets.all(15),
                 child: obscureText
                     ? Text(
-                        context.localizer.translations.show.toUpperCase(),
+                        context.translations.show.toUpperCase(),
                         style: TextStyle(
                           fontSize: 10,
                           color: context.appTheme.neutral1,
                         ),
                       )
                     : Text(
-                        context.localizer.translations.hide.toUpperCase(),
+                        context.translations.hide.toUpperCase(),
                         style: TextStyle(
                           fontSize: 10,
                           color: context.appTheme.neutral3,
@@ -251,7 +249,7 @@ class _CreateAccountWidget extends StatelessWidget {
             onSuccess: () {
               context.navigator.resetAndPushNamed(SignInPage.route);
 
-              showInfoDialog(message: context.translations.successfullyCreatedAnAccount);
+              context.toast.success(message: context.translations.successfullyCreatedAnAccount);
             },
           ),
         ),

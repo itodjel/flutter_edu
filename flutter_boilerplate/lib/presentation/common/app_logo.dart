@@ -26,7 +26,7 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     if (_appLogoType == _AppLogoType.text) {
       return Text(
-        context.localizer.translations.applicationName,
+        context.translations.applicationName,
         style: const TextStyle(fontSize: 20),
       );
     }

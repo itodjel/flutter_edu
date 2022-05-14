@@ -30,7 +30,7 @@ class NoInternetPage extends StatelessWidget {
                     ),
                     const Spacing.verticalL(),
                     Text(
-                      context.localizer.translations.pleaseReconnectToTheInternet,
+                      context.translations.pleaseReconnectToTheInternet,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 14,

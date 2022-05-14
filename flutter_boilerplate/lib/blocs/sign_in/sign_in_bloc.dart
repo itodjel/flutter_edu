@@ -5,7 +5,11 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
   SignInBloc({
     required this.authenticationRepository,
-  }) : super(initialState());
+  }) : super(initialState()) {
+    on<SignInUpdateEvent>(_update);
+    on<SignInValidateEvent>(_validate);
+    on<SignInSubmitEvent>(_submit);
+  }
 
   static SignInState initialState() => SignInState(
         status: SignInStateStatus.initial,
@@ -13,37 +17,26 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         submittedOnce: false,
       );
 
-  @override
-  Stream<SignInState> mapEventToState(SignInEvent event) async* {
-    if (event is SignInUpdateEvent) {
-      yield* _update(event);
-    } else if (event is SignInValidateEvent) {
-      yield* _validate();
-    } else if (event is SignInSubmitEvent) {
-      yield* _submit();
-    }
+  Future<void> _update(SignInUpdateEvent event, Emitter<SignInState> emit) async {
+    emit(state.copyWith(status: SignInStateStatus.initial, model: event.model));
   }
 
-  Stream<SignInState> _update(SignInUpdateEvent event) async* {
-    yield state.copyWith(status: SignInStateStatus.initial, model: event.model);
+  Future<void> _validate(SignInValidateEvent event, Emitter<SignInState> emit) async {
+    emit(state.copyWith(status: SignInStateStatus.validating, submittedOnce: true));
   }
 
-  Stream<SignInState> _validate() async* {
-    yield state.copyWith(status: SignInStateStatus.validating, submittedOnce: true);
-  }
-
-  Stream<SignInState> _submit() async* {
-    yield state.copyWith(status: SignInStateStatus.submitting);
+  Future<void> _submit(SignInSubmitEvent event, Emitter<SignInState> emit) async {
+    emit(state.copyWith(status: SignInStateStatus.submitting));
     await Future.delayed(const Duration(seconds: 5));
 
     //TODO: Ping your API via repository to authenticate the user
     final success = await authenticationRepository.signIn(state.model);
 
     if (success) {
-      yield state.copyWith(status: SignInStateStatus.submittingSuccess);
-      yield initialState();
+      emit(state.copyWith(status: SignInStateStatus.submittingSuccess));
+      emit(initialState());
     } else {
-      yield state.copyWith(status: SignInStateStatus.submittingError);
+      emit(state.copyWith(status: SignInStateStatus.submittingError));
     }
   }
 }

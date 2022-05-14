@@ -114,11 +114,7 @@ class _EmailTextField extends StatelessWidget {
         return TextFormField(
           initialValue: resetPasswordState.model.email,
           onChanged: (text) => context.resetPasswordBloc.add(ResetPasswordUpdateEvent(model: resetPasswordState.model.copyWith(email: Optional(text)))),
-          validator: (text) {
-            if (text.value.isEmpty || !text.value.isEmail) {
-              return 'Email must be in correct format!';
-            }
-          },
+          validator: (text) => context.resetPasswordModelValidator.email(resetPasswordState.model.copyWith(email: Optional(text))),
           decoration: InputDecoration(
               hintText: context.localizer.translations.email,
               hintStyle: const TextStyle(
@@ -144,7 +140,7 @@ class _SubmitButton extends StatelessWidget {
           textColor: Colors.white,
           text: context.localizer.translations.submit,
           isLoading: resetPasswordState.status == ResetPasswordStateStatus.emailSubmitting,
-          onTap: () => context.resetPasswordBloc.add(ResetPasswordEmailValidateEvent()),
+          onTap: () => context.resetPasswordBloc.add(ResetPasswordValidateEmailEvent()),
         );
       },
     );

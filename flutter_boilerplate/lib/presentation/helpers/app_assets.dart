@@ -12,8 +12,8 @@ class AppAssets {
   static String get mapPinByPlatform => Platform.isIOS ? mapPin : mapPin2x;
 
   static const onboarding1 = 'assets/images/onboarding/onBoarding1.jpg';
-  static const onboarding2 = 'assets/images/onboarding/onBoarding2.jpg';
-  static const onboarding3 = 'assets/images/onboarding/onBoarding3.jpg';
+  static const onboarding2 = 'assets/images/onboarding/onBoarding2.webp';
+  static const onboarding3 = 'assets/images/onboarding/onBoarding3.png';
 
   static const placeholderPhoto = 'assets/images/placeholders/placeholderPhoto.png';
   static const placeholderNoContent = 'assets/images/placeholders/placeholderNoContent.png';

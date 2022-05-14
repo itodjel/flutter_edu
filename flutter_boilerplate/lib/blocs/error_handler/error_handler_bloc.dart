@@ -7,22 +7,19 @@ class ErrorHandlerBloc extends Bloc<ErrorHandlerEvent, ErrorHandlerState> {
 
   ErrorHandlerBloc({
     required this.restApiClient,
-  }) : super(ErrorHandlerState(status: ErrorHandlerStateStatus.clean)) {
+  }) : super(initialState()) {
+    on<ErrorHandlerAddNewExceptionEvent>(_addNewException);
+
     _restApiClientSubscription = restApiClient.exceptions.stream.listen((exception) {
-      add(AddNewExceptionErrorHandlerEvent(exception: exception));
+      add(ErrorHandlerAddNewExceptionEvent(exception: exception));
     });
   }
 
-  @override
-  Stream<ErrorHandlerState> mapEventToState(ErrorHandlerEvent event) async* {
-    if (event is AddNewExceptionErrorHandlerEvent) {
-      yield* _addNewException(event);
-    }
-  }
+  static ErrorHandlerState initialState() => ErrorHandlerState(status: ErrorHandlerStateStatus.clean);
 
-  Stream<ErrorHandlerState> _addNewException(AddNewExceptionErrorHandlerEvent event) async* {
-    yield ErrorHandlerState(status: ErrorHandlerStateStatus.dirty, exception: event.exception);
-    // yield ErrorHandlerState(status: ErrorHandlerStateStatus.clean, exception: null);
+  Future<void> _addNewException(ErrorHandlerAddNewExceptionEvent event, Emitter<ErrorHandlerState> emit) async {
+    emit(ErrorHandlerState(status: ErrorHandlerStateStatus.dirty, exception: event.exception));
+    // emit(ErrorHandlerState(status: ErrorHandlerStateStatus.clean, exception: null));
   }
 
   @override

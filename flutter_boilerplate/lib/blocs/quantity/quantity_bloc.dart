@@ -6,39 +6,37 @@ class QuantityBloc extends Bloc<QuantityEvent, QuantityState> {
   QuantityBloc({
     double value = 1,
     this.numberOfDecimals = 2,
-  }) : super(QuantityState(
-          status: QuantityStateStatus.initializing,
-          text: value.toStringAsFixed(numberOfDecimals),
-          value: value,
-        ));
-
-  @override
-  Stream<QuantityState> mapEventToState(QuantityEvent event) async* {
-    if (event is QuantityUpdateEvent) {
-      yield* _update(event);
-    } else if (event is QuantityAddValueEvent) {
-      yield* _addValue(event);
-    }
+  }) : super(initialState(value, numberOfDecimals)) {
+    on<QuantityUpdateEvent>(_update);
+    on<QuantityAddValueEvent>(_addValue);
   }
 
-  Stream<QuantityState> _update(QuantityUpdateEvent event) async* {
+  static QuantityState initialState(double value, int numberOfDecimals) {
+    return QuantityState(
+      status: QuantityStateStatus.initializing,
+      text: value.toStringAsFixed(numberOfDecimals),
+      value: value,
+    );
+  }
+
+  Future<void> _update(QuantityUpdateEvent event, Emitter<QuantityState> emit) async {
     final value = double.tryParse(event.text);
 
     if (value != null) {
-      yield state.copyWith(
+      emit(state.copyWith(
         status: QuantityStateStatus.initial,
         text: value.toStringAsFixed(numberOfDecimals),
         value: value,
-      );
+      ));
     }
   }
 
-  Stream<QuantityState> _addValue(QuantityAddValueEvent event) async* {
+  Future<void> _addValue(QuantityAddValueEvent event, Emitter<QuantityState> emit) async {
     state.value = state.value + event.value;
 
-    yield state.copyWith(
+    emit(state.copyWith(
       status: QuantityStateStatus.initial,
       text: state.value.toStringAsFixed(numberOfDecimals),
-    );
+    ));
   }
 }

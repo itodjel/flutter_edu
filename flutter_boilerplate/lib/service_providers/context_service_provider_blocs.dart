@@ -17,7 +17,7 @@ class ContextServiceProviderBlocs extends StatelessWidget {
           lazy: false,
           create: (BuildContext context) => ConnectivityBloc(
             appSettings: context.appSettings,
-          )..add(ConnectivityInitEvent()),
+          ),
         ),
         BlocProvider<ErrorHandlerBloc>(
           create: (BuildContext context) => ErrorHandlerBloc(
@@ -74,19 +74,25 @@ class ContextServiceProviderBlocs extends StatelessWidget {
         // *
         // * With dependencies
         // *
-        BlocProvider<AuthBloc>(
+        BlocProvider<AuthenticationBloc>(
           lazy: false,
-          create: (BuildContext context) => AuthBloc(
-            restApiClient: context.serviceProvider.restApiClient,
+          create: (BuildContext context) => AuthenticationBloc(
             authenticationRepository: context.serviceProvider.authenticationRepository,
-            signInBloc: context.signInBloc,
-            registerBloc: context.registerBloc,
-          )..add(AuthCheckAuthenticationEvent()),
+            accountRepository: context.serviceProvider.accountRepository,
+            storageRepository: context.serviceProvider.storageRepository,
+          )..add(AuthenticationCheckEvent()),
+        ),
+        BlocProvider<AuthorizationBloc>(
+          lazy: false,
+          create: (BuildContext context) => AuthorizationBloc(
+            authenticationRepository: context.serviceProvider.authenticationRepository,
+            authenticationBloc: context.authenticationBloc,
+          )..add(AuthorizationCheckEvent()),
         ),
         BlocProvider<ConfigurationBloc>(
           lazy: false,
           create: (BuildContext context) => ConfigurationBloc(
-            authBloc: context.authBloc,
+            authenticationBloc: context.authenticationBloc,
             locationBloc: context.locationBloc,
           ),
         ),
@@ -94,7 +100,8 @@ class ContextServiceProviderBlocs extends StatelessWidget {
           lazy: false,
           create: (BuildContext context) => AppBloc(
             appSettings: context.serviceProvider.appSettings,
-            authBloc: context.authBloc,
+            authenticationBloc: context.authenticationBloc,
+            authorizationBloc: context.authorizationBloc,
             themeBloc: context.themeBloc,
             locationBloc: context.locationBloc,
             localizationBloc: context.localizationBloc,

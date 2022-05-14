@@ -23,7 +23,7 @@ class _OnlyNetworkPageWrapperState extends State<OnlyNetworkPageWrapper> {
       listener: (context, connectivityState) {
         final overlayState = Overlay.of(context);
 
-        if (connectivityState.status == ConnectivityStateStatus.none) {
+        if (!connectivityState.isConnected) {
           overlayState?.insert(_noInternetPageOverlayEntry);
         } else {
           if (overlayState != null && _noInternetPageOverlayEntry.mounted) {
@@ -33,7 +33,7 @@ class _OnlyNetworkPageWrapperState extends State<OnlyNetworkPageWrapper> {
       },
       builder: (context, connectivityState) {
         return WillPopScope(
-          onWillPop: () async => connectivityState.status != ConnectivityStateStatus.none,
+          onWillPop: () async => connectivityState.isConnected,
           child: widget.page,
         );
       },

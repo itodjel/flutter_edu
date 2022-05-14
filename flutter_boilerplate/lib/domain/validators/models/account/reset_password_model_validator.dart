@@ -9,6 +9,14 @@ class ResetPasswordModelValidator extends ModelValidator<ResetPasswordModel> {
 
   String? code(ResetPasswordModel model) => !model.code.hasValue ? localizer.translations.fieldIsRequired : null;
 
+  String? email(ResetPasswordModel model) {
+    if (!model.email.hasValue || !model.email.isEmail) {
+      return localizer.translations.fieldIsRequired;
+    } else {
+      return null;
+    }
+  }
+
   String? newPassword(ResetPasswordModel model) {
     if (!model.newPassword.hasValue) {
       return localizer.translations.fieldIsRequired;

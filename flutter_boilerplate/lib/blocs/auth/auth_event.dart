@@ -1,5 +1,5 @@
-abstract class AuthEvent {}
+// abstract class AuthEvent {}
 
-class AuthCheckAuthenticationEvent extends AuthEvent {}
+// class AuthCheckAuthenticationEvent extends AuthEvent {}
 
-class AuthSignOutEvent extends AuthEvent {}
+// class AuthSignOutEvent extends AuthEvent {}

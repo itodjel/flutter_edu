@@ -38,7 +38,7 @@ class GalleryItemWidget extends StatelessWidget {
                 child: Icon(
                   Icons.check,
                   size: 40,
-                  color: context.theme.accentColor,
+                  color: context.theme.colorScheme.secondary,
                 ),
               );
             }

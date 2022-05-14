@@ -8,24 +8,19 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
   ConnectivityBloc({
     required this.appSettings,
   }) : super(initialState()) {
+    on<ConnectivityUpdateStatusEvent>(_updateStatus);
+
     _connectivityStatusSubscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult status) {
-      add(ConnectivityUpdateStatusEvent(status: ConnectivityStateStatus.values[status.index]));
+      add(ConnectivityUpdateStatusEvent(status: status));
     });
   }
 
   static ConnectivityState initialState() => ConnectivityState(
-        status: ConnectivityStateStatus.initializing,
+        status: ConnectivityResult.none,
       );
 
-  @override
-  Stream<ConnectivityState> mapEventToState(ConnectivityEvent event) async* {
-    if (event is ConnectivityUpdateStatusEvent) {
-      yield* _updateStatus(event);
-    }
-  }
-
-  Stream<ConnectivityState> _updateStatus(ConnectivityUpdateStatusEvent event) async* {
-    yield state.copyWith(status: event.status);
+  Future<void> _updateStatus(ConnectivityUpdateStatusEvent event, Emitter<ConnectivityState> emit) async {
+    emit(state.copyWith(status: event.status));
   }
 
   @override

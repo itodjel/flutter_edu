@@ -6,11 +6,13 @@ abstract class IAuthenticationRepository {
   Future<bool> isAuthenticated();
   Future<bool> signIn(SignInModel model);
   Future<bool> signOut();
+  Future<Account?> getStoredUser();
 }
 
 class AuthenticationRepository implements IAuthenticationRepository {
   final IRestApiClient restApiClient;
   final IStorageRepository storageRepository;
+  static const String userLocalDataCache = 'Authentication_UserLocalDataCacheKey';
 
   AuthenticationRepository({
     required this.restApiClient,
@@ -66,6 +68,22 @@ class AuthenticationRepository implements IAuthenticationRepository {
     } catch (e) {
       print(e);
       return false;
+    }
+  }
+
+  @override
+  Future<Account?> getStoredUser() async {
+    final containsUserAccount = await storageRepository.contains(userLocalDataCache);
+    if (!containsUserAccount) {
+      return null;
+    }
+
+    final storedAccountData = await storageRepository.get(userLocalDataCache);
+    try {
+      final accountData = Account.fromMap(storedAccountData);
+      return accountData;
+    } catch (e) {
+      return null;
     }
   }
 }

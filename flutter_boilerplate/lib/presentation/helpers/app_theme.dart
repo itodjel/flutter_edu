@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/_all.dart';
 
 class AppThemeData {
@@ -84,14 +83,13 @@ class AppTheme extends StatelessWidget {
         ),
         brightness: Brightness.light,
         primaryColor: const Color(0xFFE90C00),
-        primaryColorBrightness: Brightness.light,
         primaryColorLight: Colors.white,
         primaryColorDark: Colors.white,
         colorScheme: const ColorScheme(
           primary: Colors.white,
-          primaryVariant: Colors.white,
+          primaryContainer: Colors.white,
           secondary: Color(0xFF0b569c),
-          secondaryVariant: Colors.white,
+          secondaryContainer: Colors.white,
           surface: Colors.white,
           background: Colors.white,
           error: Colors.white,
@@ -176,9 +174,9 @@ class AppTheme extends StatelessWidget {
           hoverColor: Color(0x0a000000),
           colorScheme: ColorScheme(
             primary: Color(0xffff9800),
-            primaryVariant: Color(0xfff57c00),
+            primaryContainer: Color(0xfff57c00),
             secondary: Color(0xffff9800),
-            secondaryVariant: Color(0xfff57c00),
+            secondaryContainer: Color(0xfff57c00),
             surface: Color(0xffffffff),
             background: Color(0xffffcc80),
             error: Color(0xffd32f2f),

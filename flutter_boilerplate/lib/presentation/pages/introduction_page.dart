@@ -12,24 +12,24 @@ class IntroductionPage extends StatelessWidget {
               index: 0,
               model: Introduction(
                 imgUrl: AppAssets.onboarding1,
-                title: context.localizer.translations.whoWeAre,
-                description: context.localizer.translations.onBoardingFirstPageText,
+                title: context.translations.whoWeAre,
+                description: context.translations.onBoardingFirstPageText,
               ),
             ),
             _OnBoardingWidget(
               index: 1,
               model: Introduction(
                 imgUrl: AppAssets.onboarding2,
-                title: context.localizer.translations.hostATailgate,
-                description: context.localizer.translations.onBoardingSecondPageText,
+                title: context.translations.hostATailgate,
+                description: context.translations.onBoardingSecondPageText,
               ),
             ),
             _OnBoardingWidget(
               index: 2,
               model: Introduction(
                 imgUrl: AppAssets.onboarding3,
-                title: context.localizer.translations.findATailgate,
-                description: context.localizer.translations.onBoardingThirdPageText,
+                title: context.translations.findATailgate,
+                description: context.translations.onBoardingThirdPageText,
               ),
             ),
             NavigationWrapper(),
@@ -73,7 +73,7 @@ class _OnBoardingWidget extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        context.localizer.translations.skipOnboarding,
+                        context.translations.skipOnboarding,
                         style: const TextStyle(
                           color: Colors.blue,
                         ),

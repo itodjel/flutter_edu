@@ -32,7 +32,7 @@ class AllowLocationPage extends StatelessWidget {
                       ),
                       const Spacing.verticalL(),
                       Text(
-                        context.localizer.translations.allowLocationDescription,
+                        context.translations.allowLocationDescription,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: 14,
@@ -43,7 +43,7 @@ class AllowLocationPage extends StatelessWidget {
                       Button(
                         color: context.theme.primaryColor,
                         textColor: Colors.white,
-                        text: context.localizer.translations.allowWhileUsingTheApp,
+                        text: context.translations.allowWhileUsingTheApp,
                         onTap: () {
                           context.read<LocationBloc>().add(LocationInitEvent());
                           context.navigator.pop(true);
@@ -53,7 +53,7 @@ class AllowLocationPage extends StatelessWidget {
                       Button(
                         color: Colors.white,
                         textColor: context.theme.primaryColor,
-                        text: context.localizer.translations.maybeLater,
+                        text: context.translations.maybeLater,
                         borderColor: context.theme.primaryColor,
                         onTap: () => context.navigator.pop(false),
                       ),

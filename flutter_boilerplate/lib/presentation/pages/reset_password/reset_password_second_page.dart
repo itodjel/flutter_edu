@@ -21,13 +21,13 @@ class _ResetPasswordSecondPageState extends State<ResetPasswordSecondPage> {
             formKey.currentState?.validate();
           }
           if (resetPasswordState.status == ResetPasswordStateStatus.submittingSuccess) {
-            showInfoMessage(context.localizer.translations.profileUpdatedSuccessfully);
+            context.toast.success(message: context.translations.profileUpdatedSuccessfully);
             context.navigator.resetAndPushNamed(SignInPage.route);
           } else if (resetPasswordState.status == ResetPasswordStateStatus.validating) {
             if ((formKey.currentState?.validate() ?? false) && context.resetPasswordModelValidator.validate(resetPasswordState.model)) {
               context.read<ResetPasswordBloc>().add(ResetPasswordSubmitEvent());
             } else {
-              showInfoMessage(context.localizer.translations.pleaseFillInAllRequiredFields);
+              context.toast.validation(message: context.translations.pleaseFillInAllRequiredFields);
             }
           }
         },
@@ -74,7 +74,7 @@ class _ResetPasswordText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      context.localizer.translations.resetPassword,
+      context.translations.resetPassword,
       style: TextStyle(
         color: context.theme.primaryColor,
         fontSize: 32,
@@ -90,7 +90,7 @@ class _DescriptionText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      context.localizer.translations.pleaseEnterVerificationCodeSentTo,
+      context.translations.pleaseEnterVerificationCodeSentTo,
       style: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 14,
@@ -131,7 +131,7 @@ class _CodeTextField extends StatelessWidget {
           onChanged: (text) => context.resetPasswordBloc.add(ResetPasswordUpdateEvent(model: resetPasswordState.model.copyWith(code: Optional(text)))),
           validator: (text) => context.resetPasswordModelValidator.code(resetPasswordState.model.copyWith(code: Optional(text))),
           decoration: InputDecoration(
-              hintText: context.localizer.translations.code,
+              hintText: context.translations.code,
               hintStyle: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -174,14 +174,14 @@ class __NewPasswordTextFieldState extends State<_NewPasswordTextField> {
                 padding: const EdgeInsets.all(15),
                 child: obscureText
                     ? Text(
-                        context.localizer.translations.show.toUpperCase(),
+                        context.translations.show.toUpperCase(),
                         style: TextStyle(
                           fontSize: 10,
                           color: context.appTheme.neutral1,
                         ),
                       )
                     : Text(
-                        context.localizer.translations.hide.toUpperCase(),
+                        context.translations.hide.toUpperCase(),
                         style: TextStyle(
                           fontSize: 10,
                           color: context.appTheme.neutral3,
@@ -227,14 +227,14 @@ class __PasswordConfirmationTextFieldState extends State<_PasswordConfirmationTe
                 padding: const EdgeInsets.all(15),
                 child: obscureText
                     ? Text(
-                        context.localizer.translations.show.toUpperCase(),
+                        context.translations.show.toUpperCase(),
                         style: TextStyle(
                           fontSize: 10,
                           color: context.appTheme.neutral1,
                         ),
                       )
                     : Text(
-                        context.localizer.translations.hide.toUpperCase(),
+                        context.translations.hide.toUpperCase(),
                         style: TextStyle(
                           fontSize: 10,
                           color: context.appTheme.neutral3,
@@ -259,7 +259,7 @@ class _ChangePasswordButton extends StatelessWidget {
         return Button(
           color: context.theme.primaryColor,
           textColor: Colors.white,
-          text: context.localizer.translations.submit,
+          text: context.translations.submit,
           isLoading: resetPasswordState.status == ResetPasswordStateStatus.submitting,
           onTap: () => context.resetPasswordBloc.add(ResetPasswordValidateEvent()),
         );
@@ -276,7 +276,7 @@ class _CancelButton extends StatelessWidget {
     return Button(
       color: Colors.white,
       textColor: context.theme.primaryColor,
-      text: context.localizer.translations.cancel,
+      text: context.translations.cancel,
       borderColor: context.theme.primaryColor,
       onTap: () => context.navigator.pop(),
     );
@@ -289,7 +289,7 @@ class _DidntReceiveCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      context.localizer.translations.didntReceiveCode,
+      context.translations.didntReceiveCode,
       style: const TextStyle(
         fontSize: 14,
       ),
@@ -305,7 +305,7 @@ class _ResendCode extends StatelessWidget {
     return InkWell(
       onTap: () => context.resetPasswordBloc.add(ResetPasswordSubmitEmailEvent()),
       child: Text(
-        context.localizer.translations.resendCode,
+        context.translations.resendCode,
         style: TextStyle(
           color: context.theme.primaryColor,
           fontSize: 14,

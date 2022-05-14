@@ -13,3 +13,5 @@ export 'quantity/_all.dart';
 export 'theme/_all.dart';
 export 'register/_all.dart';
 export 'reset_password/_all.dart';
+export 'authentication/_all.dart';
+export 'authorization/_all.dart';

@@ -3,6 +3,7 @@ import 'package:flutter_boilerplate/_all.dart';
 enum GalleryStateStatus {
   loading,
   loadingAlbums,
+  loadingImages,
   loaded,
   loadedMore,
   refreshed,

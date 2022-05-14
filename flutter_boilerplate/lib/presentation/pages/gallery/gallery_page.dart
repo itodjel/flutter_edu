@@ -24,7 +24,7 @@ class _GalleryPageState extends State<GalleryPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text(context.localizer.translations.about)),
+        appBar: AppBar(title: Text(context.translations.about)),
         body: Padding(
           padding: const EdgeInsets.only(top: 10),
           child: BlocBuilder<GalleryBloc, GalleryState>(

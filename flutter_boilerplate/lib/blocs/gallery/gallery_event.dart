@@ -1,4 +1,4 @@
-import '../../_all.dart';
+import 'package:flutter_boilerplate/_all.dart';
 
 abstract class GalleryEvent {}
 
