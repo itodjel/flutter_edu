@@ -1,0 +1,37 @@
+name: appito
+description: AppITO
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  abstract_bloc: ^0.0.12
+  beamer: ^1.4.1+1
+  gap: ^2.0.0
+  get_it: ^7.2.0
+  rest_api_client: ^2.0.3
+  animated_bottom_navigation_bar: ^0.3.2
+  storage_repository: ^1.1.7
+  intl: ^0.17.0
+  firebase_core: ^1.17.0
+  firebase_crashlytics: ^2.8.0
+  freezed_annotation: ^2.0.3
+  json_annotation: ^4.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.1.10
+  json_serializable: ^6.2.0
+  flutter_lints: ^2.0.0
+  freezed: ^2.0.3+1
+
+flutter:
+  generate: true
+  uses-material-design: true
