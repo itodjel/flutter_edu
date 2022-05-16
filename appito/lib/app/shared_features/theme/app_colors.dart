@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-abstract class AppITOColors {
+abstract class AppColors {
   /// Black
   static const Color black = Color(0xFF202124);
 

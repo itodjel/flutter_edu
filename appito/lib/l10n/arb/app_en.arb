@@ -1,9 +1,14 @@
 {
+     "@@locale": "en",
+     
     "sign_in": "Sign in",
     "field_is_required": "Field is required",
     "there_was_a_network_error_please_try_again_later": "There was a network error, please try again later",
     "there_was_a_server_error_please_try_again_later": "There was a server error, please try again later",
     "there_was_a_validation_error_please_fix_and_try_again": "There was a validation error, please fix and try again",
     "there_was_an_error": "There was an error",
-    "please_fill_in_all_required_fields": "Please fill in all required fields"
+    "please_fill_in_all_required_fields": "Please fill in all required fields",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Submit"
 }

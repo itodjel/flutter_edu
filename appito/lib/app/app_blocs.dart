@@ -11,6 +11,7 @@ class AppBlocs extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>.value(value: services.get<AuthBloc>()),
+        BlocProvider<LocalizationBloc>.value(value: services.get<LocalizationBloc>()),
         BlocProvider<ThemeBloc>.value(value: services.get<ThemeBloc>()),
         BlocProvider<ErrorHandlerBloc>.value(value: services.get<ErrorHandlerBloc>()),
         BlocProvider<NavigationBloc>.value(value: services.get<NavigationBloc>()),

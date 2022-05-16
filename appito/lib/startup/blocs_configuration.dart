@@ -13,13 +13,14 @@ class BlocsConfiguration {
       ),
     );
     services.registerSingleton(
-      ErrorHandlerBloc(
+      LocalizationBloc(
         restApiClient: services.get<IRestApiClient>(),
+        storageRepository: services.get<IStorageRepository>(),
       ),
     );
     services.registerSingleton(
-      AppNavigationBloc(
-        authBloc: services.get<AuthBloc>(),
+      ErrorHandlerBloc(
+        restApiClient: services.get<IRestApiClient>(),
       ),
     );
     services.registerSingleton(
@@ -28,6 +29,12 @@ class BlocsConfiguration {
     services.registerSingleton(
       ThemeBloc(
         storageRepository: services.get<IStorageRepository>(),
+      ),
+    );
+    services.registerSingleton(
+      AppNavigationBloc(
+        authBloc: services.get<AuthBloc>(),
+        localizationBloc: services.get<LocalizationBloc>(),
       ),
     );
   }

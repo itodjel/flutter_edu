@@ -25,9 +25,9 @@ class _AppLayoutBuilder extends StatelessWidget {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, themeState) {
         return ResponsiveLayoutBuilder(
-          small: (_, __) => _App(theme: AppITOTheme.small, darkTheme: AppITOTheme.smallDark, themeMode: themeState.themeMode),
-          medium: (_, __) => _App(theme: AppITOTheme.medium, darkTheme: AppITOTheme.mediumDark, themeMode: themeState.themeMode),
-          large: (_, __) => _App(theme: AppITOTheme.large, darkTheme: AppITOTheme.largeDark, themeMode: themeState.themeMode),
+          small: (_, __) => _App(theme: AppoloTheme.small, darkTheme: AppoloTheme.smallDark, themeMode: themeState.themeMode),
+          medium: (_, __) => _App(theme: AppoloTheme.medium, darkTheme: AppoloTheme.mediumDark, themeMode: themeState.themeMode),
+          large: (_, __) => _App(theme: AppoloTheme.large, darkTheme: AppoloTheme.largeDark, themeMode: themeState.themeMode),
         );
       },
     );
@@ -49,28 +49,33 @@ class _App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DismissFocusOverlay(
-      child: MaterialApp(
-        title: 'AppITO',
-        theme: theme,
-        darkTheme: darkTheme,
-        themeMode: themeMode,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        navigatorKey: globalNavigatorKey,
-        debugShowCheckedModeBanner: false,
-        builder: (context, child) {
-          ModelValidatorsConfiguration.configure(context.translations);
+      child: BlocBuilder<LocalizationBloc, LocalizationState>(
+        builder: (context, localizationState) {
+          return MaterialApp(
+            title: 'Appolo',
+            theme: theme,
+            darkTheme: darkTheme,
+            themeMode: themeMode,
+            locale: localizationState.locale,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            navigatorKey: globalNavigatorKey,
+            debugShowCheckedModeBanner: false,
+            builder: (context, child) {
+              ModelValidatorsConfiguration.configure(context.translations);
 
-          return child!;
+              return child!;
+            },
+            home: BlocListener<ErrorHandlerBloc, ErrorHandlerState>(
+              listener: (context, errorHandlerState) {
+                if (errorHandlerState.showMessage) {
+                  toast.showExceptionMessage(context.translations, errorHandlerState.exception!);
+                }
+              },
+              child: const AppNavigation(),
+            ),
+          );
         },
-        home: BlocListener<ErrorHandlerBloc, ErrorHandlerState>(
-          listener: (context, errorHandlerState) {
-            if (errorHandlerState.showMessage) {
-              toast.showExceptionMessage(context.translations, errorHandlerState.exception!);
-            }
-          },
-          child: const AppNavigation(),
-        ),
       ),
     );
   }

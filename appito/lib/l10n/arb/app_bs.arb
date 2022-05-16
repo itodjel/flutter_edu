@@ -1,0 +1,14 @@
+{     
+    "@@locale": "bs",
+     
+    "sign_in": "Prijavi se",
+    "field_is_required": "Polje je obavezno",
+    "there_was_a_network_error_please_try_again_later": "Dogodila se greška, molimo pokušajte ponovo",
+    "there_was_a_server_error_please_try_again_later": "Dogodila se serverska greška, molimo pokušajte kasnije",
+    "there_was_a_validation_error_please_fix_and_try_again": "Dogodila se validacijska greška, molimo ispravite i pokušajte ponovo",
+    "there_was_an_error": "Dogodila se greška",
+    "please_fill_in_all_required_fields": "Molimo popunite sva obavezna polja",
+    "username": "Korisničko ime",
+    "password": "Lozinka",
+    "submit": "Nastavi"
+}

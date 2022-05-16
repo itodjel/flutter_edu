@@ -8,8 +8,8 @@ class AppNavigation extends StatelessWidget {
     return BlocBuilder<AppNavigationBloc, AppNavigationState>(
       builder: (context, appNavigationState) {
         switch (appNavigationState.status) {
-          case AppNavigationStateStatus.intro:
-            return const Center(child: Text('Intro'));
+          case AppNavigationStateStatus.selectLanguage:
+            return const SelectLanguagePage();
           case AppNavigationStateStatus.signIn:
             return const SignInPage();
           case AppNavigationStateStatus.home:

@@ -58,21 +58,21 @@ class _BodyState extends State<_Body> {
                   initialValue: signInState.model.userName,
                   validator: (text) => services.get<SignInRequestModelValidator>().userName(signInState.model.copyWith(userName: text)),
                   onChanged: (text) => context.read<SignInBloc>().add(SignInUpdateEvent(model: signInState.model.copyWith(userName: text))),
-                  decoration: const InputDecoration(labelText: "Username"),
+                  decoration: InputDecoration(labelText: context.translations.username),
                 ),
                 const Gap(30),
                 TextFormField(
                   initialValue: signInState.model.password,
                   validator: (text) => services.get<SignInRequestModelValidator>().password(signInState.model.copyWith(password: text)),
                   onChanged: (text) => context.read<SignInBloc>().add(SignInUpdateEvent(model: signInState.model.copyWith(password: text))),
-                  decoration: const InputDecoration(labelText: "Password"),
+                  decoration: InputDecoration(labelText: context.translations.password),
                   obscureText: true,
                 ),
                 const Gap(50),
                 BlocBuilder<ThemeBloc, ThemeState>(
                   builder: (context, themeState) {
                     return Button(
-                      text: 'Submit',
+                      text: context.translations.submit,
                       isLoading: signInState.status == SignInStateStatus.submitting,
                     );
                   },
