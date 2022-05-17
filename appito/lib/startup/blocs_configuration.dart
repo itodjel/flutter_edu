@@ -8,14 +8,19 @@ class BlocsConfiguration {
 
   static Future configureSingletons() async {
     services.registerSingleton(
-      AuthBloc(
-        authenticationRepository: services.get<IAuthenticationRepository>(),
+      IntroBloc(
+        storageRepository: services.get<IStorageRepository>(),
       ),
     );
     services.registerSingleton(
       LocalizationBloc(
         restApiClient: services.get<IRestApiClient>(),
         storageRepository: services.get<IStorageRepository>(),
+      ),
+    );
+    services.registerSingleton(
+      AuthBloc(
+        authenticationRepository: services.get<IAuthenticationRepository>(),
       ),
     );
     services.registerSingleton(
@@ -33,8 +38,9 @@ class BlocsConfiguration {
     );
     services.registerSingleton(
       AppNavigationBloc(
-        authBloc: services.get<AuthBloc>(),
+        introBloc: services.get<IntroBloc>(),
         localizationBloc: services.get<LocalizationBloc>(),
+        authBloc: services.get<AuthBloc>(),
       ),
     );
   }

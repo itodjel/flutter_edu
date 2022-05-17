@@ -1,5 +1,6 @@
 enum AppNavigationStateStatus {
   selectLanguage,
+  intro,
   signIn,
   home,
 }

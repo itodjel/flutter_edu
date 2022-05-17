@@ -22,7 +22,10 @@ class AuthenticationRepository implements IAuthenticationRepository {
       parser: (data) async {
         final signInResponseModel = SignInResponseModel.fromJson(data);
 
-        await _authorize(signInResponseModel);
+        await restApiClient.authHandler.authorize(
+          jwt: signInResponseModel.token.value,
+          refreshToken: signInResponseModel.refreshToken.value,
+        );
 
         return signInResponseModel;
       },
@@ -38,14 +41,5 @@ class AuthenticationRepository implements IAuthenticationRepository {
     } catch (e) {
       return NetworkResult(exception: Exception(e));
     }
-  }
-
-  // Private helpers -----------------------------------------------------------
-
-  Future _authorize(SignInResponseModel signInResponseModel) async {
-    await restApiClient.authHandler.authorize(
-      jwt: signInResponseModel.token.value,
-      refreshToken: signInResponseModel.refreshToken.value,
-    );
   }
 }

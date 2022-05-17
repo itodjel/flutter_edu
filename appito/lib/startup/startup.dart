@@ -8,8 +8,8 @@ class Startup {
     WidgetsFlutterBinding.ensureInitialized();
     await RestApiClient.initFlutter();
 
-    await StorageConfiguration.configure();
     await AppSettingsConfiguration.configure();
+    await StorageConfiguration.configure();
     await CommonServicesConfiguration.configure();
     await FirebaseConfiguration.configure();
     await ApiClientConfiguration.configure();

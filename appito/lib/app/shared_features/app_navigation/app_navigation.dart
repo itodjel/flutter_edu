@@ -10,6 +10,8 @@ class AppNavigation extends StatelessWidget {
         switch (appNavigationState.status) {
           case AppNavigationStateStatus.selectLanguage:
             return const SelectLanguagePage();
+          case AppNavigationStateStatus.intro:
+            return IntroPage();
           case AppNavigationStateStatus.signIn:
             return const SignInPage();
           case AppNavigationStateStatus.home:

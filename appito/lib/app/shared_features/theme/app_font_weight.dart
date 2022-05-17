@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-/// Namespace for Default Appolo Font Weights
+/// Namespace for Default Appito Font Weights
 abstract class AppFontWeight {
   /// FontWeight value of `w900`
   static const FontWeight black = FontWeight.w900;

@@ -39,7 +39,7 @@ class AppTheme implements ThemeExtension<AppTheme> {
   Object get type => AppTheme;
 }
 
-class AppoloTheme {
+class AppitoTheme {
   static ThemeData get large {
     return ThemeData(
       extensions: [

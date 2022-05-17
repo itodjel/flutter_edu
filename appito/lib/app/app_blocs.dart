@@ -14,6 +14,7 @@ class AppBlocs extends StatelessWidget {
         BlocProvider<LocalizationBloc>.value(value: services.get<LocalizationBloc>()),
         BlocProvider<ThemeBloc>.value(value: services.get<ThemeBloc>()),
         BlocProvider<ErrorHandlerBloc>.value(value: services.get<ErrorHandlerBloc>()),
+        BlocProvider<IntroBloc>.value(value: services.get<IntroBloc>()),
         BlocProvider<NavigationBloc>.value(value: services.get<NavigationBloc>()),
         BlocProvider<AppNavigationBloc>.value(value: services.get<AppNavigationBloc>()),
       ],

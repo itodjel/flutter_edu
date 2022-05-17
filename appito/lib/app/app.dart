@@ -25,9 +25,9 @@ class _AppLayoutBuilder extends StatelessWidget {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, themeState) {
         return ResponsiveLayoutBuilder(
-          small: (_, __) => _App(theme: AppoloTheme.small, darkTheme: AppoloTheme.smallDark, themeMode: themeState.themeMode),
-          medium: (_, __) => _App(theme: AppoloTheme.medium, darkTheme: AppoloTheme.mediumDark, themeMode: themeState.themeMode),
-          large: (_, __) => _App(theme: AppoloTheme.large, darkTheme: AppoloTheme.largeDark, themeMode: themeState.themeMode),
+          small: (_, __) => _App(theme: AppitoTheme.small, darkTheme: AppitoTheme.smallDark, themeMode: themeState.themeMode),
+          medium: (_, __) => _App(theme: AppitoTheme.medium, darkTheme: AppitoTheme.mediumDark, themeMode: themeState.themeMode),
+          large: (_, __) => _App(theme: AppitoTheme.large, darkTheme: AppitoTheme.largeDark, themeMode: themeState.themeMode),
         );
       },
     );
@@ -52,7 +52,7 @@ class _App extends StatelessWidget {
       child: BlocBuilder<LocalizationBloc, LocalizationState>(
         builder: (context, localizationState) {
           return MaterialApp(
-            title: 'Appolo',
+            title: 'Appito',
             theme: theme,
             darkTheme: darkTheme,
             themeMode: themeMode,

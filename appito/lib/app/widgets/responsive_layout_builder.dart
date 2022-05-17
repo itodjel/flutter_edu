@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-/// Namespace for Default Appolo Breakpoints
-abstract class AppoloBreakpoints {
+/// Namespace for Default Appito Breakpoints
+abstract class AppitoBreakpoints {
   /// Max width for a small layout.
   static const double small = 760;
 
@@ -48,13 +48,13 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth <= AppoloBreakpoints.small) {
+        if (constraints.maxWidth <= AppitoBreakpoints.small) {
           return small(context, child);
         }
-        if (constraints.maxWidth <= AppoloBreakpoints.medium) {
+        if (constraints.maxWidth <= AppitoBreakpoints.medium) {
           return (medium ?? large).call(context, child);
         }
-        if (constraints.maxWidth <= AppoloBreakpoints.large) {
+        if (constraints.maxWidth <= AppitoBreakpoints.large) {
           return large(context, child);
         }
 
