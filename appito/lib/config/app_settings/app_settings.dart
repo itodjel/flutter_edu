@@ -12,6 +12,7 @@ class AppSettings {
     this.resetStorageOnRestart = false,
     this.loggingOptions = const LoggingOptions(
       logCacheStorage: false,
+      logStorage: false,
     ),
   });
 }

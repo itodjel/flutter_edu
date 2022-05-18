@@ -40,7 +40,7 @@ class IntroPage extends StatelessWidget {
           size: const Size.square(10.0),
           activeSize: const Size(20.0, 10.0),
           activeColor: context.theme.primaryColor,
-          color: Colors.black26,
+          color: AppColors.black25,
           spacing: const EdgeInsets.symmetric(horizontal: 3.0),
           activeShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25.0),

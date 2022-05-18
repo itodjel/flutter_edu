@@ -23,7 +23,7 @@ class OverlayContainer extends StatelessWidget {
         child ?? Container(),
         overlayContent ??
             Container(
-              color: Colors.black.withOpacity(0.3),
+              color: AppColors.black.withOpacity(0.3),
               child: const Loader(),
             ),
       ],

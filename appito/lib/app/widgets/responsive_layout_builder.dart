@@ -21,7 +21,7 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
   const ResponsiveLayoutBuilder({
     Key? key,
     required this.small,
-    required this.large,
+    this.large,
     this.medium,
     this.xLarge,
     this.child,
@@ -34,7 +34,7 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
   final ResponsiveLayoutWidgetBuilder? medium;
 
   /// [ResponsiveLayoutWidgetBuilder] for large layout.
-  final ResponsiveLayoutWidgetBuilder large;
+  final ResponsiveLayoutWidgetBuilder? large;
 
   /// [ResponsiveLayoutWidgetBuilder] for xLarge layout.
   final ResponsiveLayoutWidgetBuilder? xLarge;
@@ -49,16 +49,16 @@ class ResponsiveLayoutBuilder extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth <= AppitoBreakpoints.small) {
-          return small(context, child);
+          return small.call(context, child);
         }
         if (constraints.maxWidth <= AppitoBreakpoints.medium) {
-          return (medium ?? large).call(context, child);
+          return (medium ?? large)?.call(context, child) ?? Container();
         }
         if (constraints.maxWidth <= AppitoBreakpoints.large) {
-          return large(context, child);
+          return large?.call(context, child) ?? Container();
         }
 
-        return (xLarge ?? large).call(context, child);
+        return (xLarge ?? large)?.call(context, child) ?? Container();
       },
     );
   }

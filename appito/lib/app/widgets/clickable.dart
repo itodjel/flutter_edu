@@ -19,7 +19,7 @@ class Clickable extends StatelessWidget {
         child,
         Positioned.fill(
           child: Material(
-            color: Colors.transparent,
+            color: AppColors.transparent,
             child: InkWell(
               borderRadius: borderRadius,
               onTap: onTap,

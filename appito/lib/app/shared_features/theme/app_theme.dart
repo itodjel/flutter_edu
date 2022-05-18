@@ -42,9 +42,10 @@ class AppTheme implements ThemeExtension<AppTheme> {
 class AppitoTheme {
   static ThemeData get large {
     return ThemeData(
+      scaffoldBackgroundColor: AppColors.white,
       extensions: [
         AppTheme(
-          successColor: Colors.green,
+          successColor: AppColors.green,
           defaultButtonPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         ),
       ],
@@ -66,9 +67,10 @@ class AppitoTheme {
   static ThemeData get largeDark {
     return large.copyWith(
       brightness: Brightness.dark,
+      scaffoldBackgroundColor: AppColors.black,
       extensions: [
         AppTheme(
-          successColor: Colors.green,
+          successColor: AppColors.green,
           defaultButtonPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         ),
       ],
@@ -78,9 +80,10 @@ class AppitoTheme {
   static ThemeData get small {
     return large.copyWith(
       textTheme: _smallTextTheme,
+      scaffoldBackgroundColor: AppColors.white,
       extensions: [
         AppTheme(
-          successColor: Colors.green,
+          successColor: AppColors.green,
           defaultButtonPadding: EdgeInsets.zero,
         ),
       ],
@@ -90,9 +93,10 @@ class AppitoTheme {
   static ThemeData get smallDark {
     return largeDark.copyWith(
       textTheme: _smallTextTheme,
+      scaffoldBackgroundColor: AppColors.black,
       extensions: [
         AppTheme(
-          successColor: Colors.green,
+          successColor: AppColors.green,
           defaultButtonPadding: EdgeInsets.zero,
         ),
       ],
@@ -102,9 +106,10 @@ class AppitoTheme {
   static ThemeData get medium {
     return large.copyWith(
       textTheme: _mediumTextTheme,
+      scaffoldBackgroundColor: AppColors.white,
       extensions: [
         AppTheme(
-          successColor: Colors.green,
+          successColor: AppColors.green,
           defaultButtonPadding: EdgeInsets.zero,
         ),
       ],
@@ -114,9 +119,10 @@ class AppitoTheme {
   static ThemeData get mediumDark {
     return largeDark.copyWith(
       textTheme: _mediumTextTheme,
+      scaffoldBackgroundColor: AppColors.black,
       extensions: [
         AppTheme(
-          successColor: Colors.green,
+          successColor: AppColors.green,
           defaultButtonPadding: EdgeInsets.zero,
         ),
       ],
@@ -215,7 +221,7 @@ class AppitoTheme {
         fontSize: _textTheme.bodyText1!.fontSize! * _mediumTextScaleFactor,
       ),
       bodyText2: AppTextStyle.bodyText2.copyWith(
-        color: Colors.blue,
+        color: AppColors.blue,
         fontSize: _textTheme.bodyText2!.fontSize! * _mediumTextScaleFactor,
       ),
       caption: AppTextStyle.caption.copyWith(
@@ -293,8 +299,8 @@ class AppitoTheme {
   static BottomNavigationBarThemeData get _bottomNavigationBarTheme {
     return const BottomNavigationBarThemeData(
       backgroundColor: AppColors.blue,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white70,
+      selectedItemColor: AppColors.white,
+      unselectedItemColor: AppColors.white70,
     );
   }
 

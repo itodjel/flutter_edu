@@ -39,7 +39,7 @@ class Toast implements IToast {
       ToastContainer(
         message: message,
         leading: Icons.cancel_outlined,
-        color: Colors.red[400],
+        color: AppColors.brightRed,
         child: child,
       ),
     );
@@ -128,7 +128,7 @@ class ToastContainer extends SnackBar {
                   Text(
                     message.value,
                     style: TextStyle(
-                      color: textColor ?? Colors.white,
+                      color: textColor ?? AppColors.white,
                     ),
                     softWrap: true,
                   );
@@ -138,7 +138,7 @@ class ToastContainer extends SnackBar {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Icon(leading, color: Colors.white),
+                          child: Icon(leading, color: AppColors.white),
                         ),
                         const SizedBox(width: 15),
                         Expanded(child: content),
@@ -149,7 +149,7 @@ class ToastContainer extends SnackBar {
           ),
           padding: const EdgeInsets.all(10),
           duration: const Duration(seconds: 3),
-          backgroundColor: Colors.transparent,
+          backgroundColor: AppColors.transparent,
           elevation: 0,
         );
 }

@@ -72,6 +72,7 @@ class _BodyState extends State<_Body> {
                 BlocBuilder<ThemeBloc, ThemeState>(
                   builder: (context, themeState) {
                     return Button(
+                      onPressed: () => context.read<SignInBloc>().add(SignInSubmitEvent()),
                       text: context.translations.submit,
                       isLoading: signInState.status == SignInStateStatus.submitting,
                     );

@@ -34,7 +34,7 @@ class SelectLanguageWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: PhysicalModel(
-        color: Colors.white,
+        color: AppColors.white,
         elevation: 3,
         borderRadius: BorderRadius.circular(15),
         child: Clickable(
