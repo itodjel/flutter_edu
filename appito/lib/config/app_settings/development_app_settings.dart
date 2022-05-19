@@ -1,6 +1,6 @@
 import 'package:appito/_all.dart';
 
 AppSettings developmentAppSettings = AppSettings(
-  baseApiUrl: 'https://d3b4-92-36-157-128.eu.ngrok.io',
+  baseApiUrl: 'https://d70a-92-36-186-127.eu.ngrok.io',
   resetStorageOnRestart: false,
 );

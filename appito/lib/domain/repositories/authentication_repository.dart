@@ -1,15 +1,26 @@
 import 'package:appito/_all.dart';
 
 abstract class IAuthenticationRepository {
+  /// Checks if there is a valid jwt and refresh token set in the API client
   Future<bool> isAuthenticated();
+
+  /// Signs the user in and sets the token to API client headers and saves
+  /// the user account data to storage
   Future<Result> signIn(SignInRequestModel model);
+
+  /// Signs the user out, unauthorizes API client and deletes account data
+  /// from storage
   Future<Result> signOut();
 }
 
 class MockAuthenticationRepository implements IAuthenticationRepository {
   final IRestApiClient restApiClient;
+  final ICurrentUser currentUser;
 
-  MockAuthenticationRepository({required this.restApiClient});
+  MockAuthenticationRepository({
+    required this.restApiClient,
+    required this.currentUser,
+  });
 
   @override
   Future<bool> isAuthenticated() async => restApiClient.authHandler.isAuthorized();
@@ -20,8 +31,10 @@ class MockAuthenticationRepository implements IAuthenticationRepository {
 
     await restApiClient.authHandler.authorize(
       jwt: '<JWT_VALUE_HERE>',
-      refreshToken: '<REFRESH_TOKEN_HERE>',
+      refreshToken: '<REFRESH_TOKEN_VALUE_HERE>',
     );
+
+    await currentUser.refresh();
 
     return NetworkResult();
   }
@@ -40,28 +53,38 @@ class MockAuthenticationRepository implements IAuthenticationRepository {
 
 class AuthenticationRepository implements IAuthenticationRepository {
   final IRestApiClient restApiClient;
+  final ICurrentUser currentUser;
 
-  AuthenticationRepository({required this.restApiClient});
+  AuthenticationRepository({
+    required this.restApiClient,
+    required this.currentUser,
+  });
 
   @override
   Future<bool> isAuthenticated() async => restApiClient.authHandler.isAuthorized();
 
   @override
   Future<Result> signIn(SignInRequestModel model) async {
-    return await restApiClient.post(
+    final result = await restApiClient.post(
       '/api/Authentication/sign-in',
       data: model.toJson(),
-      parser: (data) async {
-        final signInResponseModel = SignInResponseModel.fromJson(data);
+      parser: (data) => SignInResponseModel.fromJson(data),
+    );
 
+    if (result.hasData) {
+      try {
         await restApiClient.authHandler.authorize(
-          jwt: signInResponseModel.token.value,
-          refreshToken: signInResponseModel.refreshToken.value,
+          jwt: result.data?.token.value ?? '',
+          refreshToken: result.data?.refreshToken.value ?? '',
         );
 
-        return signInResponseModel;
-      },
-    );
+        await currentUser.refresh();
+      } catch (e) {
+        debugPrint(e.toString());
+      }
+    }
+
+    return result;
   }
 
   @override

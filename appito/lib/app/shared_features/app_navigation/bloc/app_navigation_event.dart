@@ -7,3 +7,9 @@ class AppNavigationCompleteStepEvent extends AppNavigationEvent {
 
   AppNavigationCompleteStepEvent({required this.status});
 }
+
+class AppNavigationRevertStepEvent extends AppNavigationEvent {
+  final AppNavigationStateStatus status;
+
+  AppNavigationRevertStepEvent({required this.status});
+}

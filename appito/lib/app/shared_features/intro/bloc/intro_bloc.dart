@@ -17,7 +17,7 @@ class IntroBloc extends Bloc<IntroEvent, IntroState> {
       );
 
   Future<void> _init(IntroInitEvent event, Emitter<IntroState> emit) async {
-    final seen = await storageRepository.get<bool>(AppKeys.is_intro_seen);
+    bool? seen = await storageRepository.get(AppKeys.is_intro_seen);
 
     emit(IntroState(status: seen.value ? IntroStateStatus.finished : IntroStateStatus.unfinished));
   }

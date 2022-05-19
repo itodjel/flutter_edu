@@ -17,7 +17,7 @@ class HomeNavigation extends StatelessWidget {
             case 2:
               return const Center(child: Text('Favorites'));
             case 3:
-              return const Center(child: Text('Profile'));
+              return const AccountPage();
             default:
               return const Center(child: Text('Invalid navigation index'));
           }

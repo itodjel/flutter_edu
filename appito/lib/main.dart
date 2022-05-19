@@ -7,7 +7,11 @@ Future main(args) async {
   BlocOverrides.runZoned(
     () => runZonedGuarded(
       () => runApp(const App()),
-      (error, stack) => FirebaseCrashlytics.instance.recordError(error, stack),
+      (error, stack) {
+        if (services.get<AppSettings>().useFirebase) {
+          FirebaseCrashlytics.instance.recordError(error, stack);
+        }
+      },
     ),
     blocObserver: AppBlocObserver(),
   );

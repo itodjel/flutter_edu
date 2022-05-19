@@ -46,6 +46,11 @@ class BlocsConfiguration {
   }
 
   static Future configureScoped() async {
+    services.registerFactory<AccountBloc>(
+      () => AccountBloc(
+        accountRepository: services.get<IAccountRepository>(),
+      ),
+    );
     services.registerFactory<SignInBloc>(
       () => SignInBloc(
         signInRequestModelValidator: services.get<SignInRequestModelValidator>(),

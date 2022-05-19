@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  abstract_bloc: ^0.0.12
+  abstract_bloc: ^0.1.1
   beamer: ^1.4.1+1
   gap: ^2.0.0
   get_it: ^7.2.0

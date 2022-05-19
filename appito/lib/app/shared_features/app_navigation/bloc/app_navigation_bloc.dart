@@ -11,6 +11,7 @@ class AppNavigationBloc extends Bloc<AppNavigationEvent, AppNavigationState> {
     required AuthBloc authBloc,
   }) : super(AppNavigationState.initial()) {
     on<AppNavigationCompleteStepEvent>(_completeStep);
+    on<AppNavigationRevertStepEvent>(_revertStep);
 
     _introBlocSubscription = introBloc.stream.listen((introState) {
       if (introState.status == IntroStateStatus.finished) {
@@ -25,6 +26,9 @@ class AppNavigationBloc extends Bloc<AppNavigationEvent, AppNavigationState> {
     _authBlocSubscription = authBloc.stream.listen((authState) {
       if (authState.status == AuthStateStatus.authenticated) {
         add(AppNavigationCompleteStepEvent(status: AppNavigationStateStatus.signIn));
+      }
+      if (authState.status == AuthStateStatus.unAuthenticated) {
+        add(AppNavigationRevertStepEvent(status: AppNavigationStateStatus.signIn));
       }
     });
   }
@@ -44,6 +48,10 @@ class AppNavigationBloc extends Bloc<AppNavigationEvent, AppNavigationState> {
         emit(state.copyWith(status: AppNavigationStateStatus.home));
         break;
     }
+  }
+
+  Future<void> _revertStep(AppNavigationRevertStepEvent event, Emitter<AppNavigationState> emit) async {
+    emit(state.copyWith(status: event.status));
   }
 
   @override

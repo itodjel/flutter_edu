@@ -7,6 +7,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required this.authenticationRepository,
   }) : super(AuthState.initial()) {
     on<AuthCheckEvent>(_check);
+    on<AuthSignOutEvent>(_signOut);
 
     add(AuthCheckEvent());
   }
@@ -19,5 +20,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } else {
       emit(state.copyWith(status: AuthStateStatus.unAuthenticated));
     }
+  }
+
+  Future<void> _signOut(AuthSignOutEvent event, Emitter<AuthState> emit) async {
+    await authenticationRepository.signOut();
+
+    add(AuthCheckEvent());
   }
 }

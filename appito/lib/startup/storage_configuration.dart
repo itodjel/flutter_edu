@@ -2,7 +2,7 @@ import 'package:appito/_all.dart';
 
 class StorageConfiguration {
   static Future configure() async {
-    final storageRepository = StorageRepository();
+    final storageRepository = SecureStorageRepository();
     await storageRepository.init();
 
     if (services.get<AppSettings>().resetStorageOnRestart) {
