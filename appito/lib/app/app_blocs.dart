@@ -10,15 +10,17 @@ class AppBlocs extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AuthBloc>.value(value: services.get<AuthBloc>()),
-        BlocProvider<LocalizationBloc>.value(value: services.get<LocalizationBloc>()),
-        BlocProvider<ThemeBloc>.value(value: services.get<ThemeBloc>()),
-        BlocProvider<ErrorHandlerBloc>.value(value: services.get<ErrorHandlerBloc>()),
-        BlocProvider<IntroBloc>.value(value: services.get<IntroBloc>()),
-        BlocProvider<NavigationBloc>.value(value: services.get<NavigationBloc>()),
-        BlocProvider<AppNavigationBloc>.value(value: services.get<AppNavigationBloc>()),
+        _blocProvider<AuthBloc>(),
+        _blocProvider<LocalizationBloc>(),
+        _blocProvider<ThemeBloc>(),
+        _blocProvider<ErrorHandlerBloc>(),
+        _blocProvider<IntroBloc>(),
+        _blocProvider<NavigationBloc>(),
+        _blocProvider<AppNavigationBloc>(),
       ],
       child: child,
     );
   }
+
+  BlocProvider<T> _blocProvider<T extends StateStreamableSource<Object?>>() => BlocProvider<T>.value(value: services.get<T>());
 }
