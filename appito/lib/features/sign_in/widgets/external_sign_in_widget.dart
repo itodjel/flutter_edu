@@ -7,39 +7,45 @@ class ExternalSignInWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _ExternalSignInButton(
-          signInProvider: SignInProvider.google,
-          builder: (_, __, onTap, isLoading) {
-            return Button(
-              text: 'Google',
-              isLoading: isLoading,
-              onTap: onTap,
-            );
-          },
-        ),
-        const Gap(20),
-        _ExternalSignInButton(
-          signInProvider: SignInProvider.facebook,
-          builder: (_, __, onTap, isLoading) {
-            return Button(
-              text: 'Facebook',
-              isLoading: isLoading,
-              onTap: onTap,
-            );
-          },
-        ),
-        const Gap(20),
-        _ExternalSignInButton(
-          signInProvider: SignInProvider.apple,
-          builder: (_, __, onTap, isLoading) {
-            return Button(
-              text: 'Apple',
-              isLoading: isLoading,
-              onTap: onTap,
-            );
-          },
-        ),
-        const Gap(20),
+        if (PlatformService.isGoogleSignInAvailable) ...{
+          _ExternalSignInButton(
+            signInProvider: SignInProvider.google,
+            builder: (_, __, onTap, isLoading) {
+              return Button(
+                text: 'Google',
+                isLoading: isLoading,
+                onTap: onTap,
+              );
+            },
+          ),
+          const Gap(20)
+        },
+        if (PlatformService.isFacebookSignInAvailable) ...{
+          _ExternalSignInButton(
+            signInProvider: SignInProvider.facebook,
+            builder: (_, __, onTap, isLoading) {
+              return Button(
+                text: 'Facebook',
+                isLoading: isLoading,
+                onTap: onTap,
+              );
+            },
+          ),
+          const Gap(20),
+        },
+        if (PlatformService.isAppleSignInAvailable) ...{
+          _ExternalSignInButton(
+            signInProvider: SignInProvider.apple,
+            builder: (_, __, onTap, isLoading) {
+              return Button(
+                text: 'Apple',
+                isLoading: isLoading,
+                onTap: onTap,
+              );
+            },
+          ),
+          const Gap(20),
+        },
       ],
     );
   }

@@ -10,7 +10,22 @@ enum _Platform {
 }
 
 class PlatformService {
-  static bool isFirebaseAvailable = [
+  static bool isGoogleSignInAvailable = isAndroidIosWeb;
+  static bool isFacebookSignInAvailable = isAndroidIosWeb;
+  static bool isAppleSignInAvailable = isAndroidIosWeb;
+  static bool isFirebaseAvailable = isAndroidIos;
+
+  // Helpers - BEGIN
+
+  static bool isWeb = kIsWeb;
+
+  static bool isAndroidIosWeb = [
+    _Platform.android,
+    _Platform.ios,
+    _Platform.web,
+  ].contains(_currentPlatform);
+
+  static bool isAndroidIos = [
     _Platform.android,
     _Platform.ios,
   ].contains(_currentPlatform);
@@ -35,4 +50,6 @@ class PlatformService {
         throw UnsupportedError('DefaultFirebaseOptions are not supported for this platform.');
     }
   }
+
+  // Helpers - END
 }
