@@ -51,7 +51,9 @@ class AppNavigationBloc extends Bloc<AppNavigationEvent, AppNavigationState> {
   }
 
   Future<void> _revertStep(AppNavigationRevertStepEvent event, Emitter<AppNavigationState> emit) async {
-    emit(state.copyWith(status: event.status));
+    if (state.status.index > event.status.index) {
+      emit(state.copyWith(status: event.status));
+    }
   }
 
   @override
