@@ -6,6 +6,7 @@ class Button extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final String? text;
   final Widget? child;
+  final VoidCallback? onTap;
 
   const Button({
     Key? key,
@@ -14,12 +15,13 @@ class Button extends StatelessWidget {
     this.padding,
     this.text,
     this.child,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final button = ElevatedButton(
-      onPressed: () => context.read<SignInBloc>().add(SignInSubmitEvent()),
+      onPressed: onTap,
       child: Padding(
         padding: padding ?? context.appTheme.defaultButtonPadding,
         child: Row(

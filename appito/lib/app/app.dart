@@ -51,28 +51,40 @@ class _App extends StatelessWidget {
     return DismissFocusOverlay(
       child: BlocBuilder<LocalizationBloc, LocalizationState>(
         builder: (context, localizationState) {
-          return MaterialApp(
-            title: 'Appito',
-            theme: theme,
-            darkTheme: darkTheme,
-            themeMode: themeMode,
-            locale: localizationState.locale,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            navigatorKey: globalNavigatorKey,
-            debugShowCheckedModeBanner: false,
-            builder: (context, child) {
-              ModelValidatorsConfiguration.configure(context.translations);
+          return NotificationListener<OverscrollIndicatorNotification>(
+            onNotification: (overscroll) {
+              overscroll.disallowIndicator();
 
-              return child!;
+              return true;
             },
-            home: BlocListener<ErrorHandlerBloc, ErrorHandlerState>(
-              listener: (context, errorHandlerState) {
-                if (errorHandlerState.showMessage) {
-                  toast.showExceptionMessage(context.translations, errorHandlerState.exception!);
-                }
+            child: MaterialApp(
+              title: 'Appito',
+              theme: theme,
+              darkTheme: darkTheme,
+              themeMode: themeMode,
+              locale: localizationState.locale,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              navigatorKey: globalNavigatorKey,
+              debugShowCheckedModeBanner: false,
+              builder: (context, child) {
+                ModelValidatorsConfiguration.configure(context.translations);
+
+                SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+                  systemNavigationBarColor: context.theme.primaryColor,
+                  statusBarColor: context.theme.primaryColor,
+                ));
+
+                return child!;
               },
-              child: const AppNavigation(),
+              home: BlocListener<ErrorHandlerBloc, ErrorHandlerState>(
+                listener: (context, errorHandlerState) {
+                  if (errorHandlerState.showMessage) {
+                    toast.showExceptionMessage(context.translations, errorHandlerState.exception!);
+                  }
+                },
+                child: const AppNavigation(),
+              ),
             ),
           );
         },

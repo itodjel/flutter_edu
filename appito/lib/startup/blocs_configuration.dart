@@ -57,5 +57,10 @@ class BlocsConfiguration {
         authenticationRepository: services.get<IAuthenticationRepository>(),
       ),
     );
+    services.registerFactory<ExternalSignInBloc>(
+      () => ExternalSignInBloc(
+        authenticationRepository: services.get<IAuthenticationRepository>(),
+      ),
+    );
   }
 }

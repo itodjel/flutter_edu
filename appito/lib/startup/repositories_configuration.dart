@@ -34,6 +34,7 @@ class RepositoriesConfiguration {
       AuthenticationRepository(
         restApiClient: services.get<IRestApiClient>(),
         currentUser: services.get<ICurrentUser>(),
+        appSettings: services.get<AppSettings>(),
       ),
     );
 

@@ -15,16 +15,30 @@ class SignInPage extends StatelessWidget {
   }
 }
 
-class _Body extends StatefulWidget {
-  const _Body({
+class _Body extends StatelessWidget {
+  const _Body({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: const [
+        Expanded(child: _Form()),
+        ExternalSignInWidget(),
+      ],
+    );
+  }
+}
+
+class _Form extends StatefulWidget {
+  const _Form({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<_Body> createState() => _BodyState();
+  State<_Form> createState() => _FormState();
 }
 
-class _BodyState extends State<_Body> {
+class _FormState extends State<_Form> {
   @override
   void initState() {
     super.initState();
@@ -69,13 +83,10 @@ class _BodyState extends State<_Body> {
                   obscureText: true,
                 ),
                 const Gap(50),
-                BlocBuilder<ThemeBloc, ThemeState>(
-                  builder: (context, themeState) {
-                    return Button(
-                      text: context.translations.submit,
-                      isLoading: signInState.status == SignInStateStatus.submitting,
-                    );
-                  },
+                Button(
+                  text: context.translations.submit,
+                  isLoading: signInState.status == SignInStateStatus.submitting,
+                  onTap: () => context.read<SignInBloc>().add(SignInSubmitEvent()),
                 ),
               ],
             ),

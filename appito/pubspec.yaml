@@ -12,14 +12,18 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   abstract_bloc: ^0.1.1
+  google_sign_in: ^5.3.1
+  flutter_facebook_auth: ^4.3.4
+  sign_in_with_apple: ^4.0.0
   beamer: ^1.4.1+1
   gap: ^2.0.0
   get_it: ^7.2.0
-  rest_api_client: ^2.0.3
+  rest_api_client: ^2.0.4
   animated_bottom_navigation_bar: ^0.3.2
-  storage_repository: ^1.1.7
+  storage_repository: ^1.1.8
   intl: ^0.17.0
   firebase_core: ^1.17.0
+  firebase_core_desktop: ^1.0.0
   firebase_crashlytics: ^2.8.0
   freezed_annotation: ^2.0.3
   json_annotation: ^4.5.0

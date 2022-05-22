@@ -16,6 +16,10 @@ _$_AccountResponseModel _$$_AccountResponseModelFromJson(Map json) =>
       accountType:
           $enumDecodeNullable(_$AccountTypeEnumMap, json['accountType']),
       passwordSetByUser: json['passwordSetByUser'] as bool?,
+      externalUsers: (json['externalUsers'] as List<dynamic>?)
+          ?.map((e) => AccountExternalUserResponseModel.fromJson(
+              Map<String, dynamic>.from(e as Map)))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_AccountResponseModelToJson(
@@ -28,6 +32,7 @@ Map<String, dynamic> _$$_AccountResponseModelToJson(
       'timezoneId': instance.timezoneId,
       'accountType': _$AccountTypeEnumMap[instance.accountType],
       'passwordSetByUser': instance.passwordSetByUser,
+      'externalUsers': instance.externalUsers?.map((e) => e.toJson()).toList(),
     };
 
 const _$AccountTypeEnumMap = {
