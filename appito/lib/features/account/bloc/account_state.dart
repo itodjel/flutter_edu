@@ -1,6 +1,8 @@
 import 'package:appito/_all.dart';
 
 class AccountState extends AbstractItemState<AccountResponseModel> {
+  bool get showProfilePhoto => item?.photoUrl != null;
+
   AccountState({
     required ResultStatus resultStatus,
     AccountResponseModel? item,

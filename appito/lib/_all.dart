@@ -17,6 +17,7 @@ export 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 export 'package:sign_in_with_apple/sign_in_with_apple.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_crashlytics/firebase_crashlytics.dart';
+export 'package:flutter_phoenix/flutter_phoenix.dart';
 
 //App
 export 'app/_all.dart';

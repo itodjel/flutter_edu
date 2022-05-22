@@ -13,6 +13,7 @@ class ExternalSignInWidget extends StatelessWidget {
             builder: (_, __, onTap, isLoading) {
               return Button(
                 text: 'Google',
+                primary: true,
                 isLoading: isLoading,
                 onTap: onTap,
               );
@@ -26,6 +27,7 @@ class ExternalSignInWidget extends StatelessWidget {
             builder: (_, __, onTap, isLoading) {
               return Button(
                 text: 'Facebook',
+                primary: true,
                 isLoading: isLoading,
                 onTap: onTap,
               );
@@ -39,6 +41,7 @@ class ExternalSignInWidget extends StatelessWidget {
             builder: (_, __, onTap, isLoading) {
               return Button(
                 text: 'Apple',
+                primary: true,
                 isLoading: isLoading,
                 onTap: onTap,
               );

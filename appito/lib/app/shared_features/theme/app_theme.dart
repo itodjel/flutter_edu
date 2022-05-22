@@ -3,47 +3,47 @@ import 'package:appito/_all.dart';
 const _smallTextScaleFactor = 0.90;
 const _mediumTextScaleFactor = 0.95;
 
-class AppTheme implements ThemeExtension<AppTheme> {
+class AppThemeData implements ThemeExtension<AppThemeData> {
   final Color successColor;
   final EdgeInsetsGeometry defaultButtonPadding;
 
-  AppTheme({
+  AppThemeData({
     required this.successColor,
     required this.defaultButtonPadding,
   });
 
   @override
-  ThemeExtension<AppTheme> copyWith({
+  ThemeExtension<AppThemeData> copyWith({
     Color? successColor,
     EdgeInsetsGeometry? defaultButtonPadding,
   }) {
-    return AppTheme(
+    return AppThemeData(
       successColor: successColor ?? this.successColor,
       defaultButtonPadding: defaultButtonPadding ?? this.defaultButtonPadding,
     );
   }
 
   @override
-  ThemeExtension<AppTheme> lerp(ThemeExtension<AppTheme>? other, double t) {
-    if (other is! AppTheme) {
+  ThemeExtension<AppThemeData> lerp(ThemeExtension<AppThemeData>? other, double t) {
+    if (other is! AppThemeData) {
       return this;
     }
 
-    return AppTheme(
+    return AppThemeData(
       successColor: other.successColor,
       defaultButtonPadding: other.defaultButtonPadding,
     );
   }
 
   @override
-  Object get type => AppTheme;
+  Object get type => AppThemeData;
 }
 
-class AppitoTheme {
+class AppTheme {
   static ThemeData get large {
     return ThemeData(
       extensions: [
-        AppTheme(
+        AppThemeData(
           successColor: Colors.green,
           defaultButtonPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         ),
@@ -67,7 +67,7 @@ class AppitoTheme {
     return large.copyWith(
       brightness: Brightness.dark,
       extensions: [
-        AppTheme(
+        AppThemeData(
           successColor: Colors.green,
           defaultButtonPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         ),
@@ -79,7 +79,7 @@ class AppitoTheme {
     return large.copyWith(
       textTheme: _smallTextTheme,
       extensions: [
-        AppTheme(
+        AppThemeData(
           successColor: Colors.green,
           defaultButtonPadding: EdgeInsets.zero,
         ),
@@ -91,7 +91,7 @@ class AppitoTheme {
     return largeDark.copyWith(
       textTheme: _smallTextTheme,
       extensions: [
-        AppTheme(
+        AppThemeData(
           successColor: Colors.green,
           defaultButtonPadding: EdgeInsets.zero,
         ),
@@ -103,7 +103,7 @@ class AppitoTheme {
     return large.copyWith(
       textTheme: _mediumTextTheme,
       extensions: [
-        AppTheme(
+        AppThemeData(
           successColor: Colors.green,
           defaultButtonPadding: EdgeInsets.zero,
         ),
@@ -115,7 +115,7 @@ class AppitoTheme {
     return largeDark.copyWith(
       textTheme: _mediumTextTheme,
       extensions: [
-        AppTheme(
+        AppThemeData(
           successColor: Colors.green,
           defaultButtonPadding: EdgeInsets.zero,
         ),

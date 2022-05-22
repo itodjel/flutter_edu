@@ -1,15 +1,15 @@
 import 'package:appito/_all.dart';
 
 class RepositoriesConfiguration {
-  static Future configure() async {
+  static void configure() {
     if (environment == Environment.demo) {
-      await configureDemo();
+      configureDemo();
     } else {
-      await configureDefault();
+      configureDefault();
     }
   }
 
-  static Future configureDemo() async {
+  static void configureDemo() {
     services.registerSingleton<ICurrentUser>(MockCurrentUser());
 
     services.registerSingleton<IAuthenticationRepository>(
@@ -22,7 +22,7 @@ class RepositoriesConfiguration {
     services.registerSingleton<IAccountRepository>(MockAccountRepository());
   }
 
-  static Future configureDefault() async {
+  static void configureDefault() {
     services.registerSingleton<ICurrentUser>(
       CurrentUser(
         storage: services.get<IStorageRepository>(),

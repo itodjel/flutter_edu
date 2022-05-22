@@ -8,13 +8,21 @@ class Startup {
     WidgetsFlutterBinding.ensureInitialized();
     await RestApiClient.initFlutter();
 
-    await AppSettingsConfiguration.configure();
+    AppSettingsConfiguration.configure();
     await StorageConfiguration.configure();
-    await CommonServicesConfiguration.configure();
+    CommonServicesConfiguration.configure();
     await FirebaseConfiguration.configure();
     await OAuthConfiguration.configure();
     await ApiClientConfiguration.configure();
-    await RepositoriesConfiguration.configure();
-    await BlocsConfiguration.configure();
+    RepositoriesConfiguration.configure();
+    BlocsConfiguration.configure();
+  }
+
+  static Future restart() async {
+    await services.reset();
+
+    ModelValidatorsConfiguration.configuredValidators = false;
+
+    await configure();
   }
 }

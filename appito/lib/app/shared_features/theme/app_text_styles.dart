@@ -1,6 +1,6 @@
 import 'package:appito/_all.dart';
 
-/// Appito Text Style Definitions
+/// App Text Style Definitions
 class AppTextStyle {
   static const _baseTextStyle = TextStyle(
     fontFamily: 'GoogleSans',

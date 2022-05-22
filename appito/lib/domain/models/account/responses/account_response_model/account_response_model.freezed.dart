@@ -34,9 +34,17 @@ mixin _$AccountResponseModel {
   set accountType(AccountType? value) => throw _privateConstructorUsedError;
   bool? get passwordSetByUser => throw _privateConstructorUsedError;
   set passwordSetByUser(bool? value) => throw _privateConstructorUsedError;
+  AccountCompanyResponseModel? get currentCompany =>
+      throw _privateConstructorUsedError;
+  set currentCompany(AccountCompanyResponseModel? value) =>
+      throw _privateConstructorUsedError;
   List<AccountExternalUserResponseModel>? get externalUsers =>
       throw _privateConstructorUsedError;
   set externalUsers(List<AccountExternalUserResponseModel>? value) =>
+      throw _privateConstructorUsedError;
+  List<AccountEmployeeResponseModel>? get employees =>
+      throw _privateConstructorUsedError;
+  set employees(List<AccountEmployeeResponseModel>? value) =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,7 +66,11 @@ abstract class $AccountResponseModelCopyWith<$Res> {
       String? timezoneId,
       AccountType? accountType,
       bool? passwordSetByUser,
-      List<AccountExternalUserResponseModel>? externalUsers});
+      AccountCompanyResponseModel? currentCompany,
+      List<AccountExternalUserResponseModel>? externalUsers,
+      List<AccountEmployeeResponseModel>? employees});
+
+  $AccountCompanyResponseModelCopyWith<$Res>? get currentCompany;
 }
 
 /// @nodoc
@@ -79,7 +91,9 @@ class _$AccountResponseModelCopyWithImpl<$Res>
     Object? timezoneId = freezed,
     Object? accountType = freezed,
     Object? passwordSetByUser = freezed,
+    Object? currentCompany = freezed,
     Object? externalUsers = freezed,
+    Object? employees = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -110,11 +124,31 @@ class _$AccountResponseModelCopyWithImpl<$Res>
           ? _value.passwordSetByUser
           : passwordSetByUser // ignore: cast_nullable_to_non_nullable
               as bool?,
+      currentCompany: currentCompany == freezed
+          ? _value.currentCompany
+          : currentCompany // ignore: cast_nullable_to_non_nullable
+              as AccountCompanyResponseModel?,
       externalUsers: externalUsers == freezed
           ? _value.externalUsers
           : externalUsers // ignore: cast_nullable_to_non_nullable
               as List<AccountExternalUserResponseModel>?,
+      employees: employees == freezed
+          ? _value.employees
+          : employees // ignore: cast_nullable_to_non_nullable
+              as List<AccountEmployeeResponseModel>?,
     ));
+  }
+
+  @override
+  $AccountCompanyResponseModelCopyWith<$Res>? get currentCompany {
+    if (_value.currentCompany == null) {
+      return null;
+    }
+
+    return $AccountCompanyResponseModelCopyWith<$Res>(_value.currentCompany!,
+        (value) {
+      return _then(_value.copyWith(currentCompany: value));
+    });
   }
 }
 
@@ -133,7 +167,12 @@ abstract class _$$_AccountResponseModelCopyWith<$Res>
       String? timezoneId,
       AccountType? accountType,
       bool? passwordSetByUser,
-      List<AccountExternalUserResponseModel>? externalUsers});
+      AccountCompanyResponseModel? currentCompany,
+      List<AccountExternalUserResponseModel>? externalUsers,
+      List<AccountEmployeeResponseModel>? employees});
+
+  @override
+  $AccountCompanyResponseModelCopyWith<$Res>? get currentCompany;
 }
 
 /// @nodoc
@@ -156,7 +195,9 @@ class __$$_AccountResponseModelCopyWithImpl<$Res>
     Object? timezoneId = freezed,
     Object? accountType = freezed,
     Object? passwordSetByUser = freezed,
+    Object? currentCompany = freezed,
     Object? externalUsers = freezed,
+    Object? employees = freezed,
   }) {
     return _then(_$_AccountResponseModel(
       id: id == freezed
@@ -187,10 +228,18 @@ class __$$_AccountResponseModelCopyWithImpl<$Res>
           ? _value.passwordSetByUser
           : passwordSetByUser // ignore: cast_nullable_to_non_nullable
               as bool?,
+      currentCompany: currentCompany == freezed
+          ? _value.currentCompany
+          : currentCompany // ignore: cast_nullable_to_non_nullable
+              as AccountCompanyResponseModel?,
       externalUsers: externalUsers == freezed
           ? _value.externalUsers
           : externalUsers // ignore: cast_nullable_to_non_nullable
               as List<AccountExternalUserResponseModel>?,
+      employees: employees == freezed
+          ? _value.employees
+          : employees // ignore: cast_nullable_to_non_nullable
+              as List<AccountEmployeeResponseModel>?,
     ));
   }
 }
@@ -206,7 +255,9 @@ class _$_AccountResponseModel implements _AccountResponseModel {
       this.timezoneId,
       this.accountType,
       this.passwordSetByUser,
-      this.externalUsers});
+      this.currentCompany,
+      this.externalUsers,
+      this.employees});
 
   factory _$_AccountResponseModel.fromJson(Map<String, dynamic> json) =>
       _$$_AccountResponseModelFromJson(json);
@@ -226,11 +277,15 @@ class _$_AccountResponseModel implements _AccountResponseModel {
   @override
   bool? passwordSetByUser;
   @override
+  AccountCompanyResponseModel? currentCompany;
+  @override
   List<AccountExternalUserResponseModel>? externalUsers;
+  @override
+  List<AccountEmployeeResponseModel>? employees;
 
   @override
   String toString() {
-    return 'AccountResponseModel(id: $id, firstName: $firstName, lastName: $lastName, photoUrl: $photoUrl, timezoneId: $timezoneId, accountType: $accountType, passwordSetByUser: $passwordSetByUser, externalUsers: $externalUsers)';
+    return 'AccountResponseModel(id: $id, firstName: $firstName, lastName: $lastName, photoUrl: $photoUrl, timezoneId: $timezoneId, accountType: $accountType, passwordSetByUser: $passwordSetByUser, currentCompany: $currentCompany, externalUsers: $externalUsers, employees: $employees)';
   }
 
   @JsonKey(ignore: true)
@@ -247,15 +302,16 @@ class _$_AccountResponseModel implements _AccountResponseModel {
 
 abstract class _AccountResponseModel implements AccountResponseModel {
   factory _AccountResponseModel(
-          {String? id,
-          String? firstName,
-          String? lastName,
-          String? photoUrl,
-          String? timezoneId,
-          AccountType? accountType,
-          bool? passwordSetByUser,
-          List<AccountExternalUserResponseModel>? externalUsers}) =
-      _$_AccountResponseModel;
+      {String? id,
+      String? firstName,
+      String? lastName,
+      String? photoUrl,
+      String? timezoneId,
+      AccountType? accountType,
+      bool? passwordSetByUser,
+      AccountCompanyResponseModel? currentCompany,
+      List<AccountExternalUserResponseModel>? externalUsers,
+      List<AccountEmployeeResponseModel>? employees}) = _$_AccountResponseModel;
 
   factory _AccountResponseModel.fromJson(Map<String, dynamic> json) =
       _$_AccountResponseModel.fromJson;
@@ -275,7 +331,13 @@ abstract class _AccountResponseModel implements AccountResponseModel {
   @override
   bool? get passwordSetByUser => throw _privateConstructorUsedError;
   @override
+  AccountCompanyResponseModel? get currentCompany =>
+      throw _privateConstructorUsedError;
+  @override
   List<AccountExternalUserResponseModel>? get externalUsers =>
+      throw _privateConstructorUsedError;
+  @override
+  List<AccountEmployeeResponseModel>? get employees =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

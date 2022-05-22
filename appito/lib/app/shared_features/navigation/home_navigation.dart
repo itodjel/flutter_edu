@@ -1,4 +1,3 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:appito/_all.dart';
 
 class HomeNavigation extends StatelessWidget {
@@ -23,17 +22,11 @@ class HomeNavigation extends StatelessWidget {
           }
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
-      bottomNavigationBar: const _CurvedBottomNavigationBar(),
+      bottomNavigationBar: const _BottomNavigationBar(),
     );
   }
 }
 
-// ignore: unused_element
 class _BottomNavigationBar extends StatelessWidget {
   const _BottomNavigationBar({
     Key? key,
@@ -46,59 +39,28 @@ class _BottomNavigationBar extends StatelessWidget {
         return BottomNavigationBar(
           onTap: (index) => context.read<NavigationBloc>().add(NavigationChangeIndexEvent(index: index)),
           currentIndex: navigationState.index,
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-              ),
+              icon: const Icon(Icons.home),
+              backgroundColor: context.theme.primaryColor,
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.map,
-              ),
+              icon: const Icon(Icons.map),
+              backgroundColor: context.theme.primaryColor,
               label: 'Map',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.favorite,
-              ),
+              icon: const Icon(Icons.favorite),
+              backgroundColor: context.theme.primaryColor,
               label: 'Favorites',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.supervised_user_circle),
+              icon: const Icon(Icons.supervised_user_circle),
+              backgroundColor: context.theme.primaryColor,
               label: 'Profile',
             ),
           ],
-        );
-      },
-    );
-  }
-}
-
-class _CurvedBottomNavigationBar extends StatelessWidget {
-  const _CurvedBottomNavigationBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<NavigationBloc, NavigationState>(
-      builder: (context, navigationState) {
-        return AnimatedBottomNavigationBar(
-          icons: const [
-            Icons.home,
-            Icons.map,
-            Icons.favorite,
-            Icons.supervised_user_circle,
-          ],
-          backgroundColor: context.theme.bottomNavigationBarTheme.backgroundColor,
-          activeColor: context.theme.bottomNavigationBarTheme.selectedItemColor,
-          inactiveColor: context.theme.bottomNavigationBarTheme.unselectedItemColor,
-          activeIndex: navigationState.index,
-          gapLocation: GapLocation.center,
-          notchSmoothness: NotchSmoothness.softEdge,
-          leftCornerRadius: 32,
-          rightCornerRadius: 32,
-          onTap: (index) => context.read<NavigationBloc>().add(NavigationChangeIndexEvent(index: index)),
         );
       },
     );

@@ -1,4 +1,4 @@
-import 'package:appito/domain/models/authentication/requests/_all.dart';
+import 'package:appito/_all.dart';
 
 enum SignInStateStatus {
   initializing,

@@ -3,7 +3,7 @@ import 'package:appito/_all.dart';
 class ModelValidatorsConfiguration {
   static bool configuredValidators = false;
 
-  static Future configure(AppLocalizations appLocalizations) async {
+  static void configure(AppLocalizations appLocalizations) {
     if (configuredValidators) {
       return;
     }

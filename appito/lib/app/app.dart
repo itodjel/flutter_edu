@@ -7,10 +7,35 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AppBlocs(
-      child: AnimatedFadeIn(
-        child: _AppLayoutBuilder(),
+    return Phoenix(
+      child: const AppBlocs(
+        child: AppRebuilder(
+          child: AnimatedFadeIn(
+            child: _AppLayoutBuilder(),
+          ),
+        ),
       ),
+    );
+  }
+}
+
+class AppRebuilder extends StatelessWidget {
+  final Widget child;
+
+  const AppRebuilder({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, authState) {
+        if ([AuthStateStatus.refreshedSignIn, AuthStateStatus.signedOut].contains(authState.status)) {
+          Startup.restart().then((value) => Phoenix.rebirth(context));
+        }
+      },
+      child: child,
     );
   }
 }
@@ -25,9 +50,9 @@ class _AppLayoutBuilder extends StatelessWidget {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, themeState) {
         return ResponsiveLayoutBuilder(
-          small: (_, __) => _App(theme: AppitoTheme.small, darkTheme: AppitoTheme.smallDark, themeMode: themeState.themeMode),
-          medium: (_, __) => _App(theme: AppitoTheme.medium, darkTheme: AppitoTheme.mediumDark, themeMode: themeState.themeMode),
-          large: (_, __) => _App(theme: AppitoTheme.large, darkTheme: AppitoTheme.largeDark, themeMode: themeState.themeMode),
+          small: (_, __) => _App(theme: AppTheme.small, darkTheme: AppTheme.smallDark, themeMode: themeState.themeMode),
+          medium: (_, __) => _App(theme: AppTheme.medium, darkTheme: AppTheme.mediumDark, themeMode: themeState.themeMode),
+          large: (_, __) => _App(theme: AppTheme.large, darkTheme: AppTheme.largeDark, themeMode: themeState.themeMode),
         );
       },
     );

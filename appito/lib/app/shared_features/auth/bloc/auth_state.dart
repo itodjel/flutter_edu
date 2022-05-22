@@ -2,6 +2,8 @@ enum AuthStateStatus {
   initializing,
   authenticated,
   unAuthenticated,
+  refreshedSignIn,
+  signedOut,
 }
 
 class AuthState {

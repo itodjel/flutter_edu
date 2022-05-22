@@ -14,6 +14,9 @@ abstract class IAuthenticationRepository {
   /// Signs the user out, unauthorizes API client and deletes account data
   /// from storage
   Future<Result> signOut();
+
+  /// Refreshes tokens for the user
+  Future<Result> refreshSignIn();
 }
 
 class MockAuthenticationRepository implements IAuthenticationRepository {
@@ -55,6 +58,9 @@ class MockAuthenticationRepository implements IAuthenticationRepository {
       return NetworkResult(exception: Exception(e));
     }
   }
+
+  @override
+  Future<Result> refreshSignIn() => signIn(SignInRequestModel());
 }
 
 class AuthenticationRepository implements IAuthenticationRepository {
@@ -186,6 +192,14 @@ class AuthenticationRepository implements IAuthenticationRepository {
     } catch (e) {
       debugPrint(e.toString());
     }
+  }
+
+  @override
+  Future<Result> refreshSignIn() async {
+    return await restApiClient.post(
+      '/api/Authentication/refresh-sign-in',
+      parser: (data) async => await _authorize(SignInResponseModel.fromJson(data)),
+    );
   }
 
   @override

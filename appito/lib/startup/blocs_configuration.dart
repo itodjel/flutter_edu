@@ -1,12 +1,12 @@
 import 'package:appito/_all.dart';
 
 class BlocsConfiguration {
-  static Future configure() async {
-    await configureSingletons();
-    await configureScoped();
+  static void configure() {
+    configureSingletons();
+    configureScoped();
   }
 
-  static Future configureSingletons() async {
+  static void configureSingletons() {
     services.registerSingleton(
       IntroBloc(
         storageRepository: services.get<IStorageRepository>(),
@@ -45,7 +45,7 @@ class BlocsConfiguration {
     );
   }
 
-  static Future configureScoped() async {
+  static void configureScoped() {
     services.registerFactory<AccountBloc>(
       () => AccountBloc(
         accountRepository: services.get<IAccountRepository>(),

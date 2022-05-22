@@ -14,7 +14,9 @@ class AccountResponseModel with _$AccountResponseModel {
     String? timezoneId,
     AccountType? accountType,
     bool? passwordSetByUser,
+    AccountCompanyResponseModel? currentCompany,
     List<AccountExternalUserResponseModel>? externalUsers,
+    List<AccountEmployeeResponseModel>? employees,
   }) = _AccountResponseModel;
 
   factory AccountResponseModel.fromJson(Map<String, dynamic> json) => _$AccountResponseModelFromJson(json);

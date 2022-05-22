@@ -16,6 +16,8 @@ class AppNavigation extends StatelessWidget {
             return const SignInPage();
           case AppNavigationStateStatus.home:
             return const HomeNavigation();
+          default:
+            return const SplashPage();
         }
       },
     );

@@ -1,7 +1,7 @@
 import 'package:appito/_all.dart';
 
 class AppSettingsConfiguration {
-  static Future configure() async {
+  static void configure() {
     switch (environment) {
       case Environment.demo:
         services.registerSingleton<AppSettings>(demoAppSettings);

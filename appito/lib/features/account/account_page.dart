@@ -7,7 +7,7 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => services.get<AccountBloc>(),
-      child: Scaffold(
+      child: AppScaffold(
         body: AbstractItemConsumer<AccountBloc, AccountState>(
           builder: (accountState) {
             return Column(
@@ -15,12 +15,7 @@ class AccountPage extends StatelessWidget {
                 Expanded(
                   child: ListView(
                     children: [
-                      const Center(
-                        child: Text('Account data'),
-                      ),
-                      if (accountState.item?.photoUrl != null) ...{
-                        Image.network(accountState.item?.photoUrl ?? ''),
-                      },
+                      if (accountState.showProfilePhoto) Image.network(accountState.item?.photoUrl ?? ''),
                     ],
                   ),
                 ),

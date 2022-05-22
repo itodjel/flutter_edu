@@ -19,7 +19,6 @@ dependencies:
   gap: ^2.0.0
   get_it: ^7.2.0
   rest_api_client: ^2.0.4
-  animated_bottom_navigation_bar: ^0.3.2
   storage_repository: ^1.1.8
   intl: ^0.17.0
   firebase_core: ^1.17.0
@@ -28,6 +27,7 @@ dependencies:
   freezed_annotation: ^2.0.3
   json_annotation: ^4.5.0
   introduction_screen: ^3.0.2
+  flutter_phoenix: "^1.0.0"
 
 dev_dependencies:
   flutter_test:

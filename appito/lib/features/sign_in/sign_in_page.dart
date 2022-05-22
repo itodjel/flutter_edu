@@ -20,9 +20,9 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: const [
-        Expanded(child: _Form()),
+        _Form(),
         ExternalSignInWidget(),
       ],
     );
@@ -84,6 +84,7 @@ class _FormState extends State<_Form> {
                 ),
                 const Gap(50),
                 Button(
+                  primary: true,
                   text: context.translations.submit,
                   isLoading: signInState.status == SignInStateStatus.submitting,
                   onTap: () => context.read<SignInBloc>().add(SignInSubmitEvent()),
