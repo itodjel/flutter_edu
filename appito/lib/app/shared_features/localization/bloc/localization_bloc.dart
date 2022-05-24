@@ -26,20 +26,15 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
     final locale = languagePreviouslySelected ? Locale(languageCode) : AppLanguages.values.first.locale;
 
     Intl.defaultLocale = locale.languageCode;
-
-    emit(state.copyWith(status: languagePreviouslySelected ? LocalizationStateStatus.initialized : LocalizationStateStatus.initializedDefault, locale: locale));
     restApiClient.setAcceptLanguageHeader(locale.languageCode);
 
-    if (!languagePreviouslySelected) {
-      await storageRepository.set(AppKeys.language_code, locale.languageCode);
-    }
+    emit(state.copyWith(status: languagePreviouslySelected ? LocalizationStateStatus.initialized : LocalizationStateStatus.initializedDefault, locale: locale));
   }
 
   Future<void> _change(LocalizationChangeEvent event, Emitter<LocalizationState> emit) async {
-    restApiClient.setAcceptLanguageHeader(event.locale.languageCode);
-
     await storageRepository.set(AppKeys.language_code, event.locale.languageCode);
 
+    restApiClient.setAcceptLanguageHeader(event.locale.languageCode);
     Intl.defaultLocale = event.locale.languageCode;
 
     emit(state.copyWith(status: LocalizationStateStatus.changed, locale: event.locale));
