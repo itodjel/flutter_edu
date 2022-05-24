@@ -32,7 +32,8 @@ class AppRebuilder extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, authState) {
         if ([AuthStateStatus.refreshedSignIn, AuthStateStatus.signedOut].contains(authState.status)) {
-          Startup.restart().then((value) => Phoenix.rebirth(context));
+          context.read<NavigationBloc>().add(NavigationChangeIndexEvent(index: 0));
+          Phoenix.rebirth(context);
         }
       },
       child: child,

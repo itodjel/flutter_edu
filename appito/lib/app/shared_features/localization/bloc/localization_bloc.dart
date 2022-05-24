@@ -11,6 +11,8 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
   }) : super(initialState()) {
     on<LocalizationInitEvent>(_init);
     on<LocalizationChangeEvent>(_change);
+
+    add(LocalizationInitEvent());
   }
 
   static LocalizationState initialState() => LocalizationState(
@@ -20,8 +22,8 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
 
   Future<void> _init(LocalizationInitEvent event, Emitter<LocalizationState> emit) async {
     String? languageCode = await storageRepository.get(AppKeys.language_code);
-    final languagePreviouslySelected = languageCode == null;
-    final locale = languagePreviouslySelected ? AppLanguages.values.first.locale : Locale(languageCode);
+    final languagePreviouslySelected = languageCode != null;
+    final locale = languagePreviouslySelected ? Locale(languageCode) : AppLanguages.values.first.locale;
 
     Intl.defaultLocale = locale.languageCode;
 

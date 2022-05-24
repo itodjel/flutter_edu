@@ -1,5 +1,8 @@
-enum AppNavigationStateStatus {
-  initial,
+import 'dart:math';
+
+// Keep this order the way you want app navigation to
+// step through initialization process
+enum AppNavigationStep {
   selectLanguage,
   intro,
   signIn,
@@ -7,17 +10,18 @@ enum AppNavigationStateStatus {
 }
 
 class AppNavigationState {
-  final AppNavigationStateStatus status;
+  List<AppNavigationStep> steps;
+  AppNavigationStep get currentStep => AppNavigationStep.values[steps.map((x) => x.index).reduce(min)];
 
-  AppNavigationState({required this.status});
+  AppNavigationState({required this.steps});
 
-  factory AppNavigationState.initial() => AppNavigationState(status: AppNavigationStateStatus.initial);
+  factory AppNavigationState.initial() => AppNavigationState(steps: List.from(AppNavigationStep.values));
 
   AppNavigationState copyWith({
-    AppNavigationStateStatus? status,
+    List<AppNavigationStep>? steps,
   }) {
     return AppNavigationState(
-      status: status ?? this.status,
+      steps: steps ?? this.steps,
     );
   }
 }

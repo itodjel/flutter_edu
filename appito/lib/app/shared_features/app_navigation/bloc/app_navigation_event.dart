@@ -3,13 +3,13 @@ import 'package:appito/_all.dart';
 abstract class AppNavigationEvent {}
 
 class AppNavigationCompleteStepEvent extends AppNavigationEvent {
-  final AppNavigationStateStatus status;
+  final AppNavigationStep step;
 
-  AppNavigationCompleteStepEvent({required this.status});
+  AppNavigationCompleteStepEvent({required this.step});
 }
 
 class AppNavigationRevertStepEvent extends AppNavigationEvent {
-  final AppNavigationStateStatus status;
+  final AppNavigationStep step;
 
-  AppNavigationRevertStepEvent({required this.status});
+  AppNavigationRevertStepEvent({required this.step});
 }

@@ -9,16 +9,14 @@ class AppNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppNavigationBloc, AppNavigationState>(
       builder: (context, appNavigationState) {
-        switch (appNavigationState.status) {
-          case AppNavigationStateStatus.initial:
-            return const SplashPage();
-          case AppNavigationStateStatus.selectLanguage:
+        switch (appNavigationState.currentStep) {
+          case AppNavigationStep.selectLanguage:
             return const SelectLanguagePage();
-          case AppNavigationStateStatus.intro:
+          case AppNavigationStep.intro:
             return IntroPage();
-          case AppNavigationStateStatus.signIn:
+          case AppNavigationStep.signIn:
             return const SignInPage();
-          case AppNavigationStateStatus.home:
+          case AppNavigationStep.home:
             return const HomeNavigation();
         }
       },

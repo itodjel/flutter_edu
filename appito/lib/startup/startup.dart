@@ -11,18 +11,10 @@ class Startup {
     AppSettingsConfiguration.configure();
     CommonServicesConfiguration.configure();
     await StorageConfiguration.configure();
-    // await FirebaseConfiguration.configure();
+    await FirebaseConfiguration.configure();
     await OAuthConfiguration.configure();
     await ApiClientConfiguration.configure();
     RepositoriesConfiguration.configure();
     BlocsConfiguration.configure();
-  }
-
-  static Future restart() async {
-    await services.reset();
-
-    ModelValidatorsConfiguration.configuredValidators = false;
-
-    await configure();
   }
 }

@@ -48,18 +48,18 @@ class BlocsConfiguration {
   }
 
   static void configureScoped() {
-    services.registerFactory<AccountBloc>(
+    services.registerFactory(
       () => AccountBloc(
         accountRepository: services.get<IAccountRepository>(),
       ),
     );
-    services.registerFactory<SignInBloc>(
+    services.registerFactory(
       () => SignInBloc(
         signInRequestModelValidator: services.get<SignInRequestModelValidator>(),
         authenticationRepository: services.get<IAuthenticationRepository>(),
       ),
     );
-    services.registerFactory<ExternalSignInBloc>(
+    services.registerFactory(
       () => ExternalSignInBloc(
         authenticationRepository: services.get<IAuthenticationRepository>(),
       ),

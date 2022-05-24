@@ -40,14 +40,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     await authenticationRepository.refreshSignIn();
 
     emit(state.copyWith(status: AuthStateStatus.refreshedSignIn));
+    emit(state.copyWith(status: AuthStateStatus.authenticated));
   }
 
   Future<void> _signOut(AuthSignOutEvent event, Emitter<AuthState> emit) async {
-    if (state.status == AuthStateStatus.authenticated) {
-      await authenticationRepository.signOut();
+    await authenticationRepository.signOut();
 
-      emit(state.copyWith(status: AuthStateStatus.signedOut));
-    }
+    emit(state.copyWith(status: AuthStateStatus.signedOut));
+    emit(state.copyWith(status: AuthStateStatus.unAuthenticated));
   }
 
   @override

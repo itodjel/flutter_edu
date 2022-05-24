@@ -20,11 +20,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   Future<void> _init(ThemeInitEvent event, Emitter<ThemeState> emit) async {
     int? themeModeIndex = await storageRepository.get(AppKeys.theme_mode);
 
-    if (themeModeIndex == null) {
-      add(ThemeChangeEvent(themeMode: ThemeMode.light));
-    } else {
-      emit(ThemeState(status: ThemeStateStatus.initialized, themeMode: ThemeMode.values[themeModeIndex]));
-    }
+    add(ThemeChangeEvent(themeMode: themeModeIndex == null ? ThemeMode.light : ThemeMode.values[themeModeIndex]));
   }
 
   Future<void> _change(ThemeChangeEvent event, Emitter<ThemeState> emit) async {
