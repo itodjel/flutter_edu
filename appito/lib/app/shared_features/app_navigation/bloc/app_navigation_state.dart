@@ -1,4 +1,5 @@
 enum AppNavigationStateStatus {
+  initial,
   selectLanguage,
   intro,
   signIn,
@@ -10,7 +11,7 @@ class AppNavigationState {
 
   AppNavigationState({required this.status});
 
-  factory AppNavigationState.initial() => AppNavigationState(status: AppNavigationStateStatus.selectLanguage);
+  factory AppNavigationState.initial() => AppNavigationState(status: AppNavigationStateStatus.initial);
 
   AppNavigationState copyWith({
     AppNavigationStateStatus? status,

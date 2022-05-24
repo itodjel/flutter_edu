@@ -20,15 +20,10 @@ SignInResponseModel _$SignInResponseModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SignInResponseModel {
-  AccountType? get accountType => throw _privateConstructorUsedError;
-  set accountType(AccountType? value) => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
   set token(String? value) => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
   set refreshToken(String? value) => throw _privateConstructorUsedError;
-  AccountResponseModel? get account => throw _privateConstructorUsedError;
-  set account(AccountResponseModel? value) =>
-      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +36,7 @@ abstract class $SignInResponseModelCopyWith<$Res> {
   factory $SignInResponseModelCopyWith(
           SignInResponseModel value, $Res Function(SignInResponseModel) then) =
       _$SignInResponseModelCopyWithImpl<$Res>;
-  $Res call(
-      {AccountType? accountType,
-      String? token,
-      String? refreshToken,
-      AccountResponseModel? account});
-
-  $AccountResponseModelCopyWith<$Res>? get account;
+  $Res call({String? token, String? refreshToken});
 }
 
 /// @nodoc
@@ -61,16 +50,10 @@ class _$SignInResponseModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? accountType = freezed,
     Object? token = freezed,
     Object? refreshToken = freezed,
-    Object? account = freezed,
   }) {
     return _then(_value.copyWith(
-      accountType: accountType == freezed
-          ? _value.accountType
-          : accountType // ignore: cast_nullable_to_non_nullable
-              as AccountType?,
       token: token == freezed
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -79,22 +62,7 @@ class _$SignInResponseModelCopyWithImpl<$Res>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      account: account == freezed
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as AccountResponseModel?,
     ));
-  }
-
-  @override
-  $AccountResponseModelCopyWith<$Res>? get account {
-    if (_value.account == null) {
-      return null;
-    }
-
-    return $AccountResponseModelCopyWith<$Res>(_value.account!, (value) {
-      return _then(_value.copyWith(account: value));
-    });
   }
 }
 
@@ -105,14 +73,7 @@ abstract class _$$_SignInResponseModelCopyWith<$Res>
           $Res Function(_$_SignInResponseModel) then) =
       __$$_SignInResponseModelCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {AccountType? accountType,
-      String? token,
-      String? refreshToken,
-      AccountResponseModel? account});
-
-  @override
-  $AccountResponseModelCopyWith<$Res>? get account;
+  $Res call({String? token, String? refreshToken});
 }
 
 /// @nodoc
@@ -128,16 +89,10 @@ class __$$_SignInResponseModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? accountType = freezed,
     Object? token = freezed,
     Object? refreshToken = freezed,
-    Object? account = freezed,
   }) {
     return _then(_$_SignInResponseModel(
-      accountType: accountType == freezed
-          ? _value.accountType
-          : accountType // ignore: cast_nullable_to_non_nullable
-              as AccountType?,
       token: token == freezed
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -146,10 +101,6 @@ class __$$_SignInResponseModelCopyWithImpl<$Res>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      account: account == freezed
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as AccountResponseModel?,
     ));
   }
 }
@@ -157,24 +108,19 @@ class __$$_SignInResponseModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SignInResponseModel implements _SignInResponseModel {
-  _$_SignInResponseModel(
-      {this.accountType, this.token, this.refreshToken, this.account});
+  _$_SignInResponseModel({this.token, this.refreshToken});
 
   factory _$_SignInResponseModel.fromJson(Map<String, dynamic> json) =>
       _$$_SignInResponseModelFromJson(json);
 
   @override
-  AccountType? accountType;
-  @override
   String? token;
   @override
   String? refreshToken;
-  @override
-  AccountResponseModel? account;
 
   @override
   String toString() {
-    return 'SignInResponseModel(accountType: $accountType, token: $token, refreshToken: $refreshToken, account: $account)';
+    return 'SignInResponseModel(token: $token, refreshToken: $refreshToken)';
   }
 
   @JsonKey(ignore: true)
@@ -190,23 +136,16 @@ class _$_SignInResponseModel implements _SignInResponseModel {
 }
 
 abstract class _SignInResponseModel implements SignInResponseModel {
-  factory _SignInResponseModel(
-      {AccountType? accountType,
-      String? token,
-      String? refreshToken,
-      AccountResponseModel? account}) = _$_SignInResponseModel;
+  factory _SignInResponseModel({String? token, String? refreshToken}) =
+      _$_SignInResponseModel;
 
   factory _SignInResponseModel.fromJson(Map<String, dynamic> json) =
       _$_SignInResponseModel.fromJson;
 
   @override
-  AccountType? get accountType => throw _privateConstructorUsedError;
-  @override
   String? get token => throw _privateConstructorUsedError;
   @override
   String? get refreshToken => throw _privateConstructorUsedError;
-  @override
-  AccountResponseModel? get account => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SignInResponseModelCopyWith<_$_SignInResponseModel> get copyWith =>

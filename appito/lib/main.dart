@@ -7,7 +7,7 @@ Future main(args) async {
     () => runZonedGuarded(
       () => runApp(const App()),
       (error, stack) {
-        if (PlatformService.isFirebaseAvailable) {
+        if (services.get<IPlatformService>().isFirebaseAvailable) {
           FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
         }
       },

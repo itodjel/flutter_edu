@@ -1,14 +1,26 @@
 import 'package:appito/_all.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  final IRestApiClient restApiClient;
+  final ICurrentUser currentUser;
   final IAuthenticationRepository authenticationRepository;
 
+  late StreamSubscription _restApiClientStream;
+
   AuthBloc({
+    required this.restApiClient,
+    required this.currentUser,
     required this.authenticationRepository,
   }) : super(AuthState.initial()) {
     on<AuthCheckEvent>(_check);
     on<AuthRefreshEvent>(_refresh);
     on<AuthSignOutEvent>(_signOut);
+
+    _restApiClientStream = restApiClient.exceptionHandler.exceptions.stream.listen((exception) {
+      if (exception is UnauthorizedException) {
+        add(AuthSignOutEvent());
+      }
+    });
 
     add(AuthCheckEvent());
   }
@@ -18,6 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     if (isAuthenticated) {
       emit(state.copyWith(status: AuthStateStatus.authenticated));
+      await currentUser.refresh();
     } else {
       emit(state.copyWith(status: AuthStateStatus.unAuthenticated));
     }
@@ -30,8 +43,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _signOut(AuthSignOutEvent event, Emitter<AuthState> emit) async {
-    await authenticationRepository.signOut();
+    if (state.status == AuthStateStatus.authenticated) {
+      await authenticationRepository.signOut();
 
-    emit(state.copyWith(status: AuthStateStatus.signedOut));
+      emit(state.copyWith(status: AuthStateStatus.signedOut));
+    }
+  }
+
+  @override
+  Future<void> close() {
+    _restApiClientStream.cancel();
+
+    return super.close();
   }
 }

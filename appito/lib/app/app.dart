@@ -100,16 +100,17 @@ class _App extends StatelessWidget {
                   statusBarColor: context.theme.primaryColor,
                 ));
 
-                return child!;
+                return BlocListener<ErrorHandlerBloc, ErrorHandlerState>(
+                  listener: (context, errorHandlerState) {
+                    if (errorHandlerState.showMessage) {
+                      context.toast.showExceptionMessage(context.translations, errorHandlerState.exception!);
+                    }
+                  },
+                  child: child!,
+                );
               },
-              home: BlocListener<ErrorHandlerBloc, ErrorHandlerState>(
-                listener: (context, errorHandlerState) {
-                  if (errorHandlerState.showMessage) {
-                    toast.showExceptionMessage(context.translations, errorHandlerState.exception!);
-                  }
-                },
-                child: const AppNavigation(),
-              ),
+              onGenerateRoute: AppRouter.onGenerateRoute,
+              initialRoute: AppNavigation.route,
             ),
           );
         },

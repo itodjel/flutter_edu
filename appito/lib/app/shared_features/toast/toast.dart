@@ -1,7 +1,5 @@
 import 'package:appito/_all.dart';
 
-IToast get toast => services.get<IToast>();
-
 abstract class IToast {
   void success({String? message, Widget? child, bool showIcon = true});
   void validation({String? message, Widget? child});

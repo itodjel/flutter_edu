@@ -35,6 +35,9 @@ class AppNavigationBloc extends Bloc<AppNavigationEvent, AppNavigationState> {
 
   Future<void> _completeStep(AppNavigationCompleteStepEvent event, Emitter<AppNavigationState> emit) async {
     switch (event.status) {
+      case AppNavigationStateStatus.initial:
+        emit(state.copyWith(status: AppNavigationStateStatus.selectLanguage));
+        break;
       case AppNavigationStateStatus.selectLanguage:
         emit(state.copyWith(status: AppNavigationStateStatus.intro));
         break;

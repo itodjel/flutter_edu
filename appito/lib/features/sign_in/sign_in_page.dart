@@ -53,7 +53,7 @@ class _FormState extends State<_Form> {
         if (signInState.status == SignInStateStatus.submittingSuccess) {
           context.read<AuthBloc>().add(AuthCheckEvent());
         } else if (signInState.status == SignInStateStatus.validationError) {
-          toast.validation(message: context.translations.please_fill_in_all_required_fields);
+          context.toast.validation(message: context.translations.please_fill_in_all_required_fields);
         }
       },
       builder: (context, signInState) {

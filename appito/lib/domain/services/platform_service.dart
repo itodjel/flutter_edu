@@ -6,31 +6,45 @@ enum _Platform {
   web,
   windows,
   linux,
-  macos,
+  macOS,
 }
 
-class PlatformService {
-  static bool isGoogleSignInAvailable = isAndroidIosWeb;
-  static bool isFacebookSignInAvailable = isAndroidIosWeb;
-  static bool isAppleSignInAvailable = isAndroidIosWeb;
-  static bool isFirebaseAvailable = isAndroidIos;
+abstract class IPlatformService {
+  bool get isWeb;
+  bool get isAndroid;
+  bool get isIos;
+  bool get isWindows;
+  bool get isMacOS;
+  bool get isLinux;
+  bool get isGoogleSignInAvailable;
+  bool get isFacebookSignInAvailable;
+  bool get isAppleSignInAvailable;
+  bool get isFirebaseAvailable;
+}
 
-  // Helpers - BEGIN
+class PlatformService implements IPlatformService {
+  @override
+  bool get isGoogleSignInAvailable => isAndroid || isIos || isWeb;
+  @override
+  bool get isFacebookSignInAvailable => isAndroid || isIos || isWeb;
+  @override
+  bool get isAppleSignInAvailable => isAndroid || isIos || isWeb;
+  @override
+  bool get isFirebaseAvailable => isAndroid || isIos;
+  @override
+  bool get isWeb => kIsWeb;
+  @override
+  bool get isAndroid => _currentPlatform == _Platform.android;
+  @override
+  bool get isIos => _currentPlatform == _Platform.ios;
+  @override
+  bool get isWindows => _currentPlatform == _Platform.windows;
+  @override
+  bool get isMacOS => _currentPlatform == _Platform.macOS;
+  @override
+  bool get isLinux => _currentPlatform == _Platform.linux;
 
-  static bool isWeb = kIsWeb;
-
-  static bool isAndroidIosWeb = [
-    _Platform.android,
-    _Platform.ios,
-    _Platform.web,
-  ].contains(_currentPlatform);
-
-  static bool isAndroidIos = [
-    _Platform.android,
-    _Platform.ios,
-  ].contains(_currentPlatform);
-
-  static _Platform get _currentPlatform {
+  _Platform get _currentPlatform {
     if (kIsWeb) {
       return _Platform.web;
     }
@@ -41,7 +55,7 @@ class PlatformService {
       case TargetPlatform.iOS:
         return _Platform.ios;
       case TargetPlatform.macOS:
-        return _Platform.macos;
+        return _Platform.macOS;
       case TargetPlatform.windows:
         return _Platform.windows;
       case TargetPlatform.linux:
@@ -50,6 +64,4 @@ class PlatformService {
         throw UnsupportedError('DefaultFirebaseOptions are not supported for this platform.');
     }
   }
-
-  // Helpers - END
 }

@@ -20,6 +20,8 @@ class BlocsConfiguration {
     );
     services.registerSingleton(
       AuthBloc(
+        currentUser: services.get<ICurrentUser>(),
+        restApiClient: services.get<IRestApiClient>(),
         authenticationRepository: services.get<IAuthenticationRepository>(),
       ),
     );

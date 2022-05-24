@@ -9,8 +9,8 @@ class Startup {
     await RestApiClient.initFlutter();
 
     AppSettingsConfiguration.configure();
-    await StorageConfiguration.configure();
     CommonServicesConfiguration.configure();
+    await StorageConfiguration.configure();
     await FirebaseConfiguration.configure();
     await OAuthConfiguration.configure();
     await ApiClientConfiguration.configure();

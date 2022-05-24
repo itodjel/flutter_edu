@@ -7,7 +7,7 @@ class ExternalSignInWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (PlatformService.isGoogleSignInAvailable) ...{
+        if (context.platform.isGoogleSignInAvailable) ...{
           _ExternalSignInButton(
             signInProvider: SignInProvider.google,
             builder: (_, __, onTap, isLoading) {
@@ -21,7 +21,7 @@ class ExternalSignInWidget extends StatelessWidget {
           ),
           const Gap(20)
         },
-        if (PlatformService.isFacebookSignInAvailable) ...{
+        if (context.platform.isFacebookSignInAvailable) ...{
           _ExternalSignInButton(
             signInProvider: SignInProvider.facebook,
             builder: (_, __, onTap, isLoading) {
@@ -35,7 +35,7 @@ class ExternalSignInWidget extends StatelessWidget {
           ),
           const Gap(20),
         },
-        if (PlatformService.isAppleSignInAvailable) ...{
+        if (context.platform.isAppleSignInAvailable) ...{
           _ExternalSignInButton(
             signInProvider: SignInProvider.apple,
             builder: (_, __, onTap, isLoading) {
@@ -49,6 +49,12 @@ class ExternalSignInWidget extends StatelessWidget {
           ),
           const Gap(20),
         },
+        Button(
+          text: 'Phone number',
+          primary: true,
+          onTap: () => context.push(SignInWithPhoneNumberPage.route, SignInWithPhoneNumberPageModel(text: 'Hello world of navigation!')),
+        ),
+        const Gap(20),
       ],
     );
   }
