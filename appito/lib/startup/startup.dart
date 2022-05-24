@@ -11,7 +11,7 @@ class Startup {
     AppSettingsConfiguration.configure();
     CommonServicesConfiguration.configure();
     await StorageConfiguration.configure();
-    await FirebaseConfiguration.configure();
+    // await FirebaseConfiguration.configure();
     await OAuthConfiguration.configure();
     await ApiClientConfiguration.configure();
     RepositoriesConfiguration.configure();
