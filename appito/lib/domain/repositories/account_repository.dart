@@ -8,18 +8,6 @@ abstract class IAccountRepository {
   Stream<Result<AccountResponseModel>> getCurrentUserAccountDataStreamed();
 }
 
-class MockAccountRepository implements IAccountRepository {
-  @override
-  Future<Result<AccountResponseModel>> getCurrentUserAccountData() async {
-    return NetworkResult(data: AccountResponseModel(id: '<USER_ID_STRING_VALUE>'));
-  }
-
-  @override
-  Stream<Result<AccountResponseModel>> getCurrentUserAccountDataStreamed() async* {
-    yield NetworkResult(data: AccountResponseModel(id: '<USER_ID_STRING_VALUE>'));
-  }
-}
-
 class AccountRepository implements IAccountRepository {
   final IRestApiClient restApiClient;
 

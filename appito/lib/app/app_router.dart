@@ -9,6 +9,8 @@ class AppRouter {
     switch (settings.name) {
       case AppNavigation.route:
         return const AppNavigation();
+      case SendSMSVerificationCodePage.route:
+        return const SendSMSVerificationCodePage();
       case SignInWithPhoneNumberPage.route:
         return SignInWithPhoneNumberPage(model: settings.arguments as SignInWithPhoneNumberPageModel);
       default:

@@ -3,9 +3,6 @@ import 'package:appito/_all.dart';
 class AppSettingsConfiguration {
   static void configure() {
     switch (environment) {
-      case Environment.demo:
-        services.registerSingleton<AppSettings>(demoAppSettings);
-        break;
       case Environment.development:
         services.registerSingleton<AppSettings>(developmentAppSettings);
         break;

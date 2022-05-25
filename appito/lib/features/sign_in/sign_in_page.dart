@@ -41,9 +41,9 @@ class _Form extends StatefulWidget {
 class _FormState extends State<_Form> {
   @override
   void initState() {
-    super.initState();
-
     context.read<SignInBloc>().add(SignInInitEvent());
+
+    super.initState();
   }
 
   @override

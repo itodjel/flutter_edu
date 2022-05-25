@@ -11,56 +11,18 @@ abstract class IAuthenticationRepository {
   /// Signs the user in with external provider eg. Facebook, Google or Apple
   Future<Result> signInWithExternalProvider(SignInProvider signInProvider);
 
+  /// Requests from the API to send SMS verification code
+  Future<Result> sendSMSVerificationCode(SendSMSVerificationCodeRequestModel model);
+
+  /// Sign the user in via phone number and verification code
+  Future<Result> signInWithPhoneNumber(SignInWithPhoneNumberRequestModel model);
+
   /// Signs the user out, unauthorizes API client and deletes account data
   /// from storage
   Future<Result> signOut();
 
   /// Refreshes tokens for the user
   Future<Result> refreshSignIn();
-}
-
-class MockAuthenticationRepository implements IAuthenticationRepository {
-  final IRestApiClient restApiClient;
-  final ICurrentUser currentUser;
-
-  MockAuthenticationRepository({
-    required this.restApiClient,
-    required this.currentUser,
-  });
-
-  @override
-  Future<bool> isAuthenticated() async => restApiClient.authHandler.isAuthorized();
-
-  @override
-  Future<Result> signIn(SignInRequestModel model) async {
-    await Future.delayed(const Duration(seconds: 5));
-
-    await restApiClient.authHandler.authorize(
-      jwt: '<JWT_VALUE_HERE>',
-      refreshToken: '<REFRESH_TOKEN_VALUE_HERE>',
-    );
-
-    await currentUser.refresh();
-
-    return NetworkResult();
-  }
-
-  @override
-  Future<Result> signInWithExternalProvider(SignInProvider signInProvider) async => await signIn(SignInRequestModel());
-
-  @override
-  Future<Result> signOut() async {
-    try {
-      await restApiClient.authHandler.unAuthorize();
-
-      return NetworkResult();
-    } catch (e) {
-      return NetworkResult(exception: Exception(e));
-    }
-  }
-
-  @override
-  Future<Result> refreshSignIn() => signIn(SignInRequestModel());
 }
 
 class AuthenticationRepository implements IAuthenticationRepository {
@@ -192,6 +154,23 @@ class AuthenticationRepository implements IAuthenticationRepository {
     } catch (e) {
       debugPrint(e.toString());
     }
+  }
+
+  @override
+  Future<Result> sendSMSVerificationCode(SendSMSVerificationCodeRequestModel model) async {
+    return await restApiClient.post(
+      '/api/Authentication/send-sms-verification-code',
+      data: model.toJson(),
+    );
+  }
+
+  @override
+  Future<Result> signInWithPhoneNumber(SignInWithPhoneNumberRequestModel model) async {
+    return await restApiClient.post(
+      '/api/Authentication/sign-in-with-phone-number',
+      data: model.toJson(),
+      parser: (data) async => await _authorize(SignInResponseModel.fromJson(data)),
+    );
   }
 
   @override

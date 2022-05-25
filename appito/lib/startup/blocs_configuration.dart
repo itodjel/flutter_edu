@@ -64,5 +64,17 @@ class BlocsConfiguration {
         authenticationRepository: services.get<IAuthenticationRepository>(),
       ),
     );
+    services.registerFactory(
+      () => SendSMSVerificationCodeBloc(
+        authenticationRepository: services.get<IAuthenticationRepository>(),
+        sendSMSVerificationCodeRequestModelValidator: services.get<SendSMSVerificationCodeRequestModelValidator>(),
+      ),
+    );
+    services.registerFactory(
+      () => SignInWithPhoneNumberBloc(
+        authenticationRepository: services.get<IAuthenticationRepository>(),
+        signInWithPhoneNumberRequestModelValidator: services.get<SignInWithPhoneNumberRequestModelValidator>(),
+      ),
+    );
   }
 }

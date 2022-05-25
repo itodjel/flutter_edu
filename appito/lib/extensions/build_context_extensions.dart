@@ -15,4 +15,11 @@ extension AppBuildContextX on BuildContext {
     unfocus();
     return navigator.pushNamed(routeName, arguments: data);
   }
+
+  void popUntilRoot() {
+    unfocus();
+    while (navigator.canPop()) {
+      navigator.pop();
+    }
+  }
 }

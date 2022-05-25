@@ -6,17 +6,6 @@ abstract class ICurrentUser {
   Future refresh();
 }
 
-class MockCurrentUser implements ICurrentUser {
-  @override
-  Future<String?> get id async => (await instance)?.id;
-
-  @override
-  Future<AccountResponseModel?> get instance async => AccountResponseModel(id: '<USER_ID_STRING_VALUE>');
-
-  @override
-  Future refresh() async {}
-}
-
 class CurrentUser implements ICurrentUser {
   final IStorageRepository storage;
   final IRestApiClient restApiClient;
@@ -44,6 +33,8 @@ class CurrentUser implements ICurrentUser {
 
   @override
   Future refresh() async {
+    restApiClient.exceptionHandler.exceptionOptions.disable();
+
     final result = await restApiClient.get(
       '/api/Account/current-user-account-data',
       parser: (data) => AccountResponseModel.fromJson(data),

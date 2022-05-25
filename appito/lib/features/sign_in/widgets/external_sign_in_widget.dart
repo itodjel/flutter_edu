@@ -52,7 +52,7 @@ class ExternalSignInWidget extends StatelessWidget {
         Button(
           text: 'Phone number',
           primary: true,
-          onTap: () => context.push(SignInWithPhoneNumberPage.route, SignInWithPhoneNumberPageModel(text: 'Hello world of navigation!')),
+          onTap: () => context.push(SendSMSVerificationCodePage.route),
         ),
         const Gap(20),
       ],

@@ -1,7 +1,7 @@
 class SignInWithPhoneNumberPageModel {
-  final String text;
+  final String phoneNumber;
 
   SignInWithPhoneNumberPageModel({
-    required this.text,
+    required this.phoneNumber,
   });
 }

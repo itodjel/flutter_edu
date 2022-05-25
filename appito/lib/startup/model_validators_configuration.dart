@@ -8,7 +8,9 @@ class ModelValidatorsConfiguration {
       return;
     }
 
-    services.registerSingleton<SignInRequestModelValidator>(SignInRequestModelValidator(appLocalizations: appLocalizations));
+    services.registerSingleton(SignInRequestModelValidator(appLocalizations: appLocalizations));
+    services.registerSingleton(SendSMSVerificationCodeRequestModelValidator(appLocalizations: appLocalizations));
+    services.registerSingleton(SignInWithPhoneNumberRequestModelValidator(appLocalizations: appLocalizations));
 
     configuredValidators = true;
   }
