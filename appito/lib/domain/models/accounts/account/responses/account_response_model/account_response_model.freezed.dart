@@ -22,6 +22,12 @@ AccountResponseModel _$AccountResponseModelFromJson(Map<String, dynamic> json) {
 mixin _$AccountResponseModel {
   String? get id => throw _privateConstructorUsedError;
   set id(String? value) => throw _privateConstructorUsedError;
+  String? get userName => throw _privateConstructorUsedError;
+  set userName(String? value) => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  set email(String? value) => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  set phoneNumber(String? value) => throw _privateConstructorUsedError;
   String? get firstName => throw _privateConstructorUsedError;
   set firstName(String? value) => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
@@ -62,6 +68,9 @@ abstract class $AccountResponseModelCopyWith<$Res> {
       _$AccountResponseModelCopyWithImpl<$Res>;
   $Res call(
       {String? id,
+      String? userName,
+      String? email,
+      String? phoneNumber,
       String? firstName,
       String? lastName,
       String? photoUrl,
@@ -88,6 +97,9 @@ class _$AccountResponseModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? userName = freezed,
+    Object? email = freezed,
+    Object? phoneNumber = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? photoUrl = freezed,
@@ -102,6 +114,18 @@ class _$AccountResponseModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
       firstName: firstName == freezed
           ? _value.firstName
@@ -176,6 +200,9 @@ abstract class _$$_AccountResponseModelCopyWith<$Res>
   @override
   $Res call(
       {String? id,
+      String? userName,
+      String? email,
+      String? phoneNumber,
       String? firstName,
       String? lastName,
       String? photoUrl,
@@ -206,6 +233,9 @@ class __$$_AccountResponseModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? userName = freezed,
+    Object? email = freezed,
+    Object? phoneNumber = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? photoUrl = freezed,
@@ -220,6 +250,18 @@ class __$$_AccountResponseModelCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
       firstName: firstName == freezed
           ? _value.firstName
@@ -266,6 +308,9 @@ class __$$_AccountResponseModelCopyWithImpl<$Res>
 class _$_AccountResponseModel implements _AccountResponseModel {
   _$_AccountResponseModel(
       {this.id,
+      this.userName,
+      this.email,
+      this.phoneNumber,
       this.firstName,
       this.lastName,
       this.photoUrl,
@@ -281,6 +326,12 @@ class _$_AccountResponseModel implements _AccountResponseModel {
 
   @override
   String? id;
+  @override
+  String? userName;
+  @override
+  String? email;
+  @override
+  String? phoneNumber;
   @override
   String? firstName;
   @override
@@ -302,7 +353,7 @@ class _$_AccountResponseModel implements _AccountResponseModel {
 
   @override
   String toString() {
-    return 'AccountResponseModel(id: $id, firstName: $firstName, lastName: $lastName, photoUrl: $photoUrl, timezoneId: $timezoneId, accountType: $accountType, profilePhoto: $profilePhoto, currentCompany: $currentCompany, externalUsers: $externalUsers, employees: $employees)';
+    return 'AccountResponseModel(id: $id, userName: $userName, email: $email, phoneNumber: $phoneNumber, firstName: $firstName, lastName: $lastName, photoUrl: $photoUrl, timezoneId: $timezoneId, accountType: $accountType, profilePhoto: $profilePhoto, currentCompany: $currentCompany, externalUsers: $externalUsers, employees: $employees)';
   }
 
   @JsonKey(ignore: true)
@@ -320,6 +371,9 @@ class _$_AccountResponseModel implements _AccountResponseModel {
 abstract class _AccountResponseModel implements AccountResponseModel {
   factory _AccountResponseModel(
       {String? id,
+      String? userName,
+      String? email,
+      String? phoneNumber,
       String? firstName,
       String? lastName,
       String? photoUrl,
@@ -335,6 +389,12 @@ abstract class _AccountResponseModel implements AccountResponseModel {
 
   @override
   String? get id => throw _privateConstructorUsedError;
+  @override
+  String? get userName => throw _privateConstructorUsedError;
+  @override
+  String? get email => throw _privateConstructorUsedError;
+  @override
+  String? get phoneNumber => throw _privateConstructorUsedError;
   @override
   String? get firstName => throw _privateConstructorUsedError;
   @override

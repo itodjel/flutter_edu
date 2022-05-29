@@ -11,14 +11,14 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  abstract_bloc: ^0.3.1
+  abstract_bloc: ^0.3.3
   google_sign_in: ^5.3.1
   flutter_facebook_auth: ^4.3.4
   sign_in_with_apple: ^4.0.0
   beamer: ^1.4.1+1
   gap: ^2.0.0
   get_it: ^7.2.0
-  rest_api_client: ^2.0.4
+  rest_api_client: ^2.1.1
   storage_repository: ^1.1.8
   intl: ^0.17.0
   firebase_core: ^1.17.0

@@ -27,6 +27,9 @@ class _Form extends StatelessWidget {
         context.toast.success(message: 'Successfully edited profile');
         context.pop();
       },
+      onValidationError: (context, _) {
+        context.toast.validation(message: context.translations.please_fill_in_all_required_fields);
+      },
       extendedBuilder: (context, state, bloc, submit) {
         return Padding(
           padding: const EdgeInsets.all(30.0),

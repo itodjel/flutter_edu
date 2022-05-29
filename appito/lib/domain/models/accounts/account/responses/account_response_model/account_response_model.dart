@@ -8,6 +8,9 @@ part 'account_response_model.g.dart';
 class AccountResponseModel with _$AccountResponseModel {
   factory AccountResponseModel({
     String? id,
+    String? userName,
+    String? email,
+    String? phoneNumber,
     String? firstName,
     String? lastName,
     String? photoUrl,

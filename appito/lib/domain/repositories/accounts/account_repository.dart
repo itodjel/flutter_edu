@@ -22,6 +22,9 @@ abstract class IAccountRepository {
 
   /// Updates current user's account type to AccountType.partner
   Future<Result> becomeAPartner();
+
+  /// Updates current user's account type to AccountType.partner
+  Future<Result> signUp(SignUpRequestModel model);
 }
 
 class AccountRepository implements IAccountRepository {
@@ -90,5 +93,16 @@ class AccountRepository implements IAccountRepository {
     }
 
     return result;
+  }
+
+  @override
+  Future<Result> signUp(SignUpRequestModel model) async {
+    return await restApiClient.post(
+      '/api/Account/sign-up',
+      data: FormData.fromMap(model.toJson()),
+      options: RestApiClientRequestOptions(
+        contentType: Headers.multipartFormData,
+      ),
+    );
   }
 }

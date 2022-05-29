@@ -33,7 +33,7 @@ class _Form extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AbstractFormConsumer<SendVerificationCodeBloc, SendVerificationCodeState, SendVerificationCodeRequestModel, SendVerificationCodeRequestModelValidator>(
-      onInit: (context, bloc, init) => init(SendVerificationCodeRequestModel(type: pageModel.type)),
+      onInit: (context, bloc, init) => init(SendVerificationCodeRequestModel(type: pageModel.type, source: pageModel.source)),
       onSuccess: (context, state) {
         context.push(
           SignInWithVerificationCodePage.route,

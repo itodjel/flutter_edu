@@ -19,6 +19,8 @@ class AppRouter {
         return const AccountUpdatePage();
       case BecomeAPartnerPage.route:
         return const BecomeAPartnerPage();
+      case SignUpPage.route:
+        return const SignUpPage();
       default:
         return const AppNavigation();
     }

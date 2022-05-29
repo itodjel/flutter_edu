@@ -9,6 +9,9 @@ part of 'account_response_model.dart';
 _$_AccountResponseModel _$$_AccountResponseModelFromJson(Map json) =>
     _$_AccountResponseModel(
       id: json['id'] as String?,
+      userName: json['userName'] as String?,
+      email: json['email'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
       firstName: json['firstName'] as String?,
       lastName: json['lastName'] as String?,
       photoUrl: json['photoUrl'] as String?,
@@ -37,6 +40,9 @@ Map<String, dynamic> _$$_AccountResponseModelToJson(
         _$_AccountResponseModel instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'userName': instance.userName,
+      'email': instance.email,
+      'phoneNumber': instance.phoneNumber,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'photoUrl': instance.photoUrl,

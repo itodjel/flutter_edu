@@ -9,7 +9,7 @@ class SendVerificationCodeBloc extends AbstractFormBloc<SendVerificationCodeStat
   }) : super(SendVerificationCodeState.initial(), modelValidator);
 
   @override
-  Future<Result> initModel(event, Emitter<SendVerificationCodeState> emit) async => CacheResult(data: event.model);
+  Future<Result> initModel(event, Emitter<SendVerificationCodeState> emit) async => Result.success(data: event.model);
 
   @override
   Future<Result> onSubmit(model) async => await authenticationRepository.sendVerificationCode(model);

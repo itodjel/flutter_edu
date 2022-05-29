@@ -18,6 +18,12 @@ class ModelValidatorsConfiguration {
     services.registerSingleton(SignInWithExternalProviderRequestModelValidator(appLocalizations: appLocalizations));
     services.registerSingleton(ChangePasswordRequestModelValidator(appLocalizations: appLocalizations));
     services.registerSingleton(AccountUpdateRequestModelValidator(appLocalizations: appLocalizations));
+    services.registerSingleton(
+      SignUpRequestModelValidator(
+        appLocalizations: appLocalizations,
+        emailPropertyValidator: EmailPropertyValidator(appLocalizations: appLocalizations),
+      ),
+    );
 
     configuredValidators = true;
   }

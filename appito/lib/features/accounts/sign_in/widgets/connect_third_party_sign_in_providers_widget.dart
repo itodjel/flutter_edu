@@ -11,13 +11,13 @@ class ConnectThirdPartySignInProvidersWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: BlocBuilder<AccountBloc, AccountState>(
-          builder: (context, accountState) {
+        child: AbstractItemConsumer<AccountBloc, AccountState, AccountResponseModel>(
+          builder: (context, state, item) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Change profile',
+                  'Connect sign in providers',
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
                 const Gap(20),
@@ -30,7 +30,7 @@ class ConnectThirdPartySignInProvidersWidget extends StatelessWidget {
                         child: Row(
                           children: [
                             const Expanded(child: Text('Google', style: TextStyle(fontWeight: FontWeight.w400))),
-                            if (accountState.isThirdPartySignInProviderConnected(SignInProvider.google)) const Icon(Icons.check),
+                            if (state.isThirdPartySignInProviderConnected(SignInProvider.google)) const Icon(Icons.check),
                             if (isLoading) const Loader.sm(),
                           ],
                         ),
@@ -48,7 +48,7 @@ class ConnectThirdPartySignInProvidersWidget extends StatelessWidget {
                         child: Row(
                           children: [
                             const Expanded(child: Text('Facebook', style: TextStyle(fontWeight: FontWeight.w400))),
-                            if (accountState.isThirdPartySignInProviderConnected(SignInProvider.facebook)) const Icon(Icons.check),
+                            if (state.isThirdPartySignInProviderConnected(SignInProvider.facebook)) const Icon(Icons.check),
                             if (isLoading) const Loader.sm(),
                           ],
                         ),
@@ -66,7 +66,7 @@ class ConnectThirdPartySignInProvidersWidget extends StatelessWidget {
                         child: Row(
                           children: [
                             const Expanded(child: Text('Apple', style: TextStyle(fontWeight: FontWeight.w400))),
-                            if (accountState.isThirdPartySignInProviderConnected(SignInProvider.apple)) const Icon(Icons.check),
+                            if (state.isThirdPartySignInProviderConnected(SignInProvider.apple)) const Icon(Icons.check),
                             if (isLoading) const Loader.sm(),
                           ],
                         ),
@@ -76,21 +76,35 @@ class ConnectThirdPartySignInProvidersWidget extends StatelessWidget {
                   const Gap(20),
                 },
                 Button(
-                  onTap: () => context.push(SendVerificationCodePage.route, SendVerificationCodePageModel(allowTypeToggle: false, type: VerificationCodeSourceType.email)),
+                  onTap: () => context.push(
+                    SendVerificationCodePage.route,
+                    SendVerificationCodePageModel(
+                      allowTypeToggle: false,
+                      type: VerificationCodeSourceType.email,
+                      source: item.email,
+                    ),
+                  ),
                   child: Row(
                     children: [
                       const Expanded(child: Text('Email', style: TextStyle(fontWeight: FontWeight.w400))),
-                      if (accountState.isThirdPartySignInProviderConnected(SignInProvider.email)) const Icon(Icons.check),
+                      if (state.isThirdPartySignInProviderConnected(SignInProvider.email)) const Icon(Icons.check),
                     ],
                   ),
                 ),
                 const Gap(20),
                 Button(
-                  onTap: () => context.push(SendVerificationCodePage.route, SendVerificationCodePageModel(allowTypeToggle: false, type: VerificationCodeSourceType.phoneNumber)),
+                  onTap: () => context.push(
+                    SendVerificationCodePage.route,
+                    SendVerificationCodePageModel(
+                      allowTypeToggle: false,
+                      type: VerificationCodeSourceType.phoneNumber,
+                      source: item.phoneNumber,
+                    ),
+                  ),
                   child: Row(
                     children: [
                       const Expanded(child: Text('Phone number', style: TextStyle(fontWeight: FontWeight.w400))),
-                      if (accountState.isThirdPartySignInProviderConnected(SignInProvider.phoneNumber)) const Icon(Icons.check),
+                      if (state.isThirdPartySignInProviderConnected(SignInProvider.phoneNumber)) const Icon(Icons.check),
                     ],
                   ),
                 ),

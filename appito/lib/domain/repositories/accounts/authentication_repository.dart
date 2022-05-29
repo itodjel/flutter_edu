@@ -59,7 +59,7 @@ class AuthenticationRepository implements IAuthenticationRepository {
       case SignInProvider.email:
         return await _externalLogin(model);
       default:
-        return NetworkResult(exception: Exception('No implemented'));
+        return Result.error(exception: Exception('No implemented'));
     }
   }
 
@@ -83,7 +83,7 @@ class AuthenticationRepository implements IAuthenticationRepository {
       debugPrint(e.toString());
     }
 
-    return NetworkResult(exception: Exception());
+    return Result.error(exception: Exception());
   }
 
   Future<Result> _signInWithFacebook(SignInWithExternalProviderRequestModel model) async {
@@ -97,7 +97,7 @@ class AuthenticationRepository implements IAuthenticationRepository {
       debugPrint(e.toString());
     }
 
-    return NetworkResult(exception: Exception());
+    return Result.error(exception: Exception());
   }
 
   Future<Result> _signInWithApple(SignInWithExternalProviderRequestModel model) async {
@@ -118,7 +118,7 @@ class AuthenticationRepository implements IAuthenticationRepository {
       debugPrint(e.toString());
     }
 
-    return NetworkResult(exception: Exception());
+    return Result.error(exception: Exception());
   }
 
   Future<Result> _externalLogin(SignInWithExternalProviderRequestModel model) async {
@@ -163,9 +163,9 @@ class AuthenticationRepository implements IAuthenticationRepository {
     try {
       await restApiClient.authHandler.unAuthorize();
 
-      return NetworkResult();
+      return Result.success();
     } catch (e) {
-      return NetworkResult(exception: Exception(e));
+      return Result.error(exception: Exception(e));
     }
   }
 }

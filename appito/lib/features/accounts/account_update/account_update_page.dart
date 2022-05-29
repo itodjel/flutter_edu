@@ -57,7 +57,6 @@ class _Form extends StatelessWidget {
               const Gap(20),
               TextFormField(
                 initialValue: model.email,
-                validator: (text) => modelValidator.email(model.copyWith(email: text)),
                 onChanged: (text) => update(model.copyWith(email: text)),
                 decoration: const InputDecoration(labelText: 'Email'),
               ),

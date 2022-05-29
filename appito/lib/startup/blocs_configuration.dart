@@ -94,5 +94,11 @@ class BlocsConfiguration {
         accountRepository: services.get<IAccountRepository>(),
       ),
     );
+    services.registerFactory(
+      () => SignUpBloc(
+        accountRepository: services.get<IAccountRepository>(),
+        modelValidator: services.get<SignUpRequestModelValidator>(),
+      ),
+    );
   }
 }

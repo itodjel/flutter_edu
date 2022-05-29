@@ -10,9 +10,16 @@ class SignInPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(title: Text(context.translations.sign_in)),
         body: ListView(
-          children: const [
-            _Form(),
-            ExternalSignInWidget(),
+          children: [
+            const _Form(),
+            Button(
+              margin: const EdgeInsets.symmetric(horizontal: 30.0),
+              text: 'Sign Up',
+              primary: true,
+              onTap: () => context.push(SignUpPage.route),
+            ),
+            const Gap(20),
+            const ExternalSignInWidget(),
           ],
         ),
       ),
@@ -42,7 +49,7 @@ class _Form extends StatelessWidget {
                 initialValue: model.userName,
                 validator: (text) => modelValidator.userName(model.copyWith(userName: text)),
                 onChanged: (text) => update(model.copyWith(userName: text)),
-                decoration: InputDecoration(labelText: context.translations.username),
+                decoration: const InputDecoration(labelText: 'Username or email'),
               ),
               const Gap(30),
               TextFormField(
