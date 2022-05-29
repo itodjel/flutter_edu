@@ -7,6 +7,10 @@ abstract class IAccountRepository {
   /// Loads user account data from cache + from network
   Stream<Result<AccountResponseModel>> getCurrentUserAccountDataStreamed();
 
+  /// Toggle current company for the user, or changes the perspective to
+  /// client's view of the system if the company is null
+  Future<Result> toggleCurrentCompany(ToggleCurrentCompanyRequestModel model);
+
   /// Changes password for the currently logged in user
   Future<Result> changePassword(ChangePasswordRequestModel model);
 
@@ -15,12 +19,19 @@ abstract class IAccountRepository {
 
   /// Updates current user's account info
   Future<Result> update(AccountUpdateRequestModel model);
+
+  /// Updates current user's account type to AccountType.partner
+  Future<Result> becomeAPartner();
 }
 
 class AccountRepository implements IAccountRepository {
   final IRestApiClient restApiClient;
+  final ICurrentUser currentUser;
 
-  AccountRepository({required this.restApiClient});
+  AccountRepository({
+    required this.restApiClient,
+    required this.currentUser,
+  });
 
   @override
   Future<Result<AccountResponseModel>> getCurrentUserAccountData() async {
@@ -35,6 +46,14 @@ class AccountRepository implements IAccountRepository {
     return restApiClient.getStreamed(
       '/api/Account/current-user-account-data',
       parser: (data) => AccountResponseModel.fromJson(data),
+    );
+  }
+
+  @override
+  Future<Result> toggleCurrentCompany(ToggleCurrentCompanyRequestModel model) async {
+    return await restApiClient.put(
+      '/api/Account/toggle-current-company',
+      data: model.toJson(),
     );
   }
 
@@ -60,5 +79,16 @@ class AccountRepository implements IAccountRepository {
       '/api/Account/update',
       data: model.toJson(),
     );
+  }
+
+  @override
+  Future<Result> becomeAPartner() async {
+    final result = await restApiClient.put('/api/Account/become-a-partner');
+
+    if (result.isSuccess) {
+      await currentUser.refresh();
+    }
+
+    return result;
   }
 }

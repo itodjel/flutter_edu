@@ -1,6 +1,7 @@
 import 'package:appito/_all.dart';
 
 abstract class ICurrentUser {
+  StreamController<AccountResponseModel?> data = StreamController<AccountResponseModel?>.broadcast();
   Future<String?> get id;
   Future<AccountResponseModel?> get instance;
   Future refresh();
@@ -9,6 +10,8 @@ abstract class ICurrentUser {
 class CurrentUser implements ICurrentUser {
   final IStorageRepository storage;
   final IRestApiClient restApiClient;
+  @override
+  StreamController<AccountResponseModel?> data = StreamController<AccountResponseModel?>.broadcast();
 
   CurrentUser({
     required this.storage,
@@ -39,6 +42,8 @@ class CurrentUser implements ICurrentUser {
       '/api/Account/current-user-account-data',
       parser: (data) => AccountResponseModel.fromJson(data),
     );
+
+    data.add(result.data);
 
     await storage.set(AppKeys.current_user, result.data?.toJson());
   }

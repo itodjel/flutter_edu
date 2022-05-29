@@ -17,6 +17,11 @@ class RepositoriesConfiguration {
       ),
     );
 
-    services.registerSingleton<IAccountRepository>(AccountRepository(restApiClient: services.get<IRestApiClient>()));
+    services.registerSingleton<IAccountRepository>(
+      AccountRepository(
+        restApiClient: services.get<IRestApiClient>(),
+        currentUser: services.get<ICurrentUser>(),
+      ),
+    );
   }
 }

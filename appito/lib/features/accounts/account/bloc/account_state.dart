@@ -10,6 +10,9 @@ enum AccountStateStatus {
 class AccountState extends AbstractItemState<AccountResponseModel> {
   final AccountStateStatus status;
 
+  bool get showCompaniesToggle => (item?.employees?.length ?? 0) >= 2;
+  bool get showProfilePhoto => item?.photoUrl != null;
+  bool isCompanySelected(int? companyId) => item?.currentCompany?.id == companyId;
   bool isThirdPartySignInProviderConnected(SignInProvider signInProvider) => item?.externalUsers?.any((x) => x.signInProvider == signInProvider) ?? false;
 
   AccountState({

@@ -17,6 +17,8 @@ class AppRouter {
         return const ChangePasswordPage();
       case AccountUpdatePage.route:
         return const AccountUpdatePage();
+      case BecomeAPartnerPage.route:
+        return const BecomeAPartnerPage();
       default:
         return const AppNavigation();
     }

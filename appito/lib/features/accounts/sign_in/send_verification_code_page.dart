@@ -62,23 +62,20 @@ class _Form extends StatelessWidget {
               const _VerificationCodeSourceTypeSelectionWidget(),
               const Gap(30),
             },
-            Form(
-              autovalidateMode: state.autovalidateMode,
-              child: Column(
-                children: [
-                  const Gap(30),
-                  const _Title(),
-                  const Gap(30),
-                  const _TextFormField(),
-                  const Gap(30),
-                  Button(
-                    primary: true,
-                    isLoading: state.isSubmitting,
-                    text: 'Send verification code',
-                    onTap: submit,
-                  ),
-                ],
-              ),
+            Column(
+              children: [
+                const Gap(30),
+                const _Title(),
+                const Gap(30),
+                const _TextFormField(),
+                const Gap(30),
+                Button(
+                  primary: true,
+                  isLoading: state.isSubmitting,
+                  text: 'Send verification code',
+                  onTap: submit,
+                ),
+              ],
             ),
           ],
         );

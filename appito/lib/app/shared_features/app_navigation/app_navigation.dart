@@ -43,7 +43,11 @@ class AccountTypeNavigation extends StatelessWidget {
               case AccountType.client:
                 return const ClientHomeNavigation();
               case AccountType.partner:
-                return const ClientHomeNavigation();
+                if (currentUserState.account?.currentCompany != null) {
+                  return const PartnerHomeNavigation();
+                } else {
+                  return const ClientHomeNavigation();
+                }
               case AccountType.admin:
                 return const AdminHomeNavigation();
               default:

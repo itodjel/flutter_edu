@@ -15,13 +15,20 @@ _$_AccountResponseModel _$$_AccountResponseModelFromJson(Map json) =>
       timezoneId: json['timezoneId'] as String?,
       accountType:
           $enumDecodeNullable(_$AccountTypeEnumMap, json['accountType']),
-      passwordSetByUser: json['passwordSetByUser'] as bool?,
       profilePhoto: json['profilePhoto'] == null
           ? null
           : MultimediaResponseModel.fromJson(
               Map<String, dynamic>.from(json['profilePhoto'] as Map)),
+      currentCompany: json['currentCompany'] == null
+          ? null
+          : AccountCompanyResponseModel.fromJson(
+              Map<String, dynamic>.from(json['currentCompany'] as Map)),
       externalUsers: (json['externalUsers'] as List<dynamic>?)
           ?.map((e) => AccountExternalUserResponseModel.fromJson(
+              Map<String, dynamic>.from(e as Map)))
+          .toList(),
+      employees: (json['employees'] as List<dynamic>?)
+          ?.map((e) => AccountEmployeeResponseModel.fromJson(
               Map<String, dynamic>.from(e as Map)))
           .toList(),
     );
@@ -35,9 +42,10 @@ Map<String, dynamic> _$$_AccountResponseModelToJson(
       'photoUrl': instance.photoUrl,
       'timezoneId': instance.timezoneId,
       'accountType': _$AccountTypeEnumMap[instance.accountType],
-      'passwordSetByUser': instance.passwordSetByUser,
       'profilePhoto': instance.profilePhoto?.toJson(),
+      'currentCompany': instance.currentCompany?.toJson(),
       'externalUsers': instance.externalUsers?.map((e) => e.toJson()).toList(),
+      'employees': instance.employees?.map((e) => e.toJson()).toList(),
     };
 
 const _$AccountTypeEnumMap = {

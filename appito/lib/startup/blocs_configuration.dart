@@ -20,7 +20,6 @@ class BlocsConfiguration {
     );
     services.registerSingleton(
       AuthBloc(
-        currentUser: services.get<ICurrentUser>(),
         restApiClient: services.get<IRestApiClient>(),
         authenticationRepository: services.get<IAuthenticationRepository>(),
       ),
@@ -57,6 +56,7 @@ class BlocsConfiguration {
     services.registerFactory(
       () => AccountBloc(
         accountRepository: services.get<IAccountRepository>(),
+        currentUser: services.get<ICurrentUser>(),
       ),
     );
     services.registerFactory(
@@ -87,6 +87,11 @@ class BlocsConfiguration {
       () => ChangePasswordBloc(
         accountRepository: services.get<IAccountRepository>(),
         modelValidator: services.get<ChangePasswordRequestModelValidator>(),
+      ),
+    );
+    services.registerFactory(
+      () => BecomeAPartnerBloc(
+        accountRepository: services.get<IAccountRepository>(),
       ),
     );
   }

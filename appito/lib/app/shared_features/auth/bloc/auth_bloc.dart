@@ -2,14 +2,12 @@ import 'package:appito/_all.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IRestApiClient restApiClient;
-  final ICurrentUser currentUser;
   final IAuthenticationRepository authenticationRepository;
 
   late StreamSubscription _restApiClientStream;
 
   AuthBloc({
     required this.restApiClient,
-    required this.currentUser,
     required this.authenticationRepository,
   }) : super(AuthState.initial()) {
     on<AuthCheckEvent>(_check);

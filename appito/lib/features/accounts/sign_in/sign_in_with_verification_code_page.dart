@@ -44,31 +44,28 @@ class _Form extends StatelessWidget {
         context.toast.validation(message: context.translations.please_fill_in_all_required_fields);
       },
       extendedBuilder: (context, state, model, modelValidator, bloc, update, submit) {
-        return Form(
-          autovalidateMode: state.autovalidateMode,
-          child: Column(
-            children: [
-              const Gap(30),
-              Text('Please enter the verification code that we sent via SMS to ${model.value}'),
-              const Gap(30),
-              TextFormField(
-                initialValue: model.code,
-                validator: (text) => modelValidator.code(model.copyWith(code: text)),
-                onChanged: (text) => update(model.copyWith(code: text)),
-                decoration: const InputDecoration(
-                  hintText: 'xxxxxx',
-                  label: Text('Verification code'),
-                ),
+        return Column(
+          children: [
+            const Gap(30),
+            Text('Please enter the verification code that we sent via SMS to ${model.value}'),
+            const Gap(30),
+            TextFormField(
+              initialValue: model.code,
+              validator: (text) => modelValidator.code(model.copyWith(code: text)),
+              onChanged: (text) => update(model.copyWith(code: text)),
+              decoration: const InputDecoration(
+                hintText: 'xxxxxx',
+                label: Text('Verification code'),
               ),
-              const Gap(30),
-              Button(
-                primary: true,
-                isLoading: state.isSubmitting,
-                text: 'Send verification code',
-                onTap: submit,
-              ),
-            ],
-          ),
+            ),
+            const Gap(30),
+            Button(
+              primary: true,
+              isLoading: state.isSubmitting,
+              text: 'Send verification code',
+              onTap: submit,
+            ),
+          ],
         );
       },
     );
