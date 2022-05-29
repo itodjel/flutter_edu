@@ -9,8 +9,15 @@ class ModelValidatorsConfiguration {
     }
 
     services.registerSingleton(SignInRequestModelValidator(appLocalizations: appLocalizations));
-    services.registerSingleton(SendSMSVerificationCodeRequestModelValidator(appLocalizations: appLocalizations));
-    services.registerSingleton(SignInWithPhoneNumberRequestModelValidator(appLocalizations: appLocalizations));
+    services.registerSingleton(
+      SendVerificationCodeRequestModelValidator(
+        appLocalizations: appLocalizations,
+        emailPropertyValidator: EmailPropertyValidator.required(appLocalizations: appLocalizations),
+      ),
+    );
+    services.registerSingleton(SignInWithExternalProviderRequestModelValidator(appLocalizations: appLocalizations));
+    services.registerSingleton(ChangePasswordRequestModelValidator(appLocalizations: appLocalizations));
+    services.registerSingleton(AccountUpdateRequestModelValidator(appLocalizations: appLocalizations));
 
     configuredValidators = true;
   }

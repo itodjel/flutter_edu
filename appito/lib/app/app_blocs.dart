@@ -11,6 +11,7 @@ class AppBlocs extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         _<AuthBloc>(),
+        _<CurrentUserBloc>(),
         _<LocalizationBloc>(),
         _<ThemeBloc>(),
         _<ErrorHandlerBloc>(),

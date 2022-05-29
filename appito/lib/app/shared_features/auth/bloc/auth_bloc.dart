@@ -30,7 +30,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     if (isAuthenticated) {
       emit(state.copyWith(status: AuthStateStatus.authenticated));
-      await currentUser.refresh();
     } else {
       emit(state.copyWith(status: AuthStateStatus.unAuthenticated));
     }

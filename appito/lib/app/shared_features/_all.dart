@@ -1,5 +1,6 @@
 export 'app_navigation/_all.dart';
 export 'auth/_all.dart';
+export 'current_user/_all.dart';
 export 'error_handler/_all.dart';
 export 'intro/_all.dart';
 export 'localization/_all.dart';

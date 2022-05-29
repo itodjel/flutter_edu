@@ -16,6 +16,8 @@ extension AppBuildContextX on BuildContext {
     return navigator.pushNamed(routeName, arguments: data);
   }
 
+  void pop() => navigator.pop();
+
   void popUntilRoot() {
     unfocus();
     while (navigator.canPop()) {

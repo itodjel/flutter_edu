@@ -16,8 +16,41 @@ class AppNavigation extends StatelessWidget {
             return IntroPage();
           case AppNavigationStep.signIn:
             return const SignInPage();
-          case AppNavigationStep.home:
-            return const HomeNavigation();
+          case AppNavigationStep.root:
+            return const AccountTypeNavigation();
+        }
+      },
+    );
+  }
+}
+
+class AccountTypeNavigation extends StatelessWidget {
+  const AccountTypeNavigation({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CurrentUserBloc, CurrentUserState>(
+      builder: (context, currentUserState) {
+        if (currentUserState.status == CurrentUserStateStatus.initializing) {
+          return const SplashPage();
+        }
+
+        switch (currentUserState.status) {
+          case CurrentUserStateStatus.initializing:
+            return const SplashPage();
+          case CurrentUserStateStatus.initialized:
+            switch (currentUserState.account?.accountType) {
+              case AccountType.client:
+                return const ClientHomeNavigation();
+              case AccountType.partner:
+                return const ClientHomeNavigation();
+              case AccountType.admin:
+                return const AdminHomeNavigation();
+              default:
+                return const SplashPage();
+            }
+          case CurrentUserStateStatus.unInitialized:
+            return const SignInPage();
         }
       },
     );

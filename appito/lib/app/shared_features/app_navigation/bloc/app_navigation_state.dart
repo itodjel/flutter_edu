@@ -6,7 +6,7 @@ enum AppNavigationStep {
   selectLanguage,
   intro,
   signIn,
-  home,
+  root,
 }
 
 class AppNavigationState {

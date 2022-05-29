@@ -1,6 +1,7 @@
 {
     "@@locale": "en",
      
+    "email_is_not_valid": "Email is not valid",
     "sign_in": "Sign in",
     "field_is_required": "Field is required",
     "there_was_a_network_error_please_try_again_later": "There was a network error, please try again later",

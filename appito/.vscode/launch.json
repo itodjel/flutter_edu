@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Demo",
+            "name": "Development",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
@@ -12,7 +12,7 @@
             ]
         },
         {
-            "name": "Development",
+            "name": "Staging",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
@@ -22,23 +22,13 @@
             ]
         },
         {
-            "name": "Staging",
-            "request": "launch",
-            "type": "dart",
-            "program": "lib/main.dart",
-            "args": [
-                "--dart-define",
-                "environment=2",
-            ]
-        },
-        {
             "name": "Production",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
             "args": [
                 "--dart-define",
-                "environment=3",
+                "environment=2",
             ]
         },
         {
@@ -52,7 +42,7 @@
                 "--web-port",
                 "8000",
                 "--dart-define",
-                "environment=1",
+                "environment=0",
             ],
         }
     ]

@@ -33,7 +33,11 @@ class AppBlocObserver extends BlocObserver {
       try {
         return state.resultStatus.toString().split('.')[1];
       } catch (e) {
-        return state.runtimeType.toString();
+        try {
+          return state.formResultStatus.toString().split('.')[1];
+        } catch (e) {
+          return state.runtimeType.toString();
+        }
       }
     }
   }

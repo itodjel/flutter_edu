@@ -26,6 +26,12 @@ class BlocsConfiguration {
       ),
     );
     services.registerSingleton(
+      CurrentUserBloc(
+        authBloc: services.get<AuthBloc>(),
+        currentUser: services.get<ICurrentUser>(),
+      ),
+    );
+    services.registerSingleton(
       ErrorHandlerBloc(
         restApiClient: services.get<IRestApiClient>(),
       ),
@@ -54,26 +60,33 @@ class BlocsConfiguration {
       ),
     );
     services.registerFactory(
+      () => AccountUpdateBloc(
+        accountRepository: services.get<IAccountRepository>(),
+        modelValidator: services.get<AccountUpdateRequestModelValidator>(),
+      ),
+    );
+    services.registerFactory(
       () => SignInBloc(
-        signInRequestModelValidator: services.get<SignInRequestModelValidator>(),
         authenticationRepository: services.get<IAuthenticationRepository>(),
+        modelValidator: services.get<SignInRequestModelValidator>(),
+      ),
+    );
+    services.registerFactory(
+      () => SendVerificationCodeBloc(
+        authenticationRepository: services.get<IAuthenticationRepository>(),
+        modelValidator: services.get<SendVerificationCodeRequestModelValidator>(),
       ),
     );
     services.registerFactory(
       () => ExternalSignInBloc(
         authenticationRepository: services.get<IAuthenticationRepository>(),
+        modelValidator: services.get<SignInWithExternalProviderRequestModelValidator>(),
       ),
     );
     services.registerFactory(
-      () => SendSMSVerificationCodeBloc(
-        authenticationRepository: services.get<IAuthenticationRepository>(),
-        sendSMSVerificationCodeRequestModelValidator: services.get<SendSMSVerificationCodeRequestModelValidator>(),
-      ),
-    );
-    services.registerFactory(
-      () => SignInWithPhoneNumberBloc(
-        authenticationRepository: services.get<IAuthenticationRepository>(),
-        signInWithPhoneNumberRequestModelValidator: services.get<SignInWithPhoneNumberRequestModelValidator>(),
+      () => ChangePasswordBloc(
+        accountRepository: services.get<IAccountRepository>(),
+        modelValidator: services.get<ChangePasswordRequestModelValidator>(),
       ),
     );
   }

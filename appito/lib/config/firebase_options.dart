@@ -43,40 +43,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    authDomain: '',
-    storageBucket: '',
-    measurementId: '',
+    apiKey: 'AIzaSyB75bKDtPPnuCdM7Aw4ZN-JIx7roFQre38',
+    appId: '1:338526986915:web:ac315e961356d12fa49516',
+    messagingSenderId: '338526986915',
+    projectId: 'appito-b822d',
+    authDomain: 'appito-b822d.firebaseapp.com',
+    storageBucket: 'appito-b822d.appspot.com',
+    measurementId: 'G-VTNDZRPERH',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    storageBucket: '',
+    apiKey: 'AIzaSyAVXhGFAjUqIJ0RQ29RnTXT_rDOrnAv-AA',
+    appId: '1:338526986915:android:d23c7cd33bdeb55ba49516',
+    messagingSenderId: '338526986915',
+    projectId: 'appito-b822d',
+    storageBucket: 'appito-b822d.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    storageBucket: '',
-    iosClientId: '',
-    iosBundleId: '',
+    apiKey: 'AIzaSyBOs3QYRIhkAfyuqK5x2zndeokhcdqU_KE',
+    appId: '1:338526986915:ios:198f40137ab61197a49516',
+    messagingSenderId: '338526986915',
+    projectId: 'appito-b822d',
+    storageBucket: 'appito-b822d.appspot.com',
+    iosClientId: '338526986915-m7kfqqcq7en4qabib4nconsb1fpi2qlo.apps.googleusercontent.com',
+    iosBundleId: 'com.nucleus.appito',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    authDomain: '',
-    storageBucket: '',
-    measurementId: '',
+    apiKey: 'AIzaSyB75bKDtPPnuCdM7Aw4ZN-JIx7roFQre38',
+    appId: '1:338526986915:web:cd8f726020a9ddf9a49516',
+    messagingSenderId: '338526986915',
+    projectId: 'appito-b822d',
+    authDomain: 'appito-b822d.firebaseapp.com',
+    storageBucket: 'appito-b822d.appspot.com',
+    measurementId: 'G-JVE6DW1EHT',
   );
 }

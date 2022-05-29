@@ -1,2 +1,2 @@
-export 'account/_all.dart';
-export 'authentication/_all.dart';
+export 'accounts/_all.dart';
+export 'common/_all.dart';

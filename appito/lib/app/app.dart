@@ -7,12 +7,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Phoenix(
-      child: const AppBlocs(
-        child: AppRebuilder(
-          child: AnimatedFadeIn(
-            child: _AppLayoutBuilder(),
-          ),
+    return const AppBlocs(
+      child: AppRebuilder(
+        child: AnimatedFadeIn(
+          child: _AppLayoutBuilder(),
         ),
       ),
     );
@@ -33,7 +31,6 @@ class AppRebuilder extends StatelessWidget {
       listener: (context, authState) {
         if ([AuthStateStatus.refreshedSignIn, AuthStateStatus.signedOut].contains(authState.status)) {
           context.read<NavigationBloc>().add(NavigationChangeIndexEvent(index: 0));
-          Phoenix.rebirth(context);
         }
       },
       child: child,
@@ -84,7 +81,7 @@ class _App extends StatelessWidget {
               return true;
             },
             child: MaterialApp(
-              title: 'Appito',
+              title: 'App',
               theme: theme,
               darkTheme: darkTheme,
               themeMode: themeMode,
