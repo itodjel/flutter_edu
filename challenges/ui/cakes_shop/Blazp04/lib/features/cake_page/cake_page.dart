@@ -1,4 +1,3 @@
-
 import '../_all.dart';
 
 class CakePage extends StatelessWidget {
@@ -7,18 +6,32 @@ class CakePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primarna,
       appBar: AppBar(
         title: Text("Flutter challange"),
+        backgroundColor: primarna,
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => FirstPage()));
-          },
-          child: const Text(
-            "Otvori aplikaciju",
-            style: TextStyle(fontSize: 20),
-          ),
+      body: Container(
+        child: ListView(
+          // ignore: prefer_const_literals_to_create_immutables
+          children: <Widget>[
+            SizedBox(height: 20),
+            Center(
+              child: Text(
+                "Fruits cake",
+                style: TextStyle(fontSize: 30, color: textBijela),
+              ),
+            ),
+            SizedBox(height: 10),
+            Center(
+              child: Text(
+                "makli kolac od nekakve cokolade",
+                style: TextStyle(fontSize: 18, color: textZuta),
+              ),
+            ),
+            SizedBox(height: 10),
+            RadioButton()
+          ],
         ),
       ),
     );

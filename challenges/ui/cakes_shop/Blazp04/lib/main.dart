@@ -1,3 +1,4 @@
+import 'package:blazp04/features/cake_page/cake_page.dart';
 import 'package:blazp04/features/first_page/first_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ito challange',
-      home: const FirstPage(),
+      home:  CakePage(),
     );
   }
 }
+
+
