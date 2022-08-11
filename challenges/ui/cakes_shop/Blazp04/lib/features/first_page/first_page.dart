@@ -1,3 +1,5 @@
+
+
 import '../_all.dart';
 
 class FirstPage extends StatefulWidget {
@@ -18,16 +20,33 @@ class _FirstPageState extends State<FirstPage> {
       appBar: AppBar(
         title: Text("Flutter challange"),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => CakePage()));
-          },
-          child: const Text(
-            "Otvori aplikaciju",
-            style: TextStyle(fontSize: 20),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CakePage()));
+              },
+              child: const Text(
+                "Otvori aplikaciju - BLoC",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
           ),
-        ),
+          SizedBox(height: 20,),
+            Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CakePageProvider()));
+              },
+              child: const Text(
+                "Otvori aplikaciju - Provider",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
