@@ -1,75 +1,65 @@
 import '../../_all.dart';
 
-class RadioButton extends StatelessWidget {
+class RadioButton extends StatefulWidget {
   const RadioButton({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<RadioButton> createState() => _RadioButtonState();
+}
+
+class _RadioButtonState extends State<RadioButton> {
+   int? _selectedValueIndex = 0;
+  List<String> buttonText = ["1 kg", "2 kg", "3 kg", "4 kg"];
+
+  Widget button({required String text, required int index}) {
+    return InkWell(
+      splashColor: primarna,
+      onTap: () {
+        setState(() {
+          _selectedValueIndex = index;
+        });
+      },
+      // child: Container(
+      //   padding: const EdgeInsets.all(12),
+      //   color: index == _selectedValueIndex ? Colors.blue : Colors.white,
+      //   child: Text(
+      //     text,
+      //     style: TextStyle(
+      //       color: index == _selectedValueIndex ? Colors.white : Colors.black,
+      //     ),
+      //   ),
+      // ),
+      child:        ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            width: 80,
+            height: 30,
+            color: index == _selectedValueIndex ? textZuta : primarna,
+            child: Center(
+              child: Text(
+                text,
+                style: TextStyle(fontSize: 18, color: index == _selectedValueIndex ? textBijela : textZuta),
+              ),
+            ),
+          ),
+        ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Container(
-            width: 80,
-            height: 30,
-            color: Colors.white,
-            child: Center(
-              child: Text(
-                "1 kg",
-                style: TextStyle(fontSize: 18, color: textZuta),
-              ),
-            ),
+      children: [
+        ...List.generate(
+          buttonText.length,
+          (index) => button(
+            index: index,
+            text: buttonText[index],
           ),
-        ),
-        SizedBox(width: 10),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Container(
-            width: 80,
-            height: 30,
-            color: Colors.white,
-            child: Center(
-              child: Text(
-                "1 kg",
-                style: TextStyle(fontSize: 18, color: textZuta),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(width: 10),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Container(
-            width: 80,
-            height: 30,
-            color: Colors.white,
-            child: Center(
-              child: Text(
-                "1 kg",
-                style: TextStyle(fontSize: 18, color: textZuta),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(width: 10),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Container(
-            width: 80,
-            height: 30,
-            color: Colors.white,
-            child: Center(
-              child: Text(
-                "1 kg",
-                style: TextStyle(fontSize: 18, color: textZuta),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(width: 10),
+        )
       ],
     );
   }

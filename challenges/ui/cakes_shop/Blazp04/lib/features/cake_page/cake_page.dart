@@ -30,7 +30,7 @@ class CakePage extends StatelessWidget {
                 style: TextStyle(fontSize: 18, color: textZuta),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 30),
             RadioButton(),
             SizedBox(height: 30),
             Row(
