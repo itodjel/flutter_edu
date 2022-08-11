@@ -21,17 +21,8 @@ class _RadioButtonState extends State<RadioButton> {
           _selectedValueIndex = index;
         });
       },
-      // child: Container(
-      //   padding: const EdgeInsets.all(12),
-      //   color: index == _selectedValueIndex ? Colors.blue : Colors.white,
-      //   child: Text(
-      //     text,
-      //     style: TextStyle(
-      //       color: index == _selectedValueIndex ? Colors.white : Colors.black,
-      //     ),
-      //   ),
-      // ),
-      child:        ClipRRect(
+
+      child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Container(
             width: 80,
