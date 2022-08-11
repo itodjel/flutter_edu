@@ -1,3 +1,4 @@
+
 import '../_all.dart';
 
 class CakePage extends StatelessWidget {
@@ -30,10 +31,25 @@ class CakePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            RadioButton()
+            RadioButton(),
+            SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 200,
+                  child: Image.asset("assets/kolac1.png", fit: BoxFit.contain),
+                ),
+                SizedBox(width: 40),
+                Counter(),
+              ],
+            ),
+            SizedBox(height: 40),
+            Sastojci()
           ],
         ),
       ),
     );
   }
 }
+
