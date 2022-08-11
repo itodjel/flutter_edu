@@ -1,4 +1,3 @@
-
 import '../_all.dart';
 
 class CakePage extends StatelessWidget {
@@ -8,14 +7,32 @@ class CakePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primarna,
-      appBar: AppBar(
-        title: Text("Flutter challange"),
-        backgroundColor: primarna,
-      ),
       body: Container(
         child: ListView(
           // ignore: prefer_const_literals_to_create_immutables
           children: <Widget>[
+            Container(
+                height: 30,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: (() => Navigator.pop(context)),
+                      child: Icon(Icons.arrow_back,color: textBijela,),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: (() => Navigator.pop(context)),
+                      child: Icon(Icons.favorite_outline,color: textBijela,),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             SizedBox(height: 20),
             Center(
               child: Text(
@@ -26,7 +43,7 @@ class CakePage extends StatelessWidget {
             SizedBox(height: 10),
             Center(
               child: Text(
-                "makli kolac od nekakve cokolade",
+                "strawberry & kiwi special",
                 style: TextStyle(fontSize: 18, color: textZuta),
               ),
             ),
@@ -52,4 +69,3 @@ class CakePage extends StatelessWidget {
     );
   }
 }
-

@@ -26,7 +26,7 @@ class Sastojci extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                      "Egg",
+                      "2 Eggs",
                       style: TextStyle(fontSize: 20, color: textBijela),
                     )
                   ],
@@ -41,12 +41,12 @@ class Sastojci extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset("assets/jaje.png"),
+                    Image.asset("assets/vanilija.png"),
                     SizedBox(
                       height: 20,
                     ),
                     Text(
-                      "Egg",
+                      "2 tsp vanilla",
                       style: TextStyle(fontSize: 20, color: textBijela),
                     )
                   ],
@@ -61,12 +61,12 @@ class Sastojci extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset("assets/jaje.png"),
+                    Image.asset("assets/secer.png"),
                     SizedBox(
                       height: 20,
                     ),
                     Text(
-                      "Egg",
+                      "1 cup sugar",
                       style: TextStyle(fontSize: 20, color: textBijela),
                     )
                   ],

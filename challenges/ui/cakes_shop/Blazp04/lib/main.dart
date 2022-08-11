@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Ito challange',
-        home:  CakePage(),
+         debugShowCheckedModeBanner: false,
+        home:  FirstPage(),
       ),
     );
   }
